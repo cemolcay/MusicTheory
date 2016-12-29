@@ -24,59 +24,35 @@ enum Note {
 
   var nextHalf: Note {
     switch self {
-    case .c:
-      return .dFlat
-    case .dFlat:
-      return .d
-    case .d:
-      return .eFlat
-    case .eFlat:
-      return .e
-    case .e:
-      return .f
-    case .f:
-      return .gFlat
-    case .gFlat:
-      return .g
-    case .g:
-      return .aFlat
-    case .aFlat:
-      return .a
-    case .a:
-      return .bFlat
-    case .bFlat:
-      return .b
-    case .b:
-      return .c
+    case .c: return .dFlat
+    case .dFlat: return .d
+    case .d: return .eFlat
+    case .eFlat: return .e
+    case .e: return .f
+    case .f: return .gFlat
+    case .gFlat: return .g
+    case .g: return .aFlat
+    case .aFlat: return .a
+    case .a: return .bFlat
+    case .bFlat: return .b
+    case .b: return .c
     }
   }
 
   var previousHalf: Note {
     switch self {
-    case .c:
-      return .b
-    case .dFlat:
-      return .c
-    case .d:
-      return .dFlat
-    case .eFlat:
-      return .d
-    case .e:
-      return .eFlat
-    case .f:
-      return .e
-    case .gFlat:
-      return .f
-    case .g:
-      return .gFlat
-    case .aFlat:
-      return .g
-    case .a:
-      return .aFlat
-    case .bFlat:
-      return .a
-    case .b:
-      return .bFlat
+    case .c: return .b
+    case .dFlat: return .c
+    case .d: return .dFlat
+    case .eFlat: return .d
+    case .e: return .eFlat
+    case .f: return .e
+    case .gFlat: return .f
+    case .g: return .gFlat
+    case .aFlat: return .g
+    case .a: return .aFlat
+    case .bFlat: return .a
+    case .b: return .bFlat
     }
   }
 
@@ -130,21 +106,30 @@ enum Note {
     }
   }
 
-  func next(interval: Interval) -> Note {
-    return next(tone: .custom(halfstep: interval.halfstep))
+  func next(interval: Interval, on scale: Scale) -> Note? {
+    let notes = scale.notes
+    guard notes.contains(self) else { return nil }
+
+    return next(tone: interval.tone)
   }
 
-  func previous(interval: Interval) -> Note {
-    return previous(tone: .custom(halfstep: interval.halfstep))
+  func previous(interval: Interval, on scale: Scale) -> Note? {
+    let notes = scale.notes
+    guard notes.contains(self) else { return nil }
+
+    return previous(tone: interval.tone)
   }
 
-  func scale(scale: Scale) -> [Note] {
-    var notes: [Note] = []
-    for tone in scale.tones {
-      let current = notes.last ?? self
-      notes.append(current.next(tone: tone))
-    }
-    return notes
+  func frequancy(degree: Int) -> Float {
+    return 0
+  }
+
+  func pianoKey(degree: Int) -> Int {
+    return 0
+  }
+
+  func midiKey(degree: Int) -> Int {
+    return 0
   }
 }
 
@@ -153,6 +138,24 @@ enum Tone {
   case whole
   case oneAndHalf
   case custom(halfstep: Int)
+
+  init(halfstep: Int) {
+    switch halfstep {
+    case 1: self = .half
+    case 2: self = .whole
+    case 3: self = .oneAndHalf
+    default: self = .custom(halfstep: halfstep)
+    }
+  }
+
+  var halfstep: Int {
+    switch self {
+    case .half: return 1
+    case .whole: return 2
+    case .oneAndHalf: return 3
+    case .custom(let halfstep): return halfstep
+    }
+  }
 }
 
 enum Interval {
@@ -227,15 +230,19 @@ enum Interval {
     case .P8: return 12
     }
   }
+
+  var tone: Tone {
+    return Tone(halfstep: halfstep)
+  }
 }
 
 enum Scale {
-  case major
-  case minor
-  case harmonicMinor
-  case dorian
-  case mixolydian
-  case custom(tones: [Tone])
+  case major(key: Note)
+  case minor(key: Note)
+  case harmonicMinor(key: Note)
+  case dorian(key: Note)
+  case mixolydian(key: Note)
+  case custom(key: Note, tones: [Tone])
 
   var tones: [Tone] {
     switch self {
@@ -249,8 +256,25 @@ enum Scale {
       return [.whole, .half, .whole, .whole, .whole, .half, .whole]
     case .mixolydian:
       return [.whole, .whole, .half, .whole, .whole, .half, .whole]
-    case .custom(let tones):
+    case .custom(_, let tones):
       return tones
+    }
+  }
+
+  var notes: [Note] {
+    switch self {
+    case .major(let key),
+         .minor(let key),
+         .harmonicMinor(let key),
+         .dorian(let key),
+         .mixolydian(let key),
+         .custom(let key, _):
+      var notes: [Note] = []
+      for tone in tones {
+        let current = notes.last ?? key
+        notes.append(current.next(tone: tone))
+      }
+      return notes
     }
   }
 }
