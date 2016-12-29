@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B22DCF461E1590E7006D561E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B22DCF441E1590E7006D561E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B22DCF411E1590E7006D561E /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22DCF441E1590E7006D561E /* MusicTheory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTheory.h; sourceTree = "<group>"; };
 		B22DCF451E1590E7006D561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B22DCF4C1E1590FE006D561E /* MusicTheory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTheory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				B22DCF441E1590E7006D561E /* MusicTheory.h */,
 				B22DCF451E1590E7006D561E /* Info.plist */,
+				B22DCF4C1E1590FE006D561E /* MusicTheory.swift */,
 			);
 			path = MusicTheory;
 			sourceTree = "<group>";
@@ -96,6 +99,7 @@
 					B22DCF401E1590E7006D561E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 77Y3N48SNF;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +245,7 @@
 		B22DCF4A1E1590E7006D561E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 77Y3N48SNF;
@@ -252,6 +258,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.MusicTheory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +266,7 @@
 		B22DCF4B1E1590E7006D561E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 77Y3N48SNF;
