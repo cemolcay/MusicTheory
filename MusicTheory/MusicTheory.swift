@@ -106,30 +106,12 @@ enum Note {
     }
   }
 
-  func next(interval: Interval, on scale: Scale) -> Note? {
-    let notes = scale.notes
-    guard notes.contains(self) else { return nil }
-
+  func next(interval: Interval) -> Note {
     return next(tone: interval.tone)
   }
 
-  func previous(interval: Interval, on scale: Scale) -> Note? {
-    let notes = scale.notes
-    guard notes.contains(self) else { return nil }
-
+  func previous(interval: Interval) -> Note {
     return previous(tone: interval.tone)
-  }
-
-  func frequancy(degree: Int) -> Float {
-    return 0
-  }
-
-  func pianoKey(degree: Int) -> Int {
-    return 0
-  }
-
-  func midiKey(degree: Int) -> Int {
-    return 0
   }
 }
 
@@ -261,7 +243,7 @@ enum Scale {
     }
   }
 
-  var notes: [Note] {
+  var key: Note {
     switch self {
     case .major(let key),
          .minor(let key),
@@ -269,12 +251,16 @@ enum Scale {
          .dorian(let key),
          .mixolydian(let key),
          .custom(let key, _):
-      var notes: [Note] = []
-      for tone in tones {
-        let current = notes.last ?? key
-        notes.append(current.next(tone: tone))
-      }
-      return notes
+      return key
     }
+  }
+
+  var notes: [Note] {
+    var notes: [Note] = []
+    for tone in tones {
+      let current = notes.last ?? key
+      notes.append(current.next(tone: tone))
+    }
+    return notes
   }
 }

@@ -23,8 +23,15 @@ class MusicTheoryTests: XCTestCase {
 
 extension MusicTheoryTests {
 
-  func testInterval() {
-    let note = Note.c
+  func testHalfstep() {
+    let note: Note = .c
     XCTAssert(note.nextHalf == Note.dFlat)
+  }
+
+  func testInterval() {
+    let note: Note = .c
+    XCTAssert(note.next(interval: .P8) == note)
+    XCTAssert(note.next(interval: .M2) == .d)
+    XCTAssert(note.next(interval: .m2) == .dFlat)
   }
 }
