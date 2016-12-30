@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Vendor/AudioKit/iOS/AudioKit For iOS.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:AudioKitMusicTheory.playground">
    </FileRef>
    <FileRef
