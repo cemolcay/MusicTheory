@@ -155,7 +155,7 @@ public extension Note {
     return root + ((octave - 1) * 12)
   }
 
-  /// Calculates and returns frequency of note on octave based on its location of piano keys;
+  /// Calculates and returns the frequency of note on octave based on its location of piano keys;
   /// Bases A4 note of 440Hz frequency standard.
   public func frequancy(octave: Int) -> Float {
     let fn = powf(2.0, Float(pianoKey(octave: octave) - 49) / 12.0)
