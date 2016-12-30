@@ -3,33 +3,26 @@ import PlaygroundSupport
 import AudioKit
 import MusicTheory
 
-let note = Note.c
-let scale = Scale.major(key: note)
+let note = Note.e
+let scale = Scale.harmonicMinor(key: note)
 let notes = scale.notes
-print(notes)
 
 let bank = AKOscillatorBank()
 AudioKit.output = bank
 AudioKit.start()
 
-class PlaygroundView: AKPlaygroundView, AKKeyboardDelegate {
-
-  override func setup() {
-    let keyboard = AKKeyboardView(width: 440, height: 100)
-    keyboard.delegate = self
-    addSubview(keyboard)
-
-    keyboard.polyphonicMode = true
+var randomSound: Int? = nil
+AKPlaygroundLoop(every: 0.2, handler: {
+  if let sound = randomSound {
+    bank.stop(noteNumber: sound)
   }
 
-  func noteOn(note: MIDINoteNumber) {
-    bank.play(noteNumber: note, velocity: 20)
-  }
+  randomSound = notes.randomElement().midiKey(
+    octave: Array(3..<6).randomElement())
 
-  func noteOff(note: MIDINoteNumber) {
-    bank.stop(noteNumber: note)
-  }
-}
+  bank.play(
+    noteNumber: randomSound!,
+    velocity: 60)
+})
 
-PlaygroundPage.current.liveView = PlaygroundView()
 PlaygroundPage.current.needsIndefiniteExecution = true
