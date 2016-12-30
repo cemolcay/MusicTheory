@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AudioKitMusicTheory.playground">
+      location = "group:MusicTheoryPlayground.playground">
    </FileRef>
    <FileRef
       location = "group:MusicTheory.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

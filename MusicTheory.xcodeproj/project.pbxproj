@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BFBB44D96A5AC51CEAFF759 /* Pods_MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */; };
+		AC405FA5FB45DF2CDF704A07 /* Pods_MusicTheoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */; };
 		B22DCF461E1590E7006D561E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B22DCF441E1590E7006D561E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
 		B22DCF551E15B41C006D561E /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF541E15B41C006D561E /* MusicTheoryTests.swift */; };
@@ -25,6 +27,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory.release.xcconfig"; sourceTree = "<group>"; };
+		64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory.debug.xcconfig"; sourceTree = "<group>"; };
+		6C699F9705116A4149E41C55 /* Pods-MusicTheoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		894C61B53523716095E022F9 /* Pods-MusicTheoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22DCF411E1590E7006D561E /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22DCF441E1590E7006D561E /* MusicTheory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTheory.h; sourceTree = "<group>"; };
 		B22DCF451E1590E7006D561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BFBB44D96A5AC51CEAFF759 /* Pods_MusicTheory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,18 +56,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22DCF571E15B41C006D561E /* MusicTheory.framework in Frameworks */,
+				AC405FA5FB45DF2CDF704A07 /* Pods_MusicTheoryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E989F438F424A20D64DF2E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */,
+				B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B22DCF371E1590E7006D561E = {
 			isa = PBXGroup;
 			children = (
 				B22DCF431E1590E7006D561E /* MusicTheory */,
 				B22DCF531E15B41C006D561E /* MusicTheoryTests */,
 				B22DCF421E1590E7006D561E /* Products */,
+				D0F7DD99407EE3F11546121E /* Pods */,
+				1E989F438F424A20D64DF2E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +111,17 @@
 			path = MusicTheoryTests;
 			sourceTree = "<group>";
 		};
+		D0F7DD99407EE3F11546121E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */,
+				3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */,
+				6C699F9705116A4149E41C55 /* Pods-MusicTheoryTests.debug.xcconfig */,
+				894C61B53523716095E022F9 /* Pods-MusicTheoryTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -108,10 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B22DCF491E1590E7006D561E /* Build configuration list for PBXNativeTarget "MusicTheory" */;
 			buildPhases = (
+				1CB28870204E4BE815F93A63 /* [CP] Check Pods Manifest.lock */,
 				B22DCF3C1E1590E7006D561E /* Sources */,
 				B22DCF3D1E1590E7006D561E /* Frameworks */,
 				B22DCF3E1E1590E7006D561E /* Headers */,
 				B22DCF3F1E1590E7006D561E /* Resources */,
+				2C0621E527082DDCFBE074B0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,9 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B22DCF5A1E15B41C006D561E /* Build configuration list for PBXNativeTarget "MusicTheoryTests" */;
 			buildPhases = (
+				CC9223C9998C2A1DE1E69B60 /* [CP] Check Pods Manifest.lock */,
 				B22DCF4E1E15B41C006D561E /* Sources */,
 				B22DCF4F1E15B41C006D561E /* Frameworks */,
 				B22DCF501E15B41C006D561E /* Resources */,
+				18AD9A129BD191F6E5EB81EB /* [CP] Embed Pods Frameworks */,
+				C1221B1A2718A74285DC0C02 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,6 +234,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18AD9A129BD191F6E5EB81EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CB28870204E4BE815F93A63 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2C0621E527082DDCFBE074B0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1221B1A2718A74285DC0C02 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC9223C9998C2A1DE1E69B60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B22DCF3C1E1590E7006D561E /* Sources */ = {
@@ -328,6 +443,7 @@
 		};
 		B22DCF4A1E1590E7006D561E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -349,6 +465,7 @@
 		};
 		B22DCF4B1E1590E7006D561E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -369,6 +486,7 @@
 		};
 		B22DCF5B1E15B41C006D561E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C699F9705116A4149E41C55 /* Pods-MusicTheoryTests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 77Y3N48SNF;
 				INFOPLIST_FILE = MusicTheoryTests/Info.plist;
@@ -381,6 +499,7 @@
 		};
 		B22DCF5C1E15B41C006D561E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 894C61B53523716095E022F9 /* Pods-MusicTheoryTests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 77Y3N48SNF;
 				INFOPLIST_FILE = MusicTheoryTests/Info.plist;

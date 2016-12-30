@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Note {
+public enum Note {
   case c
   case dFlat
   case d
@@ -22,7 +22,12 @@ enum Note {
   case bFlat
   case b
 
-  var nextHalf: Note {
+  public static let all: [Note] = [
+    .c, .dFlat, .d, .eFlat, .e, .f,
+    .gFlat, .g, .aFlat, .a, .bFlat, .b
+  ]
+
+  public var nextHalf: Note {
     switch self {
     case .c: return .dFlat
     case .dFlat: return .d
@@ -39,7 +44,7 @@ enum Note {
     }
   }
 
-  var previousHalf: Note {
+  public var previousHalf: Note {
     switch self {
     case .c: return .b
     case .dFlat: return .c
@@ -56,7 +61,7 @@ enum Note {
     }
   }
 
-  func next(tone: Tone) -> Note {
+  public func next(tone: Tone) -> Note {
     switch tone {
     case .half:
       return next(tone: .custom(halfstep: 1))
@@ -81,7 +86,7 @@ enum Note {
     }
   }
 
-  func previous(tone: Tone) -> Note {
+  public func previous(tone: Tone) -> Note {
     switch tone {
     case .half:
       return previous(tone: .custom(halfstep: 1))
@@ -106,20 +111,20 @@ enum Note {
     }
   }
 
-  func next(interval: Interval) -> Note {
+  public func next(interval: Interval) -> Note {
     return next(tone: interval.tone)
   }
 
-  func previous(interval: Interval) -> Note {
+  public func previous(interval: Interval) -> Note {
     return previous(tone: interval.tone)
   }
 }
 
-extension Note {
+public extension Note {
   /// Returns the piano key index by octave based on a standard [1 - 88] key piano;
   /// Returns 0 if zeroth octave is other than A, Bflat or B, which is accurate on a real piano;
   /// Returns 0 if octave is negative.
-  func pianoKey(octave: Int) -> Int {
+  public func pianoKey(octave: Int) -> Int {
     if octave == 0 {
       switch self {
       case .a: return 1
@@ -152,7 +157,7 @@ extension Note {
 
   /// Calculates and returns frequency of note on octave based on its location of piano keys;
   /// Bases A4 note of 440Hz frequency standard.
-  func frequancy(octave: Int) -> Float {
+  public func frequancy(octave: Int) -> Float {
     let fn = powf(2.0, Float(pianoKey(octave: octave) - 49) / 12.0)
     return fn * 440.0
   }
@@ -160,7 +165,7 @@ extension Note {
   /// Returns midi keys in range [0 - 127];
   /// Octave ranges [0 - 10];
   /// If octave range don't satisfy then returns -1.
-  func midiKey(octave: Int) -> Int {
+  public func midiKey(octave: Int) -> Int {
     guard octave >= 0, octave <= 10 else { return -1 }
     var root = 0
 
@@ -183,13 +188,13 @@ extension Note {
   }
 }
 
-enum Tone {
+public enum Tone {
   case half
   case whole
   case oneAndHalf
   case custom(halfstep: Int)
 
-  init(halfstep: Int) {
+  public init(halfstep: Int) {
     switch halfstep {
     case 1: self = .half
     case 2: self = .whole
@@ -198,7 +203,7 @@ enum Tone {
     }
   }
 
-  var halfstep: Int {
+  public var halfstep: Int {
     switch self {
     case .half: return 1
     case .whole: return 2
@@ -208,7 +213,7 @@ enum Tone {
   }
 }
 
-enum Interval {
+public enum Interval {
   case unison
   case m2
   case M2
@@ -227,7 +232,7 @@ enum Interval {
   case A7
   case P8
 
-  init(degree: Int, halfstep: Int) {
+  public init(degree: Int, halfstep: Int) {
     switch (degree, halfstep) {
     case (0, 0): self = .unison
     case (1, 1): self = .m2
@@ -250,7 +255,7 @@ enum Interval {
     }
   }
 
-  var degree: Int {
+  public var degree: Int {
     switch self {
     case .unison: return 0
     case .m2, .M2: return 1
@@ -263,7 +268,7 @@ enum Interval {
     }
   }
 
-  var halfstep: Int {
+  public var halfstep: Int {
     switch self {
     case .unison: return 0
     case .m2: return 1
@@ -281,12 +286,12 @@ enum Interval {
     }
   }
 
-  var tone: Tone {
+  public var tone: Tone {
     return Tone(halfstep: halfstep)
   }
 }
 
-enum Scale {
+public enum Scale {
   case major(key: Note)
   case minor(key: Note)
   case harmonicMinor(key: Note)
@@ -294,7 +299,7 @@ enum Scale {
   case mixolydian(key: Note)
   case custom(key: Note, tones: [Tone])
 
-  var tones: [Tone] {
+  public var tones: [Tone] {
     switch self {
     case .major:
       return [.whole, .whole, .half, .whole, .whole, .whole, .half]
@@ -311,7 +316,7 @@ enum Scale {
     }
   }
 
-  var key: Note {
+  public var key: Note {
     switch self {
     case .major(let key),
          .minor(let key),
@@ -323,7 +328,7 @@ enum Scale {
     }
   }
 
-  var notes: [Note] {
+  public var notes: [Note] {
     var notes: [Note] = []
     for tone in tones {
       let current = notes.last ?? key
