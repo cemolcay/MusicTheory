@@ -188,6 +188,26 @@ public extension Note {
   }
 }
 
+extension Note: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .c: return "C"
+    case .dFlat: return "D♭"
+    case .d: return "D"
+    case .eFlat: return "E♭"
+    case .e: return "E"
+    case .f: return "F"
+    case .gFlat: return "G♭"
+    case .g: return "G"
+    case .aFlat: return "A♭"
+    case .a: return "A"
+    case .bFlat: return "B♭"
+    case .b: return "B"
+    }
+  }
+}
+
 public enum Tone {
   case half
   case whole
@@ -291,28 +311,53 @@ public enum Interval {
   }
 }
 
+extension Interval: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .unison: return "unison"
+    case .m2: return "minor second"
+    case .M2: return "major second"
+    case .m3: return "minor third"
+    case .M3: return "major third"
+    case .P4: return "perfect forth"
+    case .A4: return "agumented fourth"
+    case .d5: return "diminished fifth"
+    case .P5: return "perfect fifth"
+    case .A5: return "agumented fifth"
+    case .m6: return "minor sixth"
+    case .M6: return "major sixth"
+    case .d7: return "diminished seventh"
+    case .m7: return "minor seventh"
+    case .M7: return "major seventh"
+    case .A7: return "agumented seventh"
+    case .P8: return "octave"
+    }
+  }
+}
+
 public enum Scale {
   case major(key: Note)
   case minor(key: Note)
   case harmonicMinor(key: Note)
   case dorian(key: Note)
+  case phrygian(key: Note)
+  case lydian(key: Note)
   case mixolydian(key: Note)
-  case custom(key: Note, tones: [Tone])
+  case locrian(key: Note)
+  case custom(key: Note, intervals: [Interval])
 
-  public var tones: [Tone] {
+  public var intervals: [Interval] {
     switch self {
-    case .major:
-      return [.whole, .whole, .half, .whole, .whole, .whole, .half]
-    case .minor:
-      return [.whole, .half, .whole, .whole, .half, .whole, .whole]
-    case .harmonicMinor:
-      return [.whole, .half, .whole, .whole, .half, .oneAndHalf, .half]
-    case .dorian:
-      return [.whole, .half, .whole, .whole, .whole, .half, .whole]
-    case .mixolydian:
-      return [.whole, .whole, .half, .whole, .whole, .half, .whole]
-    case .custom(_, let tones):
-      return tones
+    case .major: return [.unison, .M2, .M3, .P4, .P5, .M6, .M7]
+    case .minor: return [.unison, .M2, .m3, .P4, .P5, .m6, .m7]
+    case .harmonicMinor: return [.unison, .M2, .m3, .P4, .P5, .M6, .m7]
+    case .dorian: return [.unison, .M2, .m3, .P4, .P5, .M6, .m7]
+    case .phrygian: return [.unison, .m2, .m3, .P4, .P5, .m6, .m7]
+    case .lydian: return [.unison, .M2, .M3, .A4, .P5, .M6, .M7]
+    case .mixolydian: return [.unison, .M2, .M3, .P4, .P5, .M6, .m7]
+    case .locrian: return [.unison, .m2, .m3, .P4, .d5, .m6, .m7]
+    case .custom(_, let intervals): return intervals
     }
   }
 
@@ -322,22 +367,102 @@ public enum Scale {
          .minor(let key),
          .harmonicMinor(let key),
          .dorian(let key),
+         .phrygian(let key),
+         .lydian(let key),
          .mixolydian(let key),
+         .locrian(let key),
          .custom(let key, _):
       return key
     }
   }
 
   public var notes: [Note] {
-    var notes: [Note] = []
-    for tone in tones {
-      let current = notes.last ?? key
-      notes.append(current.next(tone: tone))
-    }
+    let key = self.key
+    return intervals.map({ key.next(interval: $0) })
+  }
+}
 
-    // Rearrange scale notes by starting from key note
-    let count = notes.count
-    guard count > 0 else { return notes }
-    return Array(notes[count-1..<count] + notes[0..<count-1])
+public enum Chord {
+  case maj(key: Note)
+  case min(key: Note)
+  case aug(key: Note)
+  case b5(key: Note)
+  case dim(key: Note)
+  case sus(key: Note)
+  case sus2(key: Note)
+  case M6(key: Note)
+  case m6(key: Note)
+  case dom7(key: Note)
+  case M7(key: Note)
+  case m7(key: Note)
+  case aug7(key: Note)
+  case dim7(key: Note)
+  case M7b5(key: Note)
+  case m7b5(key: Note)
+  case custom(key: Note, intervals: [Interval], description: String)
+
+  /// Key of the chord
+  var key: Note {
+    switch self {
+    case .maj(let key), .min(let key), .aug(let key), .b5(let key),
+    .dim(let key), .sus(let key), .sus2(let key), .M6(let key),
+    .m6(let key), .dom7(let key), .M7(let key), .m7(let key), .aug7(let key),
+    .dim7(let key), .M7b5(let key), .m7b5(let key), .custom(let key, _, _):
+      return key
+    }
+  }
+
+  /// Intervals of the chord based on the chord's root
+  var intervals: [Interval] {
+    switch self {
+    case .maj: return [.unison, .M3, .P5]
+    case .min: return [.unison, .m3, .P5]
+    case .aug: return [.unison, .M3, .A5]
+    case .b5: return [.unison, .M3, .d5]
+    case .dim: return [.unison, .m3, .d5]
+    case .sus: return [.unison, .P4, .P5]
+    case .sus2: return [.unison, .M2, .P5]
+    case .M6: return [.unison, .M3, .P5, .M6]
+    case .m6: return [.unison, .m3, .P5, .M6]
+    case .dom7: return [.unison, .M3, .P5, .m7]
+    case .M7: return [.unison, .M3, .P5, .M7]
+    case .m7: return [.unison, .m3, .P5, .m7]
+    case .aug7: return [.unison, .M3, .A5, .m7]
+    case .dim7: return [.unison, .m3, .d5, .d7]
+    case .M7b5: return [.unison, .M3, .A5, .M7]
+    case .m7b5: return [.unison, .M3, .d5, .M7]
+    case .custom(_, let intervals, _): return intervals
+    }
+  }
+
+  /// Notes generated by the intervals of the chord
+  var notes: [Note] {
+    let key = self.key
+    return intervals.map({ key.next(interval: $0) })
+  }
+}
+
+extension Chord: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .maj(let key): return "\(key)maj"
+    case .min(let key): return "\(key)min"
+    case .aug(let key): return "\(key)aug"
+    case .b5(let key): return "\(key)b5"
+    case .dim(let key): return "\(key)dim"
+    case .sus(let key): return "\(key)sus4"
+    case .sus2(let key): return "\(key)sus2"
+    case .M6(let key): return "\(key)6"
+    case .m6(let key): return "\(key)m6"
+    case .dom7(let key): return "\(key)7"
+    case .M7(let key): return "\(key)M7"
+    case .m7(let key): return "\(key)m7"
+    case .aug7(let key): return "\(key)+7"
+    case .dim7(let key): return "\(key)dim7"
+    case .M7b5(let key): return "\(key)7b5"
+    case .m7b5(let key): return "\(key)m7b5"
+    case .custom(let key, _, let description): return "\(key)\(description)"
+    }
   }
 }

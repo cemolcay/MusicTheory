@@ -56,4 +56,13 @@ extension MusicTheoryTests {
     let cMinScale = Scale.minor(key: .c)
     XCTAssert(cMinScale.notes == cMin)
   }
+
+  func testChords() {
+    let cmajNotes: [Note] = [.c, .e, .g]
+    let cmaj: Chord = .maj(key: .c)
+    XCTAssert(cmajNotes == cmaj.notes)
+    let cminNotes: [Note] = [.c, .eFlat, .g]
+    let cmin: Chord = .min(key: .c)
+    XCTAssert(cminNotes == cmin.notes)
+  }
 }
