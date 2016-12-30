@@ -115,6 +115,74 @@ enum Note {
   }
 }
 
+extension Note {
+  /// Returns the piano key index by octave based on a standard [1 - 88] key piano;
+  /// Returns 0 if zeroth octave is other than A, Bflat or B, which is accurate on a real piano;
+  /// Returns 0 if octave is negative.
+  func pianoKey(octave: Int) -> Int {
+    if octave == 0 {
+      switch self {
+      case .a: return 1
+      case .bFlat: return 2
+      case .b: return 3
+      default: return 0
+      }
+    }
+
+    guard octave > 0 else { return 0 }
+    var root = 0
+
+    switch self {
+    case .c: root = 4
+    case .dFlat: root = 5
+    case .d: root = 6
+    case .eFlat: root = 7
+    case .e: root = 8
+    case .f: root = 9
+    case .gFlat: root = 10
+    case .g: root = 11
+    case .aFlat: root = 12
+    case .a: root = 13
+    case .bFlat: root = 14
+    case .b: root = 15
+    }
+
+    return root + ((octave - 1) * 12)
+  }
+
+  /// Calculates and returns frequency of note on octave based on its location of piano keys;
+  /// Bases A4 note of 440Hz frequency standard.
+  func frequancy(octave: Int) -> Float {
+    let fn = powf(2.0, Float(pianoKey(octave: octave) - 49) / 12.0)
+    return fn * 440.0
+  }
+
+  /// Returns midi keys in range [0 - 127];
+  /// Octave ranges [0 - 10];
+  /// If octave range don't satisfy then returns -1.
+  func midiKey(octave: Int) -> Int {
+    guard octave >= 0, octave <= 10 else { return -1 }
+    var root = 0
+
+    switch self {
+    case .c: root = 0
+    case .dFlat: root = 1
+    case .d: root = 2
+    case .eFlat: root = 3
+    case .e: root = 4
+    case .f: root = 5
+    case .gFlat: root = 6
+    case .g: root = 7
+    case .aFlat: root = 8
+    case .a: root = 9
+    case .bFlat: root = 10
+    case .b: root = 11
+    }
+
+    return root + (octave * 12)
+  }
+}
+
 enum Tone {
   case half
   case whole
@@ -261,6 +329,10 @@ enum Scale {
       let current = notes.last ?? key
       notes.append(current.next(tone: tone))
     }
-    return notes
+
+    // Rearrange scale notes by starting from key note
+    let count = notes.count
+    guard count > 0 else { return notes }
+    return Array(notes[count-1..<count] + notes[0..<count-1])
   }
 }
