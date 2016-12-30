@@ -5,6 +5,8 @@
 //  Created by Cem Olcay on 29/12/2016.
 //  Copyright © 2016 prototapp. All rights reserved.
 //
+//  https://github.com/cemolcay/MusicTheory
+//
 
 import Foundation
 
@@ -251,6 +253,7 @@ public enum Interval {
   case M7
   case A7
   case P8
+  case custom(degree: Int, halfstep: Int)
 
   public init(degree: Int, halfstep: Int) {
     switch (degree, halfstep) {
@@ -271,7 +274,7 @@ public enum Interval {
     case (6, 11): self = .M7
     case (6, 12): self = .A7
     case (7, 12): self = .P8
-    default: self = .unison
+    default: self = .custom(degree: degree, halfstep: halfstep)
     }
   }
 
@@ -285,6 +288,7 @@ public enum Interval {
     case .m6, .M6: return 5
     case .d7, .m7, .M7, .A7: return 6
     case .P8: return 7
+    case .custom(let d, _): return d
     }
   }
 
@@ -303,6 +307,7 @@ public enum Interval {
     case .m7: return 10
     case .M7, .A7: return 11
     case .P8: return 12
+    case .custom(_, let h): return h
     }
   }
 
@@ -332,6 +337,7 @@ extension Interval: CustomStringConvertible {
     case .M7: return "major seventh"
     case .A7: return "agumented seventh"
     case .P8: return "octave"
+    case .custom(let degree, let halfstep): return "\(degree), \(halfstep)"
     }
   }
 }
