@@ -11,7 +11,7 @@ import AudioKit
 import MusicTheory
 
 public class MTOscillator {
-  public var output: AKOscillatorBank
+  public private(set) var output: AKOscillatorBank
   private var playinSound: Int?
 
   public init() {
@@ -50,13 +50,13 @@ public class MTScaleOscillator: MTOscillator {
 }
 
 public class MTChordOscillator {
-  public var output: AKMixer?
   public var octave: Int = 4
-  private var banks: [MTOscillator] = []
-  private var chord: Chord? { didSet { chordDidChange() }}
+  public private(set) var banks: [MTOscillator] = []
 
-  private func chordDidChange() {
-    banks = chord?.notes.map({ _ in MTOscillator() }) ?? []
+  public var chord: Chord? {
+    didSet {
+      banks = chord?.notes.map({ _ in MTOscillator() }) ?? []
+    }
   }
 
   public func play(chord: Chord) {
