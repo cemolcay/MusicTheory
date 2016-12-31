@@ -12,4 +12,8 @@ target 'MusicTheory' do
     # Pods for testing
   end
 
+  target 'AudioKitHelper' do
+    pod 'AudioKit'
+  end
+
 end
