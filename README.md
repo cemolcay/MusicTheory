@@ -20,7 +20,7 @@ Usage
 
 Usage is pretty straitforward. Just import the package and use directly.
 
-``` language: swift
+```
 import MusicTheory
 ```
 
@@ -32,7 +32,7 @@ import MusicTheory
 - Could calculate piano key value on a 88 key piano for given octave.
 - Could calculate next or previous notes for given `Interval` or `Tone`.
 
-``` language: swift
+```
 let c: Note = .c
 ```
 
@@ -43,7 +43,7 @@ let c: Note = .c
 - Could create midi note sequance of the whole scale.
 - Could create `Note`s of the scale starting from the key and going forward by intervals from there.
 
-``` langauge: swift
+```
 let c: Note = .c
 let cMaj: Scale = .major(key: c)
 ```
@@ -55,7 +55,7 @@ let cMaj: Scale = .major(key: c)
 - Could create midi note sequance of the chord.
 - Could create `Note`s of the chord.
 
-``` language: swift
+```
 let c: Note = .c
 let cMaj: Chord = .maj(key: c)
 ```
