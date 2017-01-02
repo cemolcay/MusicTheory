@@ -12,7 +12,7 @@ Install
 ----
 
 ```
-pod 'MusicTheory'
+pod 'MusicTheorySwift'
 ```
 
 Usage

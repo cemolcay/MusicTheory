@@ -10,6 +10,8 @@
 
 import Foundation
 
+// MARK: - Note
+
 /// Represents 12 base notes in music.
 /// C, D, E, F, G, A, B with their flats.
 public enum Note {
@@ -220,6 +222,8 @@ extension Note: CustomStringConvertible {
   }
 }
 
+// MARK: - Tone
+
 /// Halfstep intervals between `Note`s in human readable format for better usablity.
 public enum Tone {
   case half
@@ -251,6 +255,7 @@ public enum Tone {
   }
 }
 
+// MARK: - Interval
 
 /** Represents the interval between `Note`s in halfstep tones and degrees.
 
@@ -389,6 +394,7 @@ extension Interval: CustomStringConvertible {
   }
 }
 
+// MARK: - Scale
 
 /** Represents scale of `Note`s by the intervals between note sequences based on a key `Note`.
 
@@ -459,6 +465,7 @@ public enum Scale {
   }
 }
 
+// MARK: - Chord
 
 /** Represents chords by note sequences initilized by their intervals.
 
