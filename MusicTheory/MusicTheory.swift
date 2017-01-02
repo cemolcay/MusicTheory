@@ -193,7 +193,8 @@ public extension Note {
     case .b: root = 11
     }
 
-    return root + (octave * 12)
+    let key = root + (octave * 12)
+    return key > 127 ? -1 : key
   }
 }
 

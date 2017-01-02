@@ -17,6 +17,7 @@
 		B22DCF5D1E15B426006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
 		B2C3828A1E16D6920040C48C /* AudioKitHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C382881E16D6920040C48C /* AudioKitHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2C3828F1E16D75C0040C48C /* AudioKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3828E1E16D75C0040C48C /* AudioKitHelper.swift */; };
+		B2C382931E1956440040C48C /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C382921E1956440040C48C /* Dataset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B2C382881E16D6920040C48C /* AudioKitHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioKitHelper.h; sourceTree = "<group>"; };
 		B2C382891E16D6920040C48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2C3828E1E16D75C0040C48C /* AudioKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioKitHelper.swift; sourceTree = "<group>"; };
+		B2C382921E1956440040C48C /* Dataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		D0981093ADA02F3AE8C67599 /* Pods-MusicTheory-AudioKitHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-AudioKitHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-AudioKitHelper/Pods-MusicTheory-AudioKitHelper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				B22DCF441E1590E7006D561E /* MusicTheory.h */,
 				B22DCF451E1590E7006D561E /* Info.plist */,
 				B22DCF4C1E1590FE006D561E /* MusicTheory.swift */,
+				B2C382921E1956440040C48C /* Dataset.swift */,
 			);
 			path = MusicTheory;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C382931E1956440040C48C /* Dataset.swift in Sources */,
 				B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,12 +3,13 @@ import MusicTheory
 import AudioKit
 import AudioKitHelper
 
-let chordChannel = MTChordOscillator()
-AudioKit.output = chordChannel
+let chord: Chord = .min(key: .e)
+let chordChannel = MTChordOscillator(chord: chord)
+AudioKit.output = chordChannel.output
 AudioKit.start()
 
-AKPlaygroundLoop(every: 0.1, handler: {
-  chordChannel.play(chord: .maj(key: .c))
+AKPlaygroundLoop(every: 0.2, handler: {
+  chordChannel.play()
 })
 
-PlaygroundPage.current.needsIndefiniteExecution = true
+XCPlaygroundPage.currentPage.needsIndefiniteExecution = true

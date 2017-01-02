@@ -52,15 +52,17 @@ public class MTScaleOscillator: MTOscillator {
 public class MTChordOscillator {
   public var octave: Int = 4
   public private(set) var banks: [MTOscillator] = []
+  public private(set) var output: AKMixer = AKMixer()
+  private var chord: Chord
 
-  public var chord: Chord? {
-    didSet {
-      banks = chord?.notes.map({ _ in MTOscillator() }) ?? []
-    }
+  public init(chord: Chord) {
+    self.chord = chord
+    banks = chord.notes.map({ _ in MTOscillator() })
+    output = AKMixer()
+    banks.forEach({ output.connect($0.output) })
   }
 
-  public func play(chord: Chord) {
-    self.chord = chord
+  public func play() {
     for i in 0..<banks.count {
       banks[i].play(midi: chord.notes[i].midiKey(octave: octave))
     }

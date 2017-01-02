@@ -16,4 +16,4 @@ AKPlaygroundLoop(every: 0.1, handler: {
   melodyChannel.playRandom()
 })
 
-PlaygroundPage.current.needsIndefiniteExecution = true
+XCPlaygroundPage.currentPage.needsIndefiniteExecution = true

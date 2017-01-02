@@ -7,7 +7,7 @@
 		<key>AudioKitHelper.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>2</integer>
 		</dict>
 		<key>MusicTheory.xcscheme</key>
 		<dict>
@@ -33,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>B2C382851E16D6920040C48C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2C382AD1E1973B50040C48C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
