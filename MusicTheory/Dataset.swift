@@ -8,8 +8,13 @@
 
 import UIKit
 
+// MARK: - Scale Extension
 public extension Scale {
 
+  /// Generates an array of all `Scale` values based on desired `Note`.
+  ///
+  /// - Parameter key: The `Note` value of scales base.
+  /// - Returns: All scales in desired key `Note`.
   public static func all(of key: Note) -> [Scale] {
     return [
       .major(key: key),
@@ -24,8 +29,14 @@ public extension Scale {
   }
 }
 
+// MARK: - Chord Extension
 public extension Chord {
 
+
+  /// Generates an array of all `Chord` values based on desired `Note`.
+  ///
+  /// - Parameter key: The `Note` value of chords base.
+  /// - Returns: All Chords in desired key `Note`.
   public static func all(of key: Note) -> [Chord] {
     return [
       .maj(key: key),
@@ -48,14 +59,23 @@ public extension Chord {
   }
 }
 
+
+/// Generates all scales and chords in midi key format for neural network training or finding matching notes or something useful.
 public class Dataset {
 
+
+  /// Generates all scales of all notes in midi key format
+  ///
+  /// - Returns: Returns array of midi key sequences which are also array of `Int`s.
   public class func generateAllScales() -> [[Int]] {
     var scales = [[Int]]()
     Note.all.forEach({ Scale.all(of: $0).forEach({ scales.append($0.midiKeys) }) })
     return scales
   }
 
+  /// Generates all chords of all notes in midi key format
+  ///
+  /// - Returns: Returns array of midi key sequences which are also array of `Int`s.
   public class func generateAllChords() -> [[Int]] {
     var chords = [[Int]]()
     Note.all.forEach({ Chord.all(of: $0).forEach({ chords.append($0.midiKeys) }) })

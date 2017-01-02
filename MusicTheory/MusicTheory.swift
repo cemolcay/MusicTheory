@@ -10,6 +10,8 @@
 
 import Foundation
 
+/// Represents 12 base notes in music.
+/// C, D, E, F, G, A, B with their flats.
 public enum Note {
   case c
   case dFlat
@@ -218,12 +220,17 @@ extension Note: CustomStringConvertible {
   }
 }
 
+/// Halfstep intervals between `Note`s in human readable format for better usablity.
 public enum Tone {
   case half
   case whole
   case oneAndHalf
   case custom(halfstep: Int)
 
+
+  /// Initilizes `Tone` with halfstep value.
+  ///
+  /// - Parameter halfstep: Represents halfstep interval between notes. 2 halfstep is whole tone for example.
   public init(halfstep: Int) {
     switch halfstep {
     case 1: self = .half
@@ -233,6 +240,7 @@ public enum Tone {
     }
   }
 
+  /// Returns halfstep value.
   public var halfstep: Int {
     switch self {
     case .half: return 1
@@ -243,6 +251,28 @@ public enum Tone {
   }
 }
 
+
+/** Represents the interval between `Note`s in halfstep tones and degrees.
+
+- unison: Zero halfstep and zero degree, the note itself.
+- m2: One halfstep and one degree between notes.
+- M2: Two halfsteps and one degree between notes.
+- m3: Three halfsteps and two degree between notes.
+- M3: Four halfsteps and two degree between notes.
+- P4: Five halfsteps and three degree between notes.
+- A4: Six halfsteps and three degree between notes.
+- d5: Six halfsteps and four degree between notes.
+- P5: Seven halfsteps and four degree between notes.
+- A5: Eight halfsteps and four degree between notes.
+- m6: Eight halfsteps and five degree between notes.
+- M6: Nine halfsteps and five degree between notes.
+- d7: Nine halfsteps and six degree between notes.
+- m7: Ten halfsteps and six degree between notes.
+- M7: Eleven halfsteps and six degree between notes.
+- A7: Twelve halfsteps and six degree between notes.
+- P8: Twelve halfsteps and seven degree between notes.
+- custom: Custom halfsteps and degrees by given input between notes.
+*/
 public enum Interval {
   case unison
   case m2
@@ -263,6 +293,12 @@ public enum Interval {
   case P8
   case custom(degree: Int, halfstep: Int)
 
+
+  /// Initilizes interval with its degree and halfstep.
+  ///
+  /// - Parameters:
+  ///   - degree: Degree of interval
+  ///   - halfstep: Halfstep of interval
   public init(degree: Int, halfstep: Int) {
     switch (degree, halfstep) {
     case (0, 0): self = .unison
@@ -286,6 +322,7 @@ public enum Interval {
     }
   }
 
+  /// Returns the degree of the `Interval`.
   public var degree: Int {
     switch self {
     case .unison: return 0
@@ -300,6 +337,7 @@ public enum Interval {
     }
   }
 
+  /// Returns halfstep representation of `Interval.`
   public var halfstep: Int {
     switch self {
     case .unison: return 0
@@ -319,6 +357,7 @@ public enum Interval {
     }
   }
 
+  /// Returns `Tone` representation of `Interval` by its halfsteps.
   public var tone: Tone {
     return Tone(halfstep: halfstep)
   }
@@ -350,6 +389,19 @@ extension Interval: CustomStringConvertible {
   }
 }
 
+
+/** Represents scale of `Note`s by the intervals between note sequences based on a key `Note`.
+
+- major: Major scale.
+- minor: Minor scale
+- harmonicMinor: Harmonic minor scale
+- dorian: Dorian scale
+- phrygian: Phrygian scale
+- lydian: Lydian scale
+- mixolydian: Mixolydian scale
+- locrian: Locrian scale
+- custom: Custom scale by given base key and intervals.
+*/
 public enum Scale {
   case major(key: Note)
   case minor(key: Note)
@@ -407,6 +459,27 @@ public enum Scale {
   }
 }
 
+
+/** Represents chords by note sequences initilized by their intervals.
+
+- maj: Major chord.
+- min: Minor chord.
+- aug: Augmented chord.
+- b5: Power chord.
+- dim: Dimineshed chord.
+- sus: Suspended chord.
+- sus2: Suspended second chord.
+- M6: Major sixth chord.
+- m6: Minor sixth chord.
+- dom7: Dominant seventh chord.
+- M7: Major seventh chord.
+- m7: Minor seventh chord.
+- aug7: Augmented seventh chord.
+- dim7: Diminished seventh chord.
+- M7b5: Major seventh power chord.
+- m7b5: Minor seventh power chord.
+- custom: Custom chord with given base key `Note` and intervals.
+*/
 public enum Chord {
   case maj(key: Note)
   case min(key: Note)
@@ -500,6 +573,12 @@ extension Chord: CustomStringConvertible {
   }
 }
 
+/// Checks the equability between two chords by their base key and notes.
+///
+/// - Parameters:
+///   - left: Left handside of the equation.
+///   - right: Right handside of the equation.
+/// - Returns: Returns Bool value of equation of two given chords.
 public func ==(left: Chord, right: Chord) -> Bool {
   return left.key == right.key && left.notes == right.notes
 }
