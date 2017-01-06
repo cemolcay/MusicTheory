@@ -6,7 +6,7 @@
 //  Copyright © 2017 prototapp. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 // MARK: - Scale Extension
 public extension Scale {
