@@ -28,6 +28,27 @@ extension MusicTheoryTests {
     XCTAssert(note.nextHalf == Note.dFlat)
   }
 
+  func testNote() {
+    var note = try? Note(midiNote: 127)
+    XCTAssert(note == .g)
+    note = try? Note(midiNote: 0)
+    XCTAssert(note == .c)
+    note = try? Note(midiNote: 66)
+    XCTAssert(note == .gFlat)
+
+    do {
+      note = try Note(midiNote: 129)
+    } catch let error {
+      XCTAssert(error == NoteError.outOfRange)
+    }
+
+    do {
+      note = try Note(midiNote: -1)
+    } catch let error {
+      XCTAssert(error == NoteError.outOfRange)
+    }
+  }
+
   func testInterval() {
     let note: Note = .c
     XCTAssert(note.next(interval: .P8) == note)
@@ -41,11 +62,11 @@ extension MusicTheoryTests {
     XCTAssert(Note.a.pianoKey(octave: 4) == 49)
   }
 
-  func testMidiKey() {
-    XCTAssert(Note.c.midiKey(octave: 0) == 0)
-    XCTAssert(Note.c.midiKey(octave: 1) == 12)
-    XCTAssert(Note.b.midiKey(octave: 8) == 107)
-    XCTAssert(Note.g.midiKey(octave: 10) == 127)
+  func testMidiNote() {
+    XCTAssert(Note.c.midiNote(octave: 0) == 0)
+    XCTAssert(Note.c.midiNote(octave: 1) == 12)
+    XCTAssert(Note.b.midiNote(octave: 8) == 107)
+    XCTAssert(Note.g.midiNote(octave: 10) == 127)
   }
 
   func testScale() {

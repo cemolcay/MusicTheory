@@ -12,6 +12,13 @@ import Foundation
 
 // MARK: - Note
 
+/// Error type of `Note`
+///
+/// - outOfRange: If midi note of `Note` is note in range of [0 - 127] then throws this error.
+public enum NoteError: Error {
+  case outOfRange
+}
+
 /// Represents 12 base notes in music.
 /// C, D, E, F, G, A, B with their flats.
 public enum Note {
@@ -27,6 +34,33 @@ public enum Note {
   case a
   case bFlat
   case b
+
+  /// Initilizes the `Note` from midi note
+  ///
+  /// - Parameter midiNote: Midi note in range of [0 - 127]
+  public init(midiNote: Int) throws {
+    guard midiNote >= 0, midiNote < 128
+      else { throw NoteError.outOfRange }
+    
+    let octave = midiNote / 12
+    let root = midiNote - (octave * 12)
+
+    switch root {
+    case 0: self = .c
+    case 1: self = .dFlat
+    case 2: self = .d
+    case 3: self = .eFlat
+    case 4: self = .e
+    case 5: self = .f
+    case 6: self = .gFlat
+    case 7: self = .g
+    case 8: self = .aFlat
+    case 9: self = .a
+    case 10: self = .bFlat
+    case 11: self = .b
+    default: throw NoteError.outOfRange
+    }
+  }
 
   /// All the notes in static array
   public static let all: [Note] = [
@@ -178,7 +212,7 @@ public extension Note {
   /// Returns midi keys in range [0 - 127];
   /// Octave ranges [0 - 10];
   /// If octave range don't satisfy then returns -1.
-  public func midiKey(octave: Int) -> Int {
+  public func midiNote(octave: Int) -> Int {
     guard octave >= 0, octave <= 10 else { return -1 }
     var root = 0
 
@@ -230,7 +264,6 @@ public enum Tone {
   case whole
   case oneAndHalf
   case custom(halfstep: Int)
-
 
   /// Initilizes `Tone` with halfstep value.
   ///
@@ -297,7 +330,6 @@ public enum Interval {
   case A7
   case P8
   case custom(degree: Int, halfstep: Int)
-
 
   /// Initilizes interval with its degree and halfstep.
   ///
@@ -455,11 +487,11 @@ public enum Scale {
     return intervals.map({ key.next(interval: $0) })
   }
 
-  /// All notes in the scale in midi key form.
-  public var midiKeys: [Int] {
+  /// All notes in the scale in midi notes form.
+  public var midiNotes: [Int] {
     var midiNotes = [Int]()
     for octave in 0...10 {
-      midiNotes.append(contentsOf: notes.map({ $0.midiKey(octave: octave) }).filter({ $0 != -1 }))
+      midiNotes.append(contentsOf: notes.map({ $0.midiNote(octave: octave) }).filter({ $0 != -1 }))
     }
     return midiNotes
   }
@@ -545,11 +577,11 @@ public enum Chord {
     return intervals.map({ key.next(interval: $0) })
   }
 
-  /// All notes in the chord in midi key form.
-  public var midiKeys: [Int] {
+  /// All notes in the chord in midi notes form.
+  public var midiNotes: [Int] {
     var midiNotes = [Int]()
     for octave in 0...10 {
-      midiNotes.append(contentsOf: notes.map({ $0.midiKey(octave: octave) }).filter({ $0 != -1 }))
+      midiNotes.append(contentsOf: notes.map({ $0.midiNote(octave: octave) }).filter({ $0 != -1 }))
     }
     return midiNotes
   }
