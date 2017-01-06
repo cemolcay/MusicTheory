@@ -3,5 +3,8 @@
     <pages>
         <page name='Scale'/>
         <page name='Chord'/>
+        <page name='Dataset'/>
+        <page name='FFNN'/>
+        <page name='Note'/>
     </pages>
 </playground>
