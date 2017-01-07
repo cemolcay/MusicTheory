@@ -1,12 +1,16 @@
 MusicTheory
 ===
 
-A music theory library with `Note`, `Interval`, `Tone`, `Scale` and `Chord` representations in swift enums.
+A music theory library with `Note`, `Interval`, `Scale` and `Chord` representations in swift enums.
 
 Requirements
 ----
 * Swift 3
 * Xcode 8
+* iOS 10+
+* macOS 10.10+
+* tvOS 10+
+* watchOS 3+
 
 Install
 ----
@@ -33,7 +37,8 @@ import MusicTheory
 - Could calculate next or previous notes for given `Interval` or `Tone`.
 
 ```
-let c: Note = .c
+let d: NoteType = .d
+let c = Note(type: .c, octave: 0)
 ```
 
 ### Scale
@@ -44,8 +49,9 @@ let c: Note = .c
 - Could create `Note`s of the scale starting from the key and going forward by intervals from there.
 
 ```
-let c: Note = .c
-let cMaj: Scale = .major(key: c)
+let c: NoteType = .c
+let maj: ScaleType = .major
+let cMaj = Scale(type: maj, key: c)
 ```
 
 ### Chord
@@ -56,8 +62,9 @@ let cMaj: Scale = .major(key: c)
 - Could create `Note`s of the chord.
 
 ```
-let c: Note = .c
-let cMaj: Chord = .maj(key: c)
+let c: NoteType = .c
+let maj: ChordType = .maj
+let cMaj = Chord(type: maj, key: c)
 ```
 
 ### Interval
@@ -67,11 +74,11 @@ let cMaj: Chord = .maj(key: c)
 - Could create custom interval.
 - Used in creation of `Scale`s and `Chord`s.
 
-### Tone
-
-- Halfstep, whole, oneAndHalf and custom values
-- Created for alternate of `Interval` for calculating neighbour `Note`s.
-
 ### Documentation
 
 Documentation created with jazzy, hosted on [github pages](https://cemolcay.github.io/MusicTheory/)
+
+### Unit Tests
+
+You can find unit tests in `MusicTheoryTests` target.  
+Press `⌘+U` for running tests.
