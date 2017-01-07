@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Classes  Reference</title>
+    <title>Structs  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Classes  Reference"></a>
+    <a title="Structs  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">MusicTheory Docs</a> (50% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html">MusicTheory Reference</a>
         <img id="carat" src="img/carat.png" />
-        Classes  Reference
+        Structs  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -103,26 +103,26 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Classes</h1>
-            <p>The following classes are available globally.</p>
+            <h1>Structs</h1>
+            <p>The following structs are available globally.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/ChordType%20Extension"></a>
-                <a name="//apple_ref/swift/Section/ChordType Extension" class="dashAnchor"></a>
-                <a href="#/ChordType%20Extension">
-                  <h3 class="section-name">ChordType Extension</h3>
+                <a name="/Note"></a>
+                <a name="//apple_ref/swift/Section/Note" class="dashAnchor"></a>
+                <a href="#/Note">
+                  <h3 class="section-name">Note</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C11MusicTheory7Dataset"></a>
-                    <a name="//apple_ref/swift/Class/Dataset" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C11MusicTheory7Dataset">Dataset</a>
+                    <a name="/s:V11MusicTheory4Note"></a>
+                    <a name="//apple_ref/swift/Struct/Note" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V11MusicTheory4Note">Note</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -130,15 +130,95 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Generates all scales and chords in midi key format for neural network training or finding matching notes or something useful.</p>
+                        <p>Note object with <code><a href="Enums/NoteType.html">NoteType</a></code> and octave.
+Could be initilized with midiNote</p>
 
-                        <a href="Classes/Dataset.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/Note.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Dataset</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Note</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Scale"></a>
+                <a name="//apple_ref/swift/Section/Scale" class="dashAnchor"></a>
+                <a href="#/Scale">
+                  <h3 class="section-name">Scale</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V11MusicTheory5Scale"></a>
+                    <a name="//apple_ref/swift/Struct/Scale" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V11MusicTheory5Scale">Scale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scale object with <code><a href="Enums/ScaleType.html">ScaleType</a></code> and scale&rsquo;s key of <code><a href="Enums/NoteType.html">NoteType</a></code>.
+Could calculate note sequences in [Note] format</p>
+
+                        <a href="Structs/Scale.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Scale</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Chord"></a>
+                <a name="//apple_ref/swift/Section/Chord" class="dashAnchor"></a>
+                <a href="#/Chord">
+                  <h3 class="section-name">Chord</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V11MusicTheory5Chord"></a>
+                    <a name="//apple_ref/swift/Struct/Chord" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V11MusicTheory5Chord">Chord</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Chord object with its type and key.</p>
+
+                        <a href="Structs/Chord.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Chord</span></code></pre>
 
                         </div>
                       </div>

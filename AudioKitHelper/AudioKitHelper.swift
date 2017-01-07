@@ -40,8 +40,8 @@ public class MTScaleOscillator: MTOscillator {
   }
 
   public func generateSound() -> Int {
-    let randomNote = scale.notes.randomElement()
-    return randomNote.midiKey(octave: octave)
+    let notes = scale.notes(octave: octave)
+    return notes.randomElement().midiNote
   }
 
   public func playRandom() {
@@ -57,14 +57,15 @@ public class MTChordOscillator {
 
   public init(chord: Chord) {
     self.chord = chord
-    banks = chord.notes.map({ _ in MTOscillator() })
+    banks = chord.notes(octave: octave).map({ _ in MTOscillator() })
     output = AKMixer()
     banks.forEach({ output.connect($0.output) })
   }
 
   public func play() {
+    let notes = chord.notes(octave: octave)
     for i in 0..<banks.count {
-      banks[i].play(midi: chord.notes[i].midiKey(octave: octave))
+      banks[i].play(midi: notes[i].midiNote)
     }
   }
 }

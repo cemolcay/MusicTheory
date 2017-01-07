@@ -3,7 +3,7 @@ import MusicTheory
 import AudioKit
 import AudioKitHelper
 
-let scale = Scale.harmonicMinor(key: .e)
+let scale = Scale(type: .harmonicMinor, key: .e)
 let bassChannel = MTScaleOscillator(scale: scale, octave: 3)
 let melodyChannel = MTScaleOscillator(scale: scale, octave: 4)
 

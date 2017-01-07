@@ -13,7 +13,7 @@
     <a title="Functions  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MusicTheory Docs</a> (42% documented)</p>
+        <p><a href="index.html">MusicTheory Docs</a> (50% documented)</p>
         <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -39,22 +39,16 @@
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/Chord.html">Chord</a>
+                <a href="Enums/ChordType.html">ChordType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/Interval.html">Interval</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/Note.html">Note</a>
+                <a href="Enums/NoteType.html">NoteType</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/NoteError.html">NoteError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/Scale.html">Scale</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/Tone.html">Tone</a>
+                <a href="Enums/ScaleType.html">ScaleType</a>
               </li>
             </ul>
           </li>
@@ -62,7 +56,45 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F11MusicTheoryoi2eeFTOS_5ChordS0__Sb">==(_:_:)</a>
+                <a href="Functions.html#/s:F11MusicTheoryoi1pFTOS_8NoteTypeOS_8Interval_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1pFTOS_8NoteTypeSi_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1pFTVS_4NoteOS_8Interval_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1pFTVS_4NoteSi_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1sFTOS_8NoteTypeOS_8Interval_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1sFTOS_8NoteTypeSi_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteOS_8Interval_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Note.html">Note</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Scale.html">Scale</a>
               </li>
             </ul>
           </li>
@@ -78,6 +110,648 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/NoteType"></a>
+                <a name="//apple_ref/swift/Section/NoteType" class="dashAnchor"></a>
+                <a href="#/NoteType">
+                  <h3 class="section-name">NoteType</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1pFTOS_8NoteTypeOS_8Interval_S0_"></a>
+                    <a name="//apple_ref/swift/Function/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1pFTOS_8NoteTypeOS_8Interval_S0_">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Enums/NoteType.html">NoteType</a></code> above <code><a href="Enums/Interval.html">Interval</a></code></p>
+
+<p><li>Parameters:</p>
+
+<p><ul>
+<li>noteType: The note type being added interval.</li>
+<li>interval: Interval above.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Enums/NoteType.html">NoteType</a></code> above interval</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">+</span><span class="p">(</span><span class="nv">noteType</span><span class="p">:</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span><span class="p">,</span> <span class="nv">interval</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>noteType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note type being added interval.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Interval above.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Enums/NoteType.html">NoteType</a></code> above interval</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1pFTOS_8NoteTypeSi_S0_"></a>
+                    <a name="//apple_ref/swift/Function/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1pFTOS_8NoteTypeSi_S0_">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Enums/NoteType.html">NoteType</a></code> above halfsteps.</p>
+
+<p><li>Parameters:</p>
+
+<p><ul>
+<li>noteType: The note type being added halfsteps.</li>
+<li>halfstep: Halfsteps above</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Enums/NoteType.html">NoteType</a></code> above halfsteps</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">+</span><span class="p">(</span><span class="nv">noteType</span><span class="p">:</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span><span class="p">,</span> <span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>noteType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note type being added halfsteps.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>halfstep</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Halfsteps above</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Enums/NoteType.html">NoteType</a></code> above halfsteps</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1sFTOS_8NoteTypeOS_8Interval_S0_"></a>
+                    <a name="//apple_ref/swift/Function/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1sFTOS_8NoteTypeOS_8Interval_S0_">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Enums/NoteType.html">NoteType</a></code> below <code><a href="Enums/Interval.html">Interval</a></code></p>
+
+<p><li>Parameters:</p>
+
+<p><ul>
+<li>noteType: The note type being calculated.</li>
+<li>interval: Interval below.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Enums/NoteType.html">NoteType</a></code> below interval.</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">-</span><span class="p">(</span><span class="nv">noteType</span><span class="p">:</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span><span class="p">,</span> <span class="nv">interval</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>noteType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note type being calculated.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Interval below.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Enums/NoteType.html">NoteType</a></code> below interval.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1sFTOS_8NoteTypeSi_S0_"></a>
+                    <a name="//apple_ref/swift/Function/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1sFTOS_8NoteTypeSi_S0_">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Enums/NoteType.html">NoteType</a></code> below halfsteps</p>
+
+<p><li>Parameters:</p>
+
+<p><ul>
+<li>noteType: The note type being calculated.</li>
+<li>halfstep: Halfsteps below.</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Enums/NoteType.html">NoteType</a></code> below halfsteps.</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">-</span><span class="p">(</span><span class="nv">noteType</span><span class="p">:</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span><span class="p">,</span> <span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/NoteType.html">NoteType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>noteType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note type being calculated.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>halfstep</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Halfsteps below.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Enums/NoteType.html">NoteType</a></code> below halfsteps.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Note"></a>
+                <a name="//apple_ref/swift/Section/Note" class="dashAnchor"></a>
+                <a href="#/Note">
+                  <h3 class="section-name">Note</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1pFTVS_4NoteOS_8Interval_S0_"></a>
+                    <a name="//apple_ref/swift/Function/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1pFTVS_4NoteOS_8Interval_S0_">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Structs/Note.html">Note</a></code> above <code><a href="Enums/Interval.html">Interval</a></code></p>
+
+<p><li>Parameters:
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The note being added interval.</p>
+
+<p></div>
+<li>interval: Interval above.</li></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Structs/Note.html">Note</a></code> above interval</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">+</span><span class="p">(</span><span class="nv">note</span><span class="p">:</span> <span class="kt"><a href="Structs/Note.html">Note</a></span><span class="p">,</span> <span class="nv">interval</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Structs/Note.html">Note</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>note</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note being added interval.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Interval above.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Structs/Note.html">Note</a></code> above interval</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1pFTVS_4NoteSi_S0_"></a>
+                    <a name="//apple_ref/swift/Function/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1pFTVS_4NoteSi_S0_">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Structs/Note.html">Note</a></code> above halfsteps.</p>
+
+<p><li>Parameters:
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The note being added halfsteps.</p>
+
+<p></div>
+<li>halfstep: Halfsteps above</li></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Structs/Note.html">Note</a></code> above halfsteps</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">+</span><span class="p">(</span><span class="nv">note</span><span class="p">:</span> <span class="kt"><a href="Structs/Note.html">Note</a></span><span class="p">,</span> <span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Structs/Note.html">Note</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>note</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note being added halfsteps.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>halfstep</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Halfsteps above</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Structs/Note.html">Note</a></code> above halfsteps</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1sFTVS_4NoteOS_8Interval_S0_"></a>
+                    <a name="//apple_ref/swift/Function/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1sFTVS_4NoteOS_8Interval_S0_">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Structs/Note.html">Note</a></code> below <code><a href="Enums/Interval.html">Interval</a></code></p>
+
+<p><li>Parameters:
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The note being calculated.</p>
+
+<p></div>
+<li>interval: Interval below.</li></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Structs/Note.html">Note</a></code> below interval.</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">-</span><span class="p">(</span><span class="nv">note</span><span class="p">:</span> <span class="kt"><a href="Structs/Note.html">Note</a></span><span class="p">,</span> <span class="nv">interval</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Structs/Note.html">Note</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>note</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note being calculated.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Interval below.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Structs/Note.html">Note</a></code> below interval.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_"></a>
+                    <a name="//apple_ref/swift/Function/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the <code><a href="Structs/Note.html">Note</a></code> below halfsteps</p>
+
+<p><li>Parameters:
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The note being calculated.</p>
+
+<p></div>
+<li>halfstep: Halfsteps below.</li></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    Returns <code><a href="Structs/Note.html">Note</a></code> below halfsteps.</p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">-</span><span class="p">(</span><span class="nv">note</span><span class="p">:</span> <span class="kt"><a href="Structs/Note.html">Note</a></span><span class="p">,</span> <span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Structs/Note.html">Note</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>note</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The note being calculated.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>halfstep</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Halfsteps below.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns <code><a href="Structs/Note.html">Note</a></code> below halfsteps.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Chord"></a>
                 <a name="//apple_ref/swift/Section/Chord" class="dashAnchor"></a>
                 <a href="#/Chord">
@@ -88,9 +762,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:F11MusicTheoryoi2eeFTOS_5ChordS0__Sb"></a>
+                    <a name="/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb"></a>
                     <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:F11MusicTheoryoi2eeFTOS_5ChordS0__Sb">==(_:_:)</a>
+                    <a class="token" href="#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -117,7 +791,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt"><a href="Enums/Chord.html">Chord</a></span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt"><a href="Enums/Chord.html">Chord</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt"><a href="Structs/Chord.html">Chord</a></span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt"><a href="Structs/Chord.html">Chord</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -167,7 +841,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-01-06)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-01-07)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

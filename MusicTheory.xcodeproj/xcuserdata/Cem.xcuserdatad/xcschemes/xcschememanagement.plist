@@ -7,7 +7,7 @@
 		<key>AudioKitHelper.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>5</integer>
 		</dict>
 		<key>MusicTheory.xcscheme</key>
 		<dict>
@@ -17,7 +17,7 @@
 		<key>MusicTheoryTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
