@@ -8,52 +8,48 @@
 
 import Foundation
 
-// MARK: - Scale Extension
-public extension Scale {
+// MARK: - ScaleType Extension
 
-  /// Generates an array of all `Scale` values based on desired `Note`.
-  ///
-  /// - Parameter key: The `Note` value of scales base.
-  /// - Returns: All scales in desired key `Note`.
-  public static func all(of key: Note) -> [Scale] {
+public extension ScaleType {
+
+  /// An array of all `ScaleType` values.
+  public static var all: [ScaleType] {
     return [
-      .major(key: key),
-      .minor(key: key),
-      .harmonicMinor(key: key),
-      .dorian(key: key),
-      .phrygian(key: key),
-      .lydian(key: key),
-      .mixolydian(key: key),
-      .locrian(key: key)
+      .major,
+      .minor,
+      .harmonicMinor,
+      .dorian,
+      .phrygian,
+      .lydian,
+      .mixolydian,
+      .locrian
     ]
   }
 }
 
-// MARK: - Chord Extension
-public extension Chord {
+// MARK: - ChordType Extension
 
-  /// Generates an array of all `Chord` values based on desired `Note`.
-  ///
-  /// - Parameter key: The `Note` value of chords base.
-  /// - Returns: All Chords in desired key `Note`.
-  public static func all(of key: Note) -> [Chord] {
+public extension ChordType {
+
+  /// An array of all `ChordType` values.
+  public static var all: [ChordType] {
     return [
-      .maj(key: key),
-      .min(key: key),
-      .aug(key: key),
-      .b5(key: key),
-      .dim(key: key),
-      .sus(key: key),
-      .sus2(key: key),
-      .M6(key: key),
-      .m6(key: key),
-      .dom7(key: key),
-      .M7(key: key),
-      .m7(key: key),
-      .aug7(key: key),
-      .dim7(key: key),
-      .M7b5(key: key),
-      .m7b5(key: key)
+      .maj,
+      .min,
+      .aug,
+      .b5,
+      .dim,
+      .sus,
+      .sus2,
+      .M6,
+      .m6,
+      .dom7,
+      .M7,
+      .m7,
+      .aug7,
+      .dim7,
+      .M7b5,
+      .m7b5
     ]
   }
 }
@@ -66,7 +62,11 @@ public class Dataset {
   /// - Returns: Returns array of midi note sequences which are also array of `Int`s.
   public class func generateAllScales() -> [[Int]] {
     var scales = [[Int]]()
-    Note.all.forEach({ Scale.all(of: $0).forEach({ scales.append($0.midiNotes) }) })
+    for scale in ScaleType.all {
+      for note in NoteType.all {
+        scales.append(Scale(type: scale, key: note).notes(octave: 0).map({ $0.midiNote }))
+      }
+    }
     return scales
   }
 
@@ -75,7 +75,11 @@ public class Dataset {
   /// - Returns: Returns array of midi note sequences which are also array of `Int`s.
   public class func generateAllChords() -> [[Int]] {
     var chords = [[Int]]()
-    Note.all.forEach({ Chord.all(of: $0).forEach({ chords.append($0.midiNotes) }) })
+    for chord in ChordType.all {
+      for note in NoteType.all {
+        chords.append(Chord(type: chord, key: note).notes(octave: 0).map({ $0.midiNote }))
+      }
+    }
     return chords
   }
 }

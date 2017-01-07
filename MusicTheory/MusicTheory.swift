@@ -10,19 +10,28 @@
 
 import Foundation
 
-// MARK: - Note
+// MARK: - NoteType
 
-/// Error type of `Note`
-///
-/// - outOfRange: If midi note of `Note` is note in range of [0 - 127] then throws this error.
-public enum NoteError: Error {
-  case outOfRange
+public func +(noteType: NoteType, interval: Interval) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue + interval.halfstep)!
+}
+
+public func +(noteType: NoteType, halfstep: Int) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue + halfstep)!
+}
+
+public func -(noteType: NoteType, interval: Interval) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue - interval.halfstep)!
+}
+
+public func -(noteType: NoteType, halfstep: Int) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue - halfstep)!
 }
 
 /// Represents 12 base notes in music.
 /// C, D, E, F, G, A, B with their flats.
-public enum Note {
-  case c
+public enum NoteType: Int {
+  case c = 0
   case dFlat
   case d
   case eFlat
@@ -35,208 +44,21 @@ public enum Note {
   case bFlat
   case b
 
-  /// Initilizes the `Note` from midi note
-  ///
-  /// - Parameter midiNote: Midi note in range of [0 - 127]
-  public init(midiNote: Int) throws {
-    guard midiNote >= 0, midiNote < 128
-      else { throw NoteError.outOfRange }
-    
-    let octave = midiNote / 12
-    let root = midiNote - (octave * 12)
-
-    switch root {
-    case 0: self = .c
-    case 1: self = .dFlat
-    case 2: self = .d
-    case 3: self = .eFlat
-    case 4: self = .e
-    case 5: self = .f
-    case 6: self = .gFlat
-    case 7: self = .g
-    case 8: self = .aFlat
-    case 9: self = .a
-    case 10: self = .bFlat
-    case 11: self = .b
-    default: throw NoteError.outOfRange
-    }
-  }
-
   /// All the notes in static array
-  public static let all: [Note] = [
+  public static let all: [NoteType] = [
     .c, .dFlat, .d, .eFlat, .e, .f,
     .gFlat, .g, .aFlat, .a, .bFlat, .b
   ]
 
-  /// Halfstep higher note
-  public var halfstepUp: Note {
-    switch self {
-    case .c: return .dFlat
-    case .dFlat: return .d
-    case .d: return .eFlat
-    case .eFlat: return .e
-    case .e: return .f
-    case .f: return .gFlat
-    case .gFlat: return .g
-    case .g: return .aFlat
-    case .aFlat: return .a
-    case .a: return .bFlat
-    case .bFlat: return .b
-    case .b: return .c
-    }
-  }
-
-  /// Halfstep lower note
-  public var halfstepDown: Note {
-    switch self {
-    case .c: return .b
-    case .dFlat: return .c
-    case .d: return .dFlat
-    case .eFlat: return .d
-    case .e: return .eFlat
-    case .f: return .e
-    case .gFlat: return .f
-    case .g: return .gFlat
-    case .aFlat: return .g
-    case .a: return .aFlat
-    case .bFlat: return .a
-    case .b: return .bFlat
-    }
-  }
-
-  /// Higer note above `tone`
-  public func next(tone: Tone) -> Note {
-    switch tone {
-    case .half:
-      return next(tone: .custom(halfstep: 1))
-    case .whole:
-      return next(tone: .custom(halfstep: 2))
-    case .oneAndHalf:
-      return next(tone: .custom(halfstep: 3))
-    case .custom(let halfstep) where halfstep > 0:
-      var note = self
-      var currentStep = halfstep
-      while currentStep > 0 {
-        note = note.halfstepUp
-        currentStep -= 1
-      }
-      return note
-    case .custom(let halfstep) where halfstep < 0:
-      return previous(tone: .custom(halfstep: halfstep))
-    case .custom(halfstep: 0):
-      return self
-    default:
-      return self
-    }
-  }
-
-  /// Lower note below `tone`
-  public func previous(tone: Tone) -> Note {
-    switch tone {
-    case .half:
-      return previous(tone: .custom(halfstep: 1))
-    case .whole:
-      return previous(tone: .custom(halfstep: 2))
-    case .oneAndHalf:
-      return previous(tone: .custom(halfstep: 3))
-    case .custom(let halfstep) where halfstep > 0:
-      var note = self
-      var currentStep = halfstep
-      while currentStep > 0 {
-        note = note.halfstepDown
-        currentStep -= 1
-      }
-      return note
-    case .custom(let halfstep) where halfstep < 0:
-      return next(tone: .custom(halfstep: halfstep))
-    case .custom(halfstep: 0):
-      return self
-    default:
-      return self
-    }
-  }
-
-  /// Higher note above `interval`
-  public func next(interval: Interval) -> Note {
-    return next(tone: interval.tone)
-  }
-
-  /// Lower note below `interval`
-  public func previous(interval: Interval) -> Note {
-    return previous(tone: interval.tone)
+  public init?(midiNote: Int) {
+    let octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
+    let raw = octave > 0 ? midiNote - (octave * 12) : midiNote - ((octave + 1) * 12) + 12
+    guard let note = NoteType(rawValue: raw) else { return nil }
+    self = note
   }
 }
 
-public extension Note {
-  /// Returns the piano key index by octave based on a standard [1 - 88] key piano;
-  /// Returns 0 if zeroth octave is other than A, Bflat or B, which is accurate on a real piano;
-  /// Returns 0 if octave is negative.
-  public func pianoKey(octave: Int) -> Int {
-    if octave == 0 {
-      switch self {
-      case .a: return 1
-      case .bFlat: return 2
-      case .b: return 3
-      default: return 0
-      }
-    }
-
-    guard octave > 0 else { return 0 }
-    var root = 0
-
-    switch self {
-    case .c: root = 4
-    case .dFlat: root = 5
-    case .d: root = 6
-    case .eFlat: root = 7
-    case .e: root = 8
-    case .f: root = 9
-    case .gFlat: root = 10
-    case .g: root = 11
-    case .aFlat: root = 12
-    case .a: root = 13
-    case .bFlat: root = 14
-    case .b: root = 15
-    }
-
-    return root + ((octave - 1) * 12)
-  }
-
-  /// Calculates and returns the frequency of note on octave based on its location of piano keys;
-  /// Bases A4 note of 440Hz frequency standard.
-  public func frequancy(octave: Int) -> Float {
-    let fn = powf(2.0, Float(pianoKey(octave: octave) - 49) / 12.0)
-    return fn * 440.0
-  }
-
-  /// Returns midi keys in range [0 - 127];
-  /// Octave ranges [0 - 10];
-  /// If octave range don't satisfy then returns -1.
-  public func midiNote(octave: Int) -> Int {
-    guard octave >= 0, octave <= 10 else { return -1 }
-    var root = 0
-
-    switch self {
-    case .c: root = 0
-    case .dFlat: root = 1
-    case .d: root = 2
-    case .eFlat: root = 3
-    case .e: root = 4
-    case .f: root = 5
-    case .gFlat: root = 6
-    case .g: root = 7
-    case .aFlat: root = 8
-    case .a: root = 9
-    case .bFlat: root = 10
-    case .b: root = 11
-    }
-
-    let key = root + (octave * 12)
-    return key > 127 ? -1 : key
-  }
-}
-
-extension Note: CustomStringConvertible {
+extension NoteType: CustomStringConvertible {
 
   public var description: String {
     switch self {
@@ -256,35 +78,79 @@ extension Note: CustomStringConvertible {
   }
 }
 
-// MARK: - Tone
+// MARK: - Note
 
-/// Halfstep intervals between `Note`s in human readable format for better usablity.
-public enum Tone {
-  case half
-  case whole
-  case oneAndHalf
-  case custom(halfstep: Int)
+public func +(note: Note, interval: Interval) -> Note {
+  return Note(midiNote: note.midiNote + interval.halfstep)
+}
 
-  /// Initilizes `Tone` with halfstep value.
+public func +(note: Note, halfstep: Int) -> Note {
+  return Note(midiNote: note.midiNote + halfstep)
+}
+
+public func -(note: Note, interval: Interval) -> Note {
+  return Note(midiNote: note.midiNote - interval.halfstep)
+}
+
+public func -(note: Note, halfstep: Int) -> Note {
+  return Note(midiNote: note.midiNote - halfstep)
+}
+
+public struct Note {
+
+  /// Type of the note like C, D, A, B
+  public var type: NoteType
+
+  /// Octave of the note.
+  /// In theory this must be zero or a positive integer.
+  /// But `Note` does not limit octave and calculates every possible octave including the negative ones.
+  public var octave: Int
+
+  /// Initilizes the `Note` from midi note
   ///
-  /// - Parameter halfstep: Represents halfstep interval between notes. 2 halfstep is whole tone for example.
-  public init(halfstep: Int) {
-    switch halfstep {
-    case 1: self = .half
-    case 2: self = .whole
-    case 3: self = .oneAndHalf
-    default: self = .custom(halfstep: halfstep)
-    }
+  /// - Parameter midiNote: Midi note in range of [0 - 127]
+  public init(midiNote: Int) {
+    octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
+    type = NoteType(midiNote: midiNote)!
   }
 
-  /// Returns halfstep value.
-  public var halfstep: Int {
-    switch self {
-    case .half: return 1
-    case .whole: return 2
-    case .oneAndHalf: return 3
-    case .custom(let halfstep): return halfstep
-    }
+  /// Initilizes the `Note` with `NoteType` and octave
+  ///
+  /// - Parameters:
+  ///   - type: The type of the note in `NoteType` enum.
+  ///   - octave: Octave of the note.
+  public init(type: NoteType, octave: Int) {
+    self.type = type
+    self.octave = octave
+  }
+
+  /// Returns midi note value.
+  /// In theory, this must be in range [0 - 127].
+  /// But it does not limits the midi note value.
+  public var midiNote: Int {
+    return type.rawValue + (octave * 12)
+  }
+}
+
+public extension Note {
+
+  /// Returns the piano key number by octave based on a standard [1 - 88] key piano;
+  public var pianoKey: Int {
+    return midiNote + 4
+  }
+
+  /// Calculates and returns the frequency of note on octave based on its location of piano keys;
+  /// Bases A4 note of 440Hz frequency standard.
+  public var frequancy: Float {
+    let fn = powf(2.0, Float(pianoKey - 49) / 12.0)
+    return fn * 440.0
+  }
+}
+
+extension Note: CustomStringConvertible {
+
+  public var description: String {
+    return "\(type)\(octave)"
   }
 }
 
@@ -393,11 +259,6 @@ public enum Interval {
     case .custom(_, let h): return h
     }
   }
-
-  /// Returns `Tone` representation of `Interval` by its halfsteps.
-  public var tone: Tone {
-    return Tone(halfstep: halfstep)
-  }
 }
 
 extension Interval: CustomStringConvertible {
@@ -426,7 +287,7 @@ extension Interval: CustomStringConvertible {
   }
 }
 
-// MARK: - Scale
+// MARK: - ScaleType
 
 /** Represents scale of `Note`s by the intervals between note sequences based on a key `Note`.
 
@@ -440,32 +301,16 @@ extension Interval: CustomStringConvertible {
 - locrian: Locrian scale
 - custom: Custom scale by given base key and intervals.
 */
-public enum Scale {
-  case major(key: Note)
-  case minor(key: Note)
-  case harmonicMinor(key: Note)
-  case dorian(key: Note)
-  case phrygian(key: Note)
-  case lydian(key: Note)
-  case mixolydian(key: Note)
-  case locrian(key: Note)
-  case custom(key: Note, intervals: [Interval])
-
-  /// Key of the scale
-  public var key: Note {
-    switch self {
-    case .major(let key),
-         .minor(let key),
-         .harmonicMinor(let key),
-         .dorian(let key),
-         .phrygian(let key),
-         .lydian(let key),
-         .mixolydian(let key),
-         .locrian(let key),
-         .custom(let key, _):
-      return key
-    }
-  }
+public enum ScaleType {
+  case major
+  case minor
+  case harmonicMinor
+  case dorian
+  case phrygian
+  case lydian
+  case mixolydian
+  case locrian
+  case custom(intervals: [Interval])
 
   /// Intervals of the scale based on the scale's key.
   public var intervals: [Interval] {
@@ -478,26 +323,54 @@ public enum Scale {
     case .lydian: return [.unison, .M2, .M3, .A4, .P5, .M6, .M7]
     case .mixolydian: return [.unison, .M2, .M3, .P4, .P5, .M6, .m7]
     case .locrian: return [.unison, .m2, .m3, .P4, .d5, .m6, .m7]
-    case .custom(_, let intervals): return intervals
+    case .custom(let intervals): return intervals
     }
-  }
-
-  /// Notes generated by the intervals of the scale.
-  public var notes: [Note] {
-    return intervals.map({ key.next(interval: $0) })
-  }
-
-  /// All notes in the scale in midi notes form.
-  public var midiNotes: [Int] {
-    var midiNotes = [Int]()
-    for octave in 0...10 {
-      midiNotes.append(contentsOf: notes.map({ $0.midiNote(octave: octave) }).filter({ $0 != -1 }))
-    }
-    return midiNotes
   }
 }
 
-// MARK: - Chord
+// MARK: - Scale
+
+public struct Scale {
+  public var type: ScaleType
+  public var key: NoteType
+
+  public init(type: ScaleType, key: NoteType) {
+    self.type = type
+    self.key = key
+  }
+
+  public func notes(octave: Int) -> [Note] {
+    return notes(octaves: octave)
+  }
+
+  public func notes(octaves: Int...) -> [Note] {
+    return notes(octaves: octaves)
+  }
+
+  public func notes(octaves: [Int]) -> [Note] {
+    var notes = [Note]()
+    octaves.forEach({ octave in
+      let note = Note(type: key, octave: octave)
+      notes += type.intervals.map({ note + $0 })
+    })
+    return notes
+  }
+
+  /// Notes generated by the intervals of the scale.
+  public var noteTypes: [NoteType] {
+    return type.intervals.map({ key + $0 })
+  }
+}
+
+extension Scale: CustomStringConvertible {
+
+  public var description: String {
+    return noteTypes.map({ "\($0)" }).joined(separator: ", ")
+  }
+}
+
+
+// MARK: - ChordType
 
 /** Represents chords by note sequences initilized by their intervals.
 
@@ -519,35 +392,24 @@ public enum Scale {
 - m7b5: Minor seventh power chord.
 - custom: Custom chord with given base key `Note` and intervals.
 */
-public enum Chord {
-  case maj(key: Note)
-  case min(key: Note)
-  case aug(key: Note)
-  case b5(key: Note)
-  case dim(key: Note)
-  case sus(key: Note)
-  case sus2(key: Note)
-  case M6(key: Note)
-  case m6(key: Note)
-  case dom7(key: Note)
-  case M7(key: Note)
-  case m7(key: Note)
-  case aug7(key: Note)
-  case dim7(key: Note)
-  case M7b5(key: Note)
-  case m7b5(key: Note)
-  case custom(key: Note, intervals: [Interval], description: String)
-
-  /// Key of the chord.
-  public var key: Note {
-    switch self {
-    case .maj(let key), .min(let key), .aug(let key), .b5(let key),
-    .dim(let key), .sus(let key), .sus2(let key), .M6(let key),
-    .m6(let key), .dom7(let key), .M7(let key), .m7(let key), .aug7(let key),
-    .dim7(let key), .M7b5(let key), .m7b5(let key), .custom(let key, _, _):
-      return key
-    }
-  }
+public enum ChordType {
+  case maj
+  case min
+  case aug
+  case b5
+  case dim
+  case sus
+  case sus2
+  case M6
+  case m6
+  case dom7
+  case M7
+  case m7
+  case aug7
+  case dim7
+  case M7b5
+  case m7b5
+  case custom(intervals: [Interval], description: String)
 
   /// Intervals of the chord based on the chord's key.
   public var intervals: [Interval] {
@@ -568,47 +430,74 @@ public enum Chord {
     case .dim7: return [.unison, .m3, .d5, .d7]
     case .M7b5: return [.unison, .M3, .A5, .M7]
     case .m7b5: return [.unison, .M3, .d5, .M7]
-    case .custom(_, let intervals, _): return intervals
+    case .custom(let intervals, _): return intervals
     }
+  }
+}
+
+extension ChordType: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .maj: return "maj"
+    case .min: return "min"
+    case .aug: return "aug"
+    case .b5: return "b5"
+    case .dim: return "dim"
+    case .sus: return "sus4"
+    case .sus2: return "sus2"
+    case .M6: return "6"
+    case .m6: return "m6"
+    case .dom7: return "7"
+    case .M7: return "M7"
+    case .m7: return "m7"
+    case .aug7: return "+7"
+    case .dim7: return "dim7"
+    case .M7b5: return "7b5"
+    case .m7b5: return "m7b5"
+    case .custom(_, let description): return "\(description)"
+    }
+  }
+}
+
+// MARK: - Chord
+
+public struct Chord {
+  public var type: ChordType
+  public var key: NoteType
+
+  public init(type: ChordType, key: NoteType) {
+    self.type = type
+    self.key = key
+  }
+
+  public func notes(octave: Int) -> [Note] {
+    return notes(octaves: 0)
+  }
+
+  public func notes(octaves: Int...) -> [Note] {
+    return notes(octaves: octaves)
+  }
+
+  public func notes(octaves: [Int]) -> [Note] {
+    var notes = [Note]()
+    octaves.forEach({ octave in
+      let note = Note(type: key, octave: octave)
+      notes += type.intervals.map({ note + $0 })
+    })
+    return notes
   }
 
   /// Notes generated by the intervals of the chord.
-  public var notes: [Note] {
-    return intervals.map({ key.next(interval: $0) })
-  }
-
-  /// All notes in the chord in midi notes form.
-  public var midiNotes: [Int] {
-    var midiNotes = [Int]()
-    for octave in 0...10 {
-      midiNotes.append(contentsOf: notes.map({ $0.midiNote(octave: octave) }).filter({ $0 != -1 }))
-    }
-    return midiNotes
+  public var noteTypes: [NoteType] {
+    return type.intervals.map({ key + $0 })
   }
 }
 
 extension Chord: CustomStringConvertible {
 
   public var description: String {
-    switch self {
-    case .maj(let key): return "\(key)maj"
-    case .min(let key): return "\(key)min"
-    case .aug(let key): return "\(key)aug"
-    case .b5(let key): return "\(key)b5"
-    case .dim(let key): return "\(key)dim"
-    case .sus(let key): return "\(key)sus4"
-    case .sus2(let key): return "\(key)sus2"
-    case .M6(let key): return "\(key)6"
-    case .m6(let key): return "\(key)m6"
-    case .dom7(let key): return "\(key)7"
-    case .M7(let key): return "\(key)M7"
-    case .m7(let key): return "\(key)m7"
-    case .aug7(let key): return "\(key)+7"
-    case .dim7(let key): return "\(key)dim7"
-    case .M7b5(let key): return "\(key)7b5"
-    case .m7b5(let key): return "\(key)m7b5"
-    case .custom(let key, _, let description): return "\(key)\(description)"
-    }
+    return "\(key)\(type)"
   }
 }
 
@@ -619,5 +508,5 @@ extension Chord: CustomStringConvertible {
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given chords.
 public func ==(left: Chord, right: Chord) -> Bool {
-  return left.key == right.key && left.notes == right.notes
+  return left.key == right.key && left.noteTypes == right.noteTypes
 }
