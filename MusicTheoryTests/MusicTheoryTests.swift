@@ -24,8 +24,14 @@ class MusicTheoryTests: XCTestCase {
 extension MusicTheoryTests {
 
   func testHalfstep() {
-    let note: NoteType = .c
-    XCTAssert(note + 1 == .dFlat)
+    let noteType: NoteType = .c
+    XCTAssert(noteType + 1 == .dFlat)
+    XCTAssert(noteType + 11 == .b)
+    XCTAssert(noteType + 12 == .c)
+    let note: Note = Note(type: noteType, octave: 1)
+    XCTAssert((note + 12).octave == note.octave + 1)
+    XCTAssert((note + 1).type == .dFlat)
+    XCTAssert((note - 1) == Note(type: .b, octave: 0))
   }
 
   func testNote() {

@@ -12,24 +12,49 @@ import Foundation
 
 // MARK: - NoteType
 
+/// Calculates the `NoteType` above `Interval`
+///
+/// - Parameters:
+///   - noteType: The note type being added interval.
+///   - interval: Interval above.
+/// - Returns: Returns `NoteType` above interval
 public func +(noteType: NoteType, interval: Interval) -> NoteType {
   return NoteType(midiNote: noteType.rawValue + interval.halfstep)!
 }
 
+/// Calculates the `NoteType` above halfsteps.
+///
+/// - Parameters:
+///   - noteType: The note type being added halfsteps.
+///   - halfstep: Halfsteps above
+/// - Returns: Returns `NoteType` above halfsteps
 public func +(noteType: NoteType, halfstep: Int) -> NoteType {
   return NoteType(midiNote: noteType.rawValue + halfstep)!
 }
 
+/// Calculates the `NoteType` below `Interval`
+///
+/// - Parameters:
+///   - noteType: The note type being calculated.
+///   - interval: Interval below.
+/// - Returns: Returns `NoteType` below interval.
 public func -(noteType: NoteType, interval: Interval) -> NoteType {
   return NoteType(midiNote: noteType.rawValue - interval.halfstep)!
 }
 
+/// Calculates the `NoteType` below halfsteps
+///
+/// - Parameters:
+///   - noteType: The note type being calculated.
+///   - halfstep: Halfsteps below.
+/// - Returns: Returns `NoteType` below halfsteps.
 public func -(noteType: NoteType, halfstep: Int) -> NoteType {
   return NoteType(midiNote: noteType.rawValue - halfstep)!
 }
 
 /// Represents 12 base notes in music.
 /// C, D, E, F, G, A, B with their flats.
+/// Raw values are included for easier calculation based on midi notes.
 public enum NoteType: Int {
   case c = 0
   case dFlat
@@ -50,6 +75,10 @@ public enum NoteType: Int {
     .gFlat, .g, .aFlat, .a, .bFlat, .b
   ]
 
+  /// Initilizes the note type with midiNote.
+  ///
+  /// - parameters:
+  ///  - midiNote: The midi note value wanted to be converted to `NoteType`.
   public init?(midiNote: Int) {
     let octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
     let raw = octave > 0 ? midiNote - (octave * 12) : midiNote - ((octave + 1) * 12) + 12
@@ -80,22 +109,58 @@ extension NoteType: CustomStringConvertible {
 
 // MARK: - Note
 
+/// Calculates the `Note` above `Interval`
+///
+/// - Parameters:
+///   - note: The note being added interval.
+///   - interval: Interval above.
+/// - Returns: Returns `Note` above interval
 public func +(note: Note, interval: Interval) -> Note {
   return Note(midiNote: note.midiNote + interval.halfstep)
 }
 
+/// Calculates the `Note` above halfsteps.
+///
+/// - Parameters:
+///   - note: The note being added halfsteps.
+///   - halfstep: Halfsteps above
+/// - Returns: Returns `Note` above halfsteps
 public func +(note: Note, halfstep: Int) -> Note {
   return Note(midiNote: note.midiNote + halfstep)
 }
 
+/// Calculates the `Note` below `Interval`
+///
+/// - Parameters:
+///   - note: The note being calculated.
+///   - interval: Interval below.
+/// - Returns: Returns `Note` below interval.
 public func -(note: Note, interval: Interval) -> Note {
   return Note(midiNote: note.midiNote - interval.halfstep)
 }
 
+/// Calculates the `Note` below halfsteps
+///
+/// - Parameters:
+///   - note: The note being calculated.
+///   - halfstep: Halfsteps below.
+/// - Returns: Returns `Note` below halfsteps.
 public func -(note: Note, halfstep: Int) -> Note {
   return Note(midiNote: note.midiNote - halfstep)
 }
 
+/// Compares the equality of two notes by their types and octaves.
+///
+/// - Parameters:
+///   - left: Left handside `Note` to be compared.
+///   - right: Right handside `Note` to be compared.
+/// - Returns: Returns the bool value of comparisation of two notes. 
+public func ==(left: Note, right: Note) -> Bool {
+  return left.type == right.type && left.octave == right.octave
+}
+
+/// Note object with `NoteType` and octave.
+/// Could be initilized with midiNote
 public struct Note {
 
   /// Type of the note like C, D, A, B
@@ -289,7 +354,7 @@ extension Interval: CustomStringConvertible {
 
 // MARK: - ScaleType
 
-/** Represents scale of `Note`s by the intervals between note sequences based on a key `Note`.
+/** Represents scale by the intervals between note sequences.
 
 - major: Major scale.
 - minor: Minor scale
@@ -312,7 +377,7 @@ public enum ScaleType {
   case locrian
   case custom(intervals: [Interval])
 
-  /// Intervals of the scale based on the scale's key.
+  /// Intervals of the scale.
   public var intervals: [Interval] {
     switch self {
     case .major: return [.unison, .M2, .M3, .P4, .P5, .M6, .M7]
@@ -330,23 +395,42 @@ public enum ScaleType {
 
 // MARK: - Scale
 
+/// Scale object with `ScaleType` and scale's key of `NoteType`.
+/// Could calculate note sequences in [Note] format
 public struct Scale {
   public var type: ScaleType
   public var key: NoteType
 
+  /// Initilizes the scale with its type and key.
+  ///
+  /// - Parameters:
+  ///   - type: Type of scale being initilized.
+  ///   - key: Key of scale being initilized.
   public init(type: ScaleType, key: NoteType) {
     self.type = type
     self.key = key
   }
 
+  /// Generates `Note` array of scale in given octave.
+  ///
+  /// - Parameter octave: Octave value of notes in scale
+  /// - Returns: Returns `Note` array of the scale in given octave
   public func notes(octave: Int) -> [Note] {
     return notes(octaves: octave)
   }
 
+  /// Generates `Note` array of scale in given octaves.
+  ///
+  /// - Parameter octaves: Variadic value of octaves to generate notes in scale.
+  /// - Returns: Returns `Note` array of the scale in given octaves.
   public func notes(octaves: Int...) -> [Note] {
     return notes(octaves: octaves)
   }
 
+  /// Generates `Note` array of scale in given octaves.
+  ///
+  /// - Parameter octaves: Array value of octaves to generate notes in scale.
+  /// - Returns: Returns `Note` array of the scale in given octaves.
   public func notes(octaves: [Int]) -> [Note] {
     var notes = [Note]()
     octaves.forEach({ octave in
@@ -368,7 +452,6 @@ extension Scale: CustomStringConvertible {
     return noteTypes.map({ "\($0)" }).joined(separator: ", ")
   }
 }
-
 
 // MARK: - ChordType
 
@@ -462,23 +545,41 @@ extension ChordType: CustomStringConvertible {
 
 // MARK: - Chord
 
+/// Chord object with its type and key.
 public struct Chord {
   public var type: ChordType
   public var key: NoteType
 
+  /// Initilizes the chord with type and key.
+  ///
+  /// - Parameters:
+  ///   - type: `ChordType` of the chord.
+  ///   - key: Key note of the chord.
   public init(type: ChordType, key: NoteType) {
     self.type = type
     self.key = key
   }
 
+  /// Generates chord `Note`s for given octave.
+  ///
+  /// - Parameter octave: Octave of the chord.
+  /// - Returns: Returns `Note` array with chord's notes in given octave.
   public func notes(octave: Int) -> [Note] {
     return notes(octaves: 0)
   }
 
+  /// Generates chord `Note`s for given octaves.
+  ///
+  /// - Parameter octaves: Variadic value of octaves.
+  /// - Returns: Returns `Note` array with chord's notes in given octaves.
   public func notes(octaves: Int...) -> [Note] {
     return notes(octaves: octaves)
   }
 
+  /// Generates chord `Note`s for given octaves.
+  ///
+  /// - Parameter octaves: Array value of octaves.
+  /// - Returns: Returns `Note` array with chord's notes in given octaves.
   public func notes(octaves: [Int]) -> [Note] {
     var notes = [Note]()
     octaves.forEach({ octave in
