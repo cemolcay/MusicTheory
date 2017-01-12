@@ -5,20 +5,20 @@ workspace 'MusicTheory'
 
 target 'MusicTheory' do
   use_frameworks!
-  xcodeproj 'MusicTheory.xcodeproj'
+  project 'MusicTheory.xcodeproj'
   pod 'AudioKit'
 end
 
 target 'AudioKitHelper' do
   use_frameworks!
-  xcodeproj 'AudioKitHelper/AudioKitHelper.xcodeproj'
+  project 'AudioKitHelper/AudioKitHelper.xcodeproj'
   pod 'AudioKit'
 end
 
 target 'MacApp' do
   use_frameworks!
-  xcodeproj 'MacApp/MacApp.xcodeproj'
+  project 'MacApp/MacApp.xcodeproj'
   pod 'AudioKit'
-  pod 'MusicTheorySwift'
+  pod 'MusicTheorySwift', :git => 'https://github.com/cemolcay/MusicTheory.git', :commit => '5f0fe8876c87a2b5726f1b73dd4fe61bcc3a0cfa'
   pod 'RainbowSwift'
 end

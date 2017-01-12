@@ -398,7 +398,7 @@ extension ScaleType: CustomStringConvertible {
   public var description: String {
     switch self {
     case .major: return "Major"
-    case .minor return "Minor"
+    case .minor: return "Minor"
     case .harmonicMinor: return "Harmonic minor"
     case .dorian: return "Dorian"
     case .phrygian: return "Phrygian"
