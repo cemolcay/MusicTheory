@@ -393,6 +393,23 @@ public enum ScaleType {
   }
 }
 
+extension ScaleType: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .major: return "Major"
+    case .minor return "Minor"
+    case .harmonicMinor: return "Harmonic minor"
+    case .dorian: return "Dorian"
+    case .phrygian: return "Phrygian"
+    case .lydian: return "Lydian"
+    case .mixolydian: return "Mixolydian"
+    case .locrian: return "Locrian"
+    case .custom: return "Custom scale"
+    }
+  }
+}
+
 // MARK: - Scale
 
 /// Scale object with `ScaleType` and scale's key of `NoteType`.
@@ -449,7 +466,7 @@ public struct Scale {
 extension Scale: CustomStringConvertible {
 
   public var description: String {
-    return noteTypes.map({ "\($0)" }).joined(separator: ", ")
+    return "\(key) \(type): " + noteTypes.map({ "\($0)" }).joined(separator: ", ")
   }
 }
 

@@ -8,15 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1BFBB44D96A5AC51CEAFF759 /* Pods_MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */; };
-		963F417A78AFE5B4F6C1B15B /* Pods_MusicTheory_AudioKitHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0783F1C496FE91873A912F0A /* Pods_MusicTheory_AudioKitHelper.framework */; };
-		AC405FA5FB45DF2CDF704A07 /* Pods_MusicTheoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */; };
 		B22DCF461E1590E7006D561E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B22DCF441E1590E7006D561E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
 		B22DCF551E15B41C006D561E /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF541E15B41C006D561E /* MusicTheoryTests.swift */; };
 		B22DCF571E15B41C006D561E /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22DCF411E1590E7006D561E /* MusicTheory.framework */; };
 		B22DCF5D1E15B426006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
-		B2C3828A1E16D6920040C48C /* AudioKitHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C382881E16D6920040C48C /* AudioKitHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2C3828F1E16D75C0040C48C /* AudioKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3828E1E16D75C0040C48C /* AudioKitHelper.swift */; };
 		B2C382931E1956440040C48C /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C382921E1956440040C48C /* Dataset.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,11 +28,10 @@
 
 /* Begin PBXFileReference section */
 		0783F1C496FE91873A912F0A /* Pods_MusicTheory_AudioKitHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory_AudioKitHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		104F9EA95D00D318BB59A499 /* Pods-MusicTheory-AudioKitHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-AudioKitHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-AudioKitHelper/Pods-MusicTheory-AudioKitHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		0BEBC43977701F83F28BA840 /* Pods-MusicTheory-MacApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-MacApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-MacApp/Pods-MusicTheory-MacApp.release.xcconfig"; sourceTree = "<group>"; };
 		3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory.release.xcconfig"; sourceTree = "<group>"; };
 		64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory.debug.xcconfig"; sourceTree = "<group>"; };
-		6C699F9705116A4149E41C55 /* Pods-MusicTheoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests.debug.xcconfig"; sourceTree = "<group>"; };
-		894C61B53523716095E022F9 /* Pods-MusicTheoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		784BE1C9758024DE4AE92B45 /* Pods-MusicTheory-MacApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-MacApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-MacApp/Pods-MusicTheory-MacApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22DCF411E1590E7006D561E /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,12 +41,8 @@
 		B22DCF521E15B41C006D561E /* MusicTheoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTheoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22DCF541E15B41C006D561E /* MusicTheoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTheoryTests.swift; sourceTree = "<group>"; };
 		B22DCF561E15B41C006D561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2C382861E16D6920040C48C /* AudioKitHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioKitHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2C382881E16D6920040C48C /* AudioKitHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioKitHelper.h; sourceTree = "<group>"; };
-		B2C382891E16D6920040C48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2C3828E1E16D75C0040C48C /* AudioKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioKitHelper.swift; sourceTree = "<group>"; };
 		B2C382921E1956440040C48C /* Dataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
-		D0981093ADA02F3AE8C67599 /* Pods-MusicTheory-AudioKitHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-AudioKitHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-AudioKitHelper/Pods-MusicTheory-AudioKitHelper.release.xcconfig"; sourceTree = "<group>"; };
+		B66848F9B5F991DC283516EA /* Pods_MusicTheory_MacApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory_MacApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +59,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22DCF571E15B41C006D561E /* MusicTheory.framework in Frameworks */,
-				AC405FA5FB45DF2CDF704A07 /* Pods_MusicTheoryTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2C382821E16D6920040C48C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				963F417A78AFE5B4F6C1B15B /* Pods_MusicTheory_AudioKitHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +71,7 @@
 				AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */,
 				B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */,
 				0783F1C496FE91873A912F0A /* Pods_MusicTheory_AudioKitHelper.framework */,
+				B66848F9B5F991DC283516EA /* Pods_MusicTheory_MacApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,7 +81,6 @@
 			children = (
 				B22DCF431E1590E7006D561E /* MusicTheory */,
 				B22DCF531E15B41C006D561E /* MusicTheoryTests */,
-				B2C382871E16D6920040C48C /* AudioKitHelper */,
 				B22DCF421E1590E7006D561E /* Products */,
 				D0F7DD99407EE3F11546121E /* Pods */,
 				1E989F438F424A20D64DF2E4 /* Frameworks */,
@@ -110,7 +92,6 @@
 			children = (
 				B22DCF411E1590E7006D561E /* MusicTheory.framework */,
 				B22DCF521E15B41C006D561E /* MusicTheoryTests.xctest */,
-				B2C382861E16D6920040C48C /* AudioKitHelper.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,25 +116,13 @@
 			path = MusicTheoryTests;
 			sourceTree = "<group>";
 		};
-		B2C382871E16D6920040C48C /* AudioKitHelper */ = {
-			isa = PBXGroup;
-			children = (
-				B2C382881E16D6920040C48C /* AudioKitHelper.h */,
-				B2C382891E16D6920040C48C /* Info.plist */,
-				B2C3828E1E16D75C0040C48C /* AudioKitHelper.swift */,
-			);
-			path = AudioKitHelper;
-			sourceTree = "<group>";
-		};
 		D0F7DD99407EE3F11546121E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */,
 				3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */,
-				6C699F9705116A4149E41C55 /* Pods-MusicTheoryTests.debug.xcconfig */,
-				894C61B53523716095E022F9 /* Pods-MusicTheoryTests.release.xcconfig */,
-				104F9EA95D00D318BB59A499 /* Pods-MusicTheory-AudioKitHelper.debug.xcconfig */,
-				D0981093ADA02F3AE8C67599 /* Pods-MusicTheory-AudioKitHelper.release.xcconfig */,
+				784BE1C9758024DE4AE92B45 /* Pods-MusicTheory-MacApp.debug.xcconfig */,
+				0BEBC43977701F83F28BA840 /* Pods-MusicTheory-MacApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -166,14 +135,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22DCF461E1590E7006D561E /* MusicTheory.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2C382831E16D6920040C48C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2C3828A1E16D6920040C48C /* AudioKitHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,12 +165,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B22DCF5A1E15B41C006D561E /* Build configuration list for PBXNativeTarget "MusicTheoryTests" */;
 			buildPhases = (
-				CC9223C9998C2A1DE1E69B60 /* [CP] Check Pods Manifest.lock */,
 				B22DCF4E1E15B41C006D561E /* Sources */,
 				B22DCF4F1E15B41C006D561E /* Frameworks */,
 				B22DCF501E15B41C006D561E /* Resources */,
-				18AD9A129BD191F6E5EB81EB /* [CP] Embed Pods Frameworks */,
-				C1221B1A2718A74285DC0C02 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,26 +178,6 @@
 			productName = MusicTheoryTests;
 			productReference = B22DCF521E15B41C006D561E /* MusicTheoryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B2C382851E16D6920040C48C /* AudioKitHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2C3828B1E16D6920040C48C /* Build configuration list for PBXNativeTarget "AudioKitHelper" */;
-			buildPhases = (
-				C03A7DD9ADD2AF528710C305 /* [CP] Check Pods Manifest.lock */,
-				B2C382811E16D6920040C48C /* Sources */,
-				B2C382821E16D6920040C48C /* Frameworks */,
-				B2C382831E16D6920040C48C /* Headers */,
-				B2C382841E16D6920040C48C /* Resources */,
-				C8B06099B646C580C823F14F /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AudioKitHelper;
-			productName = AudioKitHelper;
-			productReference = B2C382861E16D6920040C48C /* AudioKitHelper.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -262,12 +200,6 @@
 						DevelopmentTeam = 77Y3N48SNF;
 						ProvisioningStyle = Automatic;
 					};
-					B2C382851E16D6920040C48C = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 77Y3N48SNF;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = B22DCF3B1E1590E7006D561E /* Build configuration list for PBXProject "MusicTheory" */;
@@ -276,6 +208,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = B22DCF371E1590E7006D561E;
 			productRefGroup = B22DCF421E1590E7006D561E /* Products */;
@@ -284,7 +217,6 @@
 			targets = (
 				B22DCF401E1590E7006D561E /* MusicTheory */,
 				B22DCF511E15B41C006D561E /* MusicTheoryTests */,
-				B2C382851E16D6920040C48C /* AudioKitHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -304,31 +236,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2C382841E16D6920040C48C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18AD9A129BD191F6E5EB81EB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1CB28870204E4BE815F93A63 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,66 +269,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C03A7DD9ADD2AF528710C305 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C1221B1A2718A74285DC0C02 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheoryTests/Pods-MusicTheoryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C8B06099B646C580C823F14F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheory-AudioKitHelper/Pods-MusicTheory-AudioKitHelper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CC9223C9998C2A1DE1E69B60 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -437,14 +287,6 @@
 			files = (
 				B22DCF5D1E15B426006D561E /* MusicTheory.swift in Sources */,
 				B22DCF551E15B41C006D561E /* MusicTheoryTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2C382811E16D6920040C48C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2C3828F1E16D75C0040C48C /* AudioKitHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,9 +346,11 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -550,9 +394,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -577,6 +423,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -598,12 +445,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
 		B22DCF5B1E15B41C006D561E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C699F9705116A4149E41C55 /* Pods-MusicTheoryTests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 77Y3N48SNF;
 				INFOPLIST_FILE = MusicTheoryTests/Info.plist;
@@ -616,56 +463,12 @@
 		};
 		B22DCF5C1E15B41C006D561E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 894C61B53523716095E022F9 /* Pods-MusicTheoryTests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 77Y3N48SNF;
 				INFOPLIST_FILE = MusicTheoryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.MusicTheoryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		B2C3828C1E16D6920040C48C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 104F9EA95D00D318BB59A499 /* Pods-MusicTheory-AudioKitHelper.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 77Y3N48SNF;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AudioKitHelper/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.AudioKitHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		B2C3828D1E16D6920040C48C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0981093ADA02F3AE8C67599 /* Pods-MusicTheory-AudioKitHelper.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 77Y3N48SNF;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AudioKitHelper/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.AudioKitHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -696,15 +499,6 @@
 			buildConfigurations = (
 				B22DCF5B1E15B41C006D561E /* Debug */,
 				B22DCF5C1E15B41C006D561E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2C3828B1E16D6920040C48C /* Build configuration list for PBXNativeTarget "AudioKitHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2C3828C1E16D6920040C48C /* Debug */,
-				B2C3828D1E16D6920040C48C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,0 +1,6 @@
+framework module RainbowSwift {
+  umbrella header "RainbowSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

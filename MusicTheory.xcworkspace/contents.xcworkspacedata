@@ -5,6 +5,12 @@
       location = "group:MusicTheoryPlayground.playground">
    </FileRef>
    <FileRef
+      location = "group:MacApp/MacApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AudioKitHelper/AudioKitHelper.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MusicTheory.xcodeproj">
    </FileRef>
    <FileRef
