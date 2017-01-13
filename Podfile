@@ -19,6 +19,6 @@ target 'MacApp' do
   use_frameworks!
   project 'MacApp/MacApp.xcodeproj'
   pod 'AudioKit'
-  pod 'MusicTheorySwift', :git => 'https://github.com/cemolcay/MusicTheory.git', :commit => '5f0fe8876c87a2b5726f1b73dd4fe61bcc3a0cfa'
+  pod 'MusicTheorySwift', :git => 'https://github.com/cemolcay/MusicTheory.git', :commit => '2cd1586ac9f8d1bbc3a1f9e3f97864d4d045f133'
   pod 'RainbowSwift'
 end

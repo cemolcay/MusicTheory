@@ -13,34 +13,59 @@ import MusicTheorySwift
 
 class ViewController: NSViewController {
   let midi = AKMIDI()
+  let osc = AKOscillatorBank()
+
   var notes = [Note]() {
     didSet {
-      matchScale()
+//      matchScale()
+      matchChord()
     }
   }
 
   func matchScale() {
     print(notes.map{$0.type})
-    guard let first = notes.first else { return }
+    guard notes.count > 2 else { return }
+
     let scaleTypes = ScaleType.all
     scales: for scaleType in scaleTypes {
-      let scale = Scale(type: scaleType, key: first.type)
-      let noteTypes = scale.noteTypes
+      notes: for note in NoteType.all {
+        let scale = Scale(type: scaleType, key: note)
+        let noteTypes = scale.noteTypes
 
-      for note in notes.map({ $0.type }) {
-        if noteTypes.contains(note) == false {
-          continue scales
+        for note in notes.map({ $0.type }) {
+          if !noteTypes.contains(note) {
+            continue notes
+          }
         }
-      }
 
-      print("scale match!")
-      print(scale)
-      break scales
+        print(scale)
+      }
+    }
+  }
+
+  func matchChord() {
+    print(notes.map({ $0.type }))
+    guard notes.count > 2 else { return }
+
+    let chordTypes = ChordType.all
+    chords: for chordType in chordTypes {
+      notes: for note in NoteType.all {
+        let chord = Chord(type: chordType, key: note)
+        let noteTypes = chord.noteTypes
+        guard noteTypes.count == notes.count else { continue notes }
+
+        for note in notes.map({ $0.type }) {
+          if !noteTypes.contains(note) {
+            continue notes
+          }
+        }
+
+        print(chord)
+      }
     }
   }
 
   func startAK() {
-    let osc = AKOscillator()
     AudioKit.output = osc
     AudioKit.start()
 
@@ -59,6 +84,7 @@ extension ViewController: AKMIDIListener {
   func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
     let note = Note(midiNote: noteNumber)
     notes.append(note)
+    osc.play(noteNumber: noteNumber, velocity: velocity )
   }
 
   func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
@@ -66,5 +92,7 @@ extension ViewController: AKMIDIListener {
     if let index = notes.index(where: { $0 == note }) {
       notes.remove(at: index)
     }
+
+    osc.stop(noteNumber: noteNumber)
   }
 }
