@@ -7,177 +7,208 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BFBB44D96A5AC51CEAFF759 /* Pods_MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */; };
-		B22DCF461E1590E7006D561E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B22DCF441E1590E7006D561E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
-		B22DCF551E15B41C006D561E /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF541E15B41C006D561E /* MusicTheoryTests.swift */; };
-		B22DCF571E15B41C006D561E /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22DCF411E1590E7006D561E /* MusicTheory.framework */; };
-		B22DCF5D1E15B426006D561E /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22DCF4C1E1590FE006D561E /* MusicTheory.swift */; };
-		B2C382931E1956440040C48C /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C382921E1956440040C48C /* Dataset.swift */; };
+		B219CC341E4CFC170060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B219CC351E4CFC180060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B219CC361E4CFC190060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B219CC371E4CFC1A0060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B219CC381E4CFC5E0060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
+		B219CC391E4CFC5E0060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
+		B219CC3A1E4CFC5F0060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
+		B219CC3B1E4CFC5F0060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
+		B219CC3C1E4CFC600060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
+		B219CC3D1E4CFC600060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
+		B219CC3E1E4CFC600060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
+		B219CC3F1E4CFC600060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B22DCF581E15B41C006D561E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B22DCF381E1590E7006D561E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B22DCF401E1590E7006D561E;
-			remoteInfo = MusicTheory;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0783F1C496FE91873A912F0A /* Pods_MusicTheory_AudioKitHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory_AudioKitHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BEBC43977701F83F28BA840 /* Pods-MusicTheory-MacApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-MacApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-MacApp/Pods-MusicTheory-MacApp.release.xcconfig"; sourceTree = "<group>"; };
-		3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory.release.xcconfig"; sourceTree = "<group>"; };
-		64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory.debug.xcconfig"; sourceTree = "<group>"; };
-		784BE1C9758024DE4AE92B45 /* Pods-MusicTheory-MacApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicTheory-MacApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicTheory-MacApp/Pods-MusicTheory-MacApp.debug.xcconfig"; sourceTree = "<group>"; };
-		AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B22DCF411E1590E7006D561E /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B22DCF441E1590E7006D561E /* MusicTheory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTheory.h; sourceTree = "<group>"; };
-		B22DCF451E1590E7006D561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B22DCF4C1E1590FE006D561E /* MusicTheory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTheory.swift; sourceTree = "<group>"; };
-		B22DCF521E15B41C006D561E /* MusicTheoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTheoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B22DCF541E15B41C006D561E /* MusicTheoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTheoryTests.swift; sourceTree = "<group>"; };
-		B22DCF561E15B41C006D561E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2C382921E1956440040C48C /* Dataset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
-		B66848F9B5F991DC283516EA /* Pods_MusicTheory_MacApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicTheory_MacApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
+		B219CBFA1E4CFB7B0060A6B6 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTheory.h; sourceTree = "<group>"; };
+		B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTheory.swift; sourceTree = "<group>"; };
+		B219CC021E4CFB870060A6B6 /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B219CC0F1E4CFB970060A6B6 /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B219CC1C1E4CFBA10060A6B6 /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B219CC311E4CFBE20060A6B6 /* Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Mac.plist"; sourceTree = "<group>"; };
+		B219CC321E4CFBE20060A6B6 /* Info-TV.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-TV.plist"; sourceTree = "<group>"; };
+		B219CC331E4CFBE20060A6B6 /* Info-Watch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Watch.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B22DCF3D1E1590E7006D561E /* Frameworks */ = {
+		B219CBFE1E4CFB870060A6B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BFBB44D96A5AC51CEAFF759 /* Pods_MusicTheory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B22DCF4F1E15B41C006D561E /* Frameworks */ = {
+		B219CC0B1E4CFB970060A6B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22DCF571E15B41C006D561E /* MusicTheory.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC181E4CFBA10060A6B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC251E4CFBAF0060A6B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E989F438F424A20D64DF2E4 /* Frameworks */ = {
+		B219CBF81E4CFB7B0060A6B6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				AB625076B1B9B72302E3BA37 /* Pods_MusicTheory.framework */,
-				B0E0281E8C5DAAE4A669EDDE /* Pods_MusicTheoryTests.framework */,
-				0783F1C496FE91873A912F0A /* Pods_MusicTheory_AudioKitHelper.framework */,
-				B66848F9B5F991DC283516EA /* Pods_MusicTheory_MacApp.framework */,
+				B219CC311E4CFBE20060A6B6 /* Info-Mac.plist */,
+				B219CC321E4CFBE20060A6B6 /* Info-TV.plist */,
+				B219CC331E4CFBE20060A6B6 /* Info-Watch.plist */,
+				B219CBFA1E4CFB7B0060A6B6 /* Info-iOS.plist */,
+				B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */,
+				B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */,
+				B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */,
 			);
-			name = Frameworks;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		B22DCF371E1590E7006D561E = {
 			isa = PBXGroup;
 			children = (
-				B22DCF431E1590E7006D561E /* MusicTheory */,
-				B22DCF531E15B41C006D561E /* MusicTheoryTests */,
+				B219CBF81E4CFB7B0060A6B6 /* Source */,
 				B22DCF421E1590E7006D561E /* Products */,
-				D0F7DD99407EE3F11546121E /* Pods */,
-				1E989F438F424A20D64DF2E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		B22DCF421E1590E7006D561E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B22DCF411E1590E7006D561E /* MusicTheory.framework */,
-				B22DCF521E15B41C006D561E /* MusicTheoryTests.xctest */,
+				B219CC021E4CFB870060A6B6 /* MusicTheory.framework */,
+				B219CC0F1E4CFB970060A6B6 /* MusicTheory.framework */,
+				B219CC1C1E4CFBA10060A6B6 /* MusicTheory.framework */,
+				B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B22DCF431E1590E7006D561E /* MusicTheory */ = {
-			isa = PBXGroup;
-			children = (
-				B22DCF441E1590E7006D561E /* MusicTheory.h */,
-				B22DCF451E1590E7006D561E /* Info.plist */,
-				B22DCF4C1E1590FE006D561E /* MusicTheory.swift */,
-				B2C382921E1956440040C48C /* Dataset.swift */,
-			);
-			path = MusicTheory;
-			sourceTree = "<group>";
-		};
-		B22DCF531E15B41C006D561E /* MusicTheoryTests */ = {
-			isa = PBXGroup;
-			children = (
-				B22DCF541E15B41C006D561E /* MusicTheoryTests.swift */,
-				B22DCF561E15B41C006D561E /* Info.plist */,
-			);
-			path = MusicTheoryTests;
-			sourceTree = "<group>";
-		};
-		D0F7DD99407EE3F11546121E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */,
-				3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */,
-				784BE1C9758024DE4AE92B45 /* Pods-MusicTheory-MacApp.debug.xcconfig */,
-				0BEBC43977701F83F28BA840 /* Pods-MusicTheory-MacApp.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B22DCF3E1E1590E7006D561E /* Headers */ = {
+		B219CBFF1E4CFB870060A6B6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22DCF461E1590E7006D561E /* MusicTheory.h in Headers */,
+				B219CC341E4CFC170060A6B6 /* MusicTheory.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC0C1E4CFB970060A6B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CC361E4CFC190060A6B6 /* MusicTheory.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC191E4CFBA10060A6B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CC351E4CFC180060A6B6 /* MusicTheory.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC261E4CFBAF0060A6B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CC371E4CFC1A0060A6B6 /* MusicTheory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B22DCF401E1590E7006D561E /* MusicTheory */ = {
+		B219CC011E4CFB870060A6B6 /* MusicTheory iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B22DCF491E1590E7006D561E /* Build configuration list for PBXNativeTarget "MusicTheory" */;
+			buildConfigurationList = B219CC071E4CFB870060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory iOS" */;
 			buildPhases = (
-				1CB28870204E4BE815F93A63 /* [CP] Check Pods Manifest.lock */,
-				B22DCF3C1E1590E7006D561E /* Sources */,
-				B22DCF3D1E1590E7006D561E /* Frameworks */,
-				B22DCF3E1E1590E7006D561E /* Headers */,
-				B22DCF3F1E1590E7006D561E /* Resources */,
-				2C0621E527082DDCFBE074B0 /* [CP] Copy Pods Resources */,
+				B219CBFD1E4CFB870060A6B6 /* Sources */,
+				B219CBFE1E4CFB870060A6B6 /* Frameworks */,
+				B219CBFF1E4CFB870060A6B6 /* Headers */,
+				B219CC001E4CFB870060A6B6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MusicTheory;
-			productName = MusicTheory;
-			productReference = B22DCF411E1590E7006D561E /* MusicTheory.framework */;
+			name = "MusicTheory iOS";
+			productName = "MusicTheory iOS";
+			productReference = B219CC021E4CFB870060A6B6 /* MusicTheory.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B22DCF511E15B41C006D561E /* MusicTheoryTests */ = {
+		B219CC0E1E4CFB970060A6B6 /* MusicTheory Watch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B22DCF5A1E15B41C006D561E /* Build configuration list for PBXNativeTarget "MusicTheoryTests" */;
+			buildConfigurationList = B219CC141E4CFB970060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory Watch" */;
 			buildPhases = (
-				B22DCF4E1E15B41C006D561E /* Sources */,
-				B22DCF4F1E15B41C006D561E /* Frameworks */,
-				B22DCF501E15B41C006D561E /* Resources */,
+				B219CC0A1E4CFB970060A6B6 /* Sources */,
+				B219CC0B1E4CFB970060A6B6 /* Frameworks */,
+				B219CC0C1E4CFB970060A6B6 /* Headers */,
+				B219CC0D1E4CFB970060A6B6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B22DCF591E15B41C006D561E /* PBXTargetDependency */,
 			);
-			name = MusicTheoryTests;
-			productName = MusicTheoryTests;
-			productReference = B22DCF521E15B41C006D561E /* MusicTheoryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = "MusicTheory Watch";
+			productName = "MusicTheory Watch";
+			productReference = B219CC0F1E4CFB970060A6B6 /* MusicTheory.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B219CC1B1E4CFBA10060A6B6 /* MusicTheory TV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B219CC211E4CFBA10060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory TV" */;
+			buildPhases = (
+				B219CC171E4CFBA10060A6B6 /* Sources */,
+				B219CC181E4CFBA10060A6B6 /* Frameworks */,
+				B219CC191E4CFBA10060A6B6 /* Headers */,
+				B219CC1A1E4CFBA10060A6B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MusicTheory TV";
+			productName = "MusicTheory TV";
+			productReference = B219CC1C1E4CFBA10060A6B6 /* MusicTheory.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B219CC281E4CFBAF0060A6B6 /* MusicTheory Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B219CC2E1E4CFBAF0060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory Mac" */;
+			buildPhases = (
+				B219CC241E4CFBAF0060A6B6 /* Sources */,
+				B219CC251E4CFBAF0060A6B6 /* Frameworks */,
+				B219CC261E4CFBAF0060A6B6 /* Headers */,
+				B219CC271E4CFBAF0060A6B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MusicTheory Mac";
+			productName = "MusicTheory Mac";
+			productReference = B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -189,13 +220,22 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = prototapp;
 				TargetAttributes = {
-					B22DCF401E1590E7006D561E = {
+					B219CC011E4CFB870060A6B6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 77Y3N48SNF;
-						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
-					B22DCF511E15B41C006D561E = {
+					B219CC0E1E4CFB970060A6B6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 77Y3N48SNF;
+						ProvisioningStyle = Automatic;
+					};
+					B219CC1B1E4CFBA10060A6B6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 77Y3N48SNF;
+						ProvisioningStyle = Automatic;
+					};
+					B219CC281E4CFBAF0060A6B6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 77Y3N48SNF;
 						ProvisioningStyle = Automatic;
@@ -215,21 +255,37 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B22DCF401E1590E7006D561E /* MusicTheory */,
-				B22DCF511E15B41C006D561E /* MusicTheoryTests */,
+				B219CC011E4CFB870060A6B6 /* MusicTheory iOS */,
+				B219CC0E1E4CFB970060A6B6 /* MusicTheory Watch */,
+				B219CC1B1E4CFBA10060A6B6 /* MusicTheory TV */,
+				B219CC281E4CFBAF0060A6B6 /* MusicTheory Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B22DCF3F1E1590E7006D561E /* Resources */ = {
+		B219CC001E4CFB870060A6B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B22DCF501E15B41C006D561E /* Resources */ = {
+		B219CC0D1E4CFB970060A6B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC1A1E4CFBA10060A6B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC271E4CFBAF0060A6B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,69 +294,238 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1CB28870204E4BE815F93A63 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2C0621E527082DDCFBE074B0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicTheory/Pods-MusicTheory-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		B22DCF3C1E1590E7006D561E /* Sources */ = {
+		B219CBFD1E4CFB870060A6B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2C382931E1956440040C48C /* Dataset.swift in Sources */,
-				B22DCF4D1E1590FE006D561E /* MusicTheory.swift in Sources */,
+				B219CC391E4CFC5E0060A6B6 /* MusicTheory.swift in Sources */,
+				B219CC381E4CFC5E0060A6B6 /* Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B22DCF4E1E15B41C006D561E /* Sources */ = {
+		B219CC0A1E4CFB970060A6B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22DCF5D1E15B426006D561E /* MusicTheory.swift in Sources */,
-				B22DCF551E15B41C006D561E /* MusicTheoryTests.swift in Sources */,
+				B219CC3B1E4CFC5F0060A6B6 /* MusicTheory.swift in Sources */,
+				B219CC3A1E4CFC5F0060A6B6 /* Dataset.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC171E4CFBA10060A6B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CC3D1E4CFC600060A6B6 /* MusicTheory.swift in Sources */,
+				B219CC3C1E4CFC600060A6B6 /* Dataset.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219CC241E4CFBAF0060A6B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CC3F1E4CFC600060A6B6 /* MusicTheory.swift in Sources */,
+				B219CC3E1E4CFC600060A6B6 /* Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		B22DCF591E15B41C006D561E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B22DCF401E1590E7006D561E /* MusicTheory */;
-			targetProxy = B22DCF581E15B41C006D561E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
+		B219CC081E4CFB870060A6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-iOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-iOS";
+				PRODUCT_NAME = MusicTheory;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		B219CC091E4CFB870060A6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-iOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-iOS";
+				PRODUCT_NAME = MusicTheory;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		B219CC151E4CFB970060A6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-Watch.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-Watch";
+				PRODUCT_NAME = MusicTheory;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		B219CC161E4CFB970060A6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-Watch.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-Watch";
+				PRODUCT_NAME = MusicTheory;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		B219CC221E4CFBA10060A6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-TV.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-TV";
+				PRODUCT_NAME = MusicTheory;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		B219CC231E4CFBA10060A6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-TV.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-TV";
+				PRODUCT_NAME = MusicTheory;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		B219CC2F1E4CFBAF0060A6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-Mac.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-Mac";
+				PRODUCT_NAME = MusicTheory;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		B219CC301E4CFBAF0060A6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info-Mac.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-Mac";
+				PRODUCT_NAME = MusicTheory;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
 		B22DCF471E1590E7006D561E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -404,101 +629,46 @@
 			};
 			name = Release;
 		};
-		B22DCF4A1E1590E7006D561E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64BE630F36819EC8C6FBB48F /* Pods-MusicTheory.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 77Y3N48SNF;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MusicTheory/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.MusicTheory;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				VALID_ARCHS = "arm64 armv7 armv7s";
-			};
-			name = Debug;
-		};
-		B22DCF4B1E1590E7006D561E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3245EE5D50DEAB0EE98C953F /* Pods-MusicTheory.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 77Y3N48SNF;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MusicTheory/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.MusicTheory;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				VALID_ARCHS = "arm64 armv7 armv7s";
-			};
-			name = Release;
-		};
-		B22DCF5B1E15B41C006D561E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 77Y3N48SNF;
-				INFOPLIST_FILE = MusicTheoryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.MusicTheoryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		B22DCF5C1E15B41C006D561E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 77Y3N48SNF;
-				INFOPLIST_FILE = MusicTheoryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.prototapp.MusicTheoryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B219CC071E4CFB870060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B219CC081E4CFB870060A6B6 /* Debug */,
+				B219CC091E4CFB870060A6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B219CC141E4CFB970060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B219CC151E4CFB970060A6B6 /* Debug */,
+				B219CC161E4CFB970060A6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B219CC211E4CFBA10060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory TV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B219CC221E4CFBA10060A6B6 /* Debug */,
+				B219CC231E4CFBA10060A6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B219CC2E1E4CFBAF0060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B219CC2F1E4CFBAF0060A6B6 /* Debug */,
+				B219CC301E4CFBAF0060A6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B22DCF3B1E1590E7006D561E /* Build configuration list for PBXProject "MusicTheory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B22DCF471E1590E7006D561E /* Debug */,
 				B22DCF481E1590E7006D561E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B22DCF491E1590E7006D561E /* Build configuration list for PBXNativeTarget "MusicTheory" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B22DCF4A1E1590E7006D561E /* Debug */,
-				B22DCF4B1E1590E7006D561E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B22DCF5A1E15B41C006D561E /* Build configuration list for PBXNativeTarget "MusicTheoryTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B22DCF5B1E15B41C006D561E /* Debug */,
-				B22DCF5C1E15B41C006D561E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

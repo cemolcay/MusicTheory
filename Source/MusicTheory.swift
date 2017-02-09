@@ -350,6 +350,20 @@ extension Interval: CustomStringConvertible {
     case .custom(let degree, let halfstep): return "\(degree), \(halfstep)"
     }
   }
+
+  public var roman: String {
+    switch self {
+    case .unison: return "i"
+    case .m2, .M2: return "ii"
+    case .m3, .M3: return "iii"
+    case .P4, .A4: return "iv"
+    case .d5, .P5, .A5: return "v"
+    case .m6, .M6: return "vi"
+    case .d7, .m7, .M7, .A7: return "vii"
+    case .P8: return "viii"
+    case .custom(_, let halfstep): return "\(halfstep)"
+    }
+  }
 }
 
 // MARK: - ScaleType

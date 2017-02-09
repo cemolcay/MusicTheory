@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MusicTheorySwift"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A music theory library with `Note`, `Interval`, `Tone`, `Scale` and `Chord` representations in swift enums."
 
   # This description is used to generate tags and improve search results.
@@ -34,6 +34,10 @@ Requirements
 ----
 * Swift 3
 * Xcode 8
+* iOS 8.0+
+* tvOS 9.0+
+* macOS 10.9+
+* watchOS 2.0+
 
 Install
 ----
@@ -144,10 +148,10 @@ Documentation created with jazzy, hosted on [github pages](https://cemolcay.gith
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "10.0"
-  s.osx.deployment_target = "10.10"
-  s.watchos.deployment_target = "3.0"
-  s.tvos.deployment_target = "10.0"
+  s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.9"
+  s.watchos.deployment_target = "2.0"
+  s.tvos.deployment_target = "9.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -167,7 +171,7 @@ Documentation created with jazzy, hosted on [github pages](https://cemolcay.gith
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "MusicTheory/*.{swift}"
+  s.source_files  = "Source/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
