@@ -7,10 +7,10 @@ Requirements
 ----
 * Swift 3
 * Xcode 8
-* iOS 10+
-* macOS 10.10+
-* tvOS 10+
-* watchOS 3+
+* iOS 8.0+
+* macOS 10.9+
+* tvOS 9.0+
+* watchOS 2.0+
 
 Install
 ----
