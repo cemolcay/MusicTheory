@@ -160,8 +160,7 @@ Documentation created with jazzy, hosted on [github pages](https://cemolcay.gith
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :path => "." }
-  # { :git => "https://github.com/cemolcay/MusicTheory.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/cemolcay/MusicTheory.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
