@@ -381,11 +381,50 @@ public enum ScaleType {
   case major
   case minor
   case harmonicMinor
+  case melodicMinor
+  case pentatonicMajor
+  case pentatonicMinor
+  case pentatonicBlues
+  case pentatonicNeutral
+  case ionian
+  case aeolian
   case dorian
+  case mixolydian
   case phrygian
   case lydian
-  case mixolydian
   case locrian
+  case dimHhalf
+  case dimWhole
+  case whole
+  case augmented
+  case chromatic
+  case roumanianMinor
+  case spanishGypsy
+  case blues
+  case diatonic
+  case doubleHarmonic
+  case eightToneSpanish
+  case enigmatic
+  case leadingWholeTone
+  case lydianAugmented
+  case neopolitanMajor
+  case neopolitanMinor
+  case pelog
+  case prometheus
+  case prometheusNeopolitan
+  case sixToneSymmetrical
+  case superLocrian
+  case lydianMinor
+  case lydianDiminished
+  case nineToneScale
+  case auxiliaryDiminished
+  case auxiliaryAugmented
+  case auxiliaryDimBlues
+  case majorLocrian
+  case overtone
+  case diminishedWholeTone
+  case pureMinor
+  case dominant7th
   case custom(intervals: [Interval])
 
   /// Intervals of the scale.
@@ -393,12 +432,51 @@ public enum ScaleType {
     switch self {
     case .major: return [.unison, .M2, .M3, .P4, .P5, .M6, .M7]
     case .minor: return [.unison, .M2, .m3, .P4, .P5, .m6, .m7]
-    case .harmonicMinor: return [.unison, .M2, .m3, .P4, .P5, .M6, .m7]
+    case .harmonicMinor: return [.unison, .M2, .m3, .P4, .P5, .m6, .M7]
     case .dorian: return [.unison, .M2, .m3, .P4, .P5, .M6, .m7]
     case .phrygian: return [.unison, .m2, .m3, .P4, .P5, .m6, .m7]
     case .lydian: return [.unison, .M2, .M3, .d5, .P5, .M6, .M7]
     case .mixolydian: return [.unison, .M2, .M3, .P4, .P5, .M6, .m7]
     case .locrian: return [.unison, .m2, .m3, .P4, .d5, .m6, .m7]
+    case .melodicMinor: return [.unison, .M2, .m3, .P4, .P5, .M6, .M7]
+    case .pentatonicMajor: return [.unison, .M2, .M3, .P5, .M6]
+    case .pentatonicMinor: return [.unison, .m3, .P4, .P5, .m7]
+    case .pentatonicBlues: return [.unison, .m3, .P4, .d5, .P5, .m7]
+    case .pentatonicNeutral: return [.unison, .M2, .P4, .P5, .m7]
+    case .ionian: return [.unison, .M2, .M3, .P4, .P5, .M6, .M7]
+    case .aeolian: return [.unison, .M2, .m3, .P4, .P5, .m6, .m7]
+    case .dimHhalf: return [.unison, .m2, .m3, .M3, .d5, .P5, .M6, .m7]
+    case .dimWhole: return [.unison, .M2, .m3, .P4, .d5, .m6, .M6, .M7]
+    case .whole: return [.unison, .M2, .M3, .d5, .m6, .m7]
+    case .augmented: return [.m3, .M3, .P5, .m6, .M7]
+    case .chromatic: return [.unison, .m2, .M2, .m3, .M3, .P4, .d5, .P5, .m6, .M6, .m7, .M7]
+    case .roumanianMinor: return [.unison, .M2, .m3, .d5, .P5, .M6, .m7]
+    case .spanishGypsy: return [.unison, .m2, .M3, .P4, .P5, .m6, .m7]
+    case .blues: return [.unison, .m3, .P4, .d5, .P5, .m7]
+    case .diatonic: return [.unison, .M2, .M3, .P5, .M6]
+    case .doubleHarmonic: return [.unison, .m2, .M3, .P4, .P5, .m6, .M7]
+    case .eightToneSpanish: return [.unison, .m2, .m3, .M3, .P4, .d5, .m6, .m7]
+    case .enigmatic: return [.unison, .m2, .M3, .d5, .m6, .m7, .M7]
+    case .leadingWholeTone: greturn [.unison, .M2, .M3, .d5, .m6, .M6, .m7]
+    case .lydianAugmented: return [.unison, .M2, .M3, .d5, .m6, .M6, .M7]
+    case .neopolitanMajor: return [.unison, .m2, .m3, .P4, .P5, .M6, .M7]
+    case .neopolitanMinor: return [.unison, .m2, .m3, .P4, .P5, .m6, .m7]
+    case .pelog: return [.unison, .m2, .m3, .d5, .m7, .M7]
+    case .prometheus: return [.unison, .M2, .M3, .d5, .M6, .m7]
+    case .prometheusNeopolitan: return [.unison, .m2, .M3, .d5, .M6, .m7]
+    case .sixToneSymmetrical: return [.unison, .m2, .M3, .P4, .m6, .M6]
+    case .superLocrian: return [.unison, .m2, .m3, .M3, .d5, .m6, .m7]
+    case .lydianMinor: return [.unison, .M2, .M3, .d5, .P5, .m6, .m7]
+    case .lydianDiminished: return [.unison, .M2, .m3, .d5, .P5, .m6, .m7]
+    case .nineToneScale: return [.unison, .M2, .m3, .M3, .d5, .P5, .m6, .M6, .M7]
+    case .auxiliaryDiminished: return [.unison, .M2, .m3, .P4, .d5, .m6, .M6, .M7]
+    case .auxiliaryAugmented: return [.unison, .M2, .M3, .d5, .m6, .m7]
+    case .auxiliaryDimBlues: return [.unison, .m2, .m3, .M3, .d5, .P5, .M6, .m7]
+    case .majorLocrian: return [.unison, .M2, .M3, .P4, .d5, .m6, .m7]
+    case .overtone: return [.unison, .M2, .M3, .d5, .P5, .M6, .m7]
+    case .diminishedWholeTone: return [.unison, .m2, .m3, .M3, .d5, .m6, .m7]
+    case .pureMinor: return [.unison, .M2, .m3, .P4, .P5, .m6, .m7]
+    case .dominant7th: return [.unison, .M2, .M3, .P4, .P5, .M6, .m7]
     case .custom(let intervals): return intervals
     }
   }
@@ -406,8 +484,53 @@ public enum ScaleType {
   /// An array of all `ScaleType` values.
   public static var all: [ScaleType] {
     return [
-      .major, .minor, .harmonicMinor, .dorian, .phrygian,
-      .lydian, .mixolydian, .locrian
+      .major,
+      .minor,
+      .harmonicMinor,
+      .melodicMinor,
+      .pentatonicMajor,
+      .pentatonicMinor,
+      .pentatonicBlues,
+      .pentatonicNeutral,
+      .ionian,
+      .aeolian,
+      .dorian,
+      .mixolydian,
+      .phrygian,
+      .lydian,
+      .locrian,
+      .dimHhalf,
+      .dimWhole,
+      .whole,
+      .augmented,
+      .chromatic,
+      .roumanianMinor,
+      .spanishGypsy,
+      .blues,
+      .diatonic,
+      .doubleHarmonic,
+      .eightToneSpanish,
+      .enigmatic,
+      .leadingWholeTone,
+      .lydianAugmented,
+      .neopolitanMajor,
+      .neopolitanMinor,
+      .pelog,
+      .prometheus,
+      .prometheusNeopolitan,
+      .sixToneSymmetrical,
+      .superLocrian,
+      .lydianMinor,
+      .lydianDiminished,
+      .nineToneScale,
+      .auxiliaryDiminished,
+      .auxiliaryAugmented,
+      .auxiliaryDimBlues,
+      .majorLocrian,
+      .overtone,
+      .diminishedWholeTone,
+      .pureMinor,
+      .dominant7th,
     ]
   }
 }
@@ -418,12 +541,51 @@ extension ScaleType: CustomStringConvertible {
     switch self {
     case .major: return "Major"
     case .minor: return "Minor"
-    case .harmonicMinor: return "Harmonic minor"
+    case .harmonicMinor: return "Harmonic Minor"
+    case .melodicMinor: return "Melodic Minor"
+    case .pentatonicMajor: return "Pentatonic Major"
+    case .pentatonicMinor: return "Pentatonic Minor"
+    case .pentatonicBlues: return "Pentatonic Blues"
+    case .pentatonicNeutral: return "Pentatonic Neutral"
+    case .ionian: return "Ionian"
+    case .aeolian: return "Aeolian"
     case .dorian: return "Dorian"
+    case .mixolydian: return "Mixolydian"
     case .phrygian: return "Phrygian"
     case .lydian: return "Lydian"
-    case .mixolydian: return "Mixolydian"
     case .locrian: return "Locrian"
+    case .dimHhalf: return "Dim half"
+    case .dimWhole: return "Dim whole"
+    case .whole: return "Whole"
+    case .augmented: return "Augmented"
+    case .chromatic: return "Chromatic"
+    case .roumanianMinor: return "Roumanian Minor"
+    case .spanishGypsy: return "Spanish Gypsy"
+    case .blues: return "Blues"
+    case .diatonic: return "Diatonic"
+    case .doubleHarmonic: return "Double Harmonic"
+    case .eightToneSpanish: return "Eight Tone Spanish"
+    case .enigmatic: return "Enigmatic"
+    case .leadingWholeTone: return "Leading Whole Tone"
+    case .lydianAugmented: return "Lydian Augmented"
+    case .neopolitanMajor: return "Neopolitan Major"
+    case .neopolitanMinor: return "Neopolitan Minor"
+    case .pelog: return "Pelog"
+    case .prometheus: return "Prometheus"
+    case .prometheusNeopolitan: return "Prometheus Neopolitan"
+    case .sixToneSymmetrical: return "Six Tone Symmetrical"
+    case .superLocrian: return "Super Locrian"
+    case .lydianMinor: return "Lydian Minor"
+    case .lydianDiminished: return "Lydian Diminished"
+    case .nineToneScale: return "Nine Tone Scale"
+    case .auxiliaryDiminished: return "Auxiliary Diminished"
+    case .auxiliaryAugmented: return "Auxiliary Augmented"
+    case .auxiliaryDimBlues: return "Auxiliary Dim Blues"
+    case .majorLocrian: return "Major Locrian"
+    case .overtone: return "Overtone"
+    case .diminishedWholeTone: return "Diminished Whole Tone"
+    case .pureMinor: return "Pure Minor"
+    case .dominant7th: return "Dominant 7th"
     case .custom: return "Custom scale"
     }
   }
