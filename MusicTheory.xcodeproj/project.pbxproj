@@ -11,18 +11,13 @@
 		B219CC351E4CFC180060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B219CC361E4CFC190060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B219CC371E4CFC1A0060A6B6 /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B219CC381E4CFC5E0060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
 		B219CC391E4CFC5E0060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
-		B219CC3A1E4CFC5F0060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
 		B219CC3B1E4CFC5F0060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
-		B219CC3C1E4CFC600060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
 		B219CC3D1E4CFC600060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
-		B219CC3E1E4CFC600060A6B6 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */; };
 		B219CC3F1E4CFC600060A6B6 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		B219CBFA1E4CFB7B0060A6B6 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicTheory.h; sourceTree = "<group>"; };
 		B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTheory.swift; sourceTree = "<group>"; };
@@ -75,7 +70,6 @@
 				B219CC331E4CFBE20060A6B6 /* Info-Watch.plist */,
 				B219CBFA1E4CFB7B0060A6B6 /* Info-iOS.plist */,
 				B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */,
-				B219CBF91E4CFB7B0060A6B6 /* Dataset.swift */,
 				B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */,
 			);
 			path = Source;
@@ -300,7 +294,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B219CC391E4CFC5E0060A6B6 /* MusicTheory.swift in Sources */,
-				B219CC381E4CFC5E0060A6B6 /* Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B219CC3B1E4CFC5F0060A6B6 /* MusicTheory.swift in Sources */,
-				B219CC3A1E4CFC5F0060A6B6 /* Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +310,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B219CC3D1E4CFC600060A6B6 /* MusicTheory.swift in Sources */,
-				B219CC3C1E4CFC600060A6B6 /* Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +318,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B219CC3F1E4CFC600060A6B6 /* MusicTheory.swift in Sources */,
-				B219CC3E1E4CFC600060A6B6 /* Dataset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +629,7 @@
 				B219CC091E4CFB870060A6B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B219CC141E4CFB970060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory Watch" */ = {
 			isa = XCConfigurationList;
@@ -647,6 +638,7 @@
 				B219CC161E4CFB970060A6B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B219CC211E4CFBA10060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory TV" */ = {
 			isa = XCConfigurationList;
@@ -655,6 +647,7 @@
 				B219CC231E4CFBA10060A6B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B219CC2E1E4CFBAF0060A6B6 /* Build configuration list for PBXNativeTarget "MusicTheory Mac" */ = {
 			isa = XCConfigurationList;
@@ -663,6 +656,7 @@
 				B219CC301E4CFBAF0060A6B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B22DCF3B1E1590E7006D561E /* Build configuration list for PBXProject "MusicTheory" */ = {
 			isa = XCConfigurationList;
