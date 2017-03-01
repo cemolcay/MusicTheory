@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MusicTheorySwift"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A music theory library with `Note`, `Interval`, `Tone`, `Scale` and `Chord` representations in swift enums."
 
   # This description is used to generate tags and improve search results.
@@ -93,7 +93,7 @@ let cMaj: Chord = .maj(key: c)
 
 ### Interval
 
-- unison, m2, M2, m3, M3, P4, A4, d5, P5, A5, m6, M6, d7, m7, M7, A7 and P8 intervals.
+- unison, m2, M2, m3, M3, P4, d5, P5, m6, M6, m7, M7 and P8 intervals.
 - Have degree and halfsteps.
 - Could create custom interval.
 - Used in creation of `Scale`s and `Chord`s.
