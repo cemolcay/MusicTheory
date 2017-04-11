@@ -895,7 +895,7 @@ public struct Chord {
   /// - Parameter octave: Octave of the chord.
   /// - Returns: Returns `Note` array with chord's notes in given octave.
   public func notes(octave: Int) -> [Note] {
-    return notes(octaves: 0)
+    return notes(octaves: octave)
   }
 
   /// Generates chord `Note`s for given octaves.
