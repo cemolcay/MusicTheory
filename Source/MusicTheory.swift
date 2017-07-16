@@ -107,6 +107,148 @@ extension NoteType: CustomStringConvertible {
   }
 }
 
+// MARK: - Note Value
+
+/// Defines the types of note values.
+public enum NoteValueType {
+  /// Two whole notes.
+  case doubleWhole
+  /// Whole note.
+  case whole
+  /// Half note.
+  case half
+  /// Quarter note.
+  case quarter
+  /// Eighth note.
+  case eighth
+  /// Sixteenth note.
+  case sixtenth
+  /// Thirtysecond note.
+  case thirtysecond
+  /// Sixtyfourth note.
+  case sixtyfourth
+
+  /// Init with beat count.
+  /// For example for a whole note, beats should be 1,
+  /// For a eighth note, beats should be 8.
+  /// Returns nil, if no beats match.
+  public init?(beats: Double) {
+    switch beats {
+    case 0.5: self = .doubleWhole
+    case 1: self = .whole
+    case 2: self = .half
+    case 4: self = .quarter
+    case 8: self = .eighth
+    case 16: self = .sixtenth
+    case 32: self = .thirtysecond
+    case 64: self = .sixtyfourth
+    default: return nil
+    }
+  }
+
+  /// Beat count
+  public var beats: Double {
+    switch self {
+    case .doubleWhole: return 0.5
+    case .whole: return 1
+    case .half: return 2
+    case .quarter: return 4
+    case .eighth: return 8
+    case .sixtenth: return 16
+    case .thirtysecond: return 32
+    case .sixtyfourth: return 64
+    }
+  }
+}
+
+/// Defines the lenght of a `NoteValue`
+public enum NoteModifier {
+  /// No additional lenght.
+  case `default`
+  /// Adds half of its own value.
+  case dotted
+  /// Three notes of the same value.
+  case triplet
+
+  /// Multiplier using in caluclation of note duration in seconds.
+  public var durationMultiplier: Double {
+    switch self {
+    case .default: return 1
+    case .dotted: return 1.5
+    case .triplet: return 0.67
+    }
+  }
+}
+
+/// Defines the duration of a note beatwise.
+public struct NoteValue {
+  public var type: NoteValueType
+  public var modifier: NoteModifier
+
+  public init(type: NoteValueType, modifier: NoteModifier = .default) {
+    self.type = type
+    self.modifier = modifier
+  }
+}
+
+// MARK: - Time Signature
+
+/// Defines how many beats in a measure with which note value.
+public struct TimeSignature {
+  /// Beats per measure.
+  public var beats: UInt
+
+  /// Note value per beat.
+  public var noteValue: NoteValueType
+
+  /// Initilizes the time signature with beats per measure and the value of the notes in beat.
+  ///
+  /// - Parameters:
+  ///   - beats: Number of beats in a measure
+  ///   - noteValue: Note value of the beats.
+  public init(beats: UInt, noteValue: NoteValueType) {
+    self.beats = beats
+    self.noteValue = noteValue
+  }
+
+  /// Initilizes the time signature with beats per measure and the value of the notes in beat. Returns nil if a division is not match a `NoteValue`.
+  ///
+  /// - Parameters:
+  ///   - beats: Number of beats in a measure
+  ///   - division: Number of the beats.
+  public init?(beats: UInt, division: UInt) {
+    guard let noteValue = NoteValueType(beats: Double(division)) else {
+      return nil
+    }
+
+    self.beats = beats
+    self.noteValue = noteValue
+  }
+}
+
+// MARK: Tempo
+
+/// Defines the tempo of the music with beats per second and time signature.
+public struct Tempo {
+  /// Time signature of music.
+  public var timeSignature = TimeSignature(beats: 4, noteValue: .quarter)
+
+  /// Beats per minutes.
+  public var bpm: Double = 120.0
+
+  /// Caluclates the duration of a note value in seconds.
+  public func duration(of noteValue: NoteValue) -> TimeInterval {
+    let secondsPerBeat = 60.0 / bpm
+    let secondsPerNote = secondsPerBeat * (timeSignature.noteValue.beats / noteValue.type.beats) * noteValue.modifier.durationMultiplier
+    return secondsPerNote
+  }
+
+  /// Calculates the LFO speed of a note vaule in hertz.
+  public func hertz(of noteValue: NoteValue) -> Double {
+    return 1 / duration(of: noteValue)
+  }
+}
+
 // MARK: - Note
 
 /// Calculates the `Note` above `Interval`.
