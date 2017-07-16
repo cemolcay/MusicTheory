@@ -236,6 +236,16 @@ public struct Tempo {
   /// Beats per minutes.
   public var bpm: Double = 120.0
 
+  /// Initilizes tempo with time signature and BPM.
+  ///
+  /// - Parameters:
+  ///   - timeSignature: Time Signature.
+  ///   - bpm: Beats per minute.
+  public init(timeSignature: TimeSignature, bpm: Double) {
+    self.timeSignature = timeSignature
+    self.bpm = bpm
+  }
+
   /// Caluclates the duration of a note value in seconds.
   public func duration(of noteValue: NoteValue) -> TimeInterval {
     let secondsPerBeat = 60.0 / bpm
