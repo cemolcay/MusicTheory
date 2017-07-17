@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import MusicTheory
 
 class MusicTheoryTests: XCTestCase {
     
@@ -79,5 +80,17 @@ extension MusicTheoryTests {
     let cminNotes: [NoteType] = [.c, .eFlat, .g]
     let cmin = Chord(type: .min, key: .c)
     XCTAssert(cminNotes == cmin.noteTypes)
+  }
+
+  func testDurations() {
+    var timeSignature = TimeSignature(beats: 4, noteValue: .quarter) // 4/4
+    var tempo = Tempo(timeSignature: timeSignature, bpm: 120) // 120BPM
+    var noteValue = NoteValue(type: .quarter)
+    var duration = tempo.duration(of: noteValue)
+    XCTAssert(duration == 0.5)
+
+    noteValue.modifier = .dotted
+    duration = tempo.duration(of: noteValue)
+    XCTAssert(duration == 0.75)
   }
 }
