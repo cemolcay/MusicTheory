@@ -10,103 +10,6 @@
 
 import Foundation
 
-// MARK: - NoteType
-
-/// Calculates the `NoteType` above `Interval`.
-///
-/// - Parameters:
-///   - noteType: The note type being added interval.
-///   - interval: Interval above.
-/// - Returns: Returns `NoteType` above interval.
-public func +(noteType: NoteType, interval: Interval) -> NoteType {
-  return NoteType(midiNote: noteType.rawValue + interval.halfstep)!
-}
-
-/// Calculates the `NoteType` above halfsteps.
-///
-/// - Parameters:
-///   - noteType: The note type being added halfsteps.
-///   - halfstep: Halfsteps above
-/// - Returns: Returns `NoteType` above halfsteps
-public func +(noteType: NoteType, halfstep: Int) -> NoteType {
-  return NoteType(midiNote: noteType.rawValue + halfstep)!
-}
-
-/// Calculates the `NoteType` below `Interval`.
-///
-/// - Parameters:
-///   - noteType: The note type being calculated.
-///   - interval: Interval below.
-/// - Returns: Returns `NoteType` below interval.
-public func -(noteType: NoteType, interval: Interval) -> NoteType {
-  return NoteType(midiNote: noteType.rawValue - interval.halfstep)!
-}
-
-/// Calculates the `NoteType` below halfsteps.
-///
-/// - Parameters:
-///   - noteType: The note type being calculated.
-///   - halfstep: Halfsteps below.
-/// - Returns: Returns `NoteType` below halfsteps.
-public func -(noteType: NoteType, halfstep: Int) -> NoteType {
-  return NoteType(midiNote: noteType.rawValue - halfstep)!
-}
-
-/// Represents 12 base notes in music.
-/// C, D, E, F, G, A, B with their flats.
-/// Raw values are included for easier calculation based on midi notes.
-public enum NoteType: Int {
-  case c = 0
-  case dFlat
-  case d
-  case eFlat
-  case e
-  case f
-  case gFlat
-  case g
-  case aFlat
-  case a
-  case bFlat
-  case b
-
-  /// All the notes in static array.
-  public static let all: [NoteType] = [
-    .c, .dFlat, .d, .eFlat, .e, .f,
-    .gFlat, .g, .aFlat, .a, .bFlat, .b
-  ]
-
-  /// Initilizes the note type with midiNote.
-  ///
-  /// - parameters:
-  ///  - midiNote: The midi note value wanted to be converted to `NoteType`.
-  public init?(midiNote: Int) {
-    let octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
-    let raw = octave > 0 ? midiNote - (octave * 12) : midiNote - ((octave + 1) * 12) + 12
-    guard let note = NoteType(rawValue: raw) else { return nil }
-    self = note
-  }
-}
-
-extension NoteType: CustomStringConvertible {
-
-  public var description: String {
-    switch self {
-    case .c: return "C"
-    case .dFlat: return "D♭"
-    case .d: return "D"
-    case .eFlat: return "E♭"
-    case .e: return "E"
-    case .f: return "F"
-    case .gFlat: return "G♭"
-    case .g: return "G"
-    case .aFlat: return "A♭"
-    case .a: return "A"
-    case .bFlat: return "B♭"
-    case .b: return "B"
-    }
-  }
-}
-
 // MARK: - Note Value
 
 /// Defines the types of note values.
@@ -226,7 +129,7 @@ public struct TimeSignature {
   }
 }
 
-// MARK: Tempo
+// MARK: - Tempo
 
 /// Defines the tempo of the music with beats per second and time signature.
 public struct Tempo {
@@ -256,6 +159,115 @@ public struct Tempo {
   /// Calculates the LFO speed of a note vaule in hertz.
   public func hertz(of noteValue: NoteValue) -> Double {
     return 1 / duration(of: noteValue)
+  }
+}
+
+// MARK: - NoteType
+
+/// Calculates the `NoteType` above `Interval`.
+///
+/// - Parameters:
+///   - noteType: The note type being added interval.
+///   - interval: Interval above.
+/// - Returns: Returns `NoteType` above interval.
+public func +(noteType: NoteType, interval: Interval) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue + interval.halfstep)!
+}
+
+/// Calculates the `NoteType` above halfsteps.
+///
+/// - Parameters:
+///   - noteType: The note type being added halfsteps.
+///   - halfstep: Halfsteps above
+/// - Returns: Returns `NoteType` above halfsteps
+public func +(noteType: NoteType, halfstep: Int) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue + halfstep)!
+}
+
+/// Calculates the `NoteType` below `Interval`.
+///
+/// - Parameters:
+///   - noteType: The note type being calculated.
+///   - interval: Interval below.
+/// - Returns: Returns `NoteType` below interval.
+public func -(noteType: NoteType, interval: Interval) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue - interval.halfstep)!
+}
+
+/// Calculates the `NoteType` below halfsteps.
+///
+/// - Parameters:
+///   - noteType: The note type being calculated.
+///   - halfstep: Halfsteps below.
+/// - Returns: Returns `NoteType` below halfsteps.
+public func -(noteType: NoteType, halfstep: Int) -> NoteType {
+  return NoteType(midiNote: noteType.rawValue - halfstep)!
+}
+
+/// Defines 12 base notes in music.
+/// C, D, E, F, G, A, B with their flats.
+/// Raw values are included for easier calculation based on midi notes.
+public enum NoteType: Int {
+  /// C note.
+  case c = 0
+  /// D♭ or C♯ note.
+  case dFlat
+  /// D note.
+  case d
+  /// E♭ or D♯ note.
+  case eFlat
+  /// E note.
+  case e
+  /// F note.
+  case f
+  /// G♭ or F♯ note.
+  case gFlat
+  /// G Note.
+  case g
+  /// A♭ or G♯ note.
+  case aFlat
+  /// A note.
+  case a
+  /// B♭ or A♯ note.
+  case bFlat
+  /// B note.
+  case b
+
+  /// All the notes in static array.
+  public static let all: [NoteType] = [
+    .c, .dFlat, .d, .eFlat, .e, .f,
+    .gFlat, .g, .aFlat, .a, .bFlat, .b
+  ]
+
+  /// Initilizes the note type with midiNote.
+  ///
+  /// - parameters:
+  ///  - midiNote: The midi note value wanted to be converted to `NoteType`.
+  public init?(midiNote: Int) {
+    let octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
+    let raw = octave > 0 ? midiNote - (octave * 12) : midiNote - ((octave + 1) * 12) + 12
+    guard let note = NoteType(rawValue: raw) else { return nil }
+    self = note
+  }
+}
+
+extension NoteType: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .c: return "C"
+    case .dFlat: return "D♭"
+    case .d: return "D"
+    case .eFlat: return "E♭"
+    case .e: return "E"
+    case .f: return "F"
+    case .gFlat: return "G♭"
+    case .g: return "G"
+    case .aFlat: return "A♭"
+    case .a: return "A"
+    case .bFlat: return "B♭"
+    case .b: return "B"
+    }
   }
 }
 
@@ -373,41 +385,35 @@ extension Note: CustomStringConvertible {
 
 // MARK: - Interval
 
-/** Represents the interval between `Note`s in halfstep tones and degrees.
-
-- unison: Zero halfstep and zero degree, the note itself.
-- m2: One halfstep and one degree between notes.
-- M2: Two halfsteps and one degree between notes.
-- m3: Three halfsteps and two degree between notes.
-- M3: Four halfsteps and two degree between notes.
-- P4: Five halfsteps and three degree between notes.
-- A4: Six halfsteps and three degree between notes.
-- d5: Six halfsteps and four degree between notes.
-- P5: Seven halfsteps and four degree between notes.
-- A5: Eight halfsteps and four degree between notes.
-- m6: Eight halfsteps and five degree between notes.
-- M6: Nine halfsteps and five degree between notes.
-- d7: Nine halfsteps and six degree between notes.
-- m7: Ten halfsteps and six degree between notes.
-- M7: Eleven halfsteps and six degree between notes.
-- A7: Twelve halfsteps and six degree between notes.
-- P8: Twelve halfsteps and seven degree between notes.
-- custom: Custom halfsteps and degrees by given input between notes.
-*/
+/// Defines the interval between `Note`s in halfstep tones and degrees.
 public enum Interval: ExpressibleByIntegerLiteral {
+  /// Zero halfstep and zero degree, the note itself.
   case unison
+  /// One halfstep and one degree between notes.
   case m2
+  /// Two halfsteps and one degree between notes.
   case M2
+  /// Three halfsteps and two degree between notes.
   case m3
+  /// Four halfsteps and two degree between notes.
   case M3
+  /// Five halfsteps and three degree between notes.
   case P4
+  /// Six halfsteps and four degree between notes.
   case d5
+  /// Seven halfsteps and four degree between notes.
   case P5
+  /// Eight halfsteps and five degree between notes.
   case m6
+  /// Nine halfsteps and five degree between notes.
   case M6
+  /// Ten halfsteps and six degree between notes.
   case m7
+  /// Eleven halfsteps and six degree between notes.
   case M7
+  /// Twelve halfsteps and seven degree between notes.
   case P8
+  /// Custom halfsteps and degrees by given input between notes.
   case custom(halfstep: Int)
 
   /// Initilizes interval with its degree and halfstep.
@@ -517,66 +523,103 @@ extension Interval: CustomStringConvertible {
 
 // MARK: - ScaleType
 
-/** Represents scale by the intervals between note sequences.
-
-- major: Major scale.
-- minor: Minor scale.
-- harmonicMinor: Harmonic minor scale.
-- dorian: Dorian scale.
-- phrygian: Phrygian scale.
-- lydian: Lydian scale.
-- mixolydian: Mixolydian scale.
-- locrian: Locrian scale.
-- custom: Custom scale by given base key and intervals.
-*/
+/// Represents scale by the intervals between note sequences.
 public enum ScaleType {
+  /// Major scale.
   case major
+  /// Minor scale.
   case minor
+  /// Harmonic minor scale.
   case harmonicMinor
+  /// Melodic minor scale.
   case melodicMinor
+  /// Pentatonic major scale.
   case pentatonicMajor
+  /// Pentatonic minor scale.
   case pentatonicMinor
+  /// Pentatonic blues scale.
   case pentatonicBlues
+  /// Pentatonic neutral scale.
   case pentatonicNeutral
+  /// Ionian scale.
   case ionian
+  /// Aeolian scale.
   case aeolian
+  /// Dorian scale.
   case dorian
+  /// Mixolydian scale.
   case mixolydian
+  /// Phrygian scale.
   case phrygian
+  /// Lydian scale.
   case lydian
+  /// Locrian scale.
   case locrian
-  case dimHhalf
+  /// Half diminished scale.
+  case dimHalf
+  /// Whole diminished scale.
   case dimWhole
+  /// Whole scale.
   case whole
+  /// Augmented scale.
   case augmented
+  /// Chromatic scale.
   case chromatic
+  /// Roumanian minor scale.
   case roumanianMinor
+  /// Spanish gypsy scale.
   case spanishGypsy
+  /// Blues scale.
   case blues
+  /// Diatonic scale.
   case diatonic
+  /// Dobule harmonic scale.
   case doubleHarmonic
+  /// Eight tone spanish scale.
   case eightToneSpanish
+  /// Enigmatic scale.
   case enigmatic
+  /// Leading whole tone scale.
   case leadingWholeTone
+  /// Lydian augmented scale.
   case lydianAugmented
+  /// Neopolitan major scale.
   case neopolitanMajor
+  /// Neopolitan minor scale.
   case neopolitanMinor
+  /// Pelog scale.
   case pelog
+  /// Prometheus scale.
   case prometheus
+  /// Prometheus neopolitan scale.
   case prometheusNeopolitan
+  /// Six tone symmetrical scale.
   case sixToneSymmetrical
+  /// Super locrian scale.
   case superLocrian
+  /// Lydian minor scale.
   case lydianMinor
+  /// Lydian diminished scale.
   case lydianDiminished
+  /// Nine tone scale.
   case nineToneScale
+  /// Auxiliary diminished scale.
   case auxiliaryDiminished
+  /// Auxiliary augmaneted scale.
   case auxiliaryAugmented
+  /// Auxiliary diminished blues scale.
   case auxiliaryDimBlues
+  /// Major locrian scale.
   case majorLocrian
+  /// Overtone scale.
   case overtone
+  /// Diminished whole tone scale.
   case diminishedWholeTone
+  /// Pure minor scale.
   case pureMinor
+  /// Dominant seventh scale.
   case dominant7th
+  /// Custom scale with given interval set.
   case custom(intervals: [Interval])
 
   /// Intervals of the scale.
@@ -597,7 +640,7 @@ public enum ScaleType {
     case .pentatonicNeutral: return [.unison, .M2, .P4, .P5, .m7]
     case .ionian: return [.unison, .M2, .M3, .P4, .P5, .M6, .M7]
     case .aeolian: return [.unison, .M2, .m3, .P4, .P5, .m6, .m7]
-    case .dimHhalf: return [.unison, .m2, .m3, .M3, .d5, .P5, .M6, .m7]
+    case .dimHalf: return [.unison, .m2, .m3, .M3, .d5, .P5, .M6, .m7]
     case .dimWhole: return [.unison, .M2, .m3, .P4, .d5, .m6, .M6, .M7]
     case .whole: return [.unison, .M2, .M3, .d5, .m6, .m7]
     case .augmented: return [.m3, .M3, .P5, .m6, .M7]
@@ -651,7 +694,7 @@ public enum ScaleType {
       .phrygian,
       .lydian,
       .locrian,
-      .dimHhalf,
+      .dimHalf,
       .dimWhole,
       .whole,
       .augmented,
@@ -706,8 +749,8 @@ extension ScaleType: CustomStringConvertible {
     case .phrygian: return "Phrygian"
     case .lydian: return "Lydian"
     case .locrian: return "Locrian"
-    case .dimHhalf: return "Dim half"
-    case .dimWhole: return "Dim whole"
+    case .dimHalf: return "Half Diminished"
+    case .dimWhole: return "Whole Diminished"
     case .whole: return "Whole"
     case .augmented: return "Augmented"
     case .chromatic: return "Chromatic"
@@ -805,82 +848,119 @@ extension Scale: CustomStringConvertible {
 
 // MARK: - ChordType
 
-/** Represents chords by note sequences initilized by their intervals.
-
-- maj: Major chord.
-- min: Minor chord.
-- aug: Augmented chord.
-- b5: Power chord.
-- dim: Dimineshed chord.
-- sus: Suspended chord.
-- sus2: Suspended second chord.
-- M6: Major sixth chord.
-- m6: Minor sixth chord.
-- dom7: Dominant seventh chord.
-- M7: Major seventh chord.
-- m7: Minor seventh chord.
-- aug7: Augmented seventh chord.
-- dim7: Diminished seventh chord.
-- M7b5: Major seventh power chord.
-- m7b5: Minor seventh power chord.
-- custom: Custom chord with given base key `Note` and intervals.
-*/
+/// Defines chords by note sequences initilized by their intervals.
 public enum ChordType {
+  /// Major chord.
   case maj
+  /// Minor chord.
   case min
+  /// Agumented chord.
   case aug
+  /// Power chord.
   case b5
+  /// Diminished chord.
   case dim
+  /// Suspended chord
   case sus
+  /// Suspended 2 chord.
   case sus2
+  /// Dominant 6th chord.
   case dom6
+  /// Minor 6th chord.
   case m6
+  /// Dominant 7th chord.
   case dom7
+  /// Major 7th chord.
   case M7
+  /// Minor 7th chord.
   case m7
+  /// Agumented 7th chord.
   case aug7
+  /// Diminished 7th chord.
   case dim7
+  /// Major 7th power chord.
   case M7b5
+  /// Minor 7th power chord.
   case m7b5
+  /// Dominant 9th chord.
   case dom9
+  /// Major 9th chord.
   case M9
+  /// Minor 9th chord.
   case m9
+  /// Dominant 11th chord.
   case dom11
+  /// Major 11th chord.
   case M11
+  /// Minor 11th chord.
   case m11
+  /// Dominant 13th chord.
   case dom13
+  /// Major 13th chord.
   case M13
+  /// Minor 13th chord.
   case m13
+  /// Added 9th chord.
   case add9
+  /// Minor added 9th chord.
   case madd9
+  /// Major 7th flat 9th chord.
   case M7b9
+  /// Minor 7th flat 9th chord.
   case m7b9
+  /// Major 6th added 9th chord.
   case M6add9
+  /// Minor 6th added 9th chord.
   case m6add9
+  /// Dominant 7th added 11th chord.
   case dom7add11
+  /// Major 7th added 11th chord.
   case M7add11
+  /// Minor 7th added 11th chord.
   case m7add11
+  /// Dominant 7th added 13th chord.
   case dom7add13
+  /// Major 7th added 13th chord.
   case M7add13
+  /// Minor 7th added 13th chord.
   case m7add13
+  /// Major 7th half diminished chord.
   case M7a5
+  /// Minor 7th half diminished chord.
   case m7a5
+  /// Major 7th shard 9th chord.
   case M7a9
+  /// Major 7th half diminished flat 9th chord.
   case M7a5b9
+  /// Major 9th sharp 11th chord.
   case M9a11
+  /// Major 9th flat 13th chord.
   case M9b13
+  /// Major 6th suspended 4 chord.
   case M6sus4
+  /// Major 7th suspended 4 chord.
   case maj7sus4
+  /// Dominant 7th suspended 4 chord.
   case M7sus4
+  /// Dominant 9th suspended 4 chord.
   case M9sus4
+  /// Major 9th suspended 4 chord.
   case maj9sus4
+  /// Minor major 7th chord.
   case mM7
+  /// Minor major 9th chord.
   case mM9
+  /// Minor major 11th chord.
   case mM11
+  /// Minor major 13th chord.
   case mM13
+  /// Minor major 7th added 11th chord.
   case mM7add11
+  /// Minor major added 13th chord.
   case mM7add13
+  /// 5th chord.
   case M5
+  /// Custom chord with given interval series and description.
   case custom(intervals: [Interval], description: String)
 
   /// Intervals of the chord based on the chord's key.
