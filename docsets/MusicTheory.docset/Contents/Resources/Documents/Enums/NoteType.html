@@ -14,7 +14,7 @@
     <a title="NoteType Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">MusicTheory Docs</a> (50% documented)</p>
+        <p><a href="../index.html">MusicTheory Docs</a> (96% documented)</p>
         <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -29,14 +29,6 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/Dataset.html">Dataset</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -46,7 +38,13 @@
                 <a href="../Enums/Interval.html">Interval</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/NoteType.html">NoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteValueType.html">NoteValueType</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/ScaleType.html">ScaleType</a>
@@ -81,6 +79,9 @@
                 <a href="../Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi2eeFTVS_4NoteS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Functions.html#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
               </li>
             </ul>
@@ -95,7 +96,16 @@
                 <a href="../Structs/Note.html">Note</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimeSignature.html">TimeSignature</a>
               </li>
             </ul>
           </li>
@@ -111,7 +121,7 @@
 
                 </div>
               </div>
-            <p>Represents 12 base notes in music.
+            <p>Defines 12 base notes in music.
 C, D, E, F, G, A, B with their flats.
 Raw values are included for easier calculation based on midi notes.</p>
 
@@ -132,14 +142,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>C note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
 
                         </div>
                       </div>
@@ -163,14 +173,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>D♭ or C♯ note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">dFlat</span></code></pre>
 
                         </div>
                       </div>
@@ -194,14 +204,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>D note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">d</span></code></pre>
 
                         </div>
                       </div>
@@ -225,14 +235,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>E♭ or D♯ note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">eFlat</span></code></pre>
 
                         </div>
                       </div>
@@ -256,14 +266,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>E note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">e</span></code></pre>
 
                         </div>
                       </div>
@@ -287,14 +297,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>F note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">f</span></code></pre>
 
                         </div>
                       </div>
@@ -318,14 +328,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>G♭ or F♯ note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">gFlat</span></code></pre>
 
                         </div>
                       </div>
@@ -349,14 +359,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>G Note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">g</span></code></pre>
 
                         </div>
                       </div>
@@ -380,14 +390,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A♭ or G♯ note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">aFlat</span></code></pre>
 
                         </div>
                       </div>
@@ -411,14 +421,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">a</span></code></pre>
 
                         </div>
                       </div>
@@ -442,14 +452,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>B♭ or A♯ note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">bFlat</span></code></pre>
 
                         </div>
                       </div>
@@ -473,14 +483,14 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>B note.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">b</span></code></pre>
 
                         </div>
                       </div>
@@ -504,7 +514,7 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>All the notes in static array</p>
+                        <p>All the notes in static array.</p>
 
                       </div>
                       <div class="declaration">
@@ -597,7 +607,7 @@ Raw values are included for easier calculation based on midi notes.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-01-07)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-07-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

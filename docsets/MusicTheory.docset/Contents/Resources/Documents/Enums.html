@@ -13,7 +13,7 @@
     <a title="Enums  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MusicTheory Docs</a> (50% documented)</p>
+        <p><a href="index.html">MusicTheory Docs</a> (96% documented)</p>
         <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -28,14 +28,6 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/Dataset.html">Dataset</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -45,7 +37,13 @@
                 <a href="Enums/Interval.html">Interval</a>
               </li>
               <li class="nav-group-task">
+                <a href="Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums/NoteType.html">NoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/NoteValueType.html">NoteValueType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/ScaleType.html">ScaleType</a>
@@ -80,6 +78,9 @@
                 <a href="Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi2eeFTVS_4NoteS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
               </li>
             </ul>
@@ -94,7 +95,16 @@
                 <a href="Structs/Note.html">Note</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/TimeSignature.html">TimeSignature</a>
               </li>
             </ul>
           </li>
@@ -110,19 +120,19 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/ScaleType"></a>
-                <a name="//apple_ref/swift/Section/ScaleType" class="dashAnchor"></a>
-                <a href="#/ScaleType">
-                  <h3 class="section-name">ScaleType</h3>
+                <a name="/Note%20Value"></a>
+                <a name="//apple_ref/swift/Section/Note Value" class="dashAnchor"></a>
+                <a href="#/Note%20Value">
+                  <h3 class="section-name">Note Value</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:O11MusicTheory9ScaleType"></a>
-                    <a name="//apple_ref/swift/Enum/ScaleType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:O11MusicTheory9ScaleType">ScaleType</a>
+                    <a name="/s:O11MusicTheory13NoteValueType"></a>
+                    <a name="//apple_ref/swift/Enum/NoteValueType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:O11MusicTheory13NoteValueType">NoteValueType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -130,50 +140,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents scale by the intervals between note sequences.</p>
+                        <p>Defines the types of note values.</p>
 
-<ul>
-<li>major: Major scale.</li>
-<li>minor: Minor scale</li>
-<li>harmonicMinor: Harmonic minor scale</li>
-<li>dorian: Dorian scale</li>
-<li>phrygian: Phrygian scale</li>
-<li>lydian: Lydian scale</li>
-<li>mixolydian: Mixolydian scale</li>
-<li>locrian: Locrian scale</li>
-<li>custom: Custom scale by given base key and intervals.</li>
-</ul>
-
-                        <a href="Enums/ScaleType.html" class="slightly-smaller">See more</a>
+                        <a href="Enums/NoteValueType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ScaleType</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteValueType</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/ChordType"></a>
-                <a name="//apple_ref/swift/Section/ChordType" class="dashAnchor"></a>
-                <a href="#/ChordType">
-                  <h3 class="section-name">ChordType</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:O11MusicTheory9ChordType"></a>
-                    <a name="//apple_ref/swift/Enum/ChordType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:O11MusicTheory9ChordType">ChordType</a>
+                    <a name="/s:O11MusicTheory12NoteModifier"></a>
+                    <a name="//apple_ref/swift/Enum/NoteModifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:O11MusicTheory12NoteModifier">NoteModifier</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -181,35 +168,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents chords by note sequences initilized by their intervals.</p>
+                        <p>Defines the lenght of a <code><a href="Structs/NoteValue.html">NoteValue</a></code></p>
 
-<ul>
-<li>maj: Major chord.</li>
-<li>min: Minor chord.</li>
-<li>aug: Augmented chord.</li>
-<li>b5: Power chord.</li>
-<li>dim: Dimineshed chord.</li>
-<li>sus: Suspended chord.</li>
-<li>sus2: Suspended second chord.</li>
-<li>M6: Major sixth chord.</li>
-<li>m6: Minor sixth chord.</li>
-<li>dom7: Dominant seventh chord.</li>
-<li>M7: Major seventh chord.</li>
-<li>m7: Minor seventh chord.</li>
-<li>aug7: Augmented seventh chord.</li>
-<li>dim7: Diminished seventh chord.</li>
-<li>M7b5: Major seventh power chord.</li>
-<li>m7b5: Minor seventh power chord.</li>
-<li>custom: Custom chord with given base key <code><a href="Structs/Note.html">Note</a></code> and intervals.</li>
-</ul>
-
-                        <a href="Enums/ChordType.html" class="slightly-smaller">See more</a>
+                        <a href="Enums/NoteModifier.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordType</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteModifier</span></code></pre>
 
                         </div>
                       </div>
@@ -240,7 +207,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents 12 base notes in music.
+                        <p>Defines 12 base notes in music.
 C, D, E, F, G, A, B with their flats.
 Raw values are included for easier calculation based on midi notes.</p>
 
@@ -281,28 +248,7 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents the interval between <code><a href="Structs/Note.html">Note</a></code>s in halfstep tones and degrees.</p>
-
-<ul>
-<li>unison: Zero halfstep and zero degree, the note itself.</li>
-<li>m2: One halfstep and one degree between notes.</li>
-<li>M2: Two halfsteps and one degree between notes.</li>
-<li>m3: Three halfsteps and two degree between notes.</li>
-<li>M3: Four halfsteps and two degree between notes.</li>
-<li>P4: Five halfsteps and three degree between notes.</li>
-<li>A4: Six halfsteps and three degree between notes.</li>
-<li>d5: Six halfsteps and four degree between notes.</li>
-<li>P5: Seven halfsteps and four degree between notes.</li>
-<li>A5: Eight halfsteps and four degree between notes.</li>
-<li>m6: Eight halfsteps and five degree between notes.</li>
-<li>M6: Nine halfsteps and five degree between notes.</li>
-<li>d7: Nine halfsteps and six degree between notes.</li>
-<li>m7: Ten halfsteps and six degree between notes.</li>
-<li>M7: Eleven halfsteps and six degree between notes.</li>
-<li>A7: Twelve halfsteps and six degree between notes.</li>
-<li>P8: Twelve halfsteps and seven degree between notes.</li>
-<li>custom: Custom halfsteps and degrees by given input between notes.</li>
-</ul>
+                        <p>Defines the interval between <code><a href="Structs/Note.html">Note</a></code>s in halfstep tones and degrees.</p>
 
                         <a href="Enums/Interval.html" class="slightly-smaller">See more</a>
                       </div>
@@ -310,7 +256,85 @@ Raw values are included for easier calculation based on midi notes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span><span class="p">:</span> <span class="kt">ExpressibleByIntegerLiteral</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/ScaleType"></a>
+                <a name="//apple_ref/swift/Section/ScaleType" class="dashAnchor"></a>
+                <a href="#/ScaleType">
+                  <h3 class="section-name">ScaleType</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:O11MusicTheory9ScaleType"></a>
+                    <a name="//apple_ref/swift/Enum/ScaleType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:O11MusicTheory9ScaleType">ScaleType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents scale by the intervals between note sequences.</p>
+
+                        <a href="Enums/ScaleType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ScaleType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/ChordType"></a>
+                <a name="//apple_ref/swift/Section/ChordType" class="dashAnchor"></a>
+                <a href="#/ChordType">
+                  <h3 class="section-name">ChordType</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:O11MusicTheory9ChordType"></a>
+                    <a name="//apple_ref/swift/Enum/ChordType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:O11MusicTheory9ChordType">ChordType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines chords by note sequences initilized by their intervals.</p>
+
+                        <a href="Enums/ChordType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordType</span></code></pre>
 
                         </div>
                       </div>
@@ -322,7 +346,7 @@ Raw values are included for easier calculation based on midi notes.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-01-07)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-07-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

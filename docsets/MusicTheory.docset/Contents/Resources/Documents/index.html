@@ -13,7 +13,7 @@
     <a title="MusicTheory  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MusicTheory Docs</a> (50% documented)</p>
+        <p><a href="index.html">MusicTheory Docs</a> (96% documented)</p>
         <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -28,14 +28,6 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/Dataset.html">Dataset</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -45,7 +37,13 @@
                 <a href="Enums/Interval.html">Interval</a>
               </li>
               <li class="nav-group-task">
+                <a href="Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums/NoteType.html">NoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/NoteValueType.html">NoteValueType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/ScaleType.html">ScaleType</a>
@@ -80,6 +78,9 @@
                 <a href="Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:F11MusicTheoryoi2eeFTVS_4NoteS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
               </li>
             </ul>
@@ -94,7 +95,16 @@
                 <a href="Structs/Note.html">Note</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/TimeSignature.html">TimeSignature</a>
               </li>
             </ul>
           </li>
@@ -106,12 +116,16 @@
             
             <a href='#musictheory' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='musictheory'>MusicTheory</h1>
 
-<p>A music theory library with <code>Note</code>, <code>Interval</code>, <code>Tone</code>, <code>Scale</code> and <code>Chord</code> representations in swift enums.</p>
+<p>A music theory library with <code>Note</code>, <code>Interval</code>, <code>Scale</code> and <code>Chord</code> representations in swift enums.</p>
 <a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
 
 <ul>
 <li>Swift 3</li>
 <li>Xcode 8</li>
+<li>iOS 8.0+</li>
+<li>macOS 10.9+</li>
+<li>tvOS 9.0+</li>
+<li>watchOS 2.0+</li>
 </ul>
 <a href='#install' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='install'>Install</h2>
 <pre class="highlight plaintext"><code>pod 'MusicTheorySwift'
@@ -130,7 +144,8 @@
 <li>Could calculate piano key value on a 88 key piano for given octave.</li>
 <li>Could calculate next or previous notes for given <code>Interval</code> or <code>Tone</code>.</li>
 </ul>
-<pre class="highlight plaintext"><code>let c: Note = .c
+<pre class="highlight plaintext"><code>let d: NoteType = .d
+let c = Note(type: .c, octave: 0)
 </code></pre>
 <a href='#scale' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='scale'>Scale</h3>
 
@@ -140,8 +155,9 @@
 <li>Could create midi note sequance of the whole scale.</li>
 <li>Could create <code>Note</code>s of the scale starting from the key and going forward by intervals from there.</li>
 </ul>
-<pre class="highlight plaintext"><code>let c: Note = .c
-let cMaj: Scale = .major(key: c)
+<pre class="highlight plaintext"><code>let c: NoteType = .c
+let maj: ScaleType = .major
+let cMaj = Scale(type: maj, key: c)
 </code></pre>
 <a href='#chord' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='chord'>Chord</h3>
 
@@ -151,8 +167,9 @@ let cMaj: Scale = .major(key: c)
 <li>Could create midi note sequance of the chord.</li>
 <li>Could create <code>Note</code>s of the chord.</li>
 </ul>
-<pre class="highlight plaintext"><code>let c: Note = .c
-let cMaj: Chord = .maj(key: c)
+<pre class="highlight plaintext"><code>let c: NoteType = .c
+let maj: ChordType = .maj
+let cMaj = Chord(type: maj, key: c)
 </code></pre>
 <a href='#interval' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='interval'>Interval</h3>
 
@@ -162,20 +179,18 @@ let cMaj: Chord = .maj(key: c)
 <li>Could create custom interval.</li>
 <li>Used in creation of <code>Scale</code>s and <code>Chord</code>s.</li>
 </ul>
-<a href='#tone' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='tone'>Tone</h3>
-
-<ul>
-<li>Halfstep, whole, oneAndHalf and custom values</li>
-<li>Created for alternate of <code>Interval</code> for calculating neighbour <code>Note</code>s.</li>
-</ul>
 <a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='documentation'>Documentation</h3>
 
 <p>Documentation created with jazzy, hosted on <a href="https://cemolcay.github.io/MusicTheory/">github pages</a></p>
+<a href='#unit-tests' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='unit-tests'>Unit Tests</h3>
+
+<p>You can find unit tests in <code>MusicTheoryTests</code> target.<br>
+Press <code>⌘+U</code> for running tests.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-01-07)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-07-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

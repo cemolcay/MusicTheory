@@ -14,7 +14,7 @@
     <a title="Interval Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">MusicTheory Docs</a> (50% documented)</p>
+        <p><a href="../index.html">MusicTheory Docs</a> (96% documented)</p>
         <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -29,14 +29,6 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/Dataset.html">Dataset</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -46,7 +38,13 @@
                 <a href="../Enums/Interval.html">Interval</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/NoteType.html">NoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteValueType.html">NoteValueType</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/ScaleType.html">ScaleType</a>
@@ -81,6 +79,9 @@
                 <a href="../Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi2eeFTVS_4NoteS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Functions.html#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
               </li>
             </ul>
@@ -95,7 +96,16 @@
                 <a href="../Structs/Note.html">Note</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimeSignature.html">TimeSignature</a>
               </li>
             </ul>
           </li>
@@ -107,32 +117,11 @@
             <h1>Interval</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span><span class="p">:</span> <span class="kt">ExpressibleByIntegerLiteral</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents the interval between <code><a href="../Structs/Note.html">Note</a></code>s in halfstep tones and degrees.</p>
-
-<ul>
-<li>unison: Zero halfstep and zero degree, the note itself.</li>
-<li>m2: One halfstep and one degree between notes.</li>
-<li>M2: Two halfsteps and one degree between notes.</li>
-<li>m3: Three halfsteps and two degree between notes.</li>
-<li>M3: Four halfsteps and two degree between notes.</li>
-<li>P4: Five halfsteps and three degree between notes.</li>
-<li>A4: Six halfsteps and three degree between notes.</li>
-<li>d5: Six halfsteps and four degree between notes.</li>
-<li>P5: Seven halfsteps and four degree between notes.</li>
-<li>A5: Eight halfsteps and four degree between notes.</li>
-<li>m6: Eight halfsteps and five degree between notes.</li>
-<li>M6: Nine halfsteps and five degree between notes.</li>
-<li>d7: Nine halfsteps and six degree between notes.</li>
-<li>m7: Ten halfsteps and six degree between notes.</li>
-<li>M7: Eleven halfsteps and six degree between notes.</li>
-<li>A7: Twelve halfsteps and six degree between notes.</li>
-<li>P8: Twelve halfsteps and seven degree between notes.</li>
-<li>custom: Custom halfsteps and degrees by given input between notes.</li>
-</ul>
+            <p>Defines the interval between <code><a href="../Structs/Note.html">Note</a></code>s in halfstep tones and degrees.</p>
 
           </section>
           <section class="section task-group-section">
@@ -151,14 +140,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Zero halfstep and zero degree, the note itself.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">unison</span></code></pre>
 
                         </div>
                       </div>
@@ -182,14 +171,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>One halfstep and one degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">m2</span></code></pre>
 
                         </div>
                       </div>
@@ -213,14 +202,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Two halfsteps and one degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">M2</span></code></pre>
 
                         </div>
                       </div>
@@ -244,14 +233,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Three halfsteps and two degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">m3</span></code></pre>
 
                         </div>
                       </div>
@@ -275,14 +264,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Four halfsteps and two degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">M3</span></code></pre>
 
                         </div>
                       </div>
@@ -306,45 +295,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Five halfsteps and three degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FO11MusicTheory8Interval2A4FMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/A4" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO11MusicTheory8Interval2A4FMS0_S0_">A4</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">P4</span></code></pre>
 
                         </div>
                       </div>
@@ -368,14 +326,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Six halfsteps and four degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">d5</span></code></pre>
 
                         </div>
                       </div>
@@ -399,45 +357,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Seven halfsteps and four degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FO11MusicTheory8Interval2A5FMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/A5" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO11MusicTheory8Interval2A5FMS0_S0_">A5</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">P5</span></code></pre>
 
                         </div>
                       </div>
@@ -461,14 +388,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Eight halfsteps and five degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">m6</span></code></pre>
 
                         </div>
                       </div>
@@ -492,45 +419,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Nine halfsteps and five degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FO11MusicTheory8Interval2d7FMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/d7" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO11MusicTheory8Interval2d7FMS0_S0_">d7</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">M6</span></code></pre>
 
                         </div>
                       </div>
@@ -554,14 +450,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Ten halfsteps and six degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">m7</span></code></pre>
 
                         </div>
                       </div>
@@ -585,45 +481,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Eleven halfsteps and six degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FO11MusicTheory8Interval2A7FMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/A7" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO11MusicTheory8Interval2A7FMS0_S0_">A7</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">M7</span></code></pre>
 
                         </div>
                       </div>
@@ -647,14 +512,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Twelve halfsteps and seven degree between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">P8</span></code></pre>
 
                         </div>
                       </div>
@@ -668,9 +533,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO11MusicTheory8Interval6customFMS0_FT6degreeSi8halfstepSi_S0_"></a>
+                    <a name="/s:FO11MusicTheory8Interval6customFMS0_FT8halfstepSi_S0_"></a>
                     <a name="//apple_ref/swift/Element/custom" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO11MusicTheory8Interval6customFMS0_FT6degreeSi8halfstepSi_S0_">custom</a>
+                    <a class="token" href="#/s:FO11MusicTheory8Interval6customFMS0_FT8halfstepSi_S0_">custom</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -678,14 +543,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Custom halfsteps and degrees by given input between notes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Interval</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">custom</span><span class="p">(</span><span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -699,9 +564,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO11MusicTheory8IntervalcFT6degreeSi8halfstepSi_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(degree:halfstep:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO11MusicTheory8IntervalcFT6degreeSi8halfstepSi_S0_">init(degree:halfstep:)</a>
+                    <a name="/s:FO11MusicTheory8IntervalcFT8halfstepSi_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(halfstep:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8IntervalcFT8halfstepSi_S0_">init(halfstep:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -715,8 +580,8 @@
 <li>Parameters:
 
 <ul>
-<li>degree: Degree of interval</li>
-<li>halfstep: Halfstep of interval</li>
+<li>degree: Degree of interval.</li>
+<li>halfstep: Halfstep of interval.</li>
 </ul></li>
 </ul>
 
@@ -725,7 +590,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">degree</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">halfstep</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -741,7 +606,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Degree of interval</p>
+                                  <p>Degree of interval.</p>
 
                                 </div>
                               </td>
@@ -754,13 +619,49 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Halfstep of interval</p>
+                                  <p>Halfstep of interval.</p>
 
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8IntervalcFT14integerLiteralSi_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(integerLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8IntervalcFT14integerLiteralSi_S0_">init(integerLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ExpressibleByIntegerLiteral init function.
+You can convert Int value of halfsteps to Interval.</p>
+
+<ul>
+<li>:
+
+<ul>
+<li>value: Halfstep value of Interval.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">integerLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -850,12 +751,39 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO11MusicTheory8Interval5romanSS"></a>
+                    <a name="//apple_ref/swift/Property/roman" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO11MusicTheory8Interval5romanSS">roman</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Roman numeric value of interval by its halfstep value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">roman</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-01-07)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-07-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

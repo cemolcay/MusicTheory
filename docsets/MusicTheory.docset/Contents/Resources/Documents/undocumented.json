@@ -1,421 +1,50 @@
 {
   "warnings": [
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 59,
-      "symbol": "NoteType.c",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 88,
+      "symbol": "NoteValue.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 60,
-      "symbol": "NoteType.dFlat",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 89,
+      "symbol": "NoteValue.modifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 61,
-      "symbol": "NoteType.d",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 91,
+      "symbol": "NoteValue.init(type:modifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 62,
-      "symbol": "NoteType.eFlat",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 63,
-      "symbol": "NoteType.e",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 64,
-      "symbol": "NoteType.f",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 65,
-      "symbol": "NoteType.gFlat",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 66,
-      "symbol": "NoteType.g",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 67,
-      "symbol": "NoteType.aFlat",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 68,
-      "symbol": "NoteType.a",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 69,
-      "symbol": "NoteType.bFlat",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 70,
-      "symbol": "NoteType.b",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 237,
-      "symbol": "Interval.unison",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 238,
-      "symbol": "Interval.m2",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 239,
-      "symbol": "Interval.M2",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 240,
-      "symbol": "Interval.m3",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 241,
-      "symbol": "Interval.M3",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 242,
-      "symbol": "Interval.P4",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 243,
-      "symbol": "Interval.A4",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 244,
-      "symbol": "Interval.d5",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 245,
-      "symbol": "Interval.P5",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 246,
-      "symbol": "Interval.A5",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 247,
-      "symbol": "Interval.m6",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 248,
-      "symbol": "Interval.M6",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 249,
-      "symbol": "Interval.d7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 250,
-      "symbol": "Interval.m7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 251,
-      "symbol": "Interval.M7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 252,
-      "symbol": "Interval.A7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 253,
-      "symbol": "Interval.P8",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 254,
-      "symbol": "Interval.custom",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 361,
-      "symbol": "ScaleType.major",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 362,
-      "symbol": "ScaleType.minor",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 363,
-      "symbol": "ScaleType.harmonicMinor",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 364,
-      "symbol": "ScaleType.dorian",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 365,
-      "symbol": "ScaleType.phrygian",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 366,
-      "symbol": "ScaleType.lydian",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 367,
-      "symbol": "ScaleType.mixolydian",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 368,
-      "symbol": "ScaleType.locrian",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 369,
-      "symbol": "ScaleType.custom",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 392,
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 794,
       "symbol": "Scale.type",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 393,
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 795,
       "symbol": "Scale.key",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 471,
-      "symbol": "ChordType.maj",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 472,
-      "symbol": "ChordType.min",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 473,
-      "symbol": "ChordType.aug",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 474,
-      "symbol": "ChordType.b5",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 475,
-      "symbol": "ChordType.dim",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 476,
-      "symbol": "ChordType.sus",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 477,
-      "symbol": "ChordType.sus2",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 478,
-      "symbol": "ChordType.M6",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 479,
-      "symbol": "ChordType.m6",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 480,
-      "symbol": "ChordType.dom7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 481,
-      "symbol": "ChordType.M7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 482,
-      "symbol": "ChordType.m7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 483,
-      "symbol": "ChordType.aug7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 484,
-      "symbol": "ChordType.dim7",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 485,
-      "symbol": "ChordType.M7b5",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 486,
-      "symbol": "ChordType.m7b5",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 487,
-      "symbol": "ChordType.custom",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 542,
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 1112,
       "symbol": "Chord.type",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Cem/Desktop/MusicTheory/MusicTheory/MusicTheory.swift",
-      "line": 543,
+      "file": "/Users/Cem/Desktop/MusicTheory/Source/MusicTheory.swift",
+      "line": 1113,
       "symbol": "Chord.key",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
