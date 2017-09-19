@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NoteType Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/NoteType" class="dashAnchor"></a>
+    <a title="NoteType Enum Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">MusicTheory Docs</a> (96% documented)</p>
+        <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">MusicTheory Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NoteType Enum Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ChordType.html">ChordType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Interval.html">Interval</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteType.html">NoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteValueType.html">NoteValueType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ScaleType.html">ScaleType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1pFTOS_8NoteTypeOS_8Interval_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1pFTOS_8NoteTypeSi_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1pFTVS_4NoteOS_8Interval_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1pFTVS_4NoteSi_S0_">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1sFTOS_8NoteTypeOS_8Interval_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1sFTOS_8NoteTypeSi_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteOS_8Interval_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi1sFTVS_4NoteSi_S0_">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi2eeFTVS_4NoteS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11MusicTheoryoi2eeFTVS_5ChordS0__Sb">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Note.html">Note</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimeSignature.html">TimeSignature</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NoteType</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                </div>
+              </div>
+            <p>Defines 12 base notes in music.
+C, D, E, F, G, A, B with their flats.
+Raw values are included for easier calculation based on midi notes.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1cFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/c" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1cFMS0_S0_">c</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>C note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType5dFlatFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/dFlat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType5dFlatFMS0_S0_">dFlat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>D♭ or C♯ note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">dFlat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1dFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/d" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1dFMS0_S0_">d</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>D note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">d</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType5eFlatFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/eFlat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType5eFlatFMS0_S0_">eFlat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>E♭ or D♯ note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">eFlat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1eFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/e" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1eFMS0_S0_">e</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>E note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">e</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1fFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/f" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1fFMS0_S0_">f</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>F note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">f</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType5gFlatFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/gFlat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType5gFlatFMS0_S0_">gFlat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>G♭ or F♯ note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">gFlat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1gFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/g" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1gFMS0_S0_">g</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>G Note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">g</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType5aFlatFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/aFlat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType5aFlatFMS0_S0_">aFlat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A♭ or G♯ note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">aFlat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1aFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/a" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1aFMS0_S0_">a</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">a</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType5bFlatFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/bFlat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType5bFlatFMS0_S0_">bFlat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>B♭ or A♯ note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">bFlat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteType1bFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/b" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteType1bFMS0_S0_">b</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>B note.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">b</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvO11MusicTheory8NoteType3allGSaS0__"></a>
+                    <a name="//apple_ref/swift/Variable/all" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvO11MusicTheory8NoteType3allGSaS0__">all</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All the notes in static array.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="kt">NoteType</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO11MusicTheory8NoteTypecFT8midiNoteSi_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(midiNote:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO11MusicTheory8NoteTypecFT8midiNoteSi_GSqS0__">init(midiNote:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initilizes the note type with midiNote.</p>
+
+<ul>
+<li>parameters:
+
+<ul>
+<li>midiNote: The midi note value wanted to be converted to <code>NoteType</code>.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">midiNote</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO11MusicTheory8NoteType11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO11MusicTheory8NoteType11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Converts <code>NoteType</code> to string with its name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-09-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

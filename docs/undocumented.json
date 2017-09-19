@@ -1,0 +1,54 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 88,
+      "symbol": "NoteValue.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 89,
+      "symbol": "NoteValue.modifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 91,
+      "symbol": "NoteValue.init(type:modifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 802,
+      "symbol": "Scale.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 803,
+      "symbol": "Scale.key",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 1122,
+      "symbol": "Chord.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Cem/Documents/MusicTheory/Source/MusicTheory.swift",
+      "line": 1123,
+      "symbol": "Chord.key",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Cem/Documents/MusicTheory"
+}
