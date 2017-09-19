@@ -25,7 +25,7 @@ public enum NoteValueType {
   /// Eighth note.
   case eighth
   /// Sixteenth note.
-  case sixtenth
+  case sixteenth
   /// Thirtysecond note.
   case thirtysecond
   /// Sixtyfourth note.
@@ -42,7 +42,7 @@ public enum NoteValueType {
     case 2: self = .half
     case 4: self = .quarter
     case 8: self = .eighth
-    case 16: self = .sixtenth
+    case 16: self = .sixteenth
     case 32: self = .thirtysecond
     case 64: self = .sixtyfourth
     default: return nil
@@ -57,7 +57,7 @@ public enum NoteValueType {
     case .half: return 2
     case .quarter: return 4
     case .eighth: return 8
-    case .sixtenth: return 16
+    case .sixteenth: return 16
     case .thirtysecond: return 32
     case .sixtyfourth: return 64
     }
@@ -85,9 +85,16 @@ public enum NoteModifier {
 
 /// Defines the duration of a note beatwise.
 public struct NoteValue {
+  /// Type that represents the duration of note.
   public var type: NoteValueType
+  /// Modifier for `NoteType` that modifies the duration.
   public var modifier: NoteModifier
 
+  /// Initilize the NoteValue with its type and optional modifier.
+  ///
+  /// - Parameters:
+  ///   - type: Type of note value that represents note duration.
+  ///   - modifier: Modifier of note value. Defaults `default`.
   public init(type: NoteValueType, modifier: NoteModifier = .default) {
     self.type = type
     self.modifier = modifier
@@ -253,6 +260,7 @@ public enum NoteType: Int {
 
 extension NoteType: CustomStringConvertible {
 
+  /// Converts `NoteType` to string with its name.
   public var description: String {
     switch self {
     case .c: return "C"
@@ -378,6 +386,7 @@ public extension Note {
 
 extension Note: CustomStringConvertible {
 
+  /// Converts `Note` to string with its type and octave.
   public var description: String {
     return "\(type)\(octave)"
   }
@@ -509,13 +518,18 @@ extension Interval: CustomStringConvertible {
   public var roman: String {
     switch self {
     case .unison: return "i"
-    case .m2, .M2: return "ii"
-    case .m3, .M3: return "iii"
-    case .P4: return "iv"
-    case .d5, .P5: return "v"
-    case .m6, .M6: return "vi"
-    case .m7, .M7: return "vii"
-    case .P8: return "viii"
+    case .m2: return "ii"
+    case .M2: return "II"
+    case .m3: return "iii"
+    case .M3: return "III"
+    case .P4: return "IV"
+    case .d5: return "v"
+    case .P5: return "V"
+    case .m6: return "vi"
+    case .M6: return "VI"
+    case .m7: return "vii"
+    case .M7: return "VII"
+    case .P8: return "VII"
     case .custom(let halfstep): return "\(halfstep)"
     }
   }
@@ -732,6 +746,7 @@ public enum ScaleType {
 
 extension ScaleType: CustomStringConvertible {
 
+  /// Converts `ScaleType` to string with its name.
   public var description: String {
     switch self {
     case .major: return "Major"
@@ -791,7 +806,9 @@ extension ScaleType: CustomStringConvertible {
 /// Scale object with `ScaleType` and scale's key of `NoteType`.
 /// Could calculate note sequences in [Note] format.
 public struct Scale {
+  /// Type of the scale that has `interval` info.
   public var type: ScaleType
+  /// Root key of the scale that will built onto.
   public var key: NoteType
 
   /// Initilizes the scale with its type and key.
@@ -841,6 +858,7 @@ public struct Scale {
 
 extension Scale: CustomStringConvertible {
 
+  /// Converts `Scale` to string with its key and type.
   public var description: String {
     return "\(key) \(type): " + noteTypes.map({ "\($0)" }).joined(separator: ", ")
   }
@@ -1043,6 +1061,7 @@ public enum ChordType {
 
 extension ChordType: CustomStringConvertible {
 
+  /// Converts `ChordType` to string with its name.
   public var description: String {
     switch self {
     case .maj: return "maj"
@@ -1109,7 +1128,9 @@ extension ChordType: CustomStringConvertible {
 
 /// Chord object with its type and key.
 public struct Chord {
+  /// Type of the chord that has `interval` info.
   public var type: ChordType
+  /// Root key of the chord that will built onto.
   public var key: NoteType
 
   /// Initilizes the chord with type and key.
@@ -1159,6 +1180,7 @@ public struct Chord {
 
 extension Chord: CustomStringConvertible {
 
+  /// Converts `Chord` to string with its key and type.
   public var description: String {
     return "\(key)\(type)"
   }
