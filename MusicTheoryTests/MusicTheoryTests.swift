@@ -80,6 +80,26 @@ extension MusicTheoryTests {
     let cminNotes: [NoteType] = [.c, .eFlat, .g]
     let cmin = Chord(type: .min, key: .c)
     XCTAssert(cminNotes == cmin.noteTypes)
+		let c13Notes: [Note] = [
+			Note(type: .c, octave: 1),
+			Note(type: .e, octave: 1),
+			Note(type: .g, octave: 1),
+			Note(type: .bFlat, octave: 1),
+			Note(type: .d, octave: 2),
+			Note(type: .f, octave: 2),
+			Note(type: .a, octave: 2)]
+		let c13 = Chord(type: .dom13, key: .c)
+		XCTAssert(c13.notes(octave: 1) == c13Notes)
+		let cm13Notes: [Note] = [
+			Note(type: .c, octave: 1),
+			Note(type: .eFlat, octave: 1),
+			Note(type: .g, octave: 1),
+			Note(type: .bFlat, octave: 1),
+			Note(type: .d, octave: 2),
+			Note(type: .f, octave: 2),
+			Note(type: .a, octave: 2)]
+		let cm13 = Chord(type: .m13, key: .c)
+		XCTAssert(cm13.notes(octave: 1) == cm13Notes)
   }
 
   func testDurations() {
