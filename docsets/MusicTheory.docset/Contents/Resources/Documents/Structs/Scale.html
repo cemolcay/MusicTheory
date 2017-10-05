@@ -55,6 +55,9 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1moiAA8IntervalOAD_SitF">*(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory1poiAA4NoteVAD_AA8IntervalOtF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -71,6 +74,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory1soiAA4NoteVAD_SitF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory1soiAA8NoteTypeOAD_AA8IntervalOtF">-(_:_:)</a>
@@ -112,6 +118,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Scale/HarmonicField.html">– HarmonicField</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Tempo.html">Tempo</a>
@@ -436,6 +445,88 @@ Could calculate note sequences in [Note] format.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11MusicTheory5ScaleV13HarmonicFieldO"></a>
+                    <a name="//apple_ref/swift/Enum/HarmonicField" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ScaleV13HarmonicFieldO">HarmonicField</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stack of notes to generate chords for each note in the scale.</p>
+
+                        <a href="../Structs/Scale/HarmonicField.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">HarmonicField</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory5ScaleV13harmonicFieldSayAA5ChordVGAC08HarmonicE0O3for_tF"></a>
+                    <a name="//apple_ref/swift/Method/harmonicField(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ScaleV13harmonicFieldSayAA5ChordVGAC08HarmonicE0O3for_tF">harmonicField(for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generates chords for harmonic field of scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">harmonicField</span><span class="p">(</span><span class="k">for</span> <span class="nv">field</span><span class="p">:</span> <span class="kt"><a href="../Structs/Scale/HarmonicField.html">HarmonicField</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/Chord.html">Chord</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>field</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Type of chords you want to generate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns triads or tetrads of chord for each note in scale.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11MusicTheory5ScaleV11descriptionSSv"></a>
                     <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
                     <a class="token" href="#/s:11MusicTheory5ScaleV11descriptionSSv">description</a>
@@ -465,7 +556,7 @@ Could calculate note sequences in [Note] format.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-03)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

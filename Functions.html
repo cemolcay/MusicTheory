@@ -54,6 +54,9 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1moiAA8IntervalOAD_SitF">*(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1poiAA4NoteVAD_AA8IntervalOtF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -70,6 +73,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1soiAA4NoteVAD_SitF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1soiAA8NoteTypeOAD_AA8IntervalOtF">-(_:_:)</a>
@@ -111,6 +117,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Scale/HarmonicField.html">– HarmonicField</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Tempo.html">Tempo</a>
@@ -649,6 +658,69 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF"></a>
+                    <a name="//apple_ref/swift/Function/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the interval between two notes.
+Doesn&rsquo;t matter left hand side and right hand side note places.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">-</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Note.html">Note</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Note.html">Note</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Left hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Right hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Intreval</code> between two notes. You can get the halfsteps from interval as well.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11MusicTheory2eeoiSbAA4NoteV_ADtF"></a>
                     <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:11MusicTheory2eeoiSbAA4NoteV_ADtF">==(_:_:)</a>
@@ -777,6 +849,70 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Returns bool value of equeation.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory1moiAA8IntervalOAD_SitF"></a>
+                    <a name="//apple_ref/swift/Function/*(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory1moiAA8IntervalOAD_SitF">*(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Extends <code><a href="Enums/Interval.html">Interval</a></code> by any given octave.
+ For example between C1 and D1, there are 2 halfsteps but between C1 and D2 there are 14 halfsteps.
+/ <code>.M2 * 2</code> will give you D2 from a C1.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">*</span><span class="p">(</span><span class="nv">interval</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">,</span> <span class="nv">octave</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Interval you want to extend by an octave.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>octave</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Octave you want to extend your interval by.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns new interval by calculating halfsteps between target interval and octave.</p>
                       </div>
                     </section>
                   </div>
@@ -1078,7 +1214,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-03)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
