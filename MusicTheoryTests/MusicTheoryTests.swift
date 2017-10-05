@@ -49,6 +49,11 @@ extension MusicTheoryTests {
     XCTAssert(note + .P8 == note)
     XCTAssert(note + .M2 == .d)
     XCTAssert(note + .m2 == .dFlat)
+		
+		let b = Note(type: .b, octave: 1)
+		let d = Note(type: .d, octave: 2)
+		XCTAssert(b - d == .m3)
+		XCTAssert(d - b == .m3)
   }
 
   func testPianoKey() {
@@ -73,6 +78,21 @@ extension MusicTheoryTests {
     XCTAssert(cMinScale.noteTypes == cMin)
   }
 
+	func testHarmonicFields() {
+		let cmaj = Scale(type: .major, key: .c)
+		let cChords = cmaj.harmonicField(for: .triad)
+		let cChordsExpected = [
+			Chord(type: .maj, key: .c),
+			Chord(type: .min, key: .d),
+			Chord(type: .min, key: .e),
+			Chord(type: .maj, key: .f),
+			Chord(type: .maj, key: .g),
+			Chord(type: .min, key: .a),
+			Chord(type: .dim, key: .b),
+			]
+		XCTAssert(cChords == cChordsExpected)
+	}
+
   func testChords() {
     let cmajNotes: [NoteType] = [.c, .e, .g]
     let cmaj = Chord(type: .maj, key: .c)
@@ -80,11 +100,38 @@ extension MusicTheoryTests {
     let cminNotes: [NoteType] = [.c, .eFlat, .g]
     let cmin = Chord(type: .min, key: .c)
     XCTAssert(cminNotes == cmin.noteTypes)
+		let c13Notes: [Note] = [
+			Note(type: .c, octave: 1),
+			Note(type: .e, octave: 1),
+			Note(type: .g, octave: 1),
+			Note(type: .bFlat, octave: 1),
+			Note(type: .d, octave: 2),
+			Note(type: .f, octave: 2),
+			Note(type: .a, octave: 2)]
+		let c13 = Chord(type: .dom13, key: .c)
+		XCTAssert(c13.notes(octave: 1) == c13Notes)
+		let cm13Notes: [Note] = [
+			Note(type: .c, octave: 1),
+			Note(type: .eFlat, octave: 1),
+			Note(type: .g, octave: 1),
+			Note(type: .bFlat, octave: 1),
+			Note(type: .d, octave: 2),
+			Note(type: .f, octave: 2),
+			Note(type: .a, octave: 2)]
+		let cm13 = Chord(type: .m13, key: .c)
+		XCTAssert(cm13.notes(octave: 1) == cm13Notes)
+
+		let minorIntervals: [Interval] = [.unison, .m3, .P5]
+		let minorChord = ChordType(intervals: minorIntervals)
+		XCTAssert(minorChord == .min)
+		let majorIntervals: [Interval] = [.unison, .M3, .P5]
+		let majorChord = ChordType(intervals: majorIntervals)
+		XCTAssert(majorChord == .maj)
   }
 
   func testDurations() {
-    var timeSignature = TimeSignature(beats: 4, noteValue: .quarter) // 4/4
-    var tempo = Tempo(timeSignature: timeSignature, bpm: 120) // 120BPM
+    let timeSignature = TimeSignature(beats: 4, noteValue: .quarter) // 4/4
+    let tempo = Tempo(timeSignature: timeSignature, bpm: 120) // 120BPM
     var noteValue = NoteValue(type: .quarter)
     var duration = tempo.duration(of: noteValue)
     XCTAssert(duration == 0.5)
