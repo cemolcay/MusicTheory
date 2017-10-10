@@ -936,27 +936,27 @@ extension Scale {
 	/// - Parameter field: Type of chords you want to generate.
 	/// - Returns: Returns triads or tetrads of chord for each note in scale.
 	public func harmonicField(for field: HarmonicField) -> [Chord] {
-		var chords = [ChordType]()
-		// Generate notes for octave range of 2, they are going to use in extended chords.
-		let scaleNotes = notes(octaves: [1, 2])
-		// Build chords for each note in the scale.
-		for i in 0..<scaleNotes.count/2 { // Iterate each note in scale (one octave).
-			// Get notes for chord.
-			var chordNotes = [Note]()
+    var chords = [ChordType]()
+    // Generate notes for octave range of 2, they are going to use in extended chords.
+    let scaleNotes = notes(octaves: [1, 2])
+    // Build chords for each note in the scale.
+    for i in 0..<scaleNotes.count/2 { // Iterate each note in scale (one octave).
+      // Get notes for chord.
+      var chordNotes = [Note]()
       switch field {
       case .triad:
         chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4]]
       case .tetrad:
         chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6]]
       }
-			// Calculate intervals between notes in chord.
-			let chordIntervals = chordNotes.map({ $0 - chordNotes[0] })
-			if let chord = ChordType(intervals: chordIntervals) { // Determine chord type.
-				chords.append(chord)
-			}
-		}
-		// Generate chords for each key in scale.
-		return chords.enumerated().map({ Chord(type: $1, key: noteTypes[$0]) })
+      // Calculate intervals between notes in chord.
+      let chordIntervals = chordNotes.map({ $0 - chordNotes[0] })
+      if let chord = ChordType(intervals: chordIntervals) { // Determine chord type.
+        chords.append(chord)
+      }
+    }
+    // Generate chords for each key in scale.
+    return chords.enumerated().map({ Chord(type: $1, key: noteTypes[$0]) })
 	}
 }
 
@@ -1339,6 +1339,7 @@ extension Chord: CustomStringConvertible {
 // MARK: - Extensions
 
 extension Array {
+  internal var shifted: Array {
     guard let firstElement = first else { return self }
     var arr = self
     arr.removeFirst()
