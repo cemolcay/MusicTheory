@@ -140,4 +140,16 @@ extension MusicTheoryTests {
     duration = tempo.duration(of: noteValue)
     XCTAssert(duration == 0.75)
   }
+
+  func testInversions() {
+    let c7 = Chord(type: .dom7, key: .c)
+    let c7Inversions = [
+      [Note(type: .e, octave: 1), Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2)],
+      [Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2)],
+      [Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2), Note(type: .g, octave: 2)],
+    ]
+    for (index, chord) in c7.inversions.enumerated() {
+      XCTAssert(chord.notes(octave: 1) == c7Inversions[index])
+    }
+  }
 }
