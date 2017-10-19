@@ -929,18 +929,27 @@ extension Scale {
 		case triad
 		/// First, third, fifth and seventh notes builds a tetrad chord.
 		case tetrad
+    /// First, third, fifth, seventh and ninth notes builds a 9th chord.
+    case ninth
+    /// First, third, fifth, seventh, ninth and eleventh notes builds a 11th chord.
+    case eleventh
+    /// First, third, fifth, seventh, ninth, eleventh and thirteenth notes builds a 13th chord.
+    case thirteenth
+
+    /// All possible harmonic fields constructed from.
+    static let all: [HarmonicField] = [.triad, .tetrad, .ninth, .eleventh, .thirteenth]
 	}
 
 	/// Generates chords for harmonic field of scale.
 	///
 	/// - Parameter field: Type of chords you want to generate.
 	/// - Returns: Returns triads or tetrads of chord for each note in scale.
-	public func harmonicField(for field: HarmonicField) -> [Chord] {
-    var chords = [ChordType]()
+	public func harmonicField(for field: HarmonicField) -> [Chord?] {
+    var chords = [ChordType?]()
     // Generate notes for octave range of 2, they are going to use in extended chords.
-    let scaleNotes = notes(octaves: [1, 2])
+    let scaleNotes = notes(octaves: [1, 2, 3])
     // Build chords for each note in the scale.
-    for i in 0..<scaleNotes.count/2 { // Iterate each note in scale (one octave).
+    for i in 0..<scaleNotes.count/3 { // Iterate each note in scale (one octave).
       // Get notes for chord.
       var chordNotes = [Note]()
       switch field {
@@ -948,15 +957,20 @@ extension Scale {
         chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4]]
       case .tetrad:
         chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6]]
+      case .ninth:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8]]
+      case .eleventh:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10]]
+      case .thirteenth:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10], scaleNotes[i + 12]]
       }
       // Calculate intervals between notes in chord.
       let chordIntervals = chordNotes.map({ $0 - chordNotes[0] })
-      if let chord = ChordType(intervals: chordIntervals) { // Determine chord type.
-        chords.append(chord)
-      }
+      chords.append(ChordType(intervals: chordIntervals))
     }
     // Generate chords for each key in scale.
-    return chords.enumerated().map({ Chord(type: $1, key: noteTypes[$0]) })
+//    return chords.enumerated().map({ Chord(type: $1, key: noteTypes[$0]) })
+    return chords.enumerated().map({ $1 == nil ? nil : Chord(type: $1!, key: noteTypes[$0]) })
 	}
 }
 
@@ -1100,7 +1114,9 @@ public enum ChordType: Equatable {
   /// - Parameters:
   ///   - intervals: Intervals of the chord.
 	public init?(intervals: [Interval]) {
-		guard let chord = ChordType.all.filter({ $0.intervals == intervals }).first
+    let chords = ChordType.all.filter({ $0.intervals == intervals })
+    print(chords)
+		guard let chord = chords.first
 			else { return nil }
 		self = chord
 	}
@@ -1124,7 +1140,7 @@ public enum ChordType: Equatable {
     case .aug7: return [.unison, .M3, .m6, .m7]
     case .dim7: return [.unison, .m3, .d5, .M6]
     case .M7b5: return [.unison, .M3, .m6, .M7]
-    case .m7b5: return [.unison, .M3, .d5, .M7]
+    case .m7b5: return [.unison, .m3, .d5, .m7]
     case .dom9: return [.unison, .M3, .P5, .m7, .M2 * 2]
     case .M9: return [.unison, .M3, .d5, .P5, .M7, .M2 * 2]
     case .m9: return [.unison, .m3, .P5, .m7, .M2 * 2]
@@ -1216,8 +1232,8 @@ extension ChordType: CustomStringConvertible {
     case .m13: return "m13"
     case .add9: return "(add9)"
     case .madd9: return "m(add9)"
-    case .M7b9: return "7b9"
-    case .m7b9: return "m7b9"
+    case .M7b9: return "7(b9)"
+    case .m7b9: return "m7(b9)"
     case .M6add9: return "6(add9)"
     case .m6add9: return "m6(add9)"
     case .dom7add11: return "7(add11)"
@@ -1229,9 +1245,9 @@ extension ChordType: CustomStringConvertible {
     case .M7a5: return "7#5"
     case .m7a5: return "m7#5"
     case .M7a9: return "7#9"
-    case .M7a5b9: return "7#5b9"
-    case .M9a11: return "9#11"
-    case .M9b13: return "9b13"
+    case .M7a5b9: return "7#5(b9)"
+    case .M9a11: return "9(#11)"
+    case .M9b13: return "9(b13)"
     case .M6sus4: return "6sus4"
     case .maj7sus4: return "maj7sus4"
     case .M7sus4: return "7sus4"
