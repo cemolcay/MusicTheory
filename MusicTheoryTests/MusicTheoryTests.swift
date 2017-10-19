@@ -80,8 +80,8 @@ extension MusicTheoryTests {
 
 	func testHarmonicFields() {
 		let cmaj = Scale(type: .major, key: .c)
-		let cChords = cmaj.harmonicField(for: .triad)
-		let cChordsExpected = [
+		let triads = cmaj.harmonicField(for: .triad)
+		let triadsExpected = [
 			Chord(type: .maj, key: .c),
 			Chord(type: .min, key: .d),
 			Chord(type: .min, key: .e),
@@ -89,8 +89,13 @@ extension MusicTheoryTests {
 			Chord(type: .maj, key: .g),
 			Chord(type: .min, key: .a),
 			Chord(type: .dim, key: .b),
-			]
-		XCTAssert(cChords == cChordsExpected)
+    ]
+    print(cmaj.harmonicField(for: .triad))
+    print(cmaj.harmonicField(for: .tetrad))
+    print(cmaj.harmonicField(for: .ninth))
+    print(cmaj.harmonicField(for: .eleventh))
+    print(cmaj.harmonicField(for: .thirteenth))
+    XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
 	}
 
   func testChords() {
