@@ -157,4 +157,18 @@ extension MusicTheoryTests {
       XCTAssert(chord.notes(octave: 1) == c7Inversions[index])
     }
   }
+
+  func testNewChords() {
+    let newChord = NewChordType(
+      third: .major,
+      fifth: .perfect,
+      tetrad: .seventh(.major),
+      suspended: nil,
+      extensions: [
+        NewChordExtension(type: .eleventh, accident: .sharp),
+        NewChordExtension(type: .ninth, accident: .bemol),
+        NewChordExtension(type: .thirteenth, accident: .natural),
+      ])
+    XCTAssert(newChord.third == .major)
+  }
 }
