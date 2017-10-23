@@ -24,7 +24,7 @@ Usage
 
 `MusicTheory` adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are `Note`, `Scale` and `Chord`.
 
-### `NoteType` and `Note`
+#### `NoteType` and `Note`
 
 - All notes defined in `NoteType` enum.
 - You can create `Note`s with `NoteType`s and octaves.
@@ -37,14 +37,14 @@ let d: NoteType = .d
 let c = Note(type: .c, octave: 0)
 ```
 
-### `Interval`
+#### `Interval`
 
 - Intervals are halfsteps between notes.
 - They are `IntegerLiteral` and you can make add/subsctract them between themselves, notes or note types.
 - You can build scales or chords from intervals.
 - m2, M2, m3, M3, P4, d5, P5, m6, M6, m7, M7 and P8 are predefined intervals.
 
-### `ScaleType` and `Scale`
+#### `ScaleType` and `Scale`
 
 - `ScaleType` enum defines a lot of readymade scales.
 - Also, you can create a custom scale type by `ScaleType.custom(intervals: [Interval], description: String)` 
@@ -59,7 +59,7 @@ let maj: ScaleType = .major
 let cMaj = Scale(type: maj, key: c)
 ```
 
-### `ChordType` and `Chord`
+#### `ChordType` and `Chord`
 
 - `ChordType` is a struct with `ChordPart`s which are building blocks of chords.
 - You can define any chord existing with `ChordType`.
@@ -79,18 +79,20 @@ let m13 = ChordType(
 let cm13 = Chord(type: m13, key: .c)
 ```
 
-### `Tempo` and `TimeSignature`
+#### `Tempo` and `TimeSignature`
 
 - Tempo is a helper struct to define timings in your music app.
 - TimeSignature is number of beats in per measure and `NoteValue` of each beat.
 - You can calculate notes duration in any tempo by ther `NoteValue`.
 - Note value defines the note's duration in a beat. It could be whole note, half note, quarter note, 8th, 16th or 32nd note.
 
-### Documentation
+Documentation
+----
 
 [Full documentation are here](https://cemolcay.github.io/MusicTheory/)
 
-### Unit Tests
+Unit Tests
+----
 
 You can find unit tests in `MusicTheoryTests` target.  
 Press `⌘+U` for running tests.
