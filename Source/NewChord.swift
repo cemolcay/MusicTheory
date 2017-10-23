@@ -61,46 +61,13 @@ public enum NewChordFifthType: ChordDescription {
   }
 }
 
-public func ==(lhs: NewChordTetradType?, rhs: NewChordTetradType?) -> Bool {
-  switch (lhs, rhs) {
-    case (.some(let left), .some(let right)):
-      switch (left, right) {
-        case (.sixth, .sixth):
-          return true
-        case (.seventh(.dominant), .seventh(.dominant)):
-          return true
-        case (.seventh(.major), .seventh(.major)):
-          return true
-        default:
-          return false
-      }
-  case (.none, .none):
-    return true
-  default:
-    return false
-  }
-}
-
-public enum NewChordTetradType: ChordDescription {
-  case sixth // triad and sixth note
-  case seventh(NewChordSeventhType) // triad and seventh note
-
+public struct NewChordSixth: ChordDescription {
   public var notation: String {
-    switch self {
-    case .sixth: return "6"
-    case .seventh(let type): return type.notation
-    }
+    return "6"
   }
 
   public var description: String {
-    switch self {
-    case .sixth: return "Sixth"
-    case .seventh(let type): return type.description
-    }
-  }
-
-  public static var all: [NewChordTetradType] {
-    return [.sixth, .seventh(.major), .seventh(.dominant)]
+    return "Sixth"
   }
 }
 
@@ -166,8 +133,8 @@ public enum NewChordAccidentType: ChordDescription {
   public var description: String {
     switch self {
     case .natural: return "Natural"
-    case .flat: return "Halfstep down"
-    case .sharp: return "Halfstep up"
+    case .flat: return "Flat"
+    case .sharp: return "Sharp"
     }
   }
 
@@ -243,25 +210,55 @@ public struct NewChordExtension: ChordDescription {
 public struct NewChordType: ChordDescription {
   public var third: NewChordThirdType
   public var fifth: NewChordFifthType
-  public var tetrad: NewChordTetradType?
+  public var sixth: NewChordSixth?
+  public var seventh: NewChordSeventhType?
   public var suspended: NewChordSuspendedType?
   public var extensions: [NewChordExtension]?
 
-  public init(third: NewChordThirdType, fifth: NewChordFifthType, tetrad: NewChordTetradType? = nil, suspended: NewChordSuspendedType? = nil, extensions: [NewChordExtension]? = nil) {
+  public init(third: NewChordThirdType, fifth: NewChordFifthType, sixth: NewChordSixth? = nil, seventh: NewChordSeventhType? = nil, suspended: NewChordSuspendedType? = nil, extensions: [NewChordExtension]? = nil) {
     self.third = third
     self.fifth = fifth
-    self.tetrad = tetrad
+    self.sixth = sixth
+    self.seventh = seventh
     self.suspended = extensions == nil ? suspended : nil
     self.extensions = extensions
 
     if extensions?.count == 1 {
-      self.extensions?[0].isMajor = tetrad == NewChordTetradType.seventh(.major)
-      self.extensions?[0].isAdded = !(tetrad == NewChordTetradType.seventh(.dominant) || tetrad == NewChordTetradType.seventh(.major))
+      self.extensions?[0].isMajor = seventh == .major
+      self.extensions?[0].isAdded = seventh == nil
     }
   }
 
+  public var intervals: [Interval] {
+    var intervals: [Interval] = [.unison]
+    // Thirds
+    switch third {
+    case .major:
+      intervals.append(.M3)
+    case .minor:
+      intervals.append(.m3)
+    }
+    // Fifths
+    switch fifth {
+    case .perfect:
+      intervals.append(.P5)
+    case .diminished:
+      intervals.append(.d5)
+    case .agumented:
+      intervals.append(.m6)
+    }
+    // Sixths
+    if case .some = sixth {
+      intervals.append(.M6)
+    }
+    // Sevenths
+    // Extensions
+    return intervals
+  }
+
   public var notation: String {
-    var tetradNotation = tetrad?.notation ?? ""
+    var seventhNotation = seventh?.notation ?? ""
+    let sixthNotation = sixth == nil ? "" : seventh == nil ? sixth!.notation : "\(sixth!.notation)/"
     let suspendedNotation = suspended?.notation ?? ""
     let safeExtensionsNotation = extensions?
       .sorted(by: { $0.type.rawValue < $1.type.rawValue })
@@ -269,28 +266,29 @@ public struct NewChordType: ChordDescription {
       .joined(separator: "/")
     let extensionsNotation = safeExtensionsNotation == nil ? "" : "(\(safeExtensionsNotation!))"
 
-    if tetrad != nil {
+    if seventh != nil {
       // Don't show major seventh note if extended is a major as well
-      if tetrad == .seventh(.major), extensions?.count == 1, extensions?[0].isMajor == true {
-        tetradNotation = ""
+      if seventh == .major, extensions?.count == 1, extensions?[0].isMajor == true {
+        seventhNotation = ""
       }
       // Show fifth note after seventh in parenthesis
       if fifth == .agumented || fifth == .diminished {
-        return "\(third.notation)\(tetradNotation)(\(fifth.notation))\(suspendedNotation)\(extensionsNotation)"
+        return "\(third.notation)\(sixthNotation)\(seventhNotation)(\(fifth.notation))\(suspendedNotation)\(extensionsNotation)"
       }
     }
 
-    return "\(third.notation)\(fifth.notation)\(tetradNotation)\(suspendedNotation)\(extensionsNotation)"
+    return "\(third.notation)\(fifth.notation)\(sixthNotation)\(seventhNotation)\(suspendedNotation)\(extensionsNotation)"
   }
 
   public var description: String {
-    let tetradNotation = tetrad?.description ?? ""
+    let seventhNotation = seventh?.description ?? ""
+    let sixthNotation = sixth?.description ?? ""
     let suspendedNotation = suspended?.description ?? ""
     let extensionsNotation = extensions?
       .sorted(by: { $0.type.rawValue < $1.type.rawValue })
       .flatMap({ $0.description })
       .joined(separator: ", ") ?? ""
-    return "\(third.notation) \(fifth.notation) \(tetradNotation) \(suspendedNotation) \(extensionsNotation)"
+    return "\(third.notation) \(fifth.notation) \(sixthNotation) \(seventhNotation) \(suspendedNotation) \(extensionsNotation)"
   }
 
   public static var all: [NewChordType] {
@@ -314,20 +312,24 @@ public struct NewChordType: ChordDescription {
     var all = [NewChordType]()
     let allThird = NewChordThirdType.all
     let allFifth = NewChordFifthType.all
-    let allTetrad: [NewChordTetradType?] = Array(NewChordTetradType.all)
-    let allSus: [NewChordSuspendedType?] = Array(NewChordSuspendedType.all)
+    let allSixth: [NewChordSixth?] = [NewChordSixth(), nil]
+    let allSeventh: [NewChordSeventhType?] = NewChordSeventhType.all
+    let allSus: [NewChordSuspendedType?] = NewChordSuspendedType.all
     let allExt = combinations(NewChordExtension.all) + combinations(NewChordExtension.all, taking: 2) + combinations(NewChordExtension.all, taking: 3)
     for third in allThird {
       for fifth in allFifth {
-        for tetrad in 0...allTetrad.count {
-          for sus in 0...allSus.count {
-            for ext in 0...allExt.count {
-              all.append(NewChordType(
-                third: third,
-                fifth: fifth,
-                tetrad: tetrad < allTetrad.count ? allTetrad[tetrad] : nil,
-                suspended: sus < allSus.count ? allSus[sus] : nil,
-                extensions: ext < allExt.count ? allExt[ext] : nil))
+        for sixth in allSixth {
+          for seventh in 0...allSeventh.count {
+            for sus in 0...allSus.count {
+              for ext in 0...allExt.count {
+                all.append(NewChordType(
+                  third: third,
+                  fifth: fifth,
+                  sixth: sixth,
+                  seventh: seventh < allSeventh.count ? allSeventh[seventh] : nil,
+                  suspended: sus < allSus.count ? allSus[sus] : nil,
+                  extensions: ext < allExt.count ? allExt[ext] : nil))
+              }
             }
           }
         }
@@ -357,7 +359,6 @@ public struct NewChord: ChordDescription {
   }
 
   public static func from(notes: [Note]) -> [NewChord] {
-
     return []
   }
 
