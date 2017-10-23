@@ -1,4 +1,4 @@
-MusicTheory
+MusicTheory [![Build Status](https://travis-ci.org/cemolcay/MusicTheory.svg?branch=master)](https://travis-ci.org/cemolcay/MusicTheory)
 ===
 
 A music theory library with `Note`, `Interval`, `Scale` and `Chord` representations in swift enums.
