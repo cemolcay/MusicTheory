@@ -1,25 +1,35 @@
 //
-//  NewChord.swift
+//  Chord.swift
 //  MusicTheory
 //
 //  Created by Cem Olcay on 22.10.2017.
-//  Copyright © 2017 prototapp. All rights reserved.
+//  Copyright © 2017 cemolcay. All rights reserved.
+//
+//  https://github.com/cemolcay/MusicTheory
 //
 
 import Foundation
 
+/// Protocol that defines a printable chord part.
 public protocol ChordDescription: CustomStringConvertible {
+  /// Notation of chord.
   var notation: String { get }
 }
 
+/// Protocol that defines a chord part.
 public protocol ChordPart: ChordDescription {
+  /// Interval between the root.
   var interval: Interval { get }
 }
 
-public enum NewChordThirdType: ChordPart {
+/// Defines third part of the chord. Second note after the root.
+public enum ChordThirdType: ChordPart {
+  /// Defines major chord. 4 halfsteps between root.
   case major
+  /// Defines minor chord. 3 halfsteps between root.
   case minor
 
+  /// Interval between root.
   public var interval: Interval {
     switch self {
     case .major:
@@ -29,6 +39,7 @@ public enum NewChordThirdType: ChordPart {
     }
   }
 
+  /// Notation of chord part.
   public var notation: String {
     switch self {
     case .major: return ""
@@ -36,6 +47,7 @@ public enum NewChordThirdType: ChordPart {
     }
   }
 
+  /// Description of chord part.
   public var description: String {
     switch self {
     case .major: return "Major"
@@ -43,16 +55,22 @@ public enum NewChordThirdType: ChordPart {
     }
   }
 
-  public static var all: [NewChordThirdType] {
+  /// All values of `ChordThirdType`.
+  public static var all: [ChordThirdType] {
     return [.major, .minor]
   }
 }
 
-public enum NewChordFifthType: ChordPart {
+/// Defines fifth part of the chord. Third note after root note.
+public enum ChordFifthType: ChordPart {
+  /// Perfect fifth interval between root.
   case perfect
+  /// Half step down of perfect fifth.
   case diminished
+  /// Half step up of perfect fifth.
   case agumented
 
+  /// Interval between root.
   public var interval: Interval {
     switch self {
     case .perfect:
@@ -64,6 +82,7 @@ public enum NewChordFifthType: ChordPart {
     }
   }
 
+  /// Notation of chord part.
   public var notation: String {
     switch self {
     case .perfect: return ""
@@ -72,6 +91,7 @@ public enum NewChordFifthType: ChordPart {
     }
   }
 
+  /// Description of chord part.
   public var description: String {
     switch self {
     case .perfect: return ""
@@ -80,38 +100,48 @@ public enum NewChordFifthType: ChordPart {
     }
   }
 
-  public static var all: [NewChordFifthType] {
+  /// All values of `ChordFifthType`.
+  public static var all: [ChordFifthType] {
     return [.perfect, .diminished, .agumented]
   }
 }
 
-public struct NewChordSixthType: ChordPart {
+/// Defiens sixth chords. If you add the sixth note, you have sixth chord.
+public struct ChordSixthType: ChordPart {
+  /// Interval between root.
   public var interval: Interval {
     return .M6
   }
 
+  /// Notation of chord part.
   public var notation: String {
     return "6"
   }
 
+  /// Description of chord part.
   public var description: String {
     return "Sixth"
   }
 }
 
-public enum NewChordSeventhType: ChordPart {
-  case major // triad and seventh note
-  case dominant // triad and halfstep down seventh note
+/// Defiens seventh chords. If you add seventh note, you have seventh chord.
+public enum ChordSeventhType: ChordPart {
+  /// Seventh note of the chord. 11 halfsteps between root.
+  case major
+  /// Halfstep down of seventh note. 10 halfsteps between root.
+  case dominant
 
+  /// Interval between root.
   public var interval: Interval {
     switch self {
-    case .dominant:
-      return .m7
     case .major:
       return .M7
+    case .dominant:
+      return .m7
     }
   }
 
+  /// Notation of chord part.
   public var notation: String {
     switch self {
     case .major: return "maj7"
@@ -119,6 +149,7 @@ public enum NewChordSeventhType: ChordPart {
     }
   }
 
+  /// Description of chord part.
   public var description: String {
     switch self {
     case .major: return "Major 7th"
@@ -126,15 +157,21 @@ public enum NewChordSeventhType: ChordPart {
     }
   }
 
-  public static var all: [NewChordSeventhType] {
+  /// All values of `ChordSeventhType`.
+  public static var all: [ChordSeventhType] {
     return [.major, .dominant]
   }
 }
 
-public enum NewChordSuspendedType: ChordPart {
-  case sus2 // second note instead of third note
-  case sus4 // fourth note instead of third note
+/// Defines suspended chords.
+/// If you play second or fourth note of chord, instead of thirds, than you have suspended chords.
+public enum ChordSuspendedType: ChordPart {
+  /// Second note of chord instead of third part. 2 halfsteps between root.
+  case sus2
+  /// Fourth note of chord instead of third part. 5 halfsteps between root.
+  case sus4
 
+  /// Interval between root.
   public var interval: Interval {
     switch self {
     case .sus2:
@@ -144,6 +181,7 @@ public enum NewChordSuspendedType: ChordPart {
     }
   }
 
+  /// Notation of chord part.
   public var notation: String {
     switch self {
     case .sus2: return "(sus2)"
@@ -151,6 +189,7 @@ public enum NewChordSuspendedType: ChordPart {
     }
   }
 
+  /// Description of chord part.
   public var description: String {
     switch self {
     case .sus2: return "Suspended 2nd"
@@ -158,38 +197,61 @@ public enum NewChordSuspendedType: ChordPart {
     }
   }
 
-  public static var all: [NewChordSuspendedType] {
+  /// All values of `ChordSuspendedType`.
+  public static var all: [ChordSuspendedType] {
     return [.sus2, .sus4]
   }
 }
 
-public struct NewChordExtensionType: ChordPart {
+/// Defines extended chords.
+/// If you add one octave up of second, fourth or sixth notes of the chord, you have extended chords.
+/// You can combine extended chords more than one in a chord.
+public struct ChordExtensionType: ChordPart {
 
+  /// Defines accident of extended chord.
   public enum Accident {
+    /// No accidents, natural note.
     case natural
+    /// Halfstep down, bemol.
     case flat
+    /// Halfstep up, sharp.
     case sharp
 
+    /// All values of `Accident`.
     public static var all: [Accident] {
       return [.natural, .flat, .sharp]
     }
   }
 
+  /// Defines type of the extended chords.
   public enum ExtensionType: Int {
+    /// 9th chord. Second note of the chord, one octave up from root.
     case ninth = 9
+    /// 11th chord. Eleventh note of the chord, one octave up from root.
     case eleventh = 11
+    /// 13th chord. Sixth note of the chord, one octave up from root.
     case thirteenth = 13
 
+    /// All values of `ExtensionType`.
     public static var all: [ExtensionType] {
       return [.ninth, .eleventh, .thirteenth]
     }
   }
 
+  /// Type of extended chord.
   public var type: ExtensionType
+  /// Accident of extended chord.
   public var accident: Accident
-  public var isMajor: Bool
-  public var isAdded: Bool
+  /// True if seventh note is exists and is major 7th. Defaults false.
+  internal var isMajor: Bool
+  /// If there are no seventh note and only one extended part is this. Defaults false
+  internal var isAdded: Bool
 
+  /// Initilizes extended chord.
+  ///
+  /// - Parameters:
+  ///   - type: Type of extended chord.
+  ///   - accident: Accident of extended chord. Defaults natural.
   public init(type: ExtensionType, accident: Accident = .natural) {
     self.type = type
     self.accident = accident
@@ -197,6 +259,13 @@ public struct NewChordExtensionType: ChordPart {
     self.isAdded = false
   }
 
+  /// Initilizes extended chord.
+  ///
+  /// - Parameters:
+  ///   - type: Type of extended chord.
+  ///   - accident: Accident of extended chord.
+  ///   - isMajor: Is seventh is major.
+  ///   - isAdded: Is added chord or not.
   internal init(type: ExtensionType, accident: Accident = .natural, isMajor: Bool = false, isAdded: Bool = false) {
     self.type = type
     self.accident = accident
@@ -204,6 +273,7 @@ public struct NewChordExtensionType: ChordPart {
     self.isAdded = isAdded
   }
 
+  /// Interval between root.
   public var interval: Interval {
     var typeInterval = 0
     switch type {
@@ -222,6 +292,7 @@ public struct NewChordExtensionType: ChordPart {
     return Interval(halfstep: typeInterval + accidentInterval)
   }
 
+  /// Notation of chord part.
   public var notation: String {
     var typeNotation = ""
     switch type {
@@ -246,6 +317,7 @@ public struct NewChordExtensionType: ChordPart {
     }
   }
 
+  /// Description of chord part.
   public var description: String {
     var typeDescription = ""
     switch type {
@@ -264,24 +336,32 @@ public struct NewChordExtensionType: ChordPart {
     return "\(isAdded ? "Added " : "")\(accidentDescription) \(typeDescription)"
   }
 
-  public static var all: [NewChordExtensionType] {
-    var all = [NewChordExtensionType]()
+  /// All values of `ChordExtensionType`
+  public static var all: [ChordExtensionType] {
+    var all = [ChordExtensionType]()
     for type in ExtensionType.all {
       for accident in Accident.all {
-        all.append(NewChordExtensionType(type: type, accident: accident))
+        all.append(ChordExtensionType(type: type, accident: accident))
       }
     }
     return all
   }
 }
 
-public struct NewChordType: ChordDescription {
-  public var third: NewChordThirdType
-  public var fifth: NewChordFifthType
-  public var sixth: NewChordSixthType?
-  public var seventh: NewChordSeventhType?
-  public var suspended: NewChordSuspendedType?
-  public var extensions: [NewChordExtensionType]? {
+/// Defines full type of chord with all chord parts.
+public struct ChordType: ChordDescription {
+  /// Thirds part. Second note of the chord.
+  public var third: ChordThirdType
+  /// Fifths part. Third note of the chord.
+  public var fifth: ChordFifthType
+  /// Defines a sixth chord. Defaults nil.
+  public var sixth: ChordSixthType?
+  /// Defines a seventh chord. Defaults nil.
+  public var seventh: ChordSeventhType?
+  /// Defines a suspended chord. Defaults nil.
+  public var suspended: ChordSuspendedType?
+  /// Defines extended chord. Defaults nil.
+  public var extensions: [ChordExtensionType]? {
     didSet {
       if extensions?.count == 1 {
         extensions?[0].isMajor = seventh == .major
@@ -290,7 +370,16 @@ public struct NewChordType: ChordDescription {
     }
   }
 
-  public init(third: NewChordThirdType, fifth: NewChordFifthType = .perfect, sixth: NewChordSixthType? = nil, seventh: NewChordSeventhType? = nil, suspended: NewChordSuspendedType? = nil, extensions: [NewChordExtensionType]? = nil) {
+  /// Initilze the chord type with its parts.
+  ///
+  /// - Parameters:
+  ///   - third: Thirds part.
+  ///   - fifth: Fifths part. Defaults perfect fifth.
+  ///   - sixth: Sixth part. Defaults nil.
+  ///   - seventh: Seventh part. Defaults nil.
+  ///   - suspended: Suspended part. Defaults nil.
+  ///   - extensions: Extended chords part. Defaults nil. Could be add more than one extended chord.
+  public init(third: ChordThirdType, fifth: ChordFifthType = .perfect, sixth: ChordSixthType? = nil, seventh: ChordSeventhType? = nil, suspended: ChordSuspendedType? = nil, extensions: [ChordExtensionType]? = nil) {
     self.third = third
     self.fifth = fifth
     self.sixth = sixth
@@ -304,12 +393,15 @@ public struct NewChordType: ChordDescription {
     }
   }
 
+  /// Intervals of parts between root.
   public var intervals: [Interval] {
     var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
+    // FIXME: Check if extensions have other parts. If only has 13, check if also has 9 and 11.
     parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as? ChordPart }) ?? []
     return [.unison] + parts.flatMap({ $0?.interval })
   }
 
+  /// Notation of the chord type.
   public var notation: String {
     var seventhNotation = seventh?.notation ?? ""
     let sixthNotation = sixth == nil ? "" : seventh == nil ? sixth!.notation : "\(sixth!.notation)/"
@@ -334,6 +426,7 @@ public struct NewChordType: ChordDescription {
     return "\(third.notation)\(fifth.notation)\(sixthNotation)\(seventhNotation)\(suspendedNotation)\(extensionsNotation)"
   }
 
+  /// Description of the chord type.
   public var description: String {
     let seventhNotation = seventh?.description ?? ""
     let sixthNotation = sixth?.description ?? ""
@@ -345,8 +438,9 @@ public struct NewChordType: ChordDescription {
     return "\(third.notation) \(fifth.notation) \(sixthNotation) \(seventhNotation) \(suspendedNotation) \(extensionsNotation)"
   }
 
-  public static var all: [NewChordType] {
-    func combinations(_ elements: [NewChordExtensionType], taking: Int = 1) -> [[NewChordExtensionType]] {
+  /// All possible chords could be generated.
+  public static var all: [ChordType] {
+    func combinations(_ elements: [ChordExtensionType], taking: Int = 1) -> [[ChordExtensionType]] {
       guard elements.count >= taking else { return [] }
       guard elements.count > 0 && taking > 0 else { return [[]] }
 
@@ -354,7 +448,7 @@ public struct NewChordType: ChordDescription {
         return elements.map {[$0]}
       }
 
-      var comb = [[NewChordExtensionType]]()
+      var comb = [[ChordExtensionType]]()
       for (index, element) in elements.enumerated() {
         var reducedElements = elements
         reducedElements.removeFirst(index + 1)
@@ -363,20 +457,20 @@ public struct NewChordType: ChordDescription {
       return comb
     }
     
-    var all = [NewChordType]()
-    let allThird = NewChordThirdType.all
-    let allFifth = NewChordFifthType.all
-    let allSixth: [NewChordSixthType?] = [NewChordSixthType(), nil]
-    let allSeventh: [NewChordSeventhType?] = NewChordSeventhType.all
-    let allSus: [NewChordSuspendedType?] = NewChordSuspendedType.all
-    let allExt = combinations(NewChordExtensionType.all) + combinations(NewChordExtensionType.all, taking: 2) + combinations(NewChordExtensionType.all, taking: 3)
+    var all = [ChordType]()
+    let allThird = ChordThirdType.all
+    let allFifth = ChordFifthType.all
+    let allSixth: [ChordSixthType?] = [ChordSixthType(), nil]
+    let allSeventh: [ChordSeventhType?] = ChordSeventhType.all
+    let allSus: [ChordSuspendedType?] = ChordSuspendedType.all
+    let allExt = combinations(ChordExtensionType.all) + combinations(ChordExtensionType.all, taking: 2) + combinations(ChordExtensionType.all, taking: 3)
     for third in allThird {
       for fifth in allFifth {
         for sixth in allSixth {
           for seventh in 0...allSeventh.count {
             for sus in 0...allSus.count {
               for ext in 0...allExt.count {
-                all.append(NewChordType(
+                all.append(ChordType(
                   third: third,
                   fifth: fifth,
                   sixth: sixth,
@@ -393,36 +487,55 @@ public struct NewChordType: ChordDescription {
   }
 }
 
-public struct NewChord: ChordDescription {
+/// Defines a chord with a root note and type.
+public struct Chord: ChordDescription {
+  /// Root note of the chord.
   public private(set) var key: NoteType
-  public private(set) var type: NewChordType
+  /// Type of the chord.
+  public private(set) var type: ChordType
 
-  public init(key: NoteType, type: NewChordType) {
+  /// Initilizes chord with root note and type.
+  ///
+  /// - Parameters:
+  ///   - key: Root note of the chord.
+  ///   - type: Tyoe of the chord.
+  public init(key: NoteType, type: ChordType) {
     self.key = key
     self.type = type
   }
 
+  /// Generates notes of the chord for octave.
+  ///
+  /// - Parameter octave: Octave of the root note for the build chord from.
+  /// - Returns: Generates notes of the chord.
   public func notes(octave: Int) -> [Note] {
     return type.intervals.map({ Note(type: key, octave: octave) + $0 })
   }
 
+  /// Generates notes of the chord for octave range.
+  ///
+  /// - Parameter octaves: Octaves of the root note to build chord from.
+  /// - Returns: Generates notes of the chord.
   public func notes(octaves: [Int]) -> [Note] {
     return octaves.flatMap({ notes(octave: $0) }).sorted(by: { $0.midiNote < $1.midiNote })
   }
 
+  /// Notation of the chord.
   public var notation: String {
     return "\(key)\(type.notation)"
   }
 
+  /// Description of the chord.
   public var description: String {
     return "\(key) \(type)"
   }
 
-  public static var all: [NewChord] {
-    var all = [NewChord]()
+  /// All possible chord values could be generated.
+  public static var all: [Chord] {
+    var all = [Chord]()
     for note in NoteType.all {
-      for type in NewChordType.all {
-        all.append(NewChord(key: note, type: type))
+      for type in ChordType.all {
+        all.append(Chord(key: note, type: type))
       }
     }
     return all
