@@ -31,7 +31,16 @@
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/ChordType.html">ChordType</a>
+                <a href="Enums/ChordFifthType.html">ChordFifthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordSeventhType.html">ChordSeventhType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordSuspendedType.html">ChordSuspendedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordThirdType.html">ChordThirdType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/Interval.html">Interval</a>
@@ -63,6 +72,9 @@
                 <a href="Functions.html#/s:11MusicTheory1poiAA4NoteVAD_SitF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1poiAA8IntervalOAD_ADtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1poiAA8NoteTypeOAD_AA8IntervalOtF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -78,6 +90,9 @@
                 <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAD_ADtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1soiAA8NoteTypeOAD_AA8IntervalOtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -87,7 +102,7 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA4NoteV_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ChordV_ADtF">==(_:_:)</a>
+                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ScaleV_ADtF">==(_:_:)</a>
@@ -96,10 +111,21 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA8IntervalO_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeO_ADtF">==(_:_:)</a>
+                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ScaleTypeO_ADtF">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ChordDescription.html">ChordDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ChordPart.html">ChordPart</a>
               </li>
             </ul>
           </li>
@@ -108,6 +134,21 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType.html">ChordExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType/Accident.html">– Accident</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordSixthType.html">ChordSixthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordType.html">ChordType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Note.html">Note</a>
@@ -153,56 +194,72 @@
 </code></pre>
 <h2 id='usage' class='heading'>Usage</h2>
 
-<p>Usage is pretty straitforward. Just import the package and use directly.</p>
-<pre class="highlight plaintext"><code>import MusicTheory
-</code></pre>
-<h3 id='note' class='heading'>Note</h3>
+<p><code>MusicTheory</code> adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are <code><a href="Structs/Note.html">Note</a></code>, <code><a href="Structs/Scale.html">Scale</a></code> and <code><a href="Structs/Chord.html">Chord</a></code>.</p>
+<h3 id='code-notetype-code-and-code-note-code' class='heading'><code><a href="Enums/NoteType.html">NoteType</a></code> and <code><a href="Structs/Note.html">Note</a></code></h3>
 
 <ul>
-<li>C, D♭, D, E♭, E, F, G♭, G, A♭, A, B♭ and B notes.</li>
-<li>Could calculate ideal frequancy based on <code>A4 = 440Hz</code> piano for given octave..</li>
-<li>Could calculate midi note in range of [0 - 127] for octaves [0 - 10].</li>
-<li>Could calculate piano key value on a 88 key piano for given octave.</li>
-<li>Could calculate next or previous notes for given <code><a href="Enums/Interval.html">Interval</a></code> or <code>Tone</code>.</li>
+<li>All notes defined in <code><a href="Enums/NoteType.html">NoteType</a></code> enum.</li>
+<li>You can create <code><a href="Structs/Note.html">Note</a></code>s with <code><a href="Enums/NoteType.html">NoteType</a></code>s and octaves.</li>
+<li>Also, you can create <code><a href="Structs/Note.html">Note</a></code>s with MIDI note index.</li>
+<li>Notes and NoteTypes are equatable, <code>+</code> and <code>-</code> custom operators defined for making calulations easier.</li>
+<li>Also, there are other helper functions or properties like frequency of a note.</li>
 </ul>
-<pre class="highlight plaintext"><code>let d: NoteType = .d
-let c = Note(type: .c, octave: 0)
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">NoteType</span> <span class="o">=</span> <span class="o">.</span><span class="n">d</span>
+<span class="k">let</span> <span class="nv">c</span> <span class="o">=</span> <span class="kt">Note</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="nv">octave</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre>
-<h3 id='scale' class='heading'>Scale</h3>
+<h3 id='code-interval-code' class='heading'><code><a href="Enums/Interval.html">Interval</a></code></h3>
 
 <ul>
-<li>Major, minor, harmonic minor, dorian, locrian, mixolydian, lydian, phrygian scales.</li>
-<li>Could create custom scale with base key and intervals like <code>.custom(key: .c, intervals: [.m2, .M3, .d5, .P5])</code>.</li>
-<li>Could create midi note sequance of the whole scale.</li>
-<li>Could create <code><a href="Structs/Note.html">Note</a></code>s of the scale starting from the key and going forward by intervals from there.</li>
+<li>Intervals are halfsteps between notes.</li>
+<li>They are <code>IntegerLiteral</code> and you can make add/subsctract them between themselves, notes or note types.</li>
+<li>You can build scales or chords from intervals.</li>
+<li>m2, M2, m3, M3, P4, d5, P5, m6, M6, m7, M7 and P8 are predefined intervals.</li>
 </ul>
-<pre class="highlight plaintext"><code>let c: NoteType = .c
-let maj: ScaleType = .major
-let cMaj = Scale(type: maj, key: c)
-</code></pre>
-<h3 id='chord' class='heading'>Chord</h3>
+<h3 id='code-scaletype-code-and-code-scale-code' class='heading'><code><a href="Enums/ScaleType.html">ScaleType</a></code> and <code><a href="Structs/Scale.html">Scale</a></code></h3>
 
 <ul>
-<li>Major, minor, diminished, augmented, sixth, seventh and more popular chords.</li>
-<li>Could create custom chord with base key and intervals like <code>.custom(key: .c, intervals: [.m2, .M3, .P5])</code></li>
-<li>Could create midi note sequance of the chord.</li>
-<li>Could create <code><a href="Structs/Note.html">Note</a></code>s of the chord.</li>
+<li><code><a href="Enums/ScaleType.html">ScaleType</a></code> enum defines a lot of readymade scales.</li>
+<li>Also, you can create a custom scale type by <code>ScaleType.custom(intervals: [Interval], description: String)</code></li>
+<li><code><a href="Structs/Scale.html">Scale</a></code> defines a scale with a scale type and root key.</li>
+<li>You can generate notes of scale in an octave range.</li>
+<li>Also you can generate <code>HarmonicField</code> of a scale.</li>
+<li>Harmonic field is all possible triad, tetrad or extended chords in a scale.</li>
 </ul>
-<pre class="highlight plaintext"><code>let c: NoteType = .c
-let maj: ChordType = .maj
-let cMaj = Chord(type: maj, key: c)
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">NoteType</span> <span class="o">=</span> <span class="o">.</span><span class="n">c</span>
+<span class="k">let</span> <span class="nv">maj</span><span class="p">:</span> <span class="kt">ScaleType</span> <span class="o">=</span> <span class="o">.</span><span class="n">major</span>
+<span class="k">let</span> <span class="nv">cMaj</span> <span class="o">=</span> <span class="kt">Scale</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="n">maj</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="n">c</span><span class="p">)</span>
 </code></pre>
-<h3 id='interval' class='heading'>Interval</h3>
+<h3 id='code-chordtype-code-and-code-chord-code' class='heading'><code><a href="Structs/ChordType.html">ChordType</a></code> and <code><a href="Structs/Chord.html">Chord</a></code></h3>
 
 <ul>
-<li>unison, m2, M2, m3, M3, P4, A4, d5, P5, A5, m6, M6, d7, m7, M7, A7 and P8 intervals.</li>
-<li>Have degree and halfsteps.</li>
-<li>Could create custom interval.</li>
-<li>Used in creation of <code><a href="Structs/Scale.html">Scale</a></code>s and <code><a href="Structs/Chord.html">Chord</a></code>s.</li>
+<li><code><a href="Structs/ChordType.html">ChordType</a></code> is a struct with <code><a href="Protocols/ChordPart.html">ChordPart</a></code>s which are building blocks of chords.</li>
+<li>You can define any chord existing with <code><a href="Structs/ChordType.html">ChordType</a></code>.</li>
+<li>Thirds, fifths, sixths, sevenths and extensions are parts of the <code><a href="Structs/ChordType.html">ChordType</a></code>.</li>
+<li>Each of them also structs which conforms <code><a href="Protocols/ChordPart.html">ChordPart</a></code> protocol.</li>
+<li><code><a href="Structs/Chord.html">Chord</a></code> defines chords with type and a root key.</li>
+<li>You can generate notes of chord in any octave range.</li>
+<li>You can generate inversions of any chord.</li>
 </ul>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">m13</span> <span class="o">=</span> <span class="kt">ChordType</span><span class="p">(</span>
+  <span class="nv">third</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span>
+  <span class="nv">seventh</span><span class="p">:</span> <span class="o">.</span><span class="n">dominant</span><span class="p">,</span>
+  <span class="nv">extensions</span><span class="p">:</span> <span class="p">[</span>
+    <span class="kt">ChordExtensionType</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">thirteenth</span><span class="p">)</span>
+  <span class="p">])</span>
+<span class="k">let</span> <span class="nv">cm13</span> <span class="o">=</span> <span class="kt">Chord</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="n">m13</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="o">.</span><span class="n">c</span><span class="p">)</span>
+</code></pre>
+<h3 id='code-tempo-code-and-code-timesignature-code' class='heading'><code><a href="Structs/Tempo.html">Tempo</a></code> and <code><a href="Structs/TimeSignature.html">TimeSignature</a></code></h3>
+<li>Tempo is a helper struct to define timings in your music app.</li>
+<li>TimeSignature is number of beats in per measure and <code><a href="Structs/NoteValue.html">NoteValue</a></code> of each beat.</li>
+<li>You can calculate notes duration in any tempo by ther <code><a href="Structs/NoteValue.html">NoteValue</a></code>.</li>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Note value defines the note&rsquo;s duration in a beat. It could be whole note, half note, quarter note, 8th, 16th or 32nd note.
+
+</div>
 <h3 id='documentation' class='heading'>Documentation</h3>
 
-<p>Documentation created with jazzy, hosted on <a href="https://cemolcay.github.io/MusicTheory/">github pages</a></p>
+<p><a href="https://cemolcay.github.io/MusicTheory/">Full documentation are here</a></p>
 <h3 id='unit-tests' class='heading'>Unit Tests</h3>
 
 <p>You can find unit tests in <code>MusicTheoryTests</code> target.<br>
@@ -211,7 +268,7 @@ Press <code>⌘+U</code> for running tests.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-12)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

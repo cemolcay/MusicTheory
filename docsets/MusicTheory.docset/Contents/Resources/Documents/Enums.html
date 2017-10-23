@@ -31,7 +31,16 @@
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/ChordType.html">ChordType</a>
+                <a href="Enums/ChordFifthType.html">ChordFifthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordSeventhType.html">ChordSeventhType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordSuspendedType.html">ChordSuspendedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordThirdType.html">ChordThirdType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/Interval.html">Interval</a>
@@ -63,6 +72,9 @@
                 <a href="Functions.html#/s:11MusicTheory1poiAA4NoteVAD_SitF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1poiAA8IntervalOAD_ADtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1poiAA8NoteTypeOAD_AA8IntervalOtF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -78,6 +90,9 @@
                 <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAD_ADtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1soiAA8NoteTypeOAD_AA8IntervalOtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -87,7 +102,7 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA4NoteV_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ChordV_ADtF">==(_:_:)</a>
+                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ScaleV_ADtF">==(_:_:)</a>
@@ -96,10 +111,21 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA8IntervalO_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeO_ADtF">==(_:_:)</a>
+                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ScaleTypeO_ADtF">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ChordDescription.html">ChordDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ChordPart.html">ChordPart</a>
               </li>
             </ul>
           </li>
@@ -108,6 +134,21 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType.html">ChordExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType/Accident.html">– Accident</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordSixthType.html">ChordSixthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordType.html">ChordType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Note.html">Note</a>
@@ -327,19 +368,19 @@ Raw values are included for easier calculation based on midi notes.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/ChordType"></a>
-                <a name="//apple_ref/swift/Section/ChordType" class="dashAnchor"></a>
-                <a href="#/ChordType">
-                  <h3 class="section-name">ChordType</h3>
+                <a name="/ChordPart"></a>
+                <a name="//apple_ref/swift/Section/ChordPart" class="dashAnchor"></a>
+                <a href="#/ChordPart">
+                  <h3 class="section-name">ChordPart</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory9ChordTypeO"></a>
-                    <a name="//apple_ref/swift/Enum/ChordType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory9ChordTypeO">ChordType</a>
+                    <a name="/s:11MusicTheory14ChordThirdTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/ChordThirdType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory14ChordThirdTypeO">ChordThirdType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -347,15 +388,100 @@ Raw values are included for easier calculation based on midi notes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Defines chords by note sequences initilized by their intervals.</p>
+                        <p>Defines third part of the chord. Second note after the root.</p>
 
-                        <a href="Enums/ChordType.html" class="slightly-smaller">See more</a>
+                        <a href="Enums/ChordThirdType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordType</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordThirdType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory14ChordFifthTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/ChordFifthType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory14ChordFifthTypeO">ChordFifthType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines fifth part of the chord. Third note after root note.</p>
+
+                        <a href="Enums/ChordFifthType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordFifthType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory16ChordSeventhTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/ChordSeventhType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordSeventhTypeO">ChordSeventhType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defiens seventh chords. If you add seventh note, you have seventh chord.</p>
+
+                        <a href="Enums/ChordSeventhType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordSeventhType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory18ChordSuspendedTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/ChordSuspendedType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory18ChordSuspendedTypeO">ChordSuspendedType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines suspended chords.
+If you play second or fourth note of chord, instead of thirds, than you have suspended chords.</p>
+
+                        <a href="Enums/ChordSuspendedType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordSuspendedType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
 
                         </div>
                       </div>
@@ -367,7 +493,7 @@ Raw values are included for easier calculation based on midi notes.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-12)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -32,7 +32,16 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/ChordType.html">ChordType</a>
+                <a href="../Enums/ChordFifthType.html">ChordFifthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordSeventhType.html">ChordSeventhType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordSuspendedType.html">ChordSuspendedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordThirdType.html">ChordThirdType</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/Interval.html">Interval</a>
@@ -64,6 +73,9 @@
                 <a href="../Functions.html#/s:11MusicTheory1poiAA4NoteVAD_SitF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiAA8IntervalOAD_ADtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory1poiAA8NoteTypeOAD_AA8IntervalOtF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -79,6 +91,9 @@
                 <a href="../Functions.html#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA8IntervalOAD_ADtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory1soiAA8NoteTypeOAD_AA8IntervalOtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -88,7 +103,7 @@
                 <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA4NoteV_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA5ChordV_ADtF">==(_:_:)</a>
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA5ScaleV_ADtF">==(_:_:)</a>
@@ -97,10 +112,21 @@
                 <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA8IntervalO_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeO_ADtF">==(_:_:)</a>
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA9ScaleTypeO_ADtF">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ChordDescription.html">ChordDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ChordPart.html">ChordPart</a>
               </li>
             </ul>
           </li>
@@ -109,6 +135,21 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType.html">ChordExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType/Accident.html">– Accident</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordSixthType.html">ChordSixthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordType.html">ChordType</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Note.html">Note</a>
@@ -138,11 +179,11 @@
             <h1>Chord</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Chord</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Chord</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ChordDescription.html">ChordDescription</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Chord object with its type and key.</p>
+            <p>Defines a chord with a root note and type.</p>
 
           </section>
           <section class="section task-group-section">
@@ -151,9 +192,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory5ChordV4typeAA0C4TypeOv"></a>
+                    <a name="/s:11MusicTheory5ChordV4typeAA0C4TypeVv"></a>
                     <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5ChordV4typeAA0C4TypeOv">type</a>
+                    <a class="token" href="#/s:11MusicTheory5ChordV4typeAA0C4TypeVv">type</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -161,14 +202,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Type of the chord that has <code>interval</code> info.</p>
+                        <p>Type of the chord.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChordType.html">ChordType</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Structs/ChordType.html">ChordType</a></span></code></pre>
 
                         </div>
                       </div>
@@ -188,7 +229,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Root key of the chord that will built onto.</p>
+                        <p>Root note of the chord.</p>
 
                       </div>
                       <div class="declaration">
@@ -205,9 +246,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory5ChordVAcA0C4TypeO4type_AA04NoteD0O3keytcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(type:key:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5ChordVAcA0C4TypeO4type_AA04NoteD0O3keytcfc">init(type:key:)</a>
+                    <a name="/s:11MusicTheory5ChordV9inversionSiv"></a>
+                    <a name="//apple_ref/swift/Property/inversion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ChordV9inversionSiv">inversion</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -215,14 +256,41 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initilizes the chord with type and key.</p>
+                        <p>Inversion index of the chord.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChordType.html">ChordType</a></span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Enums/NoteType.html">NoteType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">inversion</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory5ChordVAcA0C4TypeV4type_AA04NoteD0O3keySi9inversiontcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(type:key:inversion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ChordVAcA0C4TypeV4type_AA04NoteD0O3keySi9inversiontcfc">init(type:key:inversion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initilizes chord with root note and type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Structs/ChordType.html">ChordType</a></span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Enums/NoteType.html">NoteType</a></span><span class="p">,</span> <span class="nv">inversion</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -233,24 +301,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>type</em>
+                                <em>key</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p><code><a href="../Enums/ChordType.html">ChordType</a></code> of the chord.</p>
+                                  <p>Root note of the chord.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>key</em>
+                                <em>type</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Key note of the chord.</p>
+                                  <p>Tyoe of the chord.</p>
                                 </div>
                               </td>
                             </tr>
@@ -273,7 +341,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Generates chord <code><a href="../Structs/Note.html">Note</a></code>s for given octave.</p>
+                        <p>Generates notes of the chord for octave.</p>
 
                       </div>
                       <div class="declaration">
@@ -296,7 +364,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Octave of the chord.</p>
+                                  <p>Octave of the root note for the build chord from.</p>
                                 </div>
                               </td>
                             </tr>
@@ -305,57 +373,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Returns <code><a href="../Structs/Note.html">Note</a></code> array with chord&rsquo;s notes in given octave.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory5ChordV5notesSayAA4NoteVGSaySiG7octavesd_tF"></a>
-                    <a name="//apple_ref/swift/Method/notes(octaves:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5ChordV5notesSayAA4NoteVGSaySiG7octavesd_tF">notes(octaves:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Generates chord <code><a href="../Structs/Note.html">Note</a></code>s for given octaves.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">notes</span><span class="p">(</span><span class="nv">octaves</span><span class="p">:</span> <span class="kt">Int</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/Note.html">Note</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>octaves</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Variadic value of octaves.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Returns <code><a href="../Structs/Note.html">Note</a></code> array with chord&rsquo;s notes in given octaves.</p>
+                        <p>Generates notes of the chord.</p>
                       </div>
                     </section>
                   </div>
@@ -373,7 +391,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Generates chord <code><a href="../Structs/Note.html">Note</a></code>s for given octaves.</p>
+                        <p>Generates notes of the chord for octave range.</p>
 
                       </div>
                       <div class="declaration">
@@ -396,7 +414,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Array value of octaves.</p>
+                                  <p>Octaves of the root note to build chord from.</p>
                                 </div>
                               </td>
                             </tr>
@@ -405,34 +423,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Returns <code><a href="../Structs/Note.html">Note</a></code> array with chord&rsquo;s notes in given octaves.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory5ChordV10inversionsSayACGv"></a>
-                    <a name="//apple_ref/swift/Property/inversions" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5ChordV10inversionsSayACGv">inversions</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Generates inversions ordered by their degree.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">inversions</span><span class="p">:</span> <span class="p">[</span><span class="kt">Chord</span><span class="p">]</span></code></pre>
-
-                        </div>
+                        <p>Generates notes of the chord.</p>
                       </div>
                     </section>
                   </div>
@@ -450,7 +441,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Notes generated by the intervals of the chord.</p>
+                        <p>Types of notes in chord.</p>
 
                       </div>
                       <div class="declaration">
@@ -464,10 +455,61 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory5ChordV10inversionsSayACGv"></a>
+                    <a name="//apple_ref/swift/Property/inversions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ChordV10inversionsSayACGv">inversions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Possible inversions of the chord.
+Only chords on root position have inversions, otherwise returns empty array.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">inversions</span><span class="p">:</span> <span class="p">[</span><span class="kt">Chord</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory5ChordV8notationSSv"></a>
+                    <a name="//apple_ref/swift/Property/notation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ChordV8notationSSv">notation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notation of the chord.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">notation</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -481,7 +523,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Converts <code>Chord</code> to string with its key and type.</p>
+                        <p>Description of the chord.</p>
 
                       </div>
                       <div class="declaration">
@@ -495,12 +537,39 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory5ChordV3allSayACGvZ"></a>
+                    <a name="//apple_ref/swift/Variable/all" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory5ChordV3allSayACGvZ">all</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All possible chord values could be generated.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="kt">Chord</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-12)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

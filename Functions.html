@@ -31,7 +31,16 @@
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/ChordType.html">ChordType</a>
+                <a href="Enums/ChordFifthType.html">ChordFifthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordSeventhType.html">ChordSeventhType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordSuspendedType.html">ChordSuspendedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ChordThirdType.html">ChordThirdType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/Interval.html">Interval</a>
@@ -63,6 +72,9 @@
                 <a href="Functions.html#/s:11MusicTheory1poiAA4NoteVAD_SitF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1poiAA8IntervalOAD_ADtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1poiAA8NoteTypeOAD_AA8IntervalOtF">+(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -78,6 +90,9 @@
                 <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAA4NoteV_AFtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory1soiAA8IntervalOAD_ADtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory1soiAA8NoteTypeOAD_AA8IntervalOtF">-(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -87,7 +102,7 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA4NoteV_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ChordV_ADtF">==(_:_:)</a>
+                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA5ScaleV_ADtF">==(_:_:)</a>
@@ -96,10 +111,21 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA8IntervalO_ADtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeO_ADtF">==(_:_:)</a>
+                <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory2eeoiSbAA9ScaleTypeO_ADtF">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ChordDescription.html">ChordDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ChordPart.html">ChordPart</a>
               </li>
             </ul>
           </li>
@@ -108,6 +134,21 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType.html">ChordExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType/Accident.html">– Accident</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordSixthType.html">ChordSixthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ChordType.html">ChordType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Note.html">Note</a>
@@ -794,6 +835,130 @@ Doesn&rsquo;t matter left hand side and right hand side note places.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11MusicTheory1poiAA8IntervalOAD_ADtF"></a>
+                    <a name="//apple_ref/swift/Function/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory1poiAA8IntervalOAD_ADtF">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds two intervals and returns combined value of two.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">+</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Left hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Right hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Combined interval value of two.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory1soiAA8IntervalOAD_ADtF"></a>
+                    <a name="//apple_ref/swift/Function/-(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory1soiAA8IntervalOAD_ADtF">-(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subsracts two intervals and returns the interval value between two.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">-</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="Enums/Interval.html">Interval</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Left hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Right hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Interval between two intervals.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11MusicTheory2eeoiSbAA8IntervalO_ADtF"></a>
                     <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:11MusicTheory2eeoiSbAA8IntervalO_ADtF">==(_:_:)</a>
@@ -1077,9 +1242,9 @@ Doesn&rsquo;t matter left hand side and right hand side note places.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory2eeoiSbAA9ChordTypeO_ADtF"></a>
+                    <a name="/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF"></a>
                     <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory2eeoiSbAA9ChordTypeO_ADtF">==(_:_:)</a>
+                    <a class="token" href="#/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1087,14 +1252,14 @@ Doesn&rsquo;t matter left hand side and right hand side note places.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Checks the equability between two <code><a href="Enums/ChordType.html">ChordType</a></code>s by their intervals.</p>
+                        <p>Checks the equability between two <code><a href="Structs/ChordType.html">ChordType</a></code>s by their intervals.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt"><a href="Enums/ChordType.html">ChordType</a></span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt"><a href="Enums/ChordType.html">ChordType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt"><a href="Structs/ChordType.html">ChordType</a></span><span class="p">?,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt"><a href="Structs/ChordType.html">ChordType</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -1150,9 +1315,9 @@ Doesn&rsquo;t matter left hand side and right hand side note places.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory2eeoiSbAA5ChordV_ADtF"></a>
+                    <a name="/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF"></a>
                     <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory2eeoiSbAA5ChordV_ADtF">==(_:_:)</a>
+                    <a class="token" href="#/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1167,7 +1332,7 @@ Doesn&rsquo;t matter left hand side and right hand side note places.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt"><a href="Structs/Chord.html">Chord</a></span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt"><a href="Structs/Chord.html">Chord</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt"><a href="Structs/Chord.html">Chord</a></span><span class="p">?,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt"><a href="Structs/Chord.html">Chord</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -1214,7 +1379,7 @@ Doesn&rsquo;t matter left hand side and right hand side note places.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-12)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
