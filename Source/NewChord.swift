@@ -61,6 +61,26 @@ public enum NewChordFifthType: ChordDescription {
   }
 }
 
+public func ==(lhs: NewChordTetradType?, rhs: NewChordTetradType?) -> Bool {
+  switch (lhs, rhs) {
+    case (.some(let left), .some(let right)):
+      switch (left, right) {
+        case (.sixth, .sixth):
+          return true
+        case (.seventh(.dominant), .seventh(.dominant)):
+          return true
+        case (.seventh(.major), .seventh(.major)):
+          return true
+        default:
+          return false
+      }
+  case (.none, .none):
+    return true
+  default:
+    return false
+  }
+}
+
 public enum NewChordTetradType: ChordDescription {
   case sixth // triad and sixth note
   case seventh(NewChordSeventhType) // triad and seventh note
@@ -132,13 +152,13 @@ public enum NewChordSuspendedType: ChordDescription {
 
 public enum NewChordAccidentType: ChordDescription {
   case natural // no accident
-  case bemol // halfstep down
+  case flat // halfstep down
   case sharp // halfstep up
 
   public var notation: String {
     switch self {
     case .natural: return ""
-    case .bemol: return "♭"
+    case .flat: return "♭"
     case .sharp: return "♯"
     }
   }
@@ -146,13 +166,13 @@ public enum NewChordAccidentType: ChordDescription {
   public var description: String {
     switch self {
     case .natural: return "Natural"
-    case .bemol: return "Halfstep down"
+    case .flat: return "Halfstep down"
     case .sharp: return "Halfstep up"
     }
   }
 
   public static var all: [NewChordAccidentType] {
-    return [.natural, .bemol, .sharp]
+    return [.natural, .flat, .sharp]
   }
 }
 
@@ -185,18 +205,28 @@ public enum NewChordExtensionType: Int, ChordDescription {
 public struct NewChordExtension: ChordDescription {
   public var type: NewChordExtensionType
   public var accident: NewChordAccidentType
+  public var isMajor: Bool
+  public var isAdded: Bool
 
-  public init(type: NewChordExtensionType, accident: NewChordAccidentType = .natural) {
+  public init(type: NewChordExtensionType, accident: NewChordAccidentType = .natural, isMajor: Bool = false, isAdded: Bool = false) {
     self.type = type
     self.accident = accident
+    self.isMajor = isMajor
+    self.isAdded = isAdded
   }
 
   public var notation: String {
-    return "\(accident.notation)\(type.notation)"
+    if isMajor {
+      return "maj\(accident.notation)\(type.notation)"
+    } else if isAdded {
+      return "add\(accident.notation)\(type.notation)"
+    } else {
+      return "\(accident.notation)\(type.notation)"
+    }
   }
 
   public var description: String {
-    return "\(accident) \(type)"
+    return "\(isAdded ? "Added " : "")\(accident) \(type)"
   }
 
   public static var all: [NewChordExtension] {
@@ -221,61 +251,36 @@ public struct NewChordType: ChordDescription {
     self.third = third
     self.fifth = fifth
     self.tetrad = tetrad
-    self.suspended = suspended
+    self.suspended = extensions == nil ? suspended : nil
     self.extensions = extensions
+
+    if extensions?.count == 1 {
+      self.extensions?[0].isMajor = tetrad == NewChordTetradType.seventh(.major)
+      self.extensions?[0].isAdded = !(tetrad == NewChordTetradType.seventh(.dominant) || tetrad == NewChordTetradType.seventh(.major))
+    }
   }
 
   public var notation: String {
-    let tetradNotation = tetrad?.notation ?? ""
+    var tetradNotation = tetrad?.notation ?? ""
     let suspendedNotation = suspended?.notation ?? ""
+    let safeExtensionsNotation = extensions?
+      .sorted(by: { $0.type.rawValue < $1.type.rawValue })
+      .flatMap({ $0.notation })
+      .joined(separator: "/")
+    let extensionsNotation = safeExtensionsNotation == nil ? "" : "(\(safeExtensionsNotation!))"
 
-    var extensionsNotation: String? = ""
-    var isDefaultExtensionNotation = false
-
-    switch extensions?.count {
-    case 1?:
-      if case .ninth = extensions![0].type {
-        if case nil = tetrad {
-          isDefaultExtensionNotation = true
-        } else {
-          extensionsNotation = "(add\(extensions![0].notation))"
-        }
-      } else if case .eleventh = extensions![0].type {
-        extensionsNotation = "(add\(extensions![0].notation))"
-      } else if case .thirteenth = extensions![0].type {
-        extensionsNotation = "(add\(extensions![0].notation))"
-      } else {
-        isDefaultExtensionNotation = true
+    if tetrad != nil {
+      // Don't show major seventh note if extended is a major as well
+      if tetrad == .seventh(.major), extensions?.count == 1, extensions?[0].isMajor == true {
+        tetradNotation = ""
       }
-    case 2?:
-      if case .ninth = extensions![0].type, case .natural = extensions![0].accident, case .eleventh = extensions![1].type {
-        extensionsNotation = "\(extensions![1].notation)"
-      } else {
-        isDefaultExtensionNotation = true
+      // Show fifth note after seventh in parenthesis
+      if fifth == .agumented || fifth == .diminished {
+        return "\(third.notation)\(tetradNotation)(\(fifth.notation))\(suspendedNotation)\(extensionsNotation)"
       }
-    case 3?:
-      if case .ninth = extensions![0].type, case .natural = extensions![0].accident, case .eleventh = extensions![1].type, case .natural = extensions![1].accident, case .thirteenth = extensions![2].type {
-        extensionsNotation = "\(extensions![2].notation)"
-      } else {
-        isDefaultExtensionNotation = true
-      }
-    default:
-      isDefaultExtensionNotation = true
     }
 
-    if isDefaultExtensionNotation {
-      extensionsNotation = extensions?
-        .sorted(by: { $0.type.rawValue < $1.type.rawValue })
-        .flatMap({ $0.notation })
-        .joined(separator: "/")
-      extensionsNotation = extensionsNotation == nil ? "" : "(\(extensionsNotation!))"
-    }
-
-    if tetrad != nil, (fifth == .agumented || fifth == .diminished) {
-      return "\(third.notation)\(tetradNotation)(\(fifth.notation))\(suspendedNotation)\(extensionsNotation!)"
-    } else {
-      return "\(third.notation)\(fifth.notation)\(tetradNotation)\(suspendedNotation)\(extensionsNotation!)"
-    }
+    return "\(third.notation)\(fifth.notation)\(tetradNotation)\(suspendedNotation)\(extensionsNotation)"
   }
 
   public var description: String {
@@ -333,12 +338,14 @@ public struct NewChordType: ChordDescription {
 }
 
 public struct NewChord: ChordDescription {
-  public var key: NoteType
-  public var type: NewChordType
+  public private(set) var key: NoteType
+  public private(set) var type: NewChordType
+  public private(set) var inversion: Int
 
-  public init(key: NoteType, type: NewChordType) {
+  public init(key: NoteType, type: NewChordType, inversion: Int = 0) {
     self.key = key
     self.type = type
+    self.inversion = inversion
   }
 
   public var notation: String {
@@ -347,6 +354,11 @@ public struct NewChord: ChordDescription {
 
   public var description: String {
     return "\(key) \(type)"
+  }
+
+  public static func from(notes: [Note]) -> [NewChord] {
+
+    return []
   }
 
   public static var all: [NewChord] {
