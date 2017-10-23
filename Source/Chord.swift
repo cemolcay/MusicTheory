@@ -10,6 +10,8 @@
 
 import Foundation
 
+// MARK: - ChordPart
+
 /// Protocol that defines a printable chord part.
 public protocol ChordDescription: CustomStringConvertible {
   /// Notation of chord.
@@ -242,8 +244,6 @@ public struct ChordExtensionType: ChordPart {
   public var type: ExtensionType
   /// Accident of extended chord.
   public var accident: Accident
-  /// True if seventh note is exists and is major 7th. Defaults false.
-  internal var isMajor: Bool
   /// If there are no seventh note and only one extended part is this. Defaults false
   internal var isAdded: Bool
 
@@ -255,22 +255,7 @@ public struct ChordExtensionType: ChordPart {
   public init(type: ExtensionType, accident: Accident = .natural) {
     self.type = type
     self.accident = accident
-    self.isMajor = false
     self.isAdded = false
-  }
-
-  /// Initilizes extended chord.
-  ///
-  /// - Parameters:
-  ///   - type: Type of extended chord.
-  ///   - accident: Accident of extended chord.
-  ///   - isMajor: Is seventh is major.
-  ///   - isAdded: Is added chord or not.
-  internal init(type: ExtensionType, accident: Accident = .natural, isMajor: Bool = false, isAdded: Bool = false) {
-    self.type = type
-    self.accident = accident
-    self.isMajor = isMajor
-    self.isAdded = isAdded
   }
 
   /// Interval between root.
@@ -308,13 +293,7 @@ public struct ChordExtensionType: ChordPart {
     case .sharp: accidentNotation = "♯"
     }
 
-    if isMajor {
-      return "maj\(accidentNotation)\(typeNotation)"
-    } else if isAdded {
-      return "add\(accidentNotation)\(typeNotation)"
-    } else {
-      return "\(accidentNotation)\(typeNotation)"
-    }
+    return "\(accidentNotation)\(typeNotation)"
   }
 
   /// Description of chord part.
@@ -348,6 +327,18 @@ public struct ChordExtensionType: ChordPart {
   }
 }
 
+// MARK: - ChordType
+
+/// Checks the equability between two `ChordType`s by their intervals.
+///
+/// - Parameters:
+///   - left: Left handside of the equation.
+///   - right: Right handside of the equation.
+/// - Returns: Returns Bool value of equation of two given chord types.
+public func ==(left: ChordType, right: ChordType) -> Bool {
+  return left.intervals == right.intervals
+}
+
 /// Defines full type of chord with all chord parts.
 public struct ChordType: ChordDescription {
   /// Thirds part. Second note of the chord.
@@ -364,8 +355,14 @@ public struct ChordType: ChordDescription {
   public var extensions: [ChordExtensionType]? {
     didSet {
       if extensions?.count == 1 {
-        extensions?[0].isMajor = seventh == .major
-        extensions?[0].isAdded = seventh == nil
+        extensions![0].isAdded = seventh == nil
+        // Add other extensions if needed
+        if let ext = extensions?.first, ext.type == .eleventh, !ext.isAdded {
+          extensions?.append(ChordExtensionType(type: .ninth))
+        } else if let ext = extensions?.first, ext.type == .thirteenth, !ext.isAdded {
+          extensions?.append(ChordExtensionType(type: .ninth))
+          extensions?.append(ChordExtensionType(type: .eleventh))
+        }
       }
     }
   }
@@ -388,15 +385,20 @@ public struct ChordType: ChordDescription {
     self.extensions = extensions
 
     if extensions?.count == 1 {
-      self.extensions?[0].isMajor = seventh == .major
-      self.extensions?[0].isAdded = seventh == nil
+      self.extensions![0].isAdded = seventh == nil
+      // Add other extensions if needed
+      if let ext = extensions?.first, ext.type == .eleventh, !ext.isAdded {
+        self.extensions?.append(ChordExtensionType(type: .ninth))
+      } else if let ext = self.extensions?.first, ext.type == .thirteenth, !ext.isAdded {
+        self.extensions?.append(ChordExtensionType(type: .ninth))
+        self.extensions?.append(ChordExtensionType(type: .eleventh))
+      }
     }
   }
 
   /// Intervals of parts between root.
   public var intervals: [Interval] {
     var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
-    // FIXME: Check if extensions have other parts. If only has 13, check if also has 9 and 11.
     parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as? ChordPart }) ?? []
     return [.unison] + parts.flatMap({ $0?.interval })
   }
@@ -404,26 +406,38 @@ public struct ChordType: ChordDescription {
   /// Notation of the chord type.
   public var notation: String {
     var seventhNotation = seventh?.notation ?? ""
-    let sixthNotation = sixth == nil ? "" : seventh == nil ? sixth!.notation : "\(sixth!.notation)/"
+    var sixthNotation = sixth == nil ? "" : "\(sixth!.notation)\(seventh == nil ? "" : "/")"
     let suspendedNotation = suspended?.notation ?? ""
-    let safeExtensionsNotation = extensions?
-      .sorted(by: { $0.type.rawValue < $1.type.rawValue })
-      .flatMap({ $0.notation })
-      .joined(separator: "/")
-    let extensionsNotation = safeExtensionsNotation == nil ? "" : "(\(safeExtensionsNotation!))"
+    var extensionNotation = ""
+    let ext = extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }) ?? []
+
+    var singleNotation = false
+    for i in 0..<max(0, ext.count - 1) {
+      singleNotation = ext[i].accident == .natural
+    }
+
+    if singleNotation {
+      extensionNotation = "(\(ext.last!.notation))"
+    } else {
+      extensionNotation = ext
+        .flatMap({ $0.notation })
+        .joined(separator: "/")
+      extensionNotation = extensionNotation.isEmpty ? "" : "(\(extensionNotation))"
+    }
 
     if seventh != nil {
       // Don't show major seventh note if extended is a major as well
-      if seventh == .major, extensions?.count == 1, extensions?[0].isMajor == true {
+      if seventh == .major, (extensions ?? []).count > 0 {
         seventhNotation = ""
+        sixthNotation = sixth == nil ? "" : sixth!.notation
       }
       // Show fifth note after seventh in parenthesis
       if fifth == .agumented || fifth == .diminished {
-        return "\(third.notation)\(sixthNotation)\(seventhNotation)(\(fifth.notation))\(suspendedNotation)\(extensionsNotation)"
+        return "\(third.notation)\(sixthNotation)\(seventhNotation)(\(fifth.notation))\(suspendedNotation)\(extensionNotation)"
       }
     }
 
-    return "\(third.notation)\(fifth.notation)\(sixthNotation)\(seventhNotation)\(suspendedNotation)\(extensionsNotation)"
+    return "\(third.notation)\(fifth.notation)\(sixthNotation)\(seventhNotation)\(suspendedNotation)\(extensionNotation)"
   }
 
   /// Description of the chord type.
@@ -461,22 +475,25 @@ public struct ChordType: ChordDescription {
     let allThird = ChordThirdType.all
     let allFifth = ChordFifthType.all
     let allSixth: [ChordSixthType?] = [ChordSixthType(), nil]
-    let allSeventh: [ChordSeventhType?] = ChordSeventhType.all
-    let allSus: [ChordSuspendedType?] = ChordSuspendedType.all
-    let allExt = combinations(ChordExtensionType.all) + combinations(ChordExtensionType.all, taking: 2) + combinations(ChordExtensionType.all, taking: 3)
+    let allSeventh: [ChordSeventhType?] = ChordSeventhType.all + [nil]
+    let allSus: [ChordSuspendedType?] = ChordSuspendedType.all + [nil]
+    let allExt = combinations(ChordExtensionType.all) +
+      combinations(ChordExtensionType.all, taking: 2) +
+      combinations(ChordExtensionType.all, taking: 3)
+
     for third in allThird {
       for fifth in allFifth {
         for sixth in allSixth {
-          for seventh in 0...allSeventh.count {
-            for sus in 0...allSus.count {
-              for ext in 0...allExt.count {
+          for seventh in allSeventh {
+            for sus in allSus {
+              for ext in allExt {
                 all.append(ChordType(
                   third: third,
                   fifth: fifth,
                   sixth: sixth,
-                  seventh: seventh < allSeventh.count ? allSeventh[seventh] : nil,
-                  suspended: sus < allSus.count ? allSus[sus] : nil,
-                  extensions: ext < allExt.count ? allExt[ext] : nil))
+                  seventh: seventh,
+                  suspended: sus,
+                  extensions: ext))
               }
             }
           }
@@ -485,6 +502,18 @@ public struct ChordType: ChordDescription {
     }
     return all
   }
+}
+
+// MARK: - Chord
+
+/// Checks the equability between two chords by their base key and notes.
+///
+/// - Parameters:
+///   - left: Left handside of the equation.
+///   - right: Right handside of the equation.
+/// - Returns: Returns Bool value of equation of two given chords.
+public func ==(left: Chord, right: Chord) -> Bool {
+  return left.key == right.key && left.type == right.type
 }
 
 /// Defines a chord with a root note and type.
