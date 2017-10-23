@@ -12,9 +12,22 @@ public protocol ChordDescription: CustomStringConvertible {
   var notation: String { get }
 }
 
-public enum NewChordThirdType: ChordDescription {
+public protocol ChordPart: ChordDescription {
+  var interval: Interval { get }
+}
+
+public enum NewChordThirdType: ChordPart {
   case major
   case minor
+
+  public var interval: Interval {
+    switch self {
+    case .major:
+      return .M3
+    case .minor:
+      return .m3
+    }
+  }
 
   public var notation: String {
     switch self {
@@ -35,10 +48,21 @@ public enum NewChordThirdType: ChordDescription {
   }
 }
 
-public enum NewChordFifthType: ChordDescription {
+public enum NewChordFifthType: ChordPart {
   case perfect
   case diminished
   case agumented
+
+  public var interval: Interval {
+    switch self {
+    case .perfect:
+      return .P5
+    case .diminished:
+      return .d5
+    case .agumented:
+      return .m6
+    }
+  }
 
   public var notation: String {
     switch self {
@@ -61,7 +85,11 @@ public enum NewChordFifthType: ChordDescription {
   }
 }
 
-public struct NewChordSixth: ChordDescription {
+public struct NewChordSixthType: ChordPart {
+  public var interval: Interval {
+    return .M6
+  }
+
   public var notation: String {
     return "6"
   }
@@ -71,9 +99,18 @@ public struct NewChordSixth: ChordDescription {
   }
 }
 
-public enum NewChordSeventhType: ChordDescription {
+public enum NewChordSeventhType: ChordPart {
   case major // triad and seventh note
   case dominant // triad and halfstep down seventh note
+
+  public var interval: Interval {
+    switch self {
+    case .dominant:
+      return .m7
+    case .major:
+      return .M7
+    }
+  }
 
   public var notation: String {
     switch self {
@@ -94,9 +131,18 @@ public enum NewChordSeventhType: ChordDescription {
   }
 }
 
-public enum NewChordSuspendedType: ChordDescription {
+public enum NewChordSuspendedType: ChordPart {
   case sus2 // second note instead of third note
   case sus4 // fourth note instead of third note
+
+  public var interval: Interval {
+    switch self {
+    case .sus2:
+      return .M2
+    case .sus4:
+      return .P4
+    }
+  }
 
   public var notation: String {
     switch self {
@@ -117,90 +163,112 @@ public enum NewChordSuspendedType: ChordDescription {
   }
 }
 
-public enum NewChordAccidentType: ChordDescription {
-  case natural // no accident
-  case flat // halfstep down
-  case sharp // halfstep up
+public struct NewChordExtensionType: ChordPart {
 
-  public var notation: String {
-    switch self {
-    case .natural: return ""
-    case .flat: return "♭"
-    case .sharp: return "♯"
+  public enum Accident {
+    case natural
+    case flat
+    case sharp
+
+    public static var all: [Accident] {
+      return [.natural, .flat, .sharp]
     }
   }
 
-  public var description: String {
-    switch self {
-    case .natural: return "Natural"
-    case .flat: return "Flat"
-    case .sharp: return "Sharp"
+  public enum ExtensionType: Int {
+    case ninth = 9
+    case eleventh = 11
+    case thirteenth = 13
+
+    public static var all: [ExtensionType] {
+      return [.ninth, .eleventh, .thirteenth]
     }
   }
 
-  public static var all: [NewChordAccidentType] {
-    return [.natural, .flat, .sharp]
-  }
-}
-
-public enum NewChordExtensionType: Int, ChordDescription {
-  case ninth = 9
-  case eleventh = 11
-  case thirteenth = 13
-
-  public var notation: String {
-    switch self {
-    case .ninth: return "9"
-    case .eleventh: return "11"
-    case .thirteenth: return "13"
-    }
-  }
-
-  public var description: String {
-    switch self {
-    case .ninth: return "9th"
-    case .eleventh: return "11th"
-    case .thirteenth: return "13th"
-    }
-  }
-
-  public static var all: [NewChordExtensionType] {
-    return [.ninth, .eleventh, .thirteenth]
-  }
-}
-
-public struct NewChordExtension: ChordDescription {
-  public var type: NewChordExtensionType
-  public var accident: NewChordAccidentType
+  public var type: ExtensionType
+  public var accident: Accident
   public var isMajor: Bool
   public var isAdded: Bool
 
-  public init(type: NewChordExtensionType, accident: NewChordAccidentType = .natural, isMajor: Bool = false, isAdded: Bool = false) {
+  public init(type: ExtensionType, accident: Accident = .natural) {
+    self.type = type
+    self.accident = accident
+    self.isMajor = false
+    self.isAdded = false
+  }
+
+  internal init(type: ExtensionType, accident: Accident = .natural, isMajor: Bool = false, isAdded: Bool = false) {
     self.type = type
     self.accident = accident
     self.isMajor = isMajor
     self.isAdded = isAdded
   }
 
+  public var interval: Interval {
+    var typeInterval = 0
+    switch type {
+    case .ninth: typeInterval = (.M2 * 2).halfstep
+    case .eleventh: typeInterval = (.P4 * 2).halfstep
+    case .thirteenth: typeInterval = (.M6 * 2).halfstep
+    }
+
+    var accidentInterval = 0
+    switch accident {
+    case .natural: accidentInterval = 0
+    case .flat: accidentInterval = -1
+    case .sharp: accidentInterval = 1
+    }
+
+    return Interval(halfstep: typeInterval + accidentInterval)
+  }
+
   public var notation: String {
+    var typeNotation = ""
+    switch type {
+    case .ninth: typeNotation = "9"
+    case .eleventh: typeNotation = "11"
+    case .thirteenth: typeNotation = "13"
+    }
+
+    var accidentNotation = ""
+    switch accident {
+    case .natural: accidentNotation = ""
+    case .flat: accidentNotation = "♭"
+    case .sharp: accidentNotation = "♯"
+    }
+
     if isMajor {
-      return "maj\(accident.notation)\(type.notation)"
+      return "maj\(accidentNotation)\(typeNotation)"
     } else if isAdded {
-      return "add\(accident.notation)\(type.notation)"
+      return "add\(accidentNotation)\(typeNotation)"
     } else {
-      return "\(accident.notation)\(type.notation)"
+      return "\(accidentNotation)\(typeNotation)"
     }
   }
 
   public var description: String {
-    return "\(isAdded ? "Added " : "")\(accident) \(type)"
+    var typeDescription = ""
+    switch type {
+    case .ninth: typeDescription = "9th"
+    case .eleventh: typeDescription = "11th"
+    case .thirteenth: typeDescription = "13th"
+    }
+
+    var accidentDescription = ""
+    switch accident {
+    case .natural: accidentDescription = "Natural"
+    case .flat: accidentDescription = "Flat"
+    case .sharp: accidentDescription = "Sharp"
+    }
+
+    return "\(isAdded ? "Added " : "")\(accidentDescription) \(typeDescription)"
   }
 
-  public static var all: [NewChordExtension] {
-    var all = [NewChordExtension]()
-    for type in NewChordExtensionType.all {
-      for accident in NewChordAccidentType.all {
-        all.append(NewChordExtension(type: type, accident: accident))
+  public static var all: [NewChordExtensionType] {
+    var all = [NewChordExtensionType]()
+    for type in ExtensionType.all {
+      for accident in Accident.all {
+        all.append(NewChordExtensionType(type: type, accident: accident))
       }
     }
     return all
@@ -210,17 +278,24 @@ public struct NewChordExtension: ChordDescription {
 public struct NewChordType: ChordDescription {
   public var third: NewChordThirdType
   public var fifth: NewChordFifthType
-  public var sixth: NewChordSixth?
+  public var sixth: NewChordSixthType?
   public var seventh: NewChordSeventhType?
   public var suspended: NewChordSuspendedType?
-  public var extensions: [NewChordExtension]?
+  public var extensions: [NewChordExtensionType]? {
+    didSet {
+      if extensions?.count == 1 {
+        extensions?[0].isMajor = seventh == .major
+        extensions?[0].isAdded = seventh == nil
+      }
+    }
+  }
 
-  public init(third: NewChordThirdType, fifth: NewChordFifthType, sixth: NewChordSixth? = nil, seventh: NewChordSeventhType? = nil, suspended: NewChordSuspendedType? = nil, extensions: [NewChordExtension]? = nil) {
+  public init(third: NewChordThirdType, fifth: NewChordFifthType = .perfect, sixth: NewChordSixthType? = nil, seventh: NewChordSeventhType? = nil, suspended: NewChordSuspendedType? = nil, extensions: [NewChordExtensionType]? = nil) {
     self.third = third
     self.fifth = fifth
     self.sixth = sixth
     self.seventh = seventh
-    self.suspended = extensions == nil ? suspended : nil
+    self.suspended = suspended
     self.extensions = extensions
 
     if extensions?.count == 1 {
@@ -230,30 +305,9 @@ public struct NewChordType: ChordDescription {
   }
 
   public var intervals: [Interval] {
-    var intervals: [Interval] = [.unison]
-    // Thirds
-    switch third {
-    case .major:
-      intervals.append(.M3)
-    case .minor:
-      intervals.append(.m3)
-    }
-    // Fifths
-    switch fifth {
-    case .perfect:
-      intervals.append(.P5)
-    case .diminished:
-      intervals.append(.d5)
-    case .agumented:
-      intervals.append(.m6)
-    }
-    // Sixths
-    if case .some = sixth {
-      intervals.append(.M6)
-    }
-    // Sevenths
-    // Extensions
-    return intervals
+    var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
+    parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as? ChordPart }) ?? []
+    return [.unison] + parts.flatMap({ $0?.interval })
   }
 
   public var notation: String {
@@ -292,7 +346,7 @@ public struct NewChordType: ChordDescription {
   }
 
   public static var all: [NewChordType] {
-    func combinations(_ elements: [NewChordExtension], taking: Int = 1) -> [[NewChordExtension]] {
+    func combinations(_ elements: [NewChordExtensionType], taking: Int = 1) -> [[NewChordExtensionType]] {
       guard elements.count >= taking else { return [] }
       guard elements.count > 0 && taking > 0 else { return [[]] }
 
@@ -300,7 +354,7 @@ public struct NewChordType: ChordDescription {
         return elements.map {[$0]}
       }
 
-      var comb = [[NewChordExtension]]()
+      var comb = [[NewChordExtensionType]]()
       for (index, element) in elements.enumerated() {
         var reducedElements = elements
         reducedElements.removeFirst(index + 1)
@@ -312,10 +366,10 @@ public struct NewChordType: ChordDescription {
     var all = [NewChordType]()
     let allThird = NewChordThirdType.all
     let allFifth = NewChordFifthType.all
-    let allSixth: [NewChordSixth?] = [NewChordSixth(), nil]
+    let allSixth: [NewChordSixthType?] = [NewChordSixthType(), nil]
     let allSeventh: [NewChordSeventhType?] = NewChordSeventhType.all
     let allSus: [NewChordSuspendedType?] = NewChordSuspendedType.all
-    let allExt = combinations(NewChordExtension.all) + combinations(NewChordExtension.all, taking: 2) + combinations(NewChordExtension.all, taking: 3)
+    let allExt = combinations(NewChordExtensionType.all) + combinations(NewChordExtensionType.all, taking: 2) + combinations(NewChordExtensionType.all, taking: 3)
     for third in allThird {
       for fifth in allFifth {
         for sixth in allSixth {
@@ -342,12 +396,18 @@ public struct NewChordType: ChordDescription {
 public struct NewChord: ChordDescription {
   public private(set) var key: NoteType
   public private(set) var type: NewChordType
-  public private(set) var inversion: Int
 
-  public init(key: NoteType, type: NewChordType, inversion: Int = 0) {
+  public init(key: NoteType, type: NewChordType) {
     self.key = key
     self.type = type
-    self.inversion = inversion
+  }
+
+  public func notes(octave: Int) -> [Note] {
+    return type.intervals.map({ Note(type: key, octave: octave) + $0 })
+  }
+
+  public func notes(octaves: [Int]) -> [Note] {
+    return octaves.flatMap({ notes(octave: $0) }).sorted(by: { $0.midiNote < $1.midiNote })
   }
 
   public var notation: String {
@@ -356,10 +416,6 @@ public struct NewChord: ChordDescription {
 
   public var description: String {
     return "\(key) \(type)"
-  }
-
-  public static func from(notes: [Note]) -> [NewChord] {
-    return []
   }
 
   public static var all: [NewChord] {
