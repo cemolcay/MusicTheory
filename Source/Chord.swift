@@ -22,6 +22,8 @@ public protocol ChordDescription: CustomStringConvertible {
 public protocol ChordPart: ChordDescription {
   /// Interval between the root.
   var interval: Interval { get }
+  /// Initilize chord part with interval.
+  init?(interval: Interval)
 }
 
 /// Defines third part of the chord. Second note after the root.
@@ -30,6 +32,18 @@ public enum ChordThirdType: ChordPart {
   case major
   /// Defines minor chord. 3 halfsteps between root.
   case minor
+
+  /// Initilize chord part with interval.
+  public init?(interval: Interval) {
+    switch interval {
+    case ChordThirdType.major.interval:
+      self = .major
+    case ChordThirdType.minor.interval:
+      self = .minor
+    default:
+      return nil
+    }
+  }
 
   /// Interval between root.
   public var interval: Interval {
@@ -72,6 +86,20 @@ public enum ChordFifthType: ChordPart {
   /// Half step up of perfect fifth.
   case agumented
 
+  /// Initilize chord part with interval.
+  public init?(interval: Interval) {
+    switch interval {
+    case ChordFifthType.perfect.interval:
+      self = .perfect
+    case ChordFifthType.diminished.interval:
+      self = .diminished
+    case ChordFifthType.agumented.interval:
+      self = .agumented
+    default:
+      return nil
+    }
+  }
+
   /// Interval between root.
   public var interval: Interval {
     switch self {
@@ -97,8 +125,8 @@ public enum ChordFifthType: ChordPart {
   public var description: String {
     switch self {
     case .perfect: return ""
-    case .agumented: return "aug"
-    case .diminished: return "dim"
+    case .agumented: return "Agumented"
+    case .diminished: return "Diminished"
     }
   }
 
@@ -110,6 +138,19 @@ public enum ChordFifthType: ChordPart {
 
 /// Defiens sixth chords. If you add the sixth note, you have sixth chord.
 public struct ChordSixthType: ChordPart {
+  /// Default initilizer.
+  public init() {}
+
+  /// Initilize chord part with interval.
+  public init?(interval: Interval) {
+    switch interval {
+    case .M6:
+      self.init()
+    default:
+      return nil
+    }
+  }
+
   /// Interval between root.
   public var interval: Interval {
     return .M6
@@ -132,6 +173,18 @@ public enum ChordSeventhType: ChordPart {
   case major
   /// Halfstep down of seventh note. 10 halfsteps between root.
   case dominant
+
+  /// Initilize chord part with interval.
+  public init?(interval: Interval) {
+    switch interval {
+    case ChordSeventhType.major.interval:
+      self = .major
+    case ChordSeventhType.dominant.interval:
+      self = .dominant
+    default:
+      return nil
+    }
+  }
 
   /// Interval between root.
   public var interval: Interval {
@@ -173,6 +226,18 @@ public enum ChordSuspendedType: ChordPart {
   /// Fourth note of chord instead of third part. 5 halfsteps between root.
   case sus4
 
+  /// Initilize chord part with interval
+  public init?(interval: Interval) {
+    switch interval {
+    case ChordSuspendedType.sus2.interval:
+      self = .sus2
+    case ChordSuspendedType.sus4.interval:
+      self = .sus4
+    default:
+      return nil
+    }
+  }
+
   /// Interval between root.
   public var interval: Interval {
     switch self {
@@ -211,13 +276,49 @@ public enum ChordSuspendedType: ChordPart {
 public struct ChordExtensionType: ChordPart {
 
   /// Defines accident of extended chord.
-  public enum Accident {
+  public enum Accident: ChordDescription {
     /// No accidents, natural note.
     case natural
     /// Halfstep down, bemol.
     case flat
     /// Halfstep up, sharp.
     case sharp
+
+    /// Affecting interval.
+    public var interval: Interval {
+      switch self {
+      case .natural:
+        return 0
+      case .flat:
+        return -1
+      case .sharp:
+        return 1
+      }
+    }
+
+    /// Notation of the chord part.
+    public var notation: String {
+      switch self {
+      case .natural:
+        return ""
+      case .flat:
+        return "♭"
+      case .sharp:
+        return "♯"
+      }
+    }
+
+    /// Description of the chord part.
+    public var description: String {
+      switch self {
+      case .natural:
+        return "Natural"
+      case .flat:
+        return "Flat"
+      case .sharp:
+        return "Sharp"
+      }
+    }
 
     /// All values of `Accident`.
     public static var all: [Accident] {
@@ -226,13 +327,49 @@ public struct ChordExtensionType: ChordPart {
   }
 
   /// Defines type of the extended chords.
-  public enum ExtensionType: Int {
+  public enum ExtensionType: Int, ChordDescription {
     /// 9th chord. Second note of the chord, one octave up from root.
     case ninth = 9
     /// 11th chord. Eleventh note of the chord, one octave up from root.
     case eleventh = 11
     /// 13th chord. Sixth note of the chord, one octave up from root.
     case thirteenth = 13
+
+    /// Interval between root.
+    public var interval: Interval {
+      switch self {
+      case .ninth:
+        return .M2 * 2
+      case .eleventh:
+        return .P4 * 2
+      case .thirteenth:
+        return .M6 * 2
+      }
+    }
+
+    /// Notation of the chord part.
+    public var notation: String {
+      switch self {
+      case .ninth:
+        return "9"
+      case .eleventh:
+        return "11"
+      case .thirteenth:
+        return "13"
+      }
+    }
+
+    /// Description of the chord part.
+    public var description: String {
+      switch self {
+      case .ninth:
+        return "9th"
+      case .eleventh:
+        return "11th"
+      case .thirteenth:
+        return "13th"
+      }
+    }
 
     /// All values of `ExtensionType`.
     public static var all: [ExtensionType] {
@@ -258,61 +395,45 @@ public struct ChordExtensionType: ChordPart {
     self.isAdded = false
   }
 
+  /// Initilize chord part with interval
+  public init?(interval: Interval) {
+    switch interval {
+    case ExtensionType.ninth.interval + Accident.natural.interval:
+      self = ChordExtensionType(type: .ninth, accident: .natural)
+    case ExtensionType.ninth.interval + Accident.flat.interval:
+      self = ChordExtensionType(type: .ninth, accident: .flat)
+    case ExtensionType.ninth.interval + Accident.sharp.interval:
+      self = ChordExtensionType(type: .ninth, accident: .sharp)
+    case ExtensionType.eleventh.interval + Accident.natural.interval:
+      self = ChordExtensionType(type: .eleventh, accident: .natural)
+    case ExtensionType.eleventh.interval + Accident.flat.interval:
+      self = ChordExtensionType(type: .eleventh, accident: .flat)
+    case ExtensionType.eleventh.interval + Accident.sharp.interval:
+      self = ChordExtensionType(type: .eleventh, accident: .sharp)
+    case ExtensionType.thirteenth.interval + Accident.natural.interval:
+      self = ChordExtensionType(type: .thirteenth, accident: .natural)
+    case ExtensionType.thirteenth.interval + Accident.flat.interval:
+      self = ChordExtensionType(type: .thirteenth, accident: .flat)
+    case ExtensionType.thirteenth.interval + Accident.sharp.interval:
+      self = ChordExtensionType(type: .thirteenth, accident: .sharp)
+    default:
+      return nil
+    }
+  }
+
   /// Interval between root.
   public var interval: Interval {
-    var typeInterval = 0
-    switch type {
-    case .ninth: typeInterval = (.M2 * 2).halfstep
-    case .eleventh: typeInterval = (.P4 * 2).halfstep
-    case .thirteenth: typeInterval = (.M6 * 2).halfstep
-    }
-
-    var accidentInterval = 0
-    switch accident {
-    case .natural: accidentInterval = 0
-    case .flat: accidentInterval = -1
-    case .sharp: accidentInterval = 1
-    }
-
-    return Interval(halfstep: typeInterval + accidentInterval)
+    return type.interval + accident.interval
   }
 
   /// Notation of chord part.
   public var notation: String {
-    var typeNotation = ""
-    switch type {
-    case .ninth: typeNotation = "9"
-    case .eleventh: typeNotation = "11"
-    case .thirteenth: typeNotation = "13"
-    }
-
-    var accidentNotation = ""
-    switch accident {
-    case .natural: accidentNotation = ""
-    case .flat: accidentNotation = "♭"
-    case .sharp: accidentNotation = "♯"
-    }
-
-    return "\(accidentNotation)\(typeNotation)"
+    return "\(accident.notation)\(type.notation)"
   }
 
   /// Description of chord part.
   public var description: String {
-    var typeDescription = ""
-    switch type {
-    case .ninth: typeDescription = "9th"
-    case .eleventh: typeDescription = "11th"
-    case .thirteenth: typeDescription = "13th"
-    }
-
-    var accidentDescription = ""
-    switch accident {
-    case .natural: accidentDescription = "Natural"
-    case .flat: accidentDescription = "Flat"
-    case .sharp: accidentDescription = "Sharp"
-    }
-
-    return "\(isAdded ? "Added " : "")\(accidentDescription) \(typeDescription)"
+    return "\(isAdded ? "Added " : "")\(accident.description) \(type.description)"
   }
 
   /// All values of `ChordExtensionType`
@@ -335,8 +456,15 @@ public struct ChordExtensionType: ChordPart {
 ///   - left: Left handside of the equation.
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given chord types.
-public func ==(left: ChordType, right: ChordType) -> Bool {
-  return left.intervals == right.intervals
+public func ==(left: ChordType?, right: ChordType?) -> Bool {
+  switch (left, right) {
+  case (.some(let left), .some(let right)):
+    return left.intervals == right.intervals
+  case (.none, .none):
+    return true
+  default:
+    return false
+  }
 }
 
 /// Defines full type of chord with all chord parts.
@@ -387,13 +515,54 @@ public struct ChordType: ChordDescription {
     if extensions?.count == 1 {
       self.extensions![0].isAdded = seventh == nil
       // Add other extensions if needed
-      if let ext = extensions?.first, ext.type == .eleventh, !ext.isAdded {
+      if let ext = self.extensions?.first, ext.type == .eleventh, !ext.isAdded {
         self.extensions?.append(ChordExtensionType(type: .ninth))
       } else if let ext = self.extensions?.first, ext.type == .thirteenth, !ext.isAdded {
         self.extensions?.append(ChordExtensionType(type: .ninth))
         self.extensions?.append(ChordExtensionType(type: .eleventh))
       }
     }
+  }
+
+  /// Initilze the chord type with its intervals.
+  ///
+  /// - Parameters:
+  ///   - intervals: Intervals of chord notes distances between root note for each.
+  public init?(intervals: [Interval]) {
+    var third: ChordThirdType?
+    var fifth: ChordFifthType?
+    var sixth: ChordSixthType?
+    var seventh: ChordSeventhType?
+    var suspended: ChordSuspendedType?
+    var extensions = [ChordExtensionType]()
+
+    for interval in intervals {
+      if let thirdPart = ChordThirdType(interval: interval) {
+        third = thirdPart
+      } else if let fifthPart = ChordFifthType(interval: interval) {
+        fifth = fifthPart
+      } else if let sixthPart = ChordSixthType(interval: interval) {
+        sixth = sixthPart
+      } else if let seventhPart = ChordSeventhType(interval: interval) {
+        seventh = seventhPart
+      } else if let suspendedPart = ChordSuspendedType(interval: interval) {
+        suspended = suspendedPart
+      } else if let extensionPart = ChordExtensionType(interval: interval) {
+        extensions.append(extensionPart)
+      }
+    }
+
+    guard let thirdPart = third,
+      let fifthPart = fifth
+      else { return nil }
+
+    self = ChordType(
+      third: thirdPart,
+      fifth: fifthPart,
+      sixth: sixth,
+      seventh: seventh,
+      suspended: suspended,
+      extensions: extensions)
   }
 
   /// Intervals of parts between root.
@@ -442,14 +611,14 @@ public struct ChordType: ChordDescription {
 
   /// Description of the chord type.
   public var description: String {
-    let seventhNotation = seventh?.description ?? ""
-    let sixthNotation = sixth?.description ?? ""
-    let suspendedNotation = suspended?.description ?? ""
+    let seventhNotation = seventh?.description
+    let sixthNotation = sixth?.description
+    let suspendedNotation = suspended?.description
     let extensionsNotation = extensions?
       .sorted(by: { $0.type.rawValue < $1.type.rawValue })
-      .flatMap({ $0.description })
-      .joined(separator: ", ") ?? ""
-    return "\(third.notation) \(fifth.notation) \(sixthNotation) \(seventhNotation) \(suspendedNotation) \(extensionsNotation)"
+      .map({ $0.description as String? }) ?? []
+    let desc = [third.description, fifth.description, sixthNotation, seventhNotation, suspendedNotation] + extensionsNotation
+    return desc.flatMap({ $0 }).joined(separator: " ")
   }
 
   /// All possible chords could be generated.
@@ -512,25 +681,45 @@ public struct ChordType: ChordDescription {
 ///   - left: Left handside of the equation.
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given chords.
-public func ==(left: Chord, right: Chord) -> Bool {
-  return left.key == right.key && left.type == right.type
+public func ==(left: Chord?, right: Chord?) -> Bool {
+  switch (left, right) {
+  case (.some(let left), .some(let right)):
+    return left.key == right.key && left.type == right.type
+  case (.none, .none):
+    return true
+  default:
+    return false
+  }
 }
 
 /// Defines a chord with a root note and type.
 public struct Chord: ChordDescription {
-  /// Root note of the chord.
-  public private(set) var key: NoteType
   /// Type of the chord.
-  public private(set) var type: ChordType
+  public var type: ChordType
+  /// Root note of the chord.
+  public var key: NoteType
+  /// Inversion index of the chord.
+  public private(set) var inversion: Int
+
+  /// Returns the intervals based on inversions. Used in generation of notes and note types.
+  private var intervals: [Interval] {
+    var intervals = type.intervals
+    for _ in 0..<inversion {
+      intervals = intervals.shifted
+      intervals[intervals.count-1] = intervals[intervals.count-1] * 2
+    }
+    return intervals
+  }
 
   /// Initilizes chord with root note and type.
   ///
   /// - Parameters:
   ///   - key: Root note of the chord.
   ///   - type: Tyoe of the chord.
-  public init(key: NoteType, type: ChordType) {
-    self.key = key
+  public init(type: ChordType, key: NoteType, inversion: Int = 0) {
     self.type = type
+    self.key = key
+    self.inversion = inversion
   }
 
   /// Generates notes of the chord for octave.
@@ -538,7 +727,7 @@ public struct Chord: ChordDescription {
   /// - Parameter octave: Octave of the root note for the build chord from.
   /// - Returns: Generates notes of the chord.
   public func notes(octave: Int) -> [Note] {
-    return type.intervals.map({ Note(type: key, octave: octave) + $0 })
+    return intervals.map({ Note(type: key, octave: octave) + $0 })
   }
 
   /// Generates notes of the chord for octave range.
@@ -549,14 +738,28 @@ public struct Chord: ChordDescription {
     return octaves.flatMap({ notes(octave: $0) }).sorted(by: { $0.midiNote < $1.midiNote })
   }
 
+  /// Types of notes in chord.
+  public var noteTypes: [NoteType] {
+    return notes(octave: 1).map({ $0.type })
+  }
+
+  /// Possible inversions of the chord.
+  /// Only chords on root position have inversions, otherwise returns empty array.
+  public var inversions: [Chord] {
+    guard inversion == 0 else { return [] }
+    return [Int](1..<noteTypes.count).map({ Chord(type: type, key: key, inversion: $0) })
+  }
+
   /// Notation of the chord.
   public var notation: String {
-    return "\(key)\(type.notation)"
+    let inversionNotation = inversion > 0 && inversion < noteTypes.count ? "/\(noteTypes[0])" : ""
+    return "\(key)\(type.notation)\(inversionNotation)"
   }
 
   /// Description of the chord.
   public var description: String {
-    return "\(key) \(type)"
+    let inversionNotation = inversion > 0 ? " \(inversion). Inversion" : ""
+    return "\(key) \(type)\(inversionNotation)"
   }
 
   /// All possible chord values could be generated.
@@ -564,9 +767,21 @@ public struct Chord: ChordDescription {
     var all = [Chord]()
     for note in NoteType.all {
       for type in ChordType.all {
-        all.append(Chord(key: note, type: type))
+        all.append(Chord(type: type, key: note))
       }
     }
     return all
+  }
+}
+
+// MARK: - Extensions
+
+extension Array {
+  internal var shifted: Array {
+    guard let firstElement = first else { return self }
+    var arr = self
+    arr.removeFirst()
+    arr.append(firstElement)
+    return arr
   }
 }

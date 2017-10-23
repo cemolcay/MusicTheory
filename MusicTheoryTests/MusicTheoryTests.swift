@@ -82,29 +82,26 @@ extension MusicTheoryTests {
 		let cmaj = Scale(type: .major, key: .c)
 		let triads = cmaj.harmonicField(for: .triad)
 		let triadsExpected = [
-			Chord(type: .maj, key: .c),
-			Chord(type: .min, key: .d),
-			Chord(type: .min, key: .e),
-			Chord(type: .maj, key: .f),
-			Chord(type: .maj, key: .g),
-			Chord(type: .min, key: .a),
-			Chord(type: .dim, key: .b),
+			Chord(type: ChordType(third: .major), key: .c),
+			Chord(type: ChordType(third: .minor), key: .d),
+			Chord(type: ChordType(third: .minor), key: .e),
+			Chord(type: ChordType(third: .major), key: .f),
+			Chord(type: ChordType(third: .major), key: .g),
+			Chord(type: ChordType(third: .minor), key: .a),
+			Chord(type: ChordType(third: .minor, fifth: .diminished), key: .b),
     ]
-    print(cmaj.harmonicField(for: .triad))
-    print(cmaj.harmonicField(for: .tetrad))
-    print(cmaj.harmonicField(for: .ninth))
-    print(cmaj.harmonicField(for: .eleventh))
-    print(cmaj.harmonicField(for: .thirteenth))
     XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
 	}
 
   func testChords() {
     let cmajNotes: [NoteType] = [.c, .e, .g]
-    let cmaj = Chord(type: .maj, key: .c)
+    let cmaj = Chord(type: ChordType(third: .major), key: .c)
     XCTAssert(cmajNotes == cmaj.noteTypes)
+    
     let cminNotes: [NoteType] = [.c, .eFlat, .g]
-    let cmin = Chord(type: .min, key: .c)
+    let cmin = Chord(type: ChordType(third: .minor), key: .c)
     XCTAssert(cminNotes == cmin.noteTypes)
+
 		let c13Notes: [Note] = [
 			Note(type: .c, octave: 1),
 			Note(type: .e, octave: 1),
@@ -113,8 +110,16 @@ extension MusicTheoryTests {
 			Note(type: .d, octave: 2),
 			Note(type: .f, octave: 2),
 			Note(type: .a, octave: 2)]
-		let c13 = Chord(type: .dom13, key: .c)
+    let c13 = Chord(
+      type: ChordType(
+        third: .major,
+        seventh: .dominant,
+        extensions: [
+          ChordExtensionType(type: .thirteenth)
+        ]),
+      key: .c)
 		XCTAssert(c13.notes(octave: 1) == c13Notes)
+
 		let cm13Notes: [Note] = [
 			Note(type: .c, octave: 1),
 			Note(type: .eFlat, octave: 1),
@@ -123,15 +128,35 @@ extension MusicTheoryTests {
 			Note(type: .d, octave: 2),
 			Note(type: .f, octave: 2),
 			Note(type: .a, octave: 2)]
-		let cm13 = Chord(type: .m13, key: .c)
+    let cm13 = Chord(
+      type: ChordType(
+        third: .minor,
+        seventh: .dominant,
+        extensions: [
+          ChordExtensionType(type: .thirteenth)
+        ]),
+      key: .c)
 		XCTAssert(cm13.notes(octave: 1) == cm13Notes)
 
 		let minorIntervals: [Interval] = [.unison, .m3, .P5]
-		let minorChord = ChordType(intervals: minorIntervals)
-		XCTAssert(minorChord == .min)
+    guard let minorChord = ChordType(intervals: minorIntervals) else { return XCTFail() }
+		XCTAssert(minorChord == ChordType(third: .minor))
+
 		let majorIntervals: [Interval] = [.unison, .M3, .P5]
-		let majorChord = ChordType(intervals: majorIntervals)
-		XCTAssert(majorChord == .maj)
+    guard let majorChord = ChordType(intervals: majorIntervals) else { return XCTFail() }
+		XCTAssert(majorChord == ChordType(third: .major))
+
+    let cmadd13Notes: [Note] = [
+      Note(type: .c, octave: 1),
+      Note(type: .eFlat, octave: 1),
+      Note(type: .g, octave: 1),
+      Note(type: .a, octave: 2)]
+    let cmadd13 = Chord(
+      type: ChordType(
+        third: .minor,
+        extensions: [ChordExtensionType(type: .thirteenth)]),
+      key: .c)
+    XCTAssert(cmadd13.notes(octave: 1) == cmadd13Notes)
   }
 
   func testDurations() {
@@ -147,7 +172,9 @@ extension MusicTheoryTests {
   }
 
   func testInversions() {
-    let c7 = Chord(type: .dom7, key: .c)
+    let c7 = Chord(
+      type: ChordType(third: .major, seventh: .dominant),
+      key: .c)
     let c7Inversions = [
       [Note(type: .e, octave: 1), Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2)],
       [Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2)],
@@ -156,19 +183,5 @@ extension MusicTheoryTests {
     for (index, chord) in c7.inversions.enumerated() {
       XCTAssert(chord.notes(octave: 1) == c7Inversions[index])
     }
-  }
-
-  func testNewChords() {
-    let newChord = NewChordType(
-      third: .major,
-      fifth: .perfect,
-      tetrad: .seventh(.major),
-      suspended: nil,
-      extensions: [
-        NewChordExtension(type: .eleventh, accident: .sharp),
-        NewChordExtension(type: .ninth, accident: .bemol),
-        NewChordExtension(type: .thirteenth, accident: .natural),
-      ])
-    XCTAssert(newChord.third == .major)
   }
 }
