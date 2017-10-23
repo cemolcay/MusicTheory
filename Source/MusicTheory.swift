@@ -1208,7 +1208,7 @@ extension ChordType: CustomStringConvertible {
     case .min: return "min"
     case .aug: return "aug"
 		case .M5: return "5"
-    case .b5: return "b5"
+    case .b5: return "♭5"
     case .dim: return "dim"
     case .sus: return "sus4"
     case .sus2: return "sus2"
@@ -1219,8 +1219,8 @@ extension ChordType: CustomStringConvertible {
     case .m7: return "m7"
     case .aug7: return "aug7"
     case .dim7: return "dim7"
-    case .M7b5: return "7b5"
-    case .m7b5: return "m7b5"
+    case .M7b5: return "7♭5"
+    case .m7b5: return "m7♭5"
     case .dom9: return "9"
     case .M9: return "maj9"
     case .m9: return "m9"
@@ -1247,7 +1247,7 @@ extension ChordType: CustomStringConvertible {
     case .M7a9: return "7#9"
     case .M7a5b9: return "7#5(b9)"
     case .M9a11: return "9(#11)"
-    case .M9b13: return "9(b13)"
+    case .M9b13: return "9(♭13)"
     case .M6sus4: return "6sus4"
     case .maj7sus4: return "maj7sus4"
     case .M7sus4: return "7sus4"
@@ -1363,3 +1363,4 @@ extension Array {
     return arr
   }
 }
+
