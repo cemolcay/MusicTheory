@@ -568,7 +568,7 @@ public struct ChordType: ChordDescription {
   /// Intervals of parts between root.
   public var intervals: [Interval] {
     var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
-    parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as? ChordPart }) ?? []
+    parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as ChordPart? }) ?? []
     return [.unison] + parts.flatMap({ $0?.interval })
   }
 
@@ -580,9 +580,11 @@ public struct ChordType: ChordDescription {
     var extensionNotation = ""
     let ext = extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }) ?? []
 
-    var singleNotation = false
+    var singleNotation = !ext.isEmpty && true
     for i in 0..<max(0, ext.count - 1) {
-      singleNotation = ext[i].accident == .natural
+      if ext[i].accident != .natural {
+        singleNotation = false
+      }
     }
 
     if singleNotation {
