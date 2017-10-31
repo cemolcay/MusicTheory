@@ -13,7 +13,7 @@ import Foundation
 // MARK: - ChordPart
 
 /// Protocol that defines a printable chord part.
-public protocol ChordDescription: CustomStringConvertible {
+public protocol ChordDescription: CustomStringConvertible, Codable {
   /// Notation of chord.
   var notation: String { get }
 }
@@ -27,7 +27,7 @@ public protocol ChordPart: ChordDescription {
 }
 
 /// Defines third part of the chord. Second note after the root.
-public enum ChordThirdType: ChordPart {
+public enum ChordThirdType: Int, ChordPart {
   /// Defines major chord. 4 halfsteps between root.
   case major
   /// Defines minor chord. 3 halfsteps between root.
@@ -78,7 +78,7 @@ public enum ChordThirdType: ChordPart {
 }
 
 /// Defines fifth part of the chord. Third note after root note.
-public enum ChordFifthType: ChordPart {
+public enum ChordFifthType: Int, ChordPart {
   /// Perfect fifth interval between root.
   case perfect
   /// Half step down of perfect fifth.
@@ -168,7 +168,7 @@ public struct ChordSixthType: ChordPart {
 }
 
 /// Defiens seventh chords. If you add seventh note, you have seventh chord.
-public enum ChordSeventhType: ChordPart {
+public enum ChordSeventhType: Int, ChordPart {
   /// Seventh note of the chord. 11 halfsteps between root.
   case major
   /// Halfstep down of seventh note. 10 halfsteps between root.
@@ -220,7 +220,7 @@ public enum ChordSeventhType: ChordPart {
 
 /// Defines suspended chords.
 /// If you play second or fourth note of chord, instead of thirds, than you have suspended chords.
-public enum ChordSuspendedType: ChordPart {
+public enum ChordSuspendedType: Int, ChordPart {
   /// Second note of chord instead of third part. 2 halfsteps between root.
   case sus2
   /// Fourth note of chord instead of third part. 5 halfsteps between root.
@@ -276,7 +276,7 @@ public enum ChordSuspendedType: ChordPart {
 public struct ChordExtensionType: ChordPart {
 
   /// Defines accident of extended chord.
-  public enum Accident: ChordDescription {
+  public enum Accident: Int, ChordDescription {
     /// No accidents, natural note.
     case natural
     /// Halfstep down, bemol.

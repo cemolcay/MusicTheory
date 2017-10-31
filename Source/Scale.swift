@@ -121,14 +121,17 @@ public enum ScaleType: Equatable {
   /// Custom scale with given interval set.
   case custom(intervals: [Interval], description: String)
 
-  /// Tries to initilize scale with a matching interval series.
+  /// Tries to initilize scale with a matching interval series. If no scale matched with intervals, than initlizes custom scale.
   ///
   /// - Parameters:
   ///   - intervals: Intervals of the chord.
-  public init?(intervals: [Interval]) {
-    guard let scale = ScaleType.all.filter({ $0.intervals == intervals }).first
-      else { return nil }
-    self = scale
+  ///   - description: In case of .custom type scale, you probably need description.
+  public init(intervals: [Interval], description: String = "") {
+    if let scale = ScaleType.all.filter({ $0.intervals == intervals }).first {
+      self = scale
+    } else {
+      self = .custom(intervals: intervals, description: description)
+    }
   }
 
   /// Intervals of the scale.
@@ -239,6 +242,34 @@ public enum ScaleType: Equatable {
   }
 }
 
+extension ScaleType: Codable {
+
+  /// Keys that conforms CodingKeys protocol to map properties.
+  private enum CodingKeys: String, CodingKey {
+    /// Halfstep property of `Interval`.
+    case intervals
+  }
+
+  /// Decodes struct with a decoder.
+  ///
+  /// - Parameter decoder: Decodes encoded struct.
+  /// - Throws: Tries to initlize struct with a decoder.
+  public init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: CodingKeys.self)
+    let intervals = try values.decode([Interval].self, forKey: .intervals)
+    self = ScaleType(intervals: intervals)
+  }
+
+  /// Encodes struct with an ecoder.
+  ///
+  /// - Parameter encoder: Encodes struct.
+  /// - Throws: Tries to encode struct.
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(intervals, forKey: .intervals)
+  }
+}
+
 extension ScaleType: CustomStringConvertible {
 
   /// Converts `ScaleType` to string with its name.
@@ -310,7 +341,7 @@ public func ==(left: Scale, right: Scale) -> Bool {
 
 /// Scale object with `ScaleType` and scale's key of `NoteType`.
 /// Could calculate note sequences in [Note] format.
-public struct Scale: Equatable {
+public struct Scale: Equatable, Codable {
   /// Type of the scale that has `interval` info.
   public var type: ScaleType
   /// Root key of the scale that will built onto.
@@ -364,7 +395,7 @@ public struct Scale: Equatable {
 extension Scale {
 
   /// Stack of notes to generate chords for each note in the scale.
-  public enum HarmonicField {
+  public enum HarmonicField: Int, Codable {
     /// First, third and fifth degree notes builds a triad chord.
     case triad
     /// First, third, fifth and seventh notes builds a tetrad chord.
@@ -377,7 +408,7 @@ extension Scale {
     case thirteenth
 
     /// All possible harmonic fields constructed from.
-    static let all: [HarmonicField] = [.triad, .tetrad, .ninth, .eleventh, .thirteenth]
+    public static let all: [HarmonicField] = [.triad, .tetrad, .ninth, .eleventh, .thirteenth]
   }
 
   /// Generates chords for harmonic field of scale.
