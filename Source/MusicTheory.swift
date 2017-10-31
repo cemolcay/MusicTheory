@@ -13,78 +13,38 @@ import Foundation
 // MARK: - Note Value
 
 /// Defines the types of note values.
-public enum NoteValueType {
+public enum NoteValueType: Double, Codable {
+
   /// Two whole notes.
-  case doubleWhole
+  case doubleWhole = 0.5
   /// Whole note.
-  case whole
+  case whole = 1
   /// Half note.
-  case half
+  case half = 2
   /// Quarter note.
-  case quarter
+  case quarter = 4
   /// Eighth note.
-  case eighth
+  case eighth = 8
   /// Sixteenth note.
-  case sixteenth
+  case sixteenth = 16
   /// Thirtysecond note.
-  case thirtysecond
+  case thirtysecond = 32
   /// Sixtyfourth note.
-  case sixtyfourth
-
-  /// Init with beat count.
-  /// For example for a whole note, beats should be 1,
-  /// For a eighth note, beats should be 8.
-  /// Returns nil, if no beats match.
-  public init?(beats: Double) {
-    switch beats {
-    case 0.5: self = .doubleWhole
-    case 1: self = .whole
-    case 2: self = .half
-    case 4: self = .quarter
-    case 8: self = .eighth
-    case 16: self = .sixteenth
-    case 32: self = .thirtysecond
-    case 64: self = .sixtyfourth
-    default: return nil
-    }
-  }
-
-  /// Beat count
-  public var beats: Double {
-    switch self {
-    case .doubleWhole: return 0.5
-    case .whole: return 1
-    case .half: return 2
-    case .quarter: return 4
-    case .eighth: return 8
-    case .sixteenth: return 16
-    case .thirtysecond: return 32
-    case .sixtyfourth: return 64
-    }
-  }
+  case sixtyfourth = 64
 }
 
 /// Defines the lenght of a `NoteValue`
-public enum NoteModifier {
+public enum NoteModifier: Double, Codable {
   /// No additional lenght.
-  case `default`
+  case `default` = 1
   /// Adds half of its own value.
-  case dotted
+  case dotted = 1.5
   /// Three notes of the same value.
-  case triplet
-
-  /// Multiplier using in caluclation of note duration in seconds.
-  public var durationMultiplier: Double {
-    switch self {
-    case .default: return 1
-    case .dotted: return 1.5
-    case .triplet: return 0.67
-    }
-  }
+  case triplet = 0.67
 }
 
 /// Defines the duration of a note beatwise.
-public struct NoteValue {
+public struct NoteValue: Codable {
   /// Type that represents the duration of note.
   public var type: NoteValueType
   /// Modifier for `NoteType` that modifies the duration.
@@ -104,9 +64,9 @@ public struct NoteValue {
 // MARK: - Time Signature
 
 /// Defines how many beats in a measure with which note value.
-public struct TimeSignature {
+public struct TimeSignature: Codable {
   /// Beats per measure.
-  public var beats: UInt
+  public var beats: Int
 
   /// Note value per beat.
   public var noteValue: NoteValueType
@@ -116,7 +76,7 @@ public struct TimeSignature {
   /// - Parameters:
   ///   - beats: Number of beats in a measure
   ///   - noteValue: Note value of the beats.
-  public init(beats: UInt, noteValue: NoteValueType) {
+  public init(beats: Int, noteValue: NoteValueType) {
     self.beats = beats
     self.noteValue = noteValue
   }
@@ -126,8 +86,8 @@ public struct TimeSignature {
   /// - Parameters:
   ///   - beats: Number of beats in a measure
   ///   - division: Number of the beats.
-  public init?(beats: UInt, division: UInt) {
-    guard let noteValue = NoteValueType(beats: Double(division)) else {
+  public init?(beats: Int, division: Int) {
+    guard let noteValue = NoteValueType(rawValue: Double(division)) else {
       return nil
     }
 
@@ -139,7 +99,7 @@ public struct TimeSignature {
 // MARK: - Tempo
 
 /// Defines the tempo of the music with beats per second and time signature.
-public struct Tempo {
+public struct Tempo: Codable {
   /// Time signature of music.
   public var timeSignature = TimeSignature(beats: 4, noteValue: .quarter)
 
@@ -159,7 +119,7 @@ public struct Tempo {
   /// Caluclates the duration of a note value in seconds.
   public func duration(of noteValue: NoteValue) -> TimeInterval {
     let secondsPerBeat = 60.0 / bpm
-    let secondsPerNote = secondsPerBeat * (timeSignature.noteValue.beats / noteValue.type.beats) * noteValue.modifier.durationMultiplier
+    let secondsPerNote = secondsPerBeat * (timeSignature.noteValue.rawValue / noteValue.type.rawValue) * noteValue.modifier.rawValue
     return secondsPerNote
   }
 
@@ -214,7 +174,7 @@ public func -(noteType: NoteType, halfstep: Int) -> NoteType {
 /// Defines 12 base notes in music.
 /// C, D, E, F, G, A, B with their flats.
 /// Raw values are included for easier calculation based on midi notes.
-public enum NoteType: Int, Equatable {
+public enum NoteType: Int, Equatable, Codable {
   /// C note.
   case c = 0
   /// D♭ or C♯ note.
@@ -344,7 +304,7 @@ public func ==(left: Note, right: Note) -> Bool {
 
 /// Note object with `NoteType` and octave.
 /// Could be initilized with midiNote.
-public struct Note: Equatable {
+public struct Note: Equatable, Codable {
 
   /// Type of the note like C, D, A, B.
   public var type: NoteType
@@ -545,6 +505,34 @@ public enum Interval: Equatable, ExpressibleByIntegerLiteral {
     case .P8: return 12
     case .custom(let h): return h
     }
+  }
+}
+
+extension Interval: Codable {
+
+  /// Keys that conforms CodingKeys protocol to map properties.
+  private enum CodingKeys: String, CodingKey {
+    /// Halfstep property of `Interval`.
+    case halfstep
+  }
+
+  /// Decodes struct with a decoder.
+  ///
+  /// - Parameter decoder: Decodes encoded struct.
+  /// - Throws: Tries to initlize struct with a decoder.
+  public init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: CodingKeys.self)
+    let halfstep = try values.decode(Int.self, forKey: .halfstep)
+    self = Interval(halfstep: halfstep)
+  }
+
+  /// Encodes struct with an ecoder.
+  ///
+  /// - Parameter encoder: Encodes struct.
+  /// - Throws: Tries to encode struct.
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(halfstep, forKey: .halfstep)
   }
 }
 

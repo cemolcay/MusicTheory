@@ -5,8 +5,7 @@ A music theory library with `Note`, `Interval`, `Scale` and `Chord` representati
 
 Requirements
 ----
-* Swift 3
-* Xcode 8
+* Swift 4.0+
 * iOS 8.0+
 * macOS 10.9+
 * tvOS 9.0+
