@@ -179,7 +179,7 @@
             <h1>TimeSignature</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">TimeSignature</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">TimeSignature</span><span class="p">:</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
@@ -192,9 +192,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory13TimeSignatureV5beatsSuv"></a>
+                    <a name="/s:11MusicTheory13TimeSignatureV5beatsSiv"></a>
                     <a name="//apple_ref/swift/Property/beats" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13TimeSignatureV5beatsSuv">beats</a>
+                    <a class="token" href="#/s:11MusicTheory13TimeSignatureV5beatsSiv">beats</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -209,7 +209,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">beats</span><span class="p">:</span> <span class="kt">UInt</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">beats</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -246,9 +246,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory13TimeSignatureVACSu5beats_AA13NoteValueTypeO04noteG0tcfc"></a>
+                    <a name="/s:11MusicTheory13TimeSignatureVACSi5beats_AA13NoteValueTypeO04noteG0tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(beats:noteValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13TimeSignatureVACSu5beats_AA13NoteValueTypeO04noteG0tcfc">init(beats:noteValue:)</a>
+                    <a class="token" href="#/s:11MusicTheory13TimeSignatureVACSi5beats_AA13NoteValueTypeO04noteG0tcfc">init(beats:noteValue:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -263,7 +263,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">beats</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">,</span> <span class="nv">noteValue</span><span class="p">:</span> <span class="kt"><a href="../Enums/NoteValueType.html">NoteValueType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">beats</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">noteValue</span><span class="p">:</span> <span class="kt"><a href="../Enums/NoteValueType.html">NoteValueType</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -304,9 +304,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory13TimeSignatureVACSgSu5beats_Su8divisiontcfc"></a>
+                    <a name="/s:11MusicTheory13TimeSignatureVACSgSi5beats_Si8divisiontcfc"></a>
                     <a name="//apple_ref/swift/Method/init(beats:division:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13TimeSignatureVACSgSu5beats_Su8divisiontcfc">init(beats:division:)</a>
+                    <a class="token" href="#/s:11MusicTheory13TimeSignatureVACSgSi5beats_Si8divisiontcfc">init(beats:division:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -321,7 +321,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">beats</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">,</span> <span class="nv">division</span><span class="p">:</span> <span class="kt">UInt</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">beats</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">division</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -364,7 +364,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-31)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

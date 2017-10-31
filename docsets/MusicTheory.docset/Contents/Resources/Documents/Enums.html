@@ -210,7 +210,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteValueType</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteValueType</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                         </div>
                       </div>
@@ -238,7 +238,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteModifier</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteModifier</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                         </div>
                       </div>
@@ -279,7 +279,7 @@ Raw values are included for easier calculation based on midi notes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                         </div>
                       </div>
@@ -396,7 +396,7 @@ Raw values are included for easier calculation based on midi notes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordThirdType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordThirdType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
 
                         </div>
                       </div>
@@ -424,7 +424,7 @@ Raw values are included for easier calculation based on midi notes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordFifthType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordFifthType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
 
                         </div>
                       </div>
@@ -452,7 +452,7 @@ Raw values are included for easier calculation based on midi notes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordSeventhType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordSeventhType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
 
                         </div>
                       </div>
@@ -481,7 +481,7 @@ If you play second or fourth note of chord, instead of thirds, than you have sus
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordSuspendedType</span><span class="p">:</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordSuspendedType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt"><a href="Protocols/ChordPart.html">ChordPart</a></span></code></pre>
 
                         </div>
                       </div>
@@ -493,7 +493,7 @@ If you play second or fourth note of chord, instead of thirds, than you have sus
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-31)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

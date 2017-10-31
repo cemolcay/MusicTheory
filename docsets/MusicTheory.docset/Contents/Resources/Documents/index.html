@@ -176,7 +176,7 @@
         <section>
           <section class="section">
             
-            <h1 id='musictheory' class='heading'>MusicTheory</h1>
+            <h1 id='musictheory-a-href-https-travis-ci-org-cemolcay-musictheory-img-src-https-travis-ci-org-cemolcay-musictheory-svg-branch-master-alt-build-status-a' class='heading'>MusicTheory <a href="https://travis-ci.org/cemolcay/MusicTheory"><img src="https://travis-ci.org/cemolcay/MusicTheory.svg?branch=master" alt="Build Status"></a></h1>
 
 <p>A music theory library with <code><a href="Structs/Note.html">Note</a></code>, <code><a href="Enums/Interval.html">Interval</a></code>, <code><a href="Structs/Scale.html">Scale</a></code> and <code><a href="Structs/Chord.html">Chord</a></code> representations in swift enums.</p>
 <h2 id='requirements' class='heading'>Requirements</h2>
@@ -195,7 +195,7 @@
 <h2 id='usage' class='heading'>Usage</h2>
 
 <p><code>MusicTheory</code> adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are <code><a href="Structs/Note.html">Note</a></code>, <code><a href="Structs/Scale.html">Scale</a></code> and <code><a href="Structs/Chord.html">Chord</a></code>.</p>
-<h3 id='code-notetype-code-and-code-note-code' class='heading'><code><a href="Enums/NoteType.html">NoteType</a></code> and <code><a href="Structs/Note.html">Note</a></code></h3>
+<h4 id='code-notetype-code-and-code-note-code' class='heading'><code><a href="Enums/NoteType.html">NoteType</a></code> and <code><a href="Structs/Note.html">Note</a></code></h4>
 
 <ul>
 <li>All notes defined in <code><a href="Enums/NoteType.html">NoteType</a></code> enum.</li>
@@ -207,7 +207,7 @@
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">NoteType</span> <span class="o">=</span> <span class="o">.</span><span class="n">d</span>
 <span class="k">let</span> <span class="nv">c</span> <span class="o">=</span> <span class="kt">Note</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="nv">octave</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre>
-<h3 id='code-interval-code' class='heading'><code><a href="Enums/Interval.html">Interval</a></code></h3>
+<h4 id='code-interval-code' class='heading'><code><a href="Enums/Interval.html">Interval</a></code></h4>
 
 <ul>
 <li>Intervals are halfsteps between notes.</li>
@@ -215,7 +215,7 @@
 <li>You can build scales or chords from intervals.</li>
 <li>m2, M2, m3, M3, P4, d5, P5, m6, M6, m7, M7 and P8 are predefined intervals.</li>
 </ul>
-<h3 id='code-scaletype-code-and-code-scale-code' class='heading'><code><a href="Enums/ScaleType.html">ScaleType</a></code> and <code><a href="Structs/Scale.html">Scale</a></code></h3>
+<h4 id='code-scaletype-code-and-code-scale-code' class='heading'><code><a href="Enums/ScaleType.html">ScaleType</a></code> and <code><a href="Structs/Scale.html">Scale</a></code></h4>
 
 <ul>
 <li><code><a href="Enums/ScaleType.html">ScaleType</a></code> enum defines a lot of readymade scales.</li>
@@ -229,7 +229,7 @@
 <span class="k">let</span> <span class="nv">maj</span><span class="p">:</span> <span class="kt">ScaleType</span> <span class="o">=</span> <span class="o">.</span><span class="n">major</span>
 <span class="k">let</span> <span class="nv">cMaj</span> <span class="o">=</span> <span class="kt">Scale</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="n">maj</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="n">c</span><span class="p">)</span>
 </code></pre>
-<h3 id='code-chordtype-code-and-code-chord-code' class='heading'><code><a href="Structs/ChordType.html">ChordType</a></code> and <code><a href="Structs/Chord.html">Chord</a></code></h3>
+<h4 id='code-chordtype-code-and-code-chord-code' class='heading'><code><a href="Structs/ChordType.html">ChordType</a></code> and <code><a href="Structs/Chord.html">Chord</a></code></h4>
 
 <ul>
 <li><code><a href="Structs/ChordType.html">ChordType</a></code> is a struct with <code><a href="Protocols/ChordPart.html">ChordPart</a></code>s which are building blocks of chords.</li>
@@ -248,7 +248,7 @@
   <span class="p">])</span>
 <span class="k">let</span> <span class="nv">cm13</span> <span class="o">=</span> <span class="kt">Chord</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="n">m13</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="o">.</span><span class="n">c</span><span class="p">)</span>
 </code></pre>
-<h3 id='code-tempo-code-and-code-timesignature-code' class='heading'><code><a href="Structs/Tempo.html">Tempo</a></code> and <code><a href="Structs/TimeSignature.html">TimeSignature</a></code></h3>
+<h4 id='code-tempo-code-and-code-timesignature-code' class='heading'><code><a href="Structs/Tempo.html">Tempo</a></code> and <code><a href="Structs/TimeSignature.html">TimeSignature</a></code></h4>
 <li>Tempo is a helper struct to define timings in your music app.</li>
 <li>TimeSignature is number of beats in per measure and <code><a href="Structs/NoteValue.html">NoteValue</a></code> of each beat.</li>
 <li>You can calculate notes duration in any tempo by ther <code><a href="Structs/NoteValue.html">NoteValue</a></code>.</li>
@@ -257,10 +257,10 @@
     Note value defines the note&rsquo;s duration in a beat. It could be whole note, half note, quarter note, 8th, 16th or 32nd note.
 
 </div>
-<h3 id='documentation' class='heading'>Documentation</h3>
+<h2 id='documentation' class='heading'>Documentation</h2>
 
 <p><a href="https://cemolcay.github.io/MusicTheory/">Full documentation are here</a></p>
-<h3 id='unit-tests' class='heading'>Unit Tests</h3>
+<h2 id='unit-tests' class='heading'>Unit Tests</h2>
 
 <p>You can find unit tests in <code>MusicTheoryTests</code> target.<br>
 Press <code>⌘+U</code> for running tests.</p>
@@ -268,7 +268,7 @@ Press <code>⌘+U</code> for running tests.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-24)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2017-10-31)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
