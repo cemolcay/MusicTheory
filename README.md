@@ -95,3 +95,11 @@ Unit Tests
 
 You can find unit tests in `MusicTheoryTests` target.  
 Press `⌘+U` for running tests.
+
+AppStore
+----
+
+This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check them out!
+[KeyBud](https://itunes.apple.com/us/app/keybud-music-theory-app/id1203856335?mt=8) (iOS, watchOS, tvOS, macOS)
+[FretBud](https://itunes.apple.com/us/app/fretbud-chord-scales-for-guitar-bass-and-more/id1234224249?mt=8) (iOS, watchOS, tvOS)  
+[ChordBud](https://itunes.apple.com/us/app/chordbud-chord-progressions/id1313017378?mt=8) (iOS)
