@@ -349,7 +349,7 @@ public extension Note {
 
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.
   /// Bases A4 note of 440Hz frequency standard.
-  public var frequancy: Float {
+  public var frequency: Float {
     let fn = powf(2.0, Float(pianoKey - 49) / 12.0)
     return fn * 440.0
   }
