@@ -418,9 +418,9 @@ extension Scale {
   public func harmonicField(for field: HarmonicField) -> [Chord?] {
     var chords = [ChordType?]()
     // Generate notes for octave range of 2, they are going to use in extended chords.
-    let scaleNotes = notes(octaves: [1, 2, 3])
+    let scaleNotes = notes(octaves: [1, 2, 3, 4])
     // Build chords for each note in the scale.
-    for i in 0..<scaleNotes.count/3 { // Iterate each note in scale (one octave).
+    for i in 0..<scaleNotes.count/4 { // Iterate each note in scale (one octave).
       // Get notes for chord.
       var chordNotes = [Note]()
       switch field {
