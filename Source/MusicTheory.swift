@@ -76,7 +76,7 @@ public struct TimeSignature: Codable {
   /// - Parameters:
   ///   - beats: Number of beats in a measure
   ///   - noteValue: Note value of the beats.
-  public init(beats: Int, noteValue: NoteValueType) {
+  public init(beats: Int = 4, noteValue: NoteValueType = .quarter) {
     self.beats = beats
     self.noteValue = noteValue
   }
@@ -101,17 +101,17 @@ public struct TimeSignature: Codable {
 /// Defines the tempo of the music with beats per second and time signature.
 public struct Tempo: Codable {
   /// Time signature of music.
-  public var timeSignature = TimeSignature(beats: 4, noteValue: .quarter)
+  public var timeSignature: TimeSignature
 
   /// Beats per minutes.
-  public var bpm: Double = 120.0
+  public var bpm: Double
 
   /// Initilizes tempo with time signature and BPM.
   ///
   /// - Parameters:
   ///   - timeSignature: Time Signature.
   ///   - bpm: Beats per minute.
-  public init(timeSignature: TimeSignature, bpm: Double) {
+  public init(timeSignature: TimeSignature = TimeSignature(), bpm: Double = 120.0) {
     self.timeSignature = timeSignature
     self.bpm = bpm
   }
