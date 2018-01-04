@@ -414,8 +414,9 @@ extension Scale {
   /// Generates chords for harmonic field of scale.
   ///
   /// - Parameter field: Type of chords you want to generate.
+  /// - Parameter inversion: Inversion degree of the chords. Defaults 0.
   /// - Returns: Returns triads or tetrads of chord for each note in scale.
-  public func harmonicField(for field: HarmonicField) -> [Chord?] {
+  public func harmonicField(for field: HarmonicField, inversion: Int = 0) -> [Chord?] {
     var chords = [ChordType?]()
     // Generate notes for octave range of 2, they are going to use in extended chords.
     let scaleNotes = notes(octaves: [1, 2, 3, 4])
@@ -440,7 +441,7 @@ extension Scale {
       chords.append(ChordType(intervals: chordIntervals))
     }
     // Generate chords for each key in scale.
-    return chords.enumerated().map({ $1 == nil ? nil : Chord(type: $1!, key: noteTypes[$0]) })
+    return chords.enumerated().map({ $1 == nil ? nil : Chord(type: $1!, key: noteTypes[$0], inversion: inversion) })
   }
 }
 

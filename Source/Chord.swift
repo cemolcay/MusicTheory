@@ -746,10 +746,8 @@ public struct Chord: ChordDescription {
   }
 
   /// Possible inversions of the chord.
-  /// Only chords on root position have inversions, otherwise returns empty array.
   public var inversions: [Chord] {
-    guard inversion == 0 else { return [] }
-    return [Int](1..<noteTypes.count).map({ Chord(type: type, key: key, inversion: $0) })
+    return [Int](0..<noteTypes.count).map({ Chord(type: type, key: key, inversion: $0) })
   }
 
   /// Notation of the chord.
