@@ -176,6 +176,7 @@ extension MusicTheoryTests {
       type: ChordType(third: .major, seventh: .dominant),
       key: .c)
     let c7Inversions = [
+      [Note(type: .c, octave: 1), Note(type: .e, octave: 1), Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1)],
       [Note(type: .e, octave: 1), Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2)],
       [Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2)],
       [Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2), Note(type: .g, octave: 2)],
