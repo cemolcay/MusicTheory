@@ -211,9 +211,9 @@ public enum NoteType: Int, Equatable, Codable {
   /// - parameters:
   ///  - midiNote: The midi note value wanted to be converted to `NoteType`.
   public init?(midiNote: Int) {
-    let octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
-    let raw = octave > 0 ? midiNote - (octave * 12) : midiNote - ((octave + 1) * 12) + 12
-    guard let note = NoteType(rawValue: raw) else { return nil }
+    let octave = (midiNote / 12) - 1
+    let raw = midiNote - ((octave + 1) * 12)
+    guard let note = NoteType(rawValue: abs(raw)) else { return nil }
     self = note
   }
 }
@@ -289,7 +289,7 @@ public func -(note: Note, halfstep: Int) -> Note {
 ///   - rhs: Right hand side of the equation.
 /// - Returns: `Intreval` between two notes. You can get the halfsteps from interval as well.
 public func -(lhs: Note, rhs: Note) -> Interval {
-	return Interval(halfstep: abs(rhs.midiNote - lhs.midiNote))
+  return Interval(halfstep: abs(rhs.midiNote - lhs.midiNote))
 }
 
 /// Compares the equality of two notes by their types and octaves.
@@ -318,7 +318,7 @@ public struct Note: Equatable, Codable {
   ///
   /// - Parameter midiNote: Midi note in range of [0 - 127].
   public init(midiNote: Int) {
-    octave = (midiNote / 12) - (midiNote < 0 ? 1 : 0)
+    octave = (midiNote / 12) - 1
     type = NoteType(midiNote: midiNote)!
   }
 
@@ -332,25 +332,17 @@ public struct Note: Equatable, Codable {
     self.octave = octave
   }
 
-	/// Returns midi note value.
+	/// Returns midi note number.
 	/// In theory, this must be in range [0 - 127].
 	/// But it does not limits the midi note value.
 	public var midiNote: Int {
-		return type.rawValue + (octave * 12)
+		return type.rawValue + ((octave + 1) * 12)
 	}
-}
-
-public extension Note {
-
-  /// Returns the piano key number by octave based on a standard [1 - 88] key piano.
-  public var pianoKey: Int {
-    return midiNote + 4
-  }
 
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.
   /// Bases A4 note of 440Hz frequency standard.
   public var frequency: Float {
-    let fn = powf(2.0, Float(pianoKey - 49) / 12.0)
+    let fn = powf(2.0, Float(cmMagicNumber - 69) / 12.0)
     return fn * 440.0
   }
 }

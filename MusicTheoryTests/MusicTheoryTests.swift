@@ -44,6 +44,11 @@ extension MusicTheoryTests {
     XCTAssert(note.type == .gFlat)
   }
 
+  func testFrequency() {
+    let note = Note(type: .a, octave: 4)
+    XCTAssertEqual(note.frequency, 440.0)
+  }
+
   func testInterval() {
     let note: NoteType = .c
     XCTAssert(note + .P8 == note)
@@ -56,17 +61,11 @@ extension MusicTheoryTests {
 		XCTAssert(d - b == .m3)
   }
 
-  func testPianoKey() {
-    XCTAssert(Note(type: .c, octave: 0).pianoKey == 4)
-    XCTAssert(Note(type: .a, octave: -1).pianoKey == 1)
-    XCTAssert(Note(type: .a, octave: 3).pianoKey == 49)
-  }
-
   func testMidiNote() {
-    XCTAssert(Note(type: .c, octave: 0).midiNote == 0)
-    XCTAssert(Note(type: .c, octave: 1).midiNote == 12)
-    XCTAssert(Note(type: .b, octave: 8).midiNote == 107)
-    XCTAssert(Note(type: .g, octave: 10).midiNote == 127)
+    XCTAssert(Note(type: .c, octave: -1).midiNumber == 0)
+    XCTAssert(Note(type: .c, octave: 0).midiNumber == 12)
+    XCTAssert(Note(type: .b, octave: 7).midiNumber == 107)
+    XCTAssert(Note(type: .g, octave: 9).midiNumber == 127)
   }
 
   func testScale() {
