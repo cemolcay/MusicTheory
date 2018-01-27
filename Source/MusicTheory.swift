@@ -342,7 +342,7 @@ public struct Note: Equatable, Codable {
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.
   /// Bases A4 note of 440Hz frequency standard.
   public var frequency: Float {
-    let fn = powf(2.0, Float(cmMagicNumber - 69) / 12.0)
+    let fn = powf(2.0, Float(midiNote - 69) / 12.0)
     return fn * 440.0
   }
 }

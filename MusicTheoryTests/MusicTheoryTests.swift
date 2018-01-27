@@ -62,10 +62,10 @@ extension MusicTheoryTests {
   }
 
   func testMidiNote() {
-    XCTAssert(Note(type: .c, octave: -1).midiNumber == 0)
-    XCTAssert(Note(type: .c, octave: 0).midiNumber == 12)
-    XCTAssert(Note(type: .b, octave: 7).midiNumber == 107)
-    XCTAssert(Note(type: .g, octave: 9).midiNumber == 127)
+    XCTAssert(Note(type: .c, octave: -1).midiNote == 0)
+    XCTAssert(Note(type: .c, octave: 0).midiNote == 12)
+    XCTAssert(Note(type: .b, octave: 7).midiNote == 107)
+    XCTAssert(Note(type: .g, octave: 9).midiNote == 127)
   }
 
   func testScale() {
