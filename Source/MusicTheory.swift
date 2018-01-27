@@ -403,8 +403,8 @@ public func *(interval: Interval, octave: Int) -> Interval {
 public enum Interval: Equatable, ExpressibleByIntegerLiteral {
   public typealias IntegerLiteralType = Int
 
-  /// Zero halfstep and zero degree, the note itself.
-  case unison
+  /// Zero halfstep and zero degree, unison, the note itself.
+  case P1
   /// One halfstep and one degree between notes.
   case m2
   /// Two halfsteps and one degree between notes.
@@ -439,7 +439,7 @@ public enum Interval: Equatable, ExpressibleByIntegerLiteral {
   ///   - halfstep: Halfstep of interval.
   public init(halfstep: Int) {
     switch halfstep {
-    case 0: self = .unison
+    case 0: self = .P1
     case 1: self = .m2
     case 2: self = .M2
     case 3: self = .m3
@@ -482,7 +482,7 @@ public enum Interval: Equatable, ExpressibleByIntegerLiteral {
   /// Returns halfstep representation of `Interval.`
   public var halfstep: Int {
     switch self {
-    case .unison: return 0
+    case .P1: return 0
     case .m2: return 1
     case .M2: return 2
     case .m3: return 3
@@ -532,7 +532,7 @@ extension Interval: CustomStringConvertible {
 
   public var description: String {
     switch self {
-    case .unison: return "unison"
+    case .P1: return "unison"
     case .m2: return "minor second"
     case .M2: return "major second"
     case .m3: return "minor third"
@@ -552,7 +552,7 @@ extension Interval: CustomStringConvertible {
   /// Roman numeric value of interval by its halfstep value.
   public var roman: String {
     switch self {
-    case .unison: return "i"
+    case .P1: return "i"
     case .m2: return "ii"
     case .M2: return "II"
     case .m3: return "iii"

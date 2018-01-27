@@ -137,11 +137,11 @@ extension MusicTheoryTests {
       key: .c)
 		XCTAssert(cm13.notes(octave: 1) == cm13Notes)
 
-		let minorIntervals: [Interval] = [.unison, .m3, .P5]
+		let minorIntervals: [Interval] = [.P1, .m3, .P5]
     guard let minorChord = ChordType(intervals: minorIntervals) else { return XCTFail() }
 		XCTAssert(minorChord == ChordType(third: .minor))
 
-		let majorIntervals: [Interval] = [.unison, .M3, .P5]
+		let majorIntervals: [Interval] = [.P1, .M3, .P5]
     guard let majorChord = ChordType(intervals: majorIntervals) else { return XCTFail() }
 		XCTAssert(majorChord == ChordType(third: .major))
 

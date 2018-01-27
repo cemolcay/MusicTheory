@@ -569,7 +569,7 @@ public struct ChordType: ChordDescription {
   public var intervals: [Interval] {
     var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
     parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as ChordPart? }) ?? []
-    return [.unison] + parts.flatMap({ $0?.interval })
+    return [.P1] + parts.flatMap({ $0?.interval })
   }
 
   /// Notation of the chord type.
