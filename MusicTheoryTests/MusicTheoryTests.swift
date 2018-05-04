@@ -158,6 +158,12 @@ extension MusicTheoryTests {
     XCTAssert(cmadd13.notes(octave: 1) == cmadd13Notes)
   }
 
+  func testNoteValueConversions() {
+    let noteValue = NoteValue(type: .half, modifier: .dotted)
+    XCTAssertEqual(noteValue / NoteValueType.sixteenth, 12)
+    XCTAssertEqual(noteValue / NoteValueType.whole, 0.75)
+  }
+
   func testDurations() {
     let timeSignature = TimeSignature(beats: 4, noteValue: .quarter) // 4/4
     let tempo = Tempo(timeSignature: timeSignature, bpm: 120) // 120BPM
