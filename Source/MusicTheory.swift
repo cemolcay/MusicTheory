@@ -41,6 +41,8 @@ public enum NoteModifier: Double, Codable {
   case dotted = 1.5
   /// Three notes of the same value.
   case triplet = 0.67
+  /// Five of the indicated note value total the duration normally occupied by four.
+  case quintuplet = 0.8
 }
 
 /// Defines the duration of a note beatwise.
