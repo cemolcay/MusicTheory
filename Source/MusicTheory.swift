@@ -33,9 +33,9 @@ public enum NoteValueType: Double, Codable {
   case sixtyfourth = 64
 }
 
-/// Defines the lenght of a `NoteValue`
+/// Defines the length of a `NoteValue`
 public enum NoteModifier: Double, Codable {
-  /// No additional lenght.
+  /// No additional length.
   case `default` = 1
   /// Adds half of its own value.
   case dotted = 1.5
