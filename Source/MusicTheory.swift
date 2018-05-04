@@ -332,12 +332,12 @@ public struct Note: Equatable, Codable {
     self.octave = octave
   }
 
-	/// Returns midi note number.
-	/// In theory, this must be in range [0 - 127].
-	/// But it does not limits the midi note value.
-	public var midiNote: Int {
-		return type.rawValue + ((octave + 1) * 12)
-	}
+  /// Returns midi note number.
+  /// In theory, this must be in range [0 - 127].
+  /// But it does not limits the midi note value.
+  public var midiNote: Int {
+    return type.rawValue + ((octave + 1) * 12)
+  }
 
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.
   /// Bases A4 note of 440Hz frequency standard.
@@ -384,7 +384,7 @@ public func -(lhs: Interval, rhs: Interval) -> Interval {
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns bool value of equeation.
 public func ==(lhs: Interval, rhs: Interval) -> Bool {
-	return lhs.halfstep == rhs.halfstep
+  return lhs.halfstep == rhs.halfstep
 }
 
 /// Extends `Interval` by any given octave.
@@ -396,7 +396,7 @@ public func ==(lhs: Interval, rhs: Interval) -> Bool {
 ///   - octave: Octave you want to extend your interval by.
 /// - Returns: Returns new interval by calculating halfsteps between target interval and octave.
 public func *(interval: Interval, octave: Int) -> Interval {
-	return Interval(halfstep: interval.halfstep + (12 * (octave - 1)))
+  return Interval(halfstep: interval.halfstep + (12 * (octave - 1)))
 }
 
 /// Defines the interval between `Note`s in halfstep tones and degrees.
