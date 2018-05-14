@@ -569,7 +569,7 @@ public struct ChordType: ChordDescription {
   public var intervals: [Interval] {
     var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
     parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as ChordPart? }) ?? []
-    return [.P1] + parts.flatMap({ $0?.interval })
+    return [.P1] + parts.compactMap({ $0?.interval })
   }
 
   /// Notation of the chord type.
@@ -591,7 +591,7 @@ public struct ChordType: ChordDescription {
       extensionNotation = "(\(ext.last!.notation))"
     } else {
       extensionNotation = ext
-        .flatMap({ $0.notation })
+        .compactMap({ $0.notation })
         .joined(separator: "/")
       extensionNotation = extensionNotation.isEmpty ? "" : "(\(extensionNotation))"
     }
@@ -620,7 +620,7 @@ public struct ChordType: ChordDescription {
       .sorted(by: { $0.type.rawValue < $1.type.rawValue })
       .map({ $0.description as String? }) ?? []
     let desc = [third.description, fifth.description, sixthNotation, seventhNotation, suspendedNotation] + extensionsNotation
-    return desc.flatMap({ $0 }).joined(separator: " ")
+    return desc.compactMap({ $0 }).joined(separator: " ")
   }
 
   /// All possible chords could be generated.
