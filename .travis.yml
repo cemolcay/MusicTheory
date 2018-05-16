@@ -1,6 +1,6 @@
 os: osx
 language: swift
-osx_image: xcode9
+osx_image: xcode9.3
 xcode_project: MusicTheory.xcodeproj # path to your xcodeproj folder
 xcode_scheme: MusicTheoryTests
 script:
