@@ -40,7 +40,7 @@ public enum NoteModifier: Double, Codable {
   /// Adds half of its own value.
   case dotted = 1.5
   /// Three notes of the same value.
-  case triplet = 0.6668
+  case triplet = 0.6667
   /// Five of the indicated note value total the duration normally occupied by four.
   case quintuplet = 0.8
 }

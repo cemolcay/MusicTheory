@@ -190,4 +190,45 @@ extension MusicTheoryTests {
       XCTAssert(chord.notes(octave: 1) == c7Inversions[index])
     }
   }
+
+  func testSampleLengthCalcuation() {
+    let rates = [
+      NoteValue(type: .whole, modifier: .default),
+      NoteValue(type: .half, modifier: .default),
+      NoteValue(type: .half, modifier: .dotted),
+      NoteValue(type: .half, modifier: .triplet),
+      NoteValue(type: .quarter, modifier: .default),
+      NoteValue(type: .quarter, modifier: .dotted),
+      NoteValue(type: .quarter, modifier: .triplet),
+      NoteValue(type: .eighth, modifier: .default),
+      NoteValue(type: .eighth, modifier: .dotted),
+      NoteValue(type: .sixteenth, modifier: .default),
+      NoteValue(type: .sixteenth, modifier: .dotted),
+      NoteValue(type: .thirtysecond, modifier: .default),
+      NoteValue(type: .sixtyfourth, modifier: .default),
+    ]
+
+    let tempo = Tempo()
+    let sampleLengths = rates
+      .map({ tempo.sampleLength(of: $0) })
+      .map({ round(100 * $0) / 100 })
+
+    let expected: [Double] = [
+      88200.0,
+      44100.0,
+      66150.0,
+      29401.47,
+      22050.0,
+      33075.0,
+      14700.73,
+      11025.0,
+      16537.5,
+      5512.5,
+      8268.75,
+      2756.25,
+      1378.13,
+    ]
+
+    XCTAssertEqual(sampleLengths, expected)
+  }
 }
