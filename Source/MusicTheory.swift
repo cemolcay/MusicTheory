@@ -40,7 +40,7 @@ public enum NoteModifier: Double, Codable {
   /// Adds half of its own value.
   case dotted = 1.5
   /// Three notes of the same value.
-  case triplet = 0.67
+  case triplet = 0.6668
   /// Five of the indicated note value total the duration normally occupied by four.
   case quintuplet = 0.8
 }
@@ -121,8 +121,18 @@ public struct Tempo: Codable {
   /// Caluclates the duration of a note value in seconds.
   public func duration(of noteValue: NoteValue) -> TimeInterval {
     let secondsPerBeat = 60.0 / bpm
-    let secondsPerNote = secondsPerBeat * (timeSignature.noteValue.rawValue / noteValue.type.rawValue) * noteValue.modifier.rawValue
-    return secondsPerNote
+    return secondsPerBeat * (timeSignature.noteValue.rawValue / noteValue.type.rawValue) * noteValue.modifier.rawValue
+  }
+
+  /// Calculates the note length in samples. Useful for sequencing notes sample accurate in the DSP.
+  ///
+  /// - Parameters:
+  ///   - noteValue: Rate of the note you want to calculate sample length.
+  ///   - sampleRate: Number of samples in a second. Defaults to 44100.
+  /// - Returns: Returns the sample length of a note value.
+  public func sampleLength(of noteValue: NoteValue, sampleRate: Double = 44100.0) -> Double {
+    let secondsPerBeat = 60.0 / bpm
+    return secondsPerBeat  * sampleRate * ((4 / noteValue.type.rawValue) * noteValue.modifier.rawValue)
   }
 
   /// Calculates the LFO speed of a note vaule in hertz.
