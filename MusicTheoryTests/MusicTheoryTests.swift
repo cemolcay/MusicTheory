@@ -24,52 +24,6 @@ class MusicTheoryTests: XCTestCase {
 
 /*
 extension MusicTheoryTests {
-
-  func testHalfstep() {
-    let noteType: NoteType = .c
-    XCTAssert(noteType + 1 == .dFlat)
-    XCTAssert(noteType + 11 == .b)
-    XCTAssert(noteType + 12 == .c)
-    let note: Note = Note(type: noteType, octave: 1)
-    XCTAssert((note + 12).octave == note.octave + 1)
-    XCTAssert((note + 1).type == .dFlat)
-    XCTAssert((note - 1) == Note(type: .b, octave: 0))
-  }
-
-  func testNote() {
-    var note = Note(midiNote: 127)
-    XCTAssert(note.type == .g)
-    note = Note(midiNote: 0)
-    XCTAssert(note.type == .c)
-    note = Note(midiNote: 66)
-    XCTAssert(note.type == .gFlat)
-  }
-
-  func testFrequency() {
-    let note = Note(type: .a, octave: 4)
-    XCTAssertEqual(note.frequency, 440.0)
-  }
-
-  func testInterval() {
-    let note: NoteType = .c
-    XCTAssert(note + .P8 == note)
-    XCTAssert(note + .M2 == .d)
-    XCTAssert(note + .m2 == .dFlat)
-
-    let b = Note(type: .b, octave: 1)
-    let d = Note(type: .d, octave: 2)
-    XCTAssert(b - d == .m3)
-    XCTAssert(d - b == .m3)
-    XCTAssert(b - d == 3)
-  }
-
-  func testMidiNote() {
-    XCTAssert(Note(type: .c, octave: -1).midiNote == 0)
-    XCTAssert(Note(type: .c, octave: 0).midiNote == 12)
-    XCTAssert(Note(type: .b, octave: 7).midiNote == 107)
-    XCTAssert(Note(type: .g, octave: 9).midiNote == 127)
-  }
-
   func testScale() {
     let cMaj: [NoteType] = [.c, .d, .e, .f, .g, .a, .b]
     let cMajScale = Scale(type: .major, key: .c)
@@ -97,6 +51,45 @@ extension MusicTheoryTests {
 */
 
  extension MusicTheoryTests {
+  func testHalfstep() {
+    let key = Key(type: .c)
+    XCTAssert(key + 1 == Key(type: .d, accident: .flat))
+    XCTAssert(key + 11 == Key(type: .b))
+    XCTAssert(key + 12 == Key(type: .c))
+    let pitch = Pitch(key: key, octave: 1)
+    XCTAssert((pitch + 12).octave == pitch.octave + 1)
+    XCTAssert((pitch + 1).key == Key(type: .d, accident: .flat))
+    XCTAssert((pitch - 1) == Pitch(key: Key(type: .b), octave: 0))
+  }
+
+  func testPitch() {
+    var pitch = Pitch(midiNote: 127)
+    XCTAssert(pitch.key == Key(type: .g))
+    pitch = Pitch(midiNote: 0)
+    XCTAssert(pitch.key == Key(type: .c))
+    pitch = Pitch(midiNote: 66)
+    XCTAssert(pitch.key == Key(type: .g, accident: .flat))
+  }
+
+  func testFrequency() {
+    let note = Pitch(key: Key(type: .a), octave: 4)
+    XCTAssertEqual(note.frequency, 440.0)
+  }
+
+  func testInterval() {
+    let b = Pitch(key: Key(type: .b), octave: 1)
+    let d = Pitch(key: Key(type: .d), octave: 2)
+    XCTAssert(b - d == .m3)
+    XCTAssert(d - b == .m3)
+    XCTAssert(b - d == 3)
+  }
+
+  func testMidiNote() {
+    XCTAssert(Pitch(key: Key(type: .c), octave: -1).rawValue == 0)
+    XCTAssert(Pitch(key: Key(type: .c), octave: 0).rawValue == 12)
+    XCTAssert(Pitch(key: Key(type: .b), octave: 7).rawValue == 107)
+    XCTAssert(Pitch(key: Key(type: .g), octave: 9).rawValue == 127)
+  }
 
   func testChords() {
     let cmajNotes: [Key] = [Key(type: .c), Key(type: .e), Key(type: .g)]
