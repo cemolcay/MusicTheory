@@ -8,7 +8,27 @@
 
 import Foundation
 
-public enum Accident: Codable, RawRepresentable, ExpressibleByIntegerLiteral, CustomStringConvertible {
+public func +(lhs: Accident, rhs: Accident) -> Accident {
+  return Accident(integerLiteral: lhs.rawValue + rhs.rawValue)
+}
+
+public func -(lhs: Accident, rhs: Accident) -> Accident {
+  return Accident(integerLiteral: lhs.rawValue - rhs.rawValue)
+}
+
+public func *(lhs: Accident, rhs: Int) -> Accident {
+  return Accident(integerLiteral: lhs.rawValue * rhs)
+}
+
+public func /(lhs: Accident, rhs: Int) -> Accident {
+  return Accident(integerLiteral: lhs.rawValue / rhs)
+}
+
+public func ==(lhs: Accident, rhs: Accident) -> Bool {
+  return lhs.rawValue == rhs.rawValue
+}
+
+public enum Accident: Codable, Equatable, RawRepresentable, ExpressibleByIntegerLiteral, CustomStringConvertible {
   case natural
   case flats(amount: Int)
   case sharps(amount: Int)
@@ -39,7 +59,7 @@ public enum Accident: Codable, RawRepresentable, ExpressibleByIntegerLiteral, Cu
     } else if rawValue > 0 {
       self = .sharps(amount: rawValue)
     } else {
-      self = .flats(amount: rawValue)
+      self = .flats(amount: -rawValue)
     }
   }
 

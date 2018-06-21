@@ -231,4 +231,13 @@ extension MusicTheoryTests {
 
     XCTAssertEqual(sampleLengths, expected)
   }
+
+  func testAccidentals() {
+    XCTAssert(Accident.flat * 2 == Accident.doubleFlat)
+    XCTAssert(Accident.doubleFlat / 2 == Accident.flat)
+    XCTAssert(Accident.sharps(amount: 2) - 2 == Accident.natural)
+    XCTAssert(Accident.flats(amount: 2) + 2 == 0)
+    XCTAssert(Accident.sharps(amount: 2) + Accident.sharps(amount: 1) == Accident.sharps(amount: 3))
+    XCTAssert(Accident(integerLiteral: -3) + Accident(rawValue: 3)! == 0)
+  }
 }
