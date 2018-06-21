@@ -93,24 +93,33 @@ extension MusicTheoryTests {
     ]
     XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
   }
+}
+*/
+
+ extension MusicTheoryTests {
 
   func testChords() {
-    let cmajNotes: [NoteType] = [.c, .e, .g]
-    let cmaj = Chord(type: ChordType(third: .major), key: .c)
-    XCTAssert(cmajNotes == cmaj.noteTypes)
+    let cmajNotes: [Key] = [Key(type: .c), Key(type: .e), Key(type: .g)]
+    let cmaj = Chord(type: ChordType(third: .major), key: Key(type: .c))
+    XCTAssert(cmajNotes == cmaj.keys)
     
-    let cminNotes: [NoteType] = [.c, .eFlat, .g]
-    let cmin = Chord(type: ChordType(third: .minor), key: .c)
-    XCTAssert(cminNotes == cmin.noteTypes)
+    let cminNotes: [Key] = [
+      Key(type: .c),
+      Key(type: .e, accident: .flat),
+      Key(type: .g)
+    ]
+    let cmin = Chord(type: ChordType(third: .minor), key: Key(type: .c))
+    XCTAssert(cminNotes == cmin.keys)
 
-    let c13Notes: [Note] = [
-      Note(type: .c, octave: 1),
-      Note(type: .e, octave: 1),
-      Note(type: .g, octave: 1),
-      Note(type: .bFlat, octave: 1),
-      Note(type: .d, octave: 2),
-      Note(type: .f, octave: 2),
-      Note(type: .a, octave: 2)]
+    let c13Notes: [Pitch] = [
+      Pitch(key: Key(type: .c), octave: 1),
+      Pitch(key: Key(type: .e), octave: 1),
+      Pitch(key: Key(type: .g), octave: 1),
+      Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .d), octave: 2),
+      Pitch(key: Key(type: .f), octave: 2),
+      Pitch(key: Key(type: .a), octave: 2),
+    ]
     let c13 = Chord(
       type: ChordType(
         third: .major,
@@ -118,17 +127,18 @@ extension MusicTheoryTests {
         extensions: [
           ChordExtensionType(type: .thirteenth)
         ]),
-      key: .c)
-    XCTAssert(c13.notes(octave: 1) == c13Notes)
+      key: Key(type: .c))
+    XCTAssert(c13.pitches(octave: 1) == c13Notes)
 
-    let cm13Notes: [Note] = [
-      Note(type: .c, octave: 1),
-      Note(type: .eFlat, octave: 1),
-      Note(type: .g, octave: 1),
-      Note(type: .bFlat, octave: 1),
-      Note(type: .d, octave: 2),
-      Note(type: .f, octave: 2),
-      Note(type: .a, octave: 2)]
+    let cm13Notes: [Pitch] = [
+      Pitch(key: Key(type: .c), octave: 1),
+      Pitch(key: Key(type: .e, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .g), octave: 1),
+      Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .d), octave: 2),
+      Pitch(key: Key(type: .f), octave: 2),
+      Pitch(key: Key(type: .a), octave: 2),
+    ]
     let cm13 = Chord(
       type: ChordType(
         third: .minor,
@@ -136,8 +146,8 @@ extension MusicTheoryTests {
         extensions: [
           ChordExtensionType(type: .thirteenth)
         ]),
-      key: .c)
-    XCTAssert(cm13.notes(octave: 1) == cm13Notes)
+      key: Key(type: .c))
+    XCTAssert(cm13.pitches(octave: 1) == cm13Notes)
 
     let minorIntervals: [Interval] = [.P1, .m3, .P5]
     guard let minorChord = ChordType(intervals: minorIntervals) else { return XCTFail() }
@@ -147,17 +157,18 @@ extension MusicTheoryTests {
     guard let majorChord = ChordType(intervals: majorIntervals) else { return XCTFail() }
     XCTAssert(majorChord == ChordType(third: .major))
 
-    let cmadd13Notes: [Note] = [
-      Note(type: .c, octave: 1),
-      Note(type: .eFlat, octave: 1),
-      Note(type: .g, octave: 1),
-      Note(type: .a, octave: 2)]
+    let cmadd13Notes: [Pitch] = [
+      Pitch(key: Key(type: .c), octave: 1),
+      Pitch(key: Key(type: .e, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .g), octave: 1),
+      Pitch(key: Key(type: .a), octave: 2),
+    ]
     let cmadd13 = Chord(
       type: ChordType(
         third: .minor,
         extensions: [ChordExtensionType(type: .thirteenth)]),
-      key: .c)
-    XCTAssert(cmadd13.notes(octave: 1) == cmadd13Notes)
+      key: Key(type: .c))
+    XCTAssert(cmadd13.pitches(octave: 1) == cmadd13Notes)
   }
 
   func testNoteValueConversions() {
@@ -181,15 +192,34 @@ extension MusicTheoryTests {
   func testInversions() {
     let c7 = Chord(
       type: ChordType(third: .major, seventh: .dominant),
-      key: .c)
+      key: Key(type: .c))
     let c7Inversions = [
-      [Note(type: .c, octave: 1), Note(type: .e, octave: 1), Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1)],
-      [Note(type: .e, octave: 1), Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2)],
-      [Note(type: .g, octave: 1), Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2)],
-      [Note(type: .bFlat, octave: 1), Note(type: .c, octave: 2), Note(type: .e, octave: 2), Note(type: .g, octave: 2)],
+      [
+        Pitch(key: Key(type: .c), octave: 1),
+        Pitch(key: Key(type: .e), octave: 1),
+        Pitch(key: Key(type: .g), octave: 1),
+        Pitch(key: Key(type: .b, accident: .flat), octave: 1)
+      ],
+      [
+        Pitch(key: Key(type: .e), octave: 1),
+        Pitch(key: Key(type: .g), octave: 1),
+        Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+        Pitch(key: Key(type: .c), octave: 2)
+      ],
+      [
+        Pitch(key: Key(type: .g), octave: 1),
+        Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+        Pitch(key: Key(type: .c), octave: 2),
+        Pitch(key: Key(type: .e), octave: 2)],
+      [
+        Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+        Pitch(key: Key(type: .c), octave: 2),
+        Pitch(key: Key(type: .e), octave: 2),
+        Pitch(key: Key(type: .g), octave: 2)
+      ],
     ]
     for (index, chord) in c7.inversions.enumerated() {
-      XCTAssert(chord.notes(octave: 1) == c7Inversions[index])
+      XCTAssert(chord.pitches(octave: 1) == c7Inversions[index])
     }
   }
 
@@ -233,19 +263,6 @@ extension MusicTheoryTests {
 
     XCTAssertEqual(sampleLengths, expected)
   }
-
-  func testAccidentals() {
-    XCTAssert(Accident.flat * 2 == Accident.doubleFlat)
-    XCTAssert(Accident.doubleFlat / 2 == Accident.flat)
-    XCTAssert(Accident.sharps(amount: 2) - 2 == Accident.natural)
-    XCTAssert(Accident.flats(amount: 2) + 2 == 0)
-    XCTAssert(Accident.sharps(amount: 2) + Accident.sharps(amount: 1) == Accident.sharps(amount: 3))
-    XCTAssert(Accident(integerLiteral: -3) + Accident(rawValue: 3)! == 0)
-  }
-}
-*/
-
-extension MusicTheoryTests {
 
   func testAccidentals() {
     XCTAssert(Accident.flat * 2 == Accident.doubleFlat)

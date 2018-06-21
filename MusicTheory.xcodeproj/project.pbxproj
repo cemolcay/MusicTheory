@@ -44,6 +44,7 @@
 		B2B5660520DC16810070B8B7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5660320DC16580070B8B7 /* Key.swift */; };
 		B2B5660620DC16810070B8B7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5660320DC16580070B8B7 /* Key.swift */; };
 		B2B5660720DC16830070B8B7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5660320DC16580070B8B7 /* Key.swift */; };
+		B2CDE75120DC3B4A00039573 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAA1F9ED4FC000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAB1F9ED4FD000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
@@ -138,8 +139,8 @@
 				B2B565E520DBE6930070B8B7 /* Enharmonics.swift */,
 				B2B5660320DC16580070B8B7 /* Key.swift */,
 				B2B565EC20DBF7030070B8B7 /* Pitch.swift */,
-				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
 				B23B00F01F9CD2DD008E3454 /* Chord.swift */,
+				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -461,6 +462,7 @@
 				B2B565F420DBF7450070B8B7 /* Pitch.swift in Sources */,
 				B2B5660120DC15880070B8B7 /* NoteValue.swift in Sources */,
 				B2B565F520DBF7450070B8B7 /* Tempo.swift in Sources */,
+				B2CDE75120DC3B4A00039573 /* Chord.swift in Sources */,
 				B2B5660220DC15880070B8B7 /* TimeSignature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +550,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -573,6 +576,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -597,6 +601,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -621,6 +626,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -816,7 +822,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cemolcay.MusicTheoryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -834,7 +840,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cemolcay.MusicTheoryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

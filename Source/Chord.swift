@@ -698,8 +698,8 @@ public func ==(left: Chord?, right: Chord?) -> Bool {
 public struct Chord: ChordDescription {
   /// Type of the chord.
   public var type: ChordType
-  /// Root note of the chord.
-  public var key: NoteType
+  /// Root key of the chord.
+  public var key: Key
   /// Inversion index of the chord.
   public private(set) var inversion: Int
 
@@ -716,9 +716,9 @@ public struct Chord: ChordDescription {
   /// Initilizes chord with root note and type.
   ///
   /// - Parameters:
-  ///   - key: Root note of the chord.
+  ///   - key: Root key of the chord.
   ///   - type: Tyoe of the chord.
-  public init(type: ChordType, key: NoteType, inversion: Int = 0) {
+  public init(type: ChordType, key: Key, inversion: Int = 0) {
     self.type = type
     self.key = key
     self.inversion = inversion
@@ -728,31 +728,31 @@ public struct Chord: ChordDescription {
   ///
   /// - Parameter octave: Octave of the root note for the build chord from.
   /// - Returns: Generates notes of the chord.
-  public func notes(octave: Int) -> [Note] {
-    return intervals.map({ Note(type: key, octave: octave) + $0 })
+  public func pitches(octave: Int) -> [Pitch] {
+    return intervals.map({ Pitch(key: key, octave: octave) + $0 })
   }
 
   /// Generates notes of the chord for octave range.
   ///
   /// - Parameter octaves: Octaves of the root note to build chord from.
   /// - Returns: Generates notes of the chord.
-  public func notes(octaves: [Int]) -> [Note] {
-    return octaves.flatMap({ notes(octave: $0) }).sorted(by: { $0.midiNote < $1.midiNote })
+  public func pitches(octaves: [Int]) -> [Pitch] {
+    return octaves.flatMap({ pitches(octave: $0) }).sorted(by: { $0.rawValue < $1.rawValue })
   }
 
   /// Types of notes in chord.
-  public var noteTypes: [NoteType] {
-    return notes(octave: 1).map({ $0.type })
+  public var keys: [Key] {
+    return pitches(octave: 1).map({ $0.key })
   }
 
   /// Possible inversions of the chord.
   public var inversions: [Chord] {
-    return [Int](0..<noteTypes.count).map({ Chord(type: type, key: key, inversion: $0) })
+    return [Int](0..<keys.count).map({ Chord(type: type, key: key, inversion: $0) })
   }
 
   /// Notation of the chord.
   public var notation: String {
-    let inversionNotation = inversion > 0 && inversion < noteTypes.count ? "/\(noteTypes[0])" : ""
+    let inversionNotation = inversion > 0 && inversion < keys.count ? "/\(keys[0])" : ""
     return "\(key)\(type.notation)\(inversionNotation)"
   }
 
@@ -760,17 +760,6 @@ public struct Chord: ChordDescription {
   public var description: String {
     let inversionNotation = inversion > 0 ? " \(inversion). Inversion" : ""
     return "\(key) \(type)\(inversionNotation)"
-  }
-
-  /// All possible chord values could be generated.
-  public static var all: [Chord] {
-    var all = [Chord]()
-    for note in NoteType.all {
-      for type in ChordType.all {
-        all.append(Chord(type: type, key: note))
-      }
-    }
-    return all
   }
 }
 
