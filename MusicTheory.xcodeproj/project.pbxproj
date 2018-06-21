@@ -21,6 +21,7 @@
 		B23B00F41F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B23E8EBF1F1C2BAE0094D316 /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23E8EBE1F1C2BAE0094D316 /* MusicTheoryTests.swift */; };
 		B23E8EC11F1C2BAE0094D316 /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */; };
+		B2B565E620DBE6930070B8B7 /* Enharmonics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Enharmonics.swift */; };
 		B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAA1F9ED4FC000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAB1F9ED4FD000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
@@ -52,6 +53,7 @@
 		B23E8EBC1F1C2BAE0094D316 /* MusicTheoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTheoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23E8EBE1F1C2BAE0094D316 /* MusicTheoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTheoryTests.swift; sourceTree = "<group>"; };
 		B23E8EC01F1C2BAE0094D316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2B565E520DBE6930070B8B7 /* Enharmonics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enharmonics.swift; sourceTree = "<group>"; };
 		B2EB6BA81F9ED475000C8F15 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				B219CBFC1E4CFB7B0060A6B6 /* MusicTheory.swift */,
 				B23B00F01F9CD2DD008E3454 /* Chord.swift */,
 				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
+				B2B565E520DBE6930070B8B7 /* Enharmonics.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				B219CC391E4CFC5E0060A6B6 /* MusicTheory.swift in Sources */,
 				B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */,
 				B23B00F11F9CD2DD008E3454 /* Chord.swift in Sources */,
+				B2B565E620DBE6930070B8B7 /* Enharmonics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
