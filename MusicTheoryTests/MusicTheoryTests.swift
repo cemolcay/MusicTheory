@@ -22,6 +22,7 @@ class MusicTheoryTests: XCTestCase {
   }
 }
 
+/*
 extension MusicTheoryTests {
 
   func testHalfstep() {
@@ -240,5 +241,34 @@ extension MusicTheoryTests {
     XCTAssert(Accident.flats(amount: 2) + 2 == 0)
     XCTAssert(Accident.sharps(amount: 2) + Accident.sharps(amount: 1) == Accident.sharps(amount: 3))
     XCTAssert(Accident(integerLiteral: -3) + Accident(rawValue: 3)! == 0)
+  }
+}
+*/
+
+extension MusicTheoryTests {
+
+  func testAccidentals() {
+    XCTAssert(Accident.flat * 2 == Accident.doubleFlat)
+    XCTAssert(Accident.doubleFlat / 2 == Accident.flat)
+    XCTAssert(Accident.sharps(amount: 2) - 2 == Accident.natural)
+    XCTAssert(Accident.flats(amount: 2) + 2 == 0)
+    XCTAssert(Accident.sharps(amount: 2) + Accident.sharps(amount: 1) == Accident.sharps(amount: 3))
+    XCTAssert(Accident(integerLiteral: -3) + Accident(rawValue: 3)! == 0)
+  }
+
+  func testKeys() {
+    XCTAssert(Key(midiNote: 0) == 0)
+
+    let cSharp = Key(midiNote: 1, isPreferredAccidentSharps: true)!
+    let dFlat = Key(midiNote: 1, isPreferredAccidentSharps: false)!
+    XCTAssert(cSharp.type == .c && cSharp.accident == .sharp)
+    XCTAssert(dFlat.type == .d && dFlat.accident == .flat)
+    XCTAssert(cSharp == dFlat)
+  }
+
+  func testPitches() {
+    let c0: Pitch = 12
+    XCTAssert(c0.octave == 0 && c0.key.accident == .natural && c0.key.type == .c)
+    XCTAssert(c0 - 12 == 0)
   }
 }

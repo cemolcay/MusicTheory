@@ -30,19 +30,11 @@ public func ==(lhs: Accident, rhs: Accident) -> Bool {
   return lhs.rawValue == rhs.rawValue
 }
 
-public func +(lhs: Note, rhs: Accident) -> Note {
+public func +(lhs: Pitch, rhs: Accident) -> Pitch {
   return lhs + rhs.rawValue
 }
 
-public func -(lhs: Note, rhs: Accident) -> Note {
-  return lhs - rhs.rawValue
-}
-
-public func +(lhs: NoteType, rhs: Accident) -> NoteType {
-  return lhs + rhs.rawValue
-}
-
-public func -(lhs: NoteType, rhs: Accident) -> NoteType {
+public func -(lhs: Pitch, rhs: Accident) -> Pitch {
   return lhs - rhs.rawValue
 }
 

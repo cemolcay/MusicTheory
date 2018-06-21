@@ -14,7 +14,6 @@
 		B23B00F11F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B23B00F21F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B23B00F31F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
-		B23B00F41F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B23E8EBF1F1C2BAE0094D316 /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23E8EBE1F1C2BAE0094D316 /* MusicTheoryTests.swift */; };
 		B23E8EC11F1C2BAE0094D316 /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */; };
 		B2B565E620DBE6930070B8B7 /* Enharmonics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Enharmonics.swift */; };
@@ -22,21 +21,20 @@
 		B2B565E820DBECE70070B8B7 /* Enharmonics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Enharmonics.swift */; };
 		B2B565E920DBECE80070B8B7 /* Enharmonics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Enharmonics.swift */; };
 		B2B565EB20DBF6F80070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
-		B2B565ED20DBF7030070B8B7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Note.swift */; };
+		B2B565ED20DBF7030070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565EF20DBF72A0070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
 		B2B565F020DBF7440070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
-		B2B565F120DBF7440070B8B7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Note.swift */; };
+		B2B565F120DBF7440070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565F220DBF7440070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
 		B2B565F320DBF7450070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
-		B2B565F420DBF7450070B8B7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Note.swift */; };
+		B2B565F420DBF7450070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565F520DBF7450070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
 		B2B565F620DBF7460070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
-		B2B565F720DBF7460070B8B7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Note.swift */; };
+		B2B565F720DBF7460070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565F820DBF7460070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
 		B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAA1F9ED4FC000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAB1F9ED4FD000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
-		B2EB6BAC1F9ED4FE000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +63,7 @@
 		B23E8EC01F1C2BAE0094D316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2B565E520DBE6930070B8B7 /* Enharmonics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enharmonics.swift; sourceTree = "<group>"; };
 		B2B565EA20DBF6F80070B8B7 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
-		B2B565EC20DBF7030070B8B7 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		B2B565EC20DBF7030070B8B7 /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		B2B565EE20DBF72A0070B8B7 /* Tempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempo.swift; sourceTree = "<group>"; };
 		B2EB6BA81F9ED475000C8F15 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +118,7 @@
 				B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */,
 				B2B565EA20DBF6F80070B8B7 /* Interval.swift */,
 				B2B565E520DBE6930070B8B7 /* Enharmonics.swift */,
-				B2B565EC20DBF7030070B8B7 /* Note.swift */,
+				B2B565EC20DBF7030070B8B7 /* Pitch.swift */,
 				B2B565EE20DBF72A0070B8B7 /* Tempo.swift */,
 				B23B00F01F9CD2DD008E3454 /* Chord.swift */,
 				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
@@ -395,7 +393,7 @@
 				B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */,
 				B23B00F11F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E620DBE6930070B8B7 /* Enharmonics.swift in Sources */,
-				B2B565ED20DBF7030070B8B7 /* Note.swift in Sources */,
+				B2B565ED20DBF7030070B8B7 /* Pitch.swift in Sources */,
 				B2B565EF20DBF72A0070B8B7 /* Tempo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,7 +406,7 @@
 				B2EB6BAA1F9ED4FC000C8F15 /* Scale.swift in Sources */,
 				B23B00F21F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E720DBECE70070B8B7 /* Enharmonics.swift in Sources */,
-				B2B565F120DBF7440070B8B7 /* Note.swift in Sources */,
+				B2B565F120DBF7440070B8B7 /* Pitch.swift in Sources */,
 				B2B565F220DBF7440070B8B7 /* Tempo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +419,7 @@
 				B2EB6BAB1F9ED4FD000C8F15 /* Scale.swift in Sources */,
 				B23B00F31F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E820DBECE70070B8B7 /* Enharmonics.swift in Sources */,
-				B2B565F720DBF7460070B8B7 /* Note.swift in Sources */,
+				B2B565F720DBF7460070B8B7 /* Pitch.swift in Sources */,
 				B2B565F820DBF7460070B8B7 /* Tempo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,10 +429,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2B565F320DBF7450070B8B7 /* Interval.swift in Sources */,
-				B2EB6BAC1F9ED4FE000C8F15 /* Scale.swift in Sources */,
-				B23B00F41F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E920DBECE80070B8B7 /* Enharmonics.swift in Sources */,
-				B2B565F420DBF7450070B8B7 /* Note.swift in Sources */,
+				B2B565F420DBF7450070B8B7 /* Pitch.swift in Sources */,
 				B2B565F520DBF7450070B8B7 /* Tempo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
