@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Accident: CustomStringConvertible {
+public enum Accident: Codable, RawRepresentable, ExpressibleByIntegerLiteral, CustomStringConvertible {
   case natural
   case flats(amount: Int)
   case sharps(amount: Int)
@@ -18,13 +18,40 @@ public enum Accident: CustomStringConvertible {
   public static let doubleFlat: Accident = .flats(amount: 2)
   public static let doubleSharp: Accident = .sharps(amount: 2)
 
-  public var halfsteps: Int {
+  // MARK: RawRepresentable
+
+  public typealias RawValue = Int
+
+  public var rawValue: Int {
     switch self {
-    case .natural: return 0
-    case .flats(let amount): return -amount
-    case .sharps(let amount): return amount
+    case .natural:
+      return 0
+    case .flats(let amount):
+      return -amount
+    case .sharps(let amount):
+      return amount
     }
   }
+
+  public init?(rawValue: Accident.RawValue) {
+    if rawValue == 0 {
+      self = .natural
+    } else if rawValue > 0 {
+      self = .sharps(amount: rawValue)
+    } else {
+      self = .flats(amount: rawValue)
+    }
+  }
+
+  // MARK: ExpressibleByIntegerLiteral
+
+  public typealias IntegerLiteralType = Int
+
+  public init(integerLiteral value: Accident.IntegerLiteralType) {
+    self = Accident(rawValue: value) ?? .natural
+  }
+
+  // MARK: CustomStringConvertible
 
   public var notation: String {
     if case .natural = self {
