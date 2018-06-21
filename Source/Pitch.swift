@@ -140,7 +140,7 @@ public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerL
 
   // MARK: CustomStringConvertible
 
-  /// Converts `Note` to string with its type and octave.
+  /// Converts `Pitch` to string with its key and octave.
   public var description: String {
     return "\(key)\(octave)"
   }
