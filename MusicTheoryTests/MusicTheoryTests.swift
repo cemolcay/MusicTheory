@@ -59,6 +59,7 @@ extension MusicTheoryTests {
     let d = Note(type: .d, octave: 2)
     XCTAssert(b - d == .m3)
     XCTAssert(d - b == .m3)
+    XCTAssert(b - d == 3)
   }
 
   func testMidiNote() {

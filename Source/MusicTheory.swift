@@ -162,7 +162,7 @@ public func /(noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
 ///   - interval: Interval above.
 /// - Returns: Returns `NoteType` above interval.
 public func +(noteType: NoteType, interval: Interval) -> NoteType {
-  return NoteType(midiNote: noteType.rawValue + interval.halfstep)!
+  return NoteType(midiNote: noteType.rawValue + interval.rawValue)!
 }
 
 /// Calculates the `NoteType` above halfsteps.
@@ -182,7 +182,7 @@ public func +(noteType: NoteType, halfstep: Int) -> NoteType {
 ///   - interval: Interval below.
 /// - Returns: Returns `NoteType` below interval.
 public func -(noteType: NoteType, interval: Interval) -> NoteType {
-  return NoteType(midiNote: noteType.rawValue - interval.halfstep)!
+  return NoteType(midiNote: noteType.rawValue - interval.rawValue)!
 }
 
 /// Calculates the `NoteType` below halfsteps.
@@ -272,7 +272,7 @@ extension NoteType: CustomStringConvertible {
 ///   - interval: Interval above.
 /// - Returns: Returns `Note` above interval.
 public func +(note: Note, interval: Interval) -> Note {
-  return Note(midiNote: note.midiNote + interval.halfstep)
+  return Note(midiNote: note.midiNote + interval.rawValue)
 }
 
 /// Calculates the `Note` above halfsteps.
@@ -292,7 +292,7 @@ public func +(note: Note, halfstep: Int) -> Note {
 ///   - interval: Interval below.
 /// - Returns: Returns `Note` below interval.
 public func -(note: Note, interval: Interval) -> Note {
-  return Note(midiNote: note.midiNote - interval.halfstep)
+  return Note(midiNote: note.midiNote - interval.rawValue)
 }
 
 /// Calculates the `Note` below halfsteps.
@@ -313,7 +313,7 @@ public func -(note: Note, halfstep: Int) -> Note {
 ///   - rhs: Right hand side of the equation.
 /// - Returns: `Intreval` between two notes. You can get the halfsteps from interval as well.
 public func -(lhs: Note, rhs: Note) -> Interval {
-  return Interval(halfstep: abs(rhs.midiNote - lhs.midiNote))
+  return Interval(integerLiteral: abs(rhs.midiNote - lhs.midiNote))
 }
 
 /// Compares the equality of two notes by their types and octaves.
@@ -388,7 +388,7 @@ extension Note: CustomStringConvertible {
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Combined interval value of two.
 public func +(lhs: Interval, rhs: Interval) -> Interval {
-  return Interval(halfstep: lhs.halfstep + rhs.halfstep)
+  return Interval(integerLiteral: lhs.rawValue + rhs.rawValue)
 }
 
 /// Subsracts two intervals and returns the interval value between two.
@@ -398,7 +398,7 @@ public func +(lhs: Interval, rhs: Interval) -> Interval {
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Interval between two intervals.
 public func -(lhs: Interval, rhs: Interval) -> Interval {
-  return Interval(halfstep: lhs.halfstep - rhs.halfstep)
+  return Interval(integerLiteral: lhs.rawValue - rhs.rawValue)
 }
 
 /// Compares two `Interval` types.
@@ -408,7 +408,7 @@ public func -(lhs: Interval, rhs: Interval) -> Interval {
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns bool value of equeation.
 public func ==(lhs: Interval, rhs: Interval) -> Bool {
-  return lhs.halfstep == rhs.halfstep
+  return lhs.rawValue == rhs.rawValue
 }
 
 /// Extends `Interval` by any given octave.
@@ -420,13 +420,11 @@ public func ==(lhs: Interval, rhs: Interval) -> Bool {
 ///   - octave: Octave you want to extend your interval by.
 /// - Returns: Returns new interval by calculating halfsteps between target interval and octave.
 public func *(interval: Interval, octave: Int) -> Interval {
-  return Interval(halfstep: interval.halfstep + (12 * (octave - 1)))
+  return Interval(integerLiteral: interval.rawValue + (12 * (octave - 1)))
 }
 
 /// Defines the interval between `Note`s in halfstep tones and degrees.
-public enum Interval: Equatable, ExpressibleByIntegerLiteral {
-  public typealias IntegerLiteralType = Int
-
+public enum Interval: Codable, Equatable, RawRepresentable, ExpressibleByIntegerLiteral {
   /// Zero halfstep and zero degree, unison, the note itself.
   case P1
   /// One halfstep and one degree between notes.
@@ -456,39 +454,6 @@ public enum Interval: Equatable, ExpressibleByIntegerLiteral {
   /// Custom halfsteps and degrees by given input between notes.
   case custom(halfstep: Int)
 
-  /// Initilizes interval with its degree and halfstep.
-  ///
-  /// - Parameters:
-  ///   - degree: Degree of interval.
-  ///   - halfstep: Halfstep of interval.
-  public init(halfstep: Int) {
-    switch halfstep {
-    case 0: self = .P1
-    case 1: self = .m2
-    case 2: self = .M2
-    case 3: self = .m3
-    case 4: self = .M3
-    case 5: self = .P4
-    case 6: self = .d5
-    case 7: self = .P5
-    case 8: self = .m6
-    case 9: self = .M6
-    case 10: self = .m7
-    case 11: self = .M7
-    case 12: self = .P8
-    default: self = .custom(halfstep: halfstep)
-    }
-  }
-
-  /// ExpressibleByIntegerLiteral init function.
-  /// You can convert Int value of halfsteps to Interval.
-  ///
-  /// -           :
-  ///   - value: Halfstep value of Interval.
-  public init(integerLiteral value: IntegerLiteralType) {
-    self.init(halfstep: value)
-  }
-
   /// Returns the degree of the `Interval`.
   public var degree: Int {
     switch self {
@@ -503,8 +468,12 @@ public enum Interval: Equatable, ExpressibleByIntegerLiteral {
     }
   }
 
-  /// Returns halfstep representation of `Interval.`
-  public var halfstep: Int {
+  // MARK: RawRepresentable
+
+  public typealias RawValue = Int
+
+  /// Halfstep value of the interval.
+  public var rawValue: Int {
     switch self {
     case .P1: return 0
     case .m2: return 1
@@ -522,38 +491,44 @@ public enum Interval: Equatable, ExpressibleByIntegerLiteral {
     case .custom(let h): return h
     }
   }
-}
 
-extension Interval: Codable {
-
-  /// Keys that conforms CodingKeys protocol to map properties.
-  private enum CodingKeys: String, CodingKey {
-    /// Halfstep property of `Interval`.
-    case halfstep
-  }
-
-  /// Decodes struct with a decoder.
+  /// Initilizes interval with its halfsteps.
   ///
-  /// - Parameter decoder: Decodes encoded struct.
-  /// - Throws: Tries to initlize struct with a decoder.
-  public init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-    let halfstep = try values.decode(Int.self, forKey: .halfstep)
-    self = Interval(halfstep: halfstep)
+  /// - Parameters:
+  ///   - rawValue: Halfstep of interval.
+  public init?(rawValue: Interval.RawValue) {
+    switch rawValue {
+    case 0: self = .P1
+    case 1: self = .m2
+    case 2: self = .M2
+    case 3: self = .m3
+    case 4: self = .M3
+    case 5: self = .P4
+    case 6: self = .d5
+    case 7: self = .P5
+    case 8: self = .m6
+    case 9: self = .M6
+    case 10: self = .m7
+    case 11: self = .M7
+    case 12: self = .P8
+    default: self = .custom(halfstep: rawValue)
+    }
   }
 
-  /// Encodes struct with an ecoder.
+  // MARK: ExpressibleByIntegerLiteral
+
+  /// ExpressibleByIntegerLiteral init function.
+  /// You can convert Int value of halfsteps to Interval.
   ///
-  /// - Parameter encoder: Encodes struct.
-  /// - Throws: Tries to encode struct.
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.container(keyedBy: CodingKeys.self)
-    try container.encode(halfstep, forKey: .halfstep)
+  /// -           :
+  ///   - value: Halfstep value of Interval.
+  public init(integerLiteral value: IntegerLiteralType) {
+    self = Interval(rawValue: value) ?? .P1
   }
-}
 
-extension Interval: CustomStringConvertible {
+  // MARK: CustomStringConvertible
 
+  /// Description of the interval in terms of music theory.
   public var description: String {
     switch self {
     case .P1: return "unison"
