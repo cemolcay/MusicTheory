@@ -22,35 +22,48 @@ class MusicTheoryTests: XCTestCase {
   }
 }
 
-/*
 extension MusicTheoryTests {
   func testScale() {
-    let cMaj: [NoteType] = [.c, .d, .e, .f, .g, .a, .b]
-    let cMajScale = Scale(type: .major, key: .c)
-    XCTAssert(cMajScale.noteTypes == cMaj)
-    let cMin: [NoteType] = [.c, .d, .eFlat, .f, .g, .aFlat, .bFlat]
-    let cMinScale = Scale(type: .minor, key: .c)
-    XCTAssert(cMinScale.noteTypes == cMin)
+    let cMaj: [Key] = [
+      Key(type: .c),
+      Key(type: .d),
+      Key(type: .e),
+      Key(type: .f),
+      Key(type: .g),
+      Key(type: .a),
+      Key(type: .b),
+    ]
+    let cMajScale = Scale(type: .major, key: Key(type: .c))
+    XCTAssert(cMajScale.keys == cMaj)
+
+    let cMin: [Key] = [
+      Key(type: .c),
+      Key(type: .d),
+      Key(type: .e, accident: .flat),
+      Key(type: .f),
+      Key(type: .g),
+      Key(type: .a, accident: .flat),
+      Key(type: .b, accident: .flat),
+    ]
+    let cMinScale = Scale(type: .minor, key: Key(type: .c))
+    XCTAssert(cMinScale.keys == cMin)
   }
 
   func testHarmonicFields() {
-    let cmaj = Scale(type: .major, key: .c)
+    let cmaj = Scale(type: .major, key: Key(type: .c))
     let triads = cmaj.harmonicField(for: .triad)
     let triadsExpected = [
-      Chord(type: ChordType(third: .major), key: .c),
-      Chord(type: ChordType(third: .minor), key: .d),
-      Chord(type: ChordType(third: .minor), key: .e),
-      Chord(type: ChordType(third: .major), key: .f),
-      Chord(type: ChordType(third: .major), key: .g),
-      Chord(type: ChordType(third: .minor), key: .a),
-      Chord(type: ChordType(third: .minor, fifth: .diminished), key: .b),
+      Chord(type: ChordType(third: .major), key: Key(type: .c)),
+      Chord(type: ChordType(third: .minor), key: Key(type: .d)),
+      Chord(type: ChordType(third: .minor), key: Key(type: .e)),
+      Chord(type: ChordType(third: .major), key: Key(type: .f)),
+      Chord(type: ChordType(third: .major), key: Key(type: .g)),
+      Chord(type: ChordType(third: .minor), key: Key(type: .a)),
+      Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
     ]
     XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
   }
-}
-*/
 
- extension MusicTheoryTests {
   func testHalfstep() {
     let key = Key(type: .c)
     XCTAssert(key + 1 == Key(type: .d, accident: .flat))

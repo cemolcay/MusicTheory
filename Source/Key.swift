@@ -38,6 +38,22 @@ public func -(lhs: Pitch, rhs: Key) -> Pitch {
   return lhs - rhs.rawValue
 }
 
+public func +(lhs: Key, rhs: Interval) -> Key {
+  return Key(integerLiteral: lhs.rawValue + rhs.rawValue)
+}
+
+public func -(lhs: Key, rhs: Interval) -> Key {
+  return Key(integerLiteral: lhs.rawValue - rhs.rawValue)
+}
+
+public func +(lhs: Key, rhs: Int) -> Key {
+  return Key(integerLiteral: lhs.rawValue + rhs)
+}
+
+public func -(lhs: Key, rhs: Int) -> Key {
+  return Key(integerLiteral: lhs.rawValue - rhs)
+}
+
 public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLiteral, CustomStringConvertible {
 
   public enum KeyType: Int, Codable, Equatable, CustomStringConvertible {
