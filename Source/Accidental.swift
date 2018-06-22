@@ -60,6 +60,26 @@ public func ==(lhs: Accidental, rhs: Accidental) -> Bool {
   return lhs.rawValue == rhs.rawValue
 }
 
+/// Checks if the two accidental is exactly identical.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns true if two accidentalals is identical.
+public func ===(lhs: Accidental, rhs: Accidental) -> Bool {
+  switch (lhs, rhs) {
+  case (.natural, .natural):
+    return true
+  case (.sharps(let a), .sharps(let b)):
+    return a == b
+  case (.flats(let a), .flats(let b)):
+    return a == b
+  default:
+    return false
+  }
+  return lhs.rawValue == rhs.rawValue
+}
+
 /// Adds an accidental value to a pitch.
 ///
 /// - Parameters:

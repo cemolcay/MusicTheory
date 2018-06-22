@@ -277,6 +277,12 @@ extension MusicTheoryTests {
     XCTAssert(Accidental.flats(amount: 2) + 2 == 0)
     XCTAssert(Accidental.sharps(amount: 2) + Accidental.sharps(amount: 1) == Accidental.sharps(amount: 3))
     XCTAssert(Accidental(integerLiteral: -3) + Accidental(rawValue: 3)! == 0)
+
+    let cSharp = Key(midiNote: 1, isPreferredAccidentalSharps: true)!
+    let dFlat = Key(midiNote: 1, isPreferredAccidentalSharps: false)!
+    XCTAssert(cSharp.alternative == dFlat.alternative)
+    XCTAssert(cSharp === dFlat.alternative!)
+    XCTAssert(dFlat === cSharp.alternative!)
   }
 
   func testKeys() {

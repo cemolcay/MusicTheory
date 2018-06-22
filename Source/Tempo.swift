@@ -10,8 +10,6 @@
 
 import Foundation
 
-// MARK: - Tempo
-
 /// Defines the tempo of the music with beats per second and time signature.
 public struct Tempo: Codable {
   /// Time signature of music.

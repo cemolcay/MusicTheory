@@ -60,6 +60,16 @@ public func ==(lhs: Key, rhs: Key) -> Bool {
   return lhs.rawValue == rhs.rawValue
 }
 
+/// Checks if two `Key` types are exactly equal in terms of their key type and accidents.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns the equation value.
+public func ===(lhs: Key, rhs: Key) -> Bool {
+  return lhs.type == rhs.type && lhs.accidental === rhs.accidental
+}
+
 /// Adds a `Pitch` value to a `Key` value.
 ///
 /// - Parameters:
@@ -197,6 +207,18 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
           return nil
         }
       }
+    }
+  }
+
+  /// Returns alternative key with sharps for flat keys, and vice versa. Returns nil if it is natural.
+  public var alternative: Key? {
+    switch accidental {
+    case .natural:
+      return nil
+    case .flats:
+      return Key(midiNote: rawValue, isPreferredAccidentalSharps: true)
+    case .sharps:
+      return Key(midiNote: rawValue, isPreferredAccidentalSharps: false)
     }
   }
 
