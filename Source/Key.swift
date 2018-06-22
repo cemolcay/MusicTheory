@@ -123,7 +123,7 @@ public func -(lhs: Key, rhs: Int) -> Key {
 /// Represents the keys that notes and pitches are based on.
 public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLiteral, CustomStringConvertible {
 
-  /// Base pitch of the key without accidents. Accidents will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
+  /// Base pitch of the key without accidentals. Accidentals will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
   public enum KeyType: Int, Codable, Equatable, CustomStringConvertible {
     /// C key.
     case c = 0
@@ -156,43 +156,43 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
   /// Type of the key.
   public var type: KeyType
 
-  /// Accident of the key.
-  public var accident: Accident
+  /// Accidental of the key.
+  public var accidental: Accidental
 
-  /// Initilizes the key with its type and accident.
+  /// Initilizes the key with its type and accidental.
   ///
   /// - Parameters:
   ///   - type: The type of the key.
-  ///   - accident: Accident of the key. Defaults natural.
-  public init(type: KeyType, accident: Accident = .natural) {
+  ///   - accidental: Accidental of the key. Defaults natural.
+  public init(type: KeyType, accidental: Accidental = .natural) {
     self.type = type
-    self.accident = accident
+    self.accidental = accidental
   }
 
   /// Initilizes the key with an integer value that represents the MIDI note value.
   ///
   /// - Parameters:
   ///   - midiNote: MIDI note value of the key.
-  ///   - isPreferredAccidentSharps: Calculates the key in sharp or flat accidents. Defaults sharp accidens.
-  public init?(midiNote: Int, isPreferredAccidentSharps: Bool = true) {
+  ///   - isPreferredAccidentalSharps: Calculates the key in sharp or flat accidentals. Defaults sharp accidens.
+  public init?(midiNote: Int, isPreferredAccidentalSharps: Bool = true) {
     let octave = (midiNote / 12) - 1
     let raw = midiNote - ((octave + 1) * 12)
 
     if let keyType = KeyType(rawValue: raw) { // Use natural
       self.type = keyType
-      self.accident = .natural
-    } else { // Use accidents
-      if isPreferredAccidentSharps { // Use sharps
+      self.accidental = .natural
+    } else { // Use accidentals
+      if isPreferredAccidentalSharps { // Use sharps
         if let keyType = KeyType(rawValue: raw - 1) { // Set sharp value
           self.type = keyType
-          self.accident = .sharp
+          self.accidental = .sharp
         } else {
           return nil
         }
       } else { // Use flats
         if let keyType = KeyType(rawValue: raw + 1) { // Set flat value
           self.type = keyType
-          self.accident = .flat
+          self.accidental = .flat
         } else {
           return nil
         }
@@ -206,10 +206,10 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
 
   /// MIDI note value of the key.
   public var rawValue: Int {
-    return type.rawValue + accident.rawValue
+    return type.rawValue + accidental.rawValue
   }
 
-  /// Initilizes the key with an integer value that represents the MIDI note value. Calculates the key in sharp accidents by default.
+  /// Initilizes the key with an integer value that represents the MIDI note value. Calculates the key in sharp accidentals by default.
   ///
   /// - Parameter rawValue: MIDI note value of the key.
   public init?(rawValue: Key.RawValue) {
@@ -221,17 +221,17 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
 
   public typealias IntegerLiteralType = Int
 
-  /// Initilizes the key with an integer value that represents the MIDI note value. Calculates the key in sharp accidents by default.
+  /// Initilizes the key with an integer value that represents the MIDI note value. Calculates the key in sharp accidentals by default.
   ///
   /// - Parameter value: MIDI note value of the key.
   public init(integerLiteral value: Key.IntegerLiteralType) {
-    self = Key(rawValue: value) ?? Key(type: .c, accident: .natural)
+    self = Key(rawValue: value) ?? Key(type: .c, accidental: .natural)
   }
 
   // MARK: CustomStringConvertible
 
-  /// Returns the key notation with its type and accident, if has any.
+  /// Returns the key notation with its type and accidental, if has any.
   public var description: String {
-    return "\(type)\(accident)"
+    return "\(type)\(accidental)"
   }
 }

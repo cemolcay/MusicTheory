@@ -316,7 +316,7 @@ extension ScaleType: CustomStringConvertible {
     case .nineToneScale: return "Nine Tone Scale"
     case .auxiliaryDiminished: return "Auxiliary Diminished"
     case .auxiliaryAugmented: return "Auxiliary Augmented"
-    case .auxiliaryDimBlues: return "Auxiliary Dim Blues"
+    case .auxiliaryDimBlues: return "Auxiliary Diminished Blues"
     case .majorLocrian: return "Major Locrian"
     case .overtone: return "Overtone"
     case .diminishedWholeTone: return "Diminished Whole Tone"

@@ -72,10 +72,10 @@ public func ==(left: Pitch, right: Pitch) -> Bool {
 }
 
 /// Pitch object with a `Key` and an octave.
-/// Could be initilized with MIDI note number and preferred accident type.
+/// Could be initilized with MIDI note number and preferred accidental type.
 public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLiteral, CustomStringConvertible {
 
-  /// Key of the pitch like C, D, A, B with accidents.
+  /// Key of the pitch like C, D, A, B with accidentals.
   public private(set) var key: Key
 
   /// Octave of the pitch.
@@ -86,10 +86,10 @@ public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerL
   /// Initilizes the `Pitch` with MIDI note number.
   ///
   /// - Parameter midiNote: Midi note in range of [0 - 127].
-  /// - Parameter isPreferredAccidentSharps: Make it true if preferred accidents is sharps. Defaults true.
-  public init(midiNote: Int, isPreferredAccidentSharps: Bool = true) {
+  /// - Parameter isPreferredAccidentalSharps: Make it true if preferred accidentals is sharps. Defaults true.
+  public init(midiNote: Int, isPreferredAccidentalSharps: Bool = true) {
     octave = (midiNote / 12) - 1
-    key = Key(midiNote: midiNote, isPreferredAccidentSharps: isPreferredAccidentSharps) ?? 0
+    key = Key(midiNote: midiNote, isPreferredAccidentalSharps: isPreferredAccidentalSharps) ?? 0
   }
 
   /// Initilizes the `Pitch` with `Key` and octave

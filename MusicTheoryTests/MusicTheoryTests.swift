@@ -39,11 +39,11 @@ extension MusicTheoryTests {
     let cMin: [Key] = [
       Key(type: .c),
       Key(type: .d),
-      Key(type: .e, accident: .flat),
+      Key(type: .e, accidental: .flat),
       Key(type: .f),
       Key(type: .g),
-      Key(type: .a, accident: .flat),
-      Key(type: .b, accident: .flat),
+      Key(type: .a, accidental: .flat),
+      Key(type: .b, accidental: .flat),
     ]
     let cMinScale = Scale(type: .minor, key: Key(type: .c))
     XCTAssert(cMinScale.keys == cMin)
@@ -66,12 +66,12 @@ extension MusicTheoryTests {
 
   func testHalfstep() {
     let key = Key(type: .c)
-    XCTAssert(key + 1 == Key(type: .d, accident: .flat))
+    XCTAssert(key + 1 == Key(type: .d, accidental: .flat))
     XCTAssert(key + 11 == Key(type: .b))
     XCTAssert(key + 12 == Key(type: .c))
     let pitch = Pitch(key: key, octave: 1)
     XCTAssert((pitch + 12).octave == pitch.octave + 1)
-    XCTAssert((pitch + 1).key == Key(type: .d, accident: .flat))
+    XCTAssert((pitch + 1).key == Key(type: .d, accidental: .flat))
     XCTAssert((pitch - 1) == Pitch(key: Key(type: .b), octave: 0))
   }
 
@@ -81,7 +81,7 @@ extension MusicTheoryTests {
     pitch = Pitch(midiNote: 0)
     XCTAssert(pitch.key == Key(type: .c))
     pitch = Pitch(midiNote: 66)
-    XCTAssert(pitch.key == Key(type: .g, accident: .flat))
+    XCTAssert(pitch.key == Key(type: .g, accidental: .flat))
   }
 
   func testFrequency() {
@@ -111,7 +111,7 @@ extension MusicTheoryTests {
     
     let cminNotes: [Key] = [
       Key(type: .c),
-      Key(type: .e, accident: .flat),
+      Key(type: .e, accidental: .flat),
       Key(type: .g)
     ]
     let cmin = Chord(type: ChordType(third: .minor), key: Key(type: .c))
@@ -121,7 +121,7 @@ extension MusicTheoryTests {
       Pitch(key: Key(type: .c), octave: 1),
       Pitch(key: Key(type: .e), octave: 1),
       Pitch(key: Key(type: .g), octave: 1),
-      Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
       Pitch(key: Key(type: .d), octave: 2),
       Pitch(key: Key(type: .f), octave: 2),
       Pitch(key: Key(type: .a), octave: 2),
@@ -138,9 +138,9 @@ extension MusicTheoryTests {
 
     let cm13Notes: [Pitch] = [
       Pitch(key: Key(type: .c), octave: 1),
-      Pitch(key: Key(type: .e, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .e, accidental: .flat), octave: 1),
       Pitch(key: Key(type: .g), octave: 1),
-      Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
       Pitch(key: Key(type: .d), octave: 2),
       Pitch(key: Key(type: .f), octave: 2),
       Pitch(key: Key(type: .a), octave: 2),
@@ -165,7 +165,7 @@ extension MusicTheoryTests {
 
     let cmadd13Notes: [Pitch] = [
       Pitch(key: Key(type: .c), octave: 1),
-      Pitch(key: Key(type: .e, accident: .flat), octave: 1),
+      Pitch(key: Key(type: .e, accidental: .flat), octave: 1),
       Pitch(key: Key(type: .g), octave: 1),
       Pitch(key: Key(type: .a), octave: 2),
     ]
@@ -204,21 +204,21 @@ extension MusicTheoryTests {
         Pitch(key: Key(type: .c), octave: 1),
         Pitch(key: Key(type: .e), octave: 1),
         Pitch(key: Key(type: .g), octave: 1),
-        Pitch(key: Key(type: .b, accident: .flat), octave: 1)
+        Pitch(key: Key(type: .b, accidental: .flat), octave: 1)
       ],
       [
         Pitch(key: Key(type: .e), octave: 1),
         Pitch(key: Key(type: .g), octave: 1),
-        Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+        Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
         Pitch(key: Key(type: .c), octave: 2)
       ],
       [
         Pitch(key: Key(type: .g), octave: 1),
-        Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+        Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
         Pitch(key: Key(type: .c), octave: 2),
         Pitch(key: Key(type: .e), octave: 2)],
       [
-        Pitch(key: Key(type: .b, accident: .flat), octave: 1),
+        Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
         Pitch(key: Key(type: .c), octave: 2),
         Pitch(key: Key(type: .e), octave: 2),
         Pitch(key: Key(type: .g), octave: 2)
@@ -270,28 +270,28 @@ extension MusicTheoryTests {
     XCTAssertEqual(sampleLengths, expected)
   }
 
-  func testAccidentals() {
-    XCTAssert(Accident.flat * 2 == Accident.doubleFlat)
-    XCTAssert(Accident.doubleFlat / 2 == Accident.flat)
-    XCTAssert(Accident.sharps(amount: 2) - 2 == Accident.natural)
-    XCTAssert(Accident.flats(amount: 2) + 2 == 0)
-    XCTAssert(Accident.sharps(amount: 2) + Accident.sharps(amount: 1) == Accident.sharps(amount: 3))
-    XCTAssert(Accident(integerLiteral: -3) + Accident(rawValue: 3)! == 0)
+  func testAccidentalals() {
+    XCTAssert(Accidental.flat * 2 == Accidental.doubleFlat)
+    XCTAssert(Accidental.doubleFlat / 2 == Accidental.flat)
+    XCTAssert(Accidental.sharps(amount: 2) - 2 == Accidental.natural)
+    XCTAssert(Accidental.flats(amount: 2) + 2 == 0)
+    XCTAssert(Accidental.sharps(amount: 2) + Accidental.sharps(amount: 1) == Accidental.sharps(amount: 3))
+    XCTAssert(Accidental(integerLiteral: -3) + Accidental(rawValue: 3)! == 0)
   }
 
   func testKeys() {
     XCTAssert(Key(midiNote: 0) == 0)
 
-    let cSharp = Key(midiNote: 1, isPreferredAccidentSharps: true)!
-    let dFlat = Key(midiNote: 1, isPreferredAccidentSharps: false)!
-    XCTAssert(cSharp.type == .c && cSharp.accident == .sharp)
-    XCTAssert(dFlat.type == .d && dFlat.accident == .flat)
+    let cSharp = Key(midiNote: 1, isPreferredAccidentalSharps: true)!
+    let dFlat = Key(midiNote: 1, isPreferredAccidentalSharps: false)!
+    XCTAssert(cSharp.type == .c && cSharp.accidental == .sharp)
+    XCTAssert(dFlat.type == .d && dFlat.accidental == .flat)
     XCTAssert(cSharp == dFlat)
   }
 
   func testPitches() {
     let c0: Pitch = 12
-    XCTAssert(c0.octave == 0 && c0.key.accident == .natural && c0.key.type == .c)
+    XCTAssert(c0.octave == 0 && c0.key.accidental == .natural && c0.key.type == .c)
     XCTAssert(c0 - 12 == 0)
   }
 }
