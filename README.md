@@ -1,7 +1,7 @@
 MusicTheory [![Build Status](https://travis-ci.org/cemolcay/MusicTheory.svg?branch=master)](https://travis-ci.org/cemolcay/MusicTheory)
 ===
 
-A music theory library with `Note`, `Interval`, `Scale` and `Chord` representations in swift enums.
+A music theory library with `Key`, `Pitch`, `Interval`, `Scale` and `Chord` representations in swift enums.
 
 Requirements
 ----
@@ -21,19 +21,23 @@ pod 'MusicTheorySwift'
 Usage
 ----
 
-`MusicTheory` adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are `Note`, `Scale` and `Chord`.
+`MusicTheory` adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are `Pitch`, `Key`, `Scale` and `Chord`.   
 
-#### `NoteType` and `Note`
+All data types conforms `Codable`, `CustomStringConvertable`.  
+`Pitch`, `Key`, `Interval`, `Accident` structs are `RawPresentable` with `Int` as well as `ExpressibleByIntegerLiteral` that you can represent them directly with `Int`s.
 
-- All notes defined in `NoteType` enum.
-- You can create `Note`s with `NoteType`s and octaves.
-- Also, you can create `Note`s with MIDI note index.
-- Notes and NoteTypes are equatable, `+` and `-` custom operators defined for making calulations easier.
+#### `Pitch` and `Key`
+
+- All keys can be defined with `Key` struct. 
+- It has a `KeyType` where you can set the base key like C, D, A, G, and an `Accitental` where it can be `.natural`, `.flat`, `sharp` or more specific like `.sharps(amount: 3)`.
+- You can create `Pitch`es with a `Key` and octave.
+- Also, you can create `Pitch`es and `Key`s with MIDI note number.
+- `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calulations easier.
 - Also, there are other helper functions or properties like frequency of a note.
 
 ``` swift
-let d: NoteType = .d
-let c = Note(type: .c, octave: 0)
+let dFlat = Key(type: d, accidental: .flat)
+let c4 = Pitch(key: Key(type: .c), octave: 4)
 ```
 
 #### `Interval`
