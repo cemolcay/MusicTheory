@@ -165,7 +165,8 @@ extension MusicTheoryTests {
       Key(type: .g),
       Key(type: .a),
       Key(type: .b),
-      ]
+    ]
+
     let cMajScale = Scale(type: .major, key: Key(type: .c))
     XCTAssert(cMajScale.keys == cMaj)
 
@@ -177,7 +178,8 @@ extension MusicTheoryTests {
       Key(type: .g),
       Key(type: .a, accidental: .flat),
       Key(type: .b, accidental: .flat),
-      ]
+    ]
+    
     let cMinScale = Scale(type: .minor, key: Key(type: .c))
     XCTAssert(cMinScale.keys == cMin)
   }

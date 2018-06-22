@@ -71,6 +71,7 @@
 		B219CC311E4CFBE20060A6B6 /* Info-Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Mac.plist"; sourceTree = "<group>"; };
 		B219CC321E4CFBE20060A6B6 /* Info-TV.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-TV.plist"; sourceTree = "<group>"; };
 		B219CC331E4CFBE20060A6B6 /* Info-Watch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Watch.plist"; sourceTree = "<group>"; };
+		B22EB5C920DD2396003927AA /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B23B00F01F9CD2DD008E3454 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		B23E8EBC1F1C2BAE0094D316 /* MusicTheoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTheoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23E8EBE1F1C2BAE0094D316 /* MusicTheoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTheoryTests.swift; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		B22DCF371E1590E7006D561E = {
 			isa = PBXGroup;
 			children = (
+				B22EB5C920DD2396003927AA /* Playground.playground */,
 				B219CBF81E4CFB7B0060A6B6 /* Source */,
 				B23E8EBD1F1C2BAE0094D316 /* MusicTheoryTests */,
 				B22DCF421E1590E7006D561E /* Products */,

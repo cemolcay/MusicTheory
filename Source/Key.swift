@@ -150,6 +150,12 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
     /// B key.
     case b = 11
 
+    /// Returns all members of the `KeyType`.
+    public static let all: [KeyType] = [.c, .d, .e, .f, .g, .a, .b]
+
+    // MARK: CustomStringConvertible
+
+    /// Returns the key notation.
     public var description: String {
       switch self {
       case .c: return "C"
