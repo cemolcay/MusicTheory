@@ -10,128 +10,18 @@
 
 import Foundation
 
-/// Adds two `Key` types with each other.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the new `Key` value.
-public func +(lhs: Key, rhs: Key) -> Key {
-  return Key(integerLiteral: lhs.rawValue + rhs.rawValue)
-}
-
-/// Substracts two `Key` types with each other.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the new `Key` value.
-public func -(lhs: Key, rhs: Key) -> Key {
-  return Key(integerLiteral: lhs.rawValue - rhs.rawValue)
-}
-
-/// Multiplies a `Key` value with an integer.
-///
-/// - Parameters:
-///   - lhs: Key you want to multiply.
-///   - rhs: Multiplier.
-/// - Returns: Returns the new `Key` value.
-public func *(lhs: Key, rhs: Int) -> Key {
-  return Key(integerLiteral: lhs.rawValue * rhs)
-}
-
-/// Divides a `Key` value with an integer.
-///
-/// - Parameters:
-///   - lhs: Key you want to divide.
-///   - rhs: Multiplier.
-/// - Returns: Returns the new `Key` value.
-public func /(lhs: Key, rhs: Int) -> Key {
-  return Key(integerLiteral: lhs.rawValue / rhs)
-}
-
-/// Checks if two `Key` types are equal in terms of their interval value.
+/// Checks if two `Key` types are equal.
 ///
 /// - Parameters:
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the equation value.
 public func ==(lhs: Key, rhs: Key) -> Bool {
-  return lhs.rawValue == rhs.rawValue
-}
-
-/// Checks if two `Key` types are exactly equal in terms of their key type and accidents.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the equation value.
-public func ===(lhs: Key, rhs: Key) -> Bool {
-  return lhs.type == rhs.type && lhs.accidental === rhs.accidental
-}
-
-/// Adds a `Pitch` value to a `Key` value.
-///
-/// - Parameters:
-///   - lhs: Pitch, you want to add a key value.
-///   - rhs: Key, you want to add on a pitch.
-/// - Returns: Returns the new `Pitch` value.
-public func +(lhs: Pitch, rhs: Key) -> Pitch {
-  return lhs + rhs.rawValue
-}
-
-/// Substracts a `Key` value from a `Key` value.
-///
-/// - Parameters:
-///   - lhs: Pitch, you want to substract a key value.
-///   - rhs: Key, you want to substract from a pitch.
-/// - Returns: Returns the new `Pitch` value.
-public func -(lhs: Pitch, rhs: Key) -> Pitch {
-  return lhs - rhs.rawValue
-}
-
-/// Adds an `Interval` value to a `Key` value.
-///
-/// - Parameters:
-///   - lhs: Key, you want to add an interval value.
-///   - rhs: Interval value, you want to add on a key.
-/// - Returns: Returns the new `Key` value.
-public func +(lhs: Key, rhs: Interval) -> Key {
-  return Key(integerLiteral: lhs.rawValue + rhs.rawValue)
-}
-
-/// Substracts an `Interval` value from a `Key` value.
-///
-/// - Parameters:
-///   - lhs: Key, you want to substract an interval value.
-///   - rhs: Interval value, you want to substract from a key.
-/// - Returns: Returns the new `Key` value.
-public func -(lhs: Key, rhs: Interval) -> Key {
-  return Key(integerLiteral: lhs.rawValue - rhs.rawValue)
-}
-
-/// Adds an `Int` value to a `Key` value.
-///
-/// - Parameters:
-///   - lhs: Key, you want to add an int value.
-///   - rhs: Int value, you want to add on a key.
-/// - Returns: Returns the new `Key` value.
-public func +(lhs: Key, rhs: Int) -> Key {
-  return Key(integerLiteral: lhs.rawValue + rhs)
-}
-
-/// Substracts an `Int` value from a `Key` value.
-///
-/// - Parameters:
-///   - lhs: Key, you want to substract an int value.
-///   - rhs: Int value, you want to substract from a key.
-/// - Returns: Returns the new `Key` value.
-public func -(lhs: Key, rhs: Int) -> Key {
-  return Key(integerLiteral: lhs.rawValue - rhs)
+  return lhs.type == rhs.type && lhs.accidental == rhs.accidental
 }
 
 /// Represents the keys that notes and pitches are based on.
-public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLiteral, CustomStringConvertible {
+public struct Key: Codable, Equatable, CustomStringConvertible {
 
   /// Base pitch of the key without accidentals. Accidentals will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
   public enum KeyType: Int, Codable, Equatable, CustomStringConvertible {
@@ -163,9 +53,20 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
       guard let index = KeyType.all.index(of: self)
         else { return self }
 
-      let normalizedDistance = (distance % KeyType.all.count) + index
+      let normalizedDistance = (distance + index) % KeyType.all.count
       let keyIndex = normalizedDistance < 0 ? (KeyType.all.count + normalizedDistance) : normalizedDistance
       return KeyType.all[keyIndex]
+    }
+
+    /// Calculates the distance of two `KeyType`s.
+    ///
+    /// - Parameter keyType: Target `KeyType` you want to compare.
+    /// - Returns: Returns the integer value of distance in terms of their array index values.
+    public func distance(from keyType: KeyType) -> Int {
+      guard let index = KeyType.all.index(of: self),
+        let targetIndex = KeyType.all.index(of: keyType)
+        else { return 0 }
+      return targetIndex - index
     }
 
     // MARK: CustomStringConvertible
@@ -190,6 +91,38 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
   /// Accidental of the key.
   public var accidental: Accidental
 
+  /// All notes in an octave with sharp notes.
+  public static let keysWithSharps = [
+    Key(type: .c, accidental: .natural),
+    Key(type: .c, accidental: .sharp),
+    Key(type: .d, accidental: .natural),
+    Key(type: .d, accidental: .sharp),
+    Key(type: .e, accidental: .natural),
+    Key(type: .f, accidental: .natural),
+    Key(type: .f, accidental: .sharp),
+    Key(type: .g, accidental: .natural),
+    Key(type: .g, accidental: .sharp),
+    Key(type: .a, accidental: .natural),
+    Key(type: .a, accidental: .sharp),
+    Key(type: .b, accidental: .natural),
+  ]
+
+  /// All notes in an octave with flat notes.
+  public static let keysWithFlats = [
+    Key(type: .c, accidental: .natural),
+    Key(type: .d, accidental: .flat),
+    Key(type: .d, accidental: .natural),
+    Key(type: .e, accidental: .flat),
+    Key(type: .e, accidental: .natural),
+    Key(type: .f, accidental: .natural),
+    Key(type: .g, accidental: .flat),
+    Key(type: .g, accidental: .natural),
+    Key(type: .a, accidental: .flat),
+    Key(type: .a, accidental: .natural),
+    Key(type: .b, accidental: .flat),
+    Key(type: .b, accidental: .natural),
+  ]
+
   /// Initilizes the key with its type and accidental.
   ///
   /// - Parameters:
@@ -198,77 +131,6 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
   public init(type: KeyType, accidental: Accidental = .natural) {
     self.type = type
     self.accidental = accidental
-  }
-
-  /// Initilizes the key with an integer value that represents the MIDI note value.
-  ///
-  /// - Parameters:
-  ///   - midiNote: MIDI note value of the key.
-  ///   - isPreferredAccidentalSharps: Calculates the key in sharp or flat accidentals. Defaults sharp accidens.
-  public init?(midiNote: Int, isPreferredAccidentalSharps: Bool = true) {
-    let octave = (midiNote / 12) - 1
-    let raw = midiNote - ((octave + 1) * 12)
-
-    if let keyType = KeyType(rawValue: raw) { // Use natural
-      self.type = keyType
-      self.accidental = .natural
-    } else { // Use accidentals
-      if isPreferredAccidentalSharps { // Use sharps
-        if let keyType = KeyType(rawValue: raw - 1) { // Set sharp value
-          self.type = keyType
-          self.accidental = .sharp
-        } else {
-          return nil
-        }
-      } else { // Use flats
-        if let keyType = KeyType(rawValue: raw + 1) { // Set flat value
-          self.type = keyType
-          self.accidental = .flat
-        } else {
-          return nil
-        }
-      }
-    }
-  }
-
-  /// Returns alternative key with sharps for flat keys, and vice versa. Returns nil if it is natural.
-  public var alternative: Key? {
-    switch accidental {
-    case .natural:
-      return nil
-    case .flats:
-      return Key(midiNote: rawValue, isPreferredAccidentalSharps: true)
-    case .sharps:
-      return Key(midiNote: rawValue, isPreferredAccidentalSharps: false)
-    }
-  }
-
-  // MARK: RawRepresentable
-
-  public typealias RawValue = Int
-
-  /// MIDI note value of the key.
-  public var rawValue: Int {
-    return type.rawValue + accidental.rawValue
-  }
-
-  /// Initilizes the key with an integer value that represents the MIDI note value. Calculates the key in sharp accidentals by default.
-  ///
-  /// - Parameter rawValue: MIDI note value of the key.
-  public init?(rawValue: Key.RawValue) {
-    guard let key = Key(midiNote: rawValue) else { return nil }
-    self = key
-  }
-
-  // MARK: ExpressibleByIntegerLiteral
-
-  public typealias IntegerLiteralType = Int
-
-  /// Initilizes the key with an integer value that represents the MIDI note value. Calculates the key in sharp accidentals by default.
-  ///
-  /// - Parameter value: MIDI note value of the key.
-  public init(integerLiteral value: Key.IntegerLiteralType) {
-    self = Key(rawValue: value) ?? Key(type: .c, accidental: .natural)
   }
 
   // MARK: CustomStringConvertible

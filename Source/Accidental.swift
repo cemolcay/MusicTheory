@@ -30,6 +30,26 @@ public func -(lhs: Accidental, rhs: Accidental) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue - rhs.rawValue)
 }
 
+/// Returns a new accidental by adding up an int to the accidental in the equation.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns the sum of two accidentals.
+public func +(lhs: Accidental, rhs: Int) -> Accidental {
+  return Accidental(integerLiteral: lhs.rawValue + rhs)
+}
+
+/// Returns a new accidental by substracting an int from the accidental in the equation.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns the difference of two accidentals.
+public func -(lhs: Accidental, rhs: Int) -> Accidental {
+  return Accidental(integerLiteral: lhs.rawValue - rhs)
+}
+
 /// Multiples an accidental with a multiplier.
 ///
 /// - Parameters:
@@ -77,26 +97,6 @@ public func ===(lhs: Accidental, rhs: Accidental) -> Bool {
   default:
     return false
   }
-}
-
-/// Adds an accidental value to a pitch.
-///
-/// - Parameters:
-///   - lhs: The pitch you want to add an accidental value.
-///   - rhs: Accidental value you want to add to pitch.
-/// - Returns: Returns the pitch value.
-public func +(lhs: Pitch, rhs: Accidental) -> Pitch {
-  return lhs + rhs.rawValue
-}
-
-/// Substracts an accidental value from a pitch.
-///
-/// - Parameters:
-///   - lhs: Pitch you want to substract an accidental value.
-///   - rhs: Accidental value you want to substact from the pitch.
-/// - Returns: Returns the pitch value.
-public func -(lhs: Pitch, rhs: Accidental) -> Pitch {
-  return lhs - rhs.rawValue
 }
 
 /// The enum used for calculating values of the `Key`s and `Pitche`s.

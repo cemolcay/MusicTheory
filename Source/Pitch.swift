@@ -10,16 +10,6 @@
 
 import Foundation
 
-/// Calculates the `Pitch` above `Interval`.
-///
-/// - Parameters:
-///   - note: The pitch that is being added interval.
-///   - interval: Interval above.
-/// - Returns: Returns `Pitch` above interval.
-public func +(pitch: Pitch, interval: Interval) -> Pitch {
-  return Pitch(midiNote: pitch.rawValue + interval.rawValue)
-}
-
 /// Calculates the `Pitch` above halfsteps.
 ///
 /// - Parameters:
@@ -28,16 +18,6 @@ public func +(pitch: Pitch, interval: Interval) -> Pitch {
 /// - Returns: Returns `Pitch` above halfsteps.
 public func +(pitch: Pitch, halfstep: Int) -> Pitch {
   return Pitch(midiNote: pitch.rawValue + halfstep)
-}
-
-/// Calculates the `Pitch` below `Interval`.
-///
-/// - Parameters:
-///   - note: The pitch that is being calculated.
-///   - interval: Interval below.
-/// - Returns: Returns `Pitch` below interval.
-public func -(pitch: Pitch, interval: Interval) -> Pitch {
-  return Pitch(midiNote: pitch.rawValue - interval.rawValue)
 }
 
 /// Calculates the `Pitch` below halfsteps.
@@ -50,18 +30,7 @@ public func -(pitch: Pitch, halfstep: Int) -> Pitch {
   return Pitch(midiNote: pitch.rawValue - halfstep)
 }
 
-/// Calculates the interval between two pitches.
-/// Doesn't matter left hand side and right hand side note places.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: `Intreval` between two pitches. You can get the halfsteps from interval as well.
-public func -(lhs: Pitch, rhs: Pitch) -> Interval {
-  return Interval(integerLiteral: abs(rhs.rawValue - lhs.rawValue))
-}
-
-/// Compares the equality of two pitches by their keys and octave.
+/// Compares the equality of two pitches by their MIDI note value.
 /// Alternative notes passes this equality. Use `===` function if you want to check exact equality in terms of exact keys.
 ///
 /// - Parameters:
@@ -69,7 +38,7 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
 ///   - right: Right handside `Pitch` to be compared.
 /// - Returns: Returns the bool value of comparisation of two pitches.
 public func ==(left: Pitch, right: Pitch) -> Bool {
-  return left.key == right.key && left.octave == right.octave
+  return left.rawValue == right.rawValue
 }
 
 /// Compares the exact equality of two pitches by their keys and octaves.
@@ -80,20 +49,30 @@ public func ==(left: Pitch, right: Pitch) -> Bool {
 ///   - right: Right handside `Pitch` to be compared.
 /// - Returns: Returns the bool value of comparisation of two pitches.
 public func ===(left: Pitch, right: Pitch) -> Bool {
-  return left.key === right.key && left.octave == right.octave
+  return left.key == right.key && left.octave == right.octave
+}
+
+/// Compares two `Pitch`es in terms of their semitones.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns true if left hand side `Pitch` lower than right hand side `Pitch`.
+public func < (lhs: Pitch, rhs: Pitch) -> Bool {
+  return lhs.rawValue < rhs.rawValue
 }
 
 /// Pitch object with a `Key` and an octave.
 /// Could be initilized with MIDI note number and preferred accidental type.
-public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLiteral, CustomStringConvertible {
+public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, ExpressibleByIntegerLiteral, CustomStringConvertible {
 
   /// Key of the pitch like C, D, A, B with accidentals.
-  public private(set) var key: Key
+  public var key: Key
 
   /// Octave of the pitch.
   /// In theory this must be zero or a positive integer.
   /// But `Note` does not limit octave and calculates every possible octave including the negative ones.
-  public private(set) var octave: Int
+  public var octave: Int
 
   /// Initilizes the `Pitch` with MIDI note number.
   ///
@@ -101,7 +80,8 @@ public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerL
   /// - Parameter isPreferredAccidentalSharps: Make it true if preferred accidentals is sharps. Defaults true.
   public init(midiNote: Int, isPreferredAccidentalSharps: Bool = true) {
     octave = (midiNote / 12) - 1
-    key = Key(midiNote: midiNote, isPreferredAccidentalSharps: isPreferredAccidentalSharps) ?? 0
+    let keyIndex = midiNote % 12
+    key = (isPreferredAccidentalSharps ? Key.keysWithSharps : Key.keysWithFlats)[keyIndex]
   }
 
   /// Initilizes the `Pitch` with `Key` and octave
@@ -114,6 +94,35 @@ public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerL
     self.octave = octave
   }
 
+  /// Converts and returns enharmonic equivalent pitch in target `KeyType`.
+  ///
+  /// - Parameters:
+  ///   - keyType: Target `KeyType` you want to convert.
+  ///   - isHigher: Is target key type is a higher pitch or not.
+  /// - Returns: Returns the converted `Pitch` in target `KeyType`.
+  public func convert(to keyType: Key.KeyType, isHigher: Bool) -> Pitch {
+    // Set target octave
+    var targetOctave = octave
+    if isHigher {
+      if keyType.rawValue < key.type.rawValue {
+        targetOctave += 1
+      }
+    } else {
+      if keyType.rawValue > key.type.rawValue {
+        targetOctave -= 1
+      }
+    }
+
+
+    // Set target pitch
+    var targetPitch = Pitch(key: Key(type: keyType), octave: targetOctave)
+
+    let diff = rawValue - targetPitch.rawValue
+    targetPitch.key.accidental = Accidental(integerLiteral: diff)
+
+    return targetPitch
+  }
+  
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.
   /// Bases A4 note of 440Hz frequency standard.
   public var frequency: Float {
@@ -129,7 +138,8 @@ public struct Pitch: RawRepresentable, Codable, Equatable, ExpressibleByIntegerL
   /// In theory, this must be in range [0 - 127].
   /// But it does not limits the midi note value.
   public var rawValue: Int {
-    return key.rawValue + ((octave + 1) * 12)
+    let semitones = key.type.rawValue + key.accidental.rawValue
+    return semitones + ((octave + 1) * 12)
   }
 
   /// Initilizes the pitch with an integer value that represents the MIDI note number of the pitch.

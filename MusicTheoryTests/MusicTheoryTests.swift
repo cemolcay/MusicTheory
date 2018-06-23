@@ -27,20 +27,10 @@ class MusicTheoryTests: XCTestCase {
 extension MusicTheoryTests {
 
   func testIntervals() {
-    let b = Pitch(key: Key(type: .b), octave: 1)
-    let d = Pitch(key: Key(type: .d), octave: 2)
-    XCTAssert(b - d == .m3)
-    XCTAssert(d - b == .m3)
-    XCTAssert(b - d == 3)
-
     let key = Key(type: .c)
-    XCTAssert(key + 1 == Key(type: .d, accidental: .flat))
-    XCTAssert(key + 11 == Key(type: .b))
-    XCTAssert(key + 12 == Key(type: .c))
-
     let pitch = Pitch(key: key, octave: 1)
     XCTAssert((pitch + 12).octave == pitch.octave + 1)
-    XCTAssert((pitch + 1).key == Key(type: .d, accidental: .flat))
+    XCTAssert((pitch + 1).key == Key(type: .c, accidental: .sharp))
     XCTAssert((pitch - 1) == Pitch(key: Key(type: .b), octave: 0))
   }
 
@@ -51,23 +41,9 @@ extension MusicTheoryTests {
     XCTAssert(Accidental.flats(amount: 2) + 2 == 0)
     XCTAssert(Accidental.sharps(amount: 2) + Accidental.sharps(amount: 1) == Accidental.sharps(amount: 3))
     XCTAssert(Accidental(integerLiteral: -3) + Accidental(rawValue: 3)! == 0)
-
-    let cSharp = Key(midiNote: 1, isPreferredAccidentalSharps: true)!
-    let dFlat = Key(midiNote: 1, isPreferredAccidentalSharps: false)!
-    XCTAssert(cSharp.alternative == dFlat.alternative)
-    XCTAssert(cSharp === dFlat.alternative!)
-    XCTAssert(dFlat === cSharp.alternative!)
   }
 
   func testKeys() {
-    XCTAssert(Key(midiNote: 0) == 0)
-
-    let cSharp = Key(midiNote: 1, isPreferredAccidentalSharps: true)!
-    let dFlat = Key(midiNote: 1, isPreferredAccidentalSharps: false)!
-    XCTAssert(cSharp.type == .c && cSharp.accidental == .sharp)
-    XCTAssert(dFlat.type == .d && dFlat.accidental == .flat)
-    XCTAssert(cSharp == dFlat)
-
     let d = Key.KeyType.d
     XCTAssert(d.key(at: -2) == .b)
     XCTAssert(d.key(at: -19) == .f)
@@ -91,8 +67,27 @@ extension MusicTheoryTests {
     XCTAssert(pitch.key == Key(type: .g))
     pitch = Pitch(midiNote: 0)
     XCTAssert(pitch.key == Key(type: .c))
-    pitch = Pitch(midiNote: 66)
+    pitch = Pitch(midiNote: 66, isPreferredAccidentalSharps: false)
     XCTAssert(pitch.key == Key(type: .g, accidental: .flat))
+
+    let c = Pitch(key: Key(type: .c), octave: 1)
+    XCTAssert(c.convert(to: .d, isHigher: true) == Pitch(key: Key(type: .d, accidental: .doubleFlat), octave: 1))
+    XCTAssert(c.convert(to: .e, isHigher: true) == Pitch(key: Key(type: .e, accidental: .flats(amount: 4)), octave: 1))
+    XCTAssert(c.convert(to: .b, isHigher: false) == Pitch(key: Key(type: .b, accidental: .sharp), octave: 0))
+
+    let b = Pitch(key: Key(type: .b), octave: 1)
+    XCTAssert(b.convert(to: .c, isHigher: true) == Pitch(key: Key(type: .c, accidental: .flat), octave: 2))
+
+    let c1 = Pitch(key: Key(type: .c), octave: 1)
+    XCTAssert(c1 + .m2 == Pitch(key: Key(type: .d, accidental: .flat), octave: 1))
+    XCTAssert(c1 + .M2 == Pitch(key: Key(type: .d, accidental: .natural), octave: 1))
+    XCTAssert(c1 + .m3 == Pitch(key: Key(type: .e, accidental: .flat), octave: 1))
+    XCTAssert(c1 + .M3 == Pitch(key: Key(type: .e, accidental: .natural), octave: 1))
+    XCTAssert(c1 + .P8 == Pitch(key: Key(type: .c, accidental: .natural), octave: 2))
+
+    let d1 = Pitch(key: Key(type: .d), octave: 1)
+    XCTAssert(d1 - .m2 == Pitch(key: Key(type: .c, accidental: .sharp), octave: 1))
+    XCTAssert(d1 - .M2 == Pitch(key: Key(type: .c, accidental: .natural), octave: 1))
   }
 
   func testFrequency() {
@@ -165,6 +160,7 @@ extension MusicTheoryTests {
   }
 }
 
+/*
 // MARK: - Scale Tests
 
 extension MusicTheoryTests {
@@ -324,3 +320,4 @@ extension MusicTheoryTests {
     }
   }
 }
+*/

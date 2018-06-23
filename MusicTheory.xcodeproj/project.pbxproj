@@ -15,25 +15,18 @@
 		B23A6ED220DD530D00BF60D9 /* NewInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6ED020DD530D00BF60D9 /* NewInterval.swift */; };
 		B23A6ED320DD530D00BF60D9 /* NewInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6ED020DD530D00BF60D9 /* NewInterval.swift */; };
 		B23A6ED420DD530D00BF60D9 /* NewInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6ED020DD530D00BF60D9 /* NewInterval.swift */; };
-		B23B00F11F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
-		B23B00F21F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
-		B23B00F31F9CD2DD008E3454 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B23E8EBF1F1C2BAE0094D316 /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23E8EBE1F1C2BAE0094D316 /* MusicTheoryTests.swift */; };
 		B23E8EC11F1C2BAE0094D316 /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */; };
 		B2B565E620DBE6930070B8B7 /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Accidental.swift */; };
 		B2B565E720DBECE70070B8B7 /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Accidental.swift */; };
 		B2B565E820DBECE70070B8B7 /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Accidental.swift */; };
 		B2B565E920DBECE80070B8B7 /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565E520DBE6930070B8B7 /* Accidental.swift */; };
-		B2B565EB20DBF6F80070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
 		B2B565ED20DBF7030070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565EF20DBF72A0070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
-		B2B565F020DBF7440070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
 		B2B565F120DBF7440070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565F220DBF7440070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
-		B2B565F320DBF7450070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
 		B2B565F420DBF7450070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565F520DBF7450070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
-		B2B565F620DBF7460070B8B7 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EA20DBF6F80070B8B7 /* Interval.swift */; };
 		B2B565F720DBF7460070B8B7 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EC20DBF7030070B8B7 /* Pitch.swift */; };
 		B2B565F820DBF7460070B8B7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565EE20DBF72A0070B8B7 /* Tempo.swift */; };
 		B2B565FA20DC14F00070B8B7 /* NoteValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B565F920DC14F00070B8B7 /* NoteValue.swift */; };
@@ -48,7 +41,6 @@
 		B2B5660520DC16810070B8B7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5660320DC16580070B8B7 /* Key.swift */; };
 		B2B5660620DC16810070B8B7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5660320DC16580070B8B7 /* Key.swift */; };
 		B2B5660720DC16830070B8B7 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B5660320DC16580070B8B7 /* Key.swift */; };
-		B2CDE75120DC3B4A00039573 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B00F01F9CD2DD008E3454 /* Chord.swift */; };
 		B2CDE75220DC477D00039573 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
 		B2EB6BAA1F9ED4FC000C8F15 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EB6BA81F9ED475000C8F15 /* Scale.swift */; };
@@ -144,11 +136,11 @@
 				B2B565EE20DBF72A0070B8B7 /* Tempo.swift */,
 				B2B565EA20DBF6F80070B8B7 /* Interval.swift */,
 				B2B565E520DBE6930070B8B7 /* Accidental.swift */,
+				B23A6ED020DD530D00BF60D9 /* NewInterval.swift */,
 				B2B5660320DC16580070B8B7 /* Key.swift */,
 				B2B565EC20DBF7030070B8B7 /* Pitch.swift */,
 				B23B00F01F9CD2DD008E3454 /* Chord.swift */,
 				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
-				B23A6ED020DD530D00BF60D9 /* NewInterval.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -419,10 +411,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2B565EB20DBF6F80070B8B7 /* Interval.swift in Sources */,
 				B2EB6BA91F9ED475000C8F15 /* Scale.swift in Sources */,
 				B2B5660420DC16580070B8B7 /* Key.swift in Sources */,
-				B23B00F11F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E620DBE6930070B8B7 /* Accidental.swift in Sources */,
 				B2B565ED20DBF7030070B8B7 /* Pitch.swift in Sources */,
 				B2B565FA20DC14F00070B8B7 /* NoteValue.swift in Sources */,
@@ -436,10 +426,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2B565F020DBF7440070B8B7 /* Interval.swift in Sources */,
 				B2EB6BAA1F9ED4FC000C8F15 /* Scale.swift in Sources */,
 				B2B5660520DC16810070B8B7 /* Key.swift in Sources */,
-				B23B00F21F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E720DBECE70070B8B7 /* Accidental.swift in Sources */,
 				B2B565F120DBF7440070B8B7 /* Pitch.swift in Sources */,
 				B2B565FD20DC15860070B8B7 /* NoteValue.swift in Sources */,
@@ -453,10 +441,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2B565F620DBF7460070B8B7 /* Interval.swift in Sources */,
 				B2EB6BAB1F9ED4FD000C8F15 /* Scale.swift in Sources */,
 				B2B5660620DC16810070B8B7 /* Key.swift in Sources */,
-				B23B00F31F9CD2DD008E3454 /* Chord.swift in Sources */,
 				B2B565E820DBECE70070B8B7 /* Accidental.swift in Sources */,
 				B2B565F720DBF7460070B8B7 /* Pitch.swift in Sources */,
 				B2B565FF20DC15870070B8B7 /* NoteValue.swift in Sources */,
@@ -471,12 +457,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2B5660720DC16830070B8B7 /* Key.swift in Sources */,
-				B2B565F320DBF7450070B8B7 /* Interval.swift in Sources */,
 				B2B565E920DBECE80070B8B7 /* Accidental.swift in Sources */,
 				B2B565F420DBF7450070B8B7 /* Pitch.swift in Sources */,
 				B2B5660120DC15880070B8B7 /* NoteValue.swift in Sources */,
 				B2B565F520DBF7450070B8B7 /* Tempo.swift in Sources */,
-				B2CDE75120DC3B4A00039573 /* Chord.swift in Sources */,
 				B23A6ED420DD530D00BF60D9 /* NewInterval.swift in Sources */,
 				B2CDE75220DC477D00039573 /* Scale.swift in Sources */,
 				B2B5660220DC15880070B8B7 /* TimeSignature.swift in Sources */,
