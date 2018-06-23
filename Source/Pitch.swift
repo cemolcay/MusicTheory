@@ -61,7 +61,8 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
   return Interval(integerLiteral: abs(rhs.rawValue - lhs.rawValue))
 }
 
-/// Compares the equality of two pitches by their keys and octaves.
+/// Compares the equality of two pitches by their keys and octave.
+/// Alternative notes passes this equality. Use `===` function if you want to check exact equality in terms of exact keys.
 ///
 /// - Parameters:
 ///   - left: Left handside `Pitch` to be compared.
@@ -69,6 +70,17 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
 /// - Returns: Returns the bool value of comparisation of two pitches.
 public func ==(left: Pitch, right: Pitch) -> Bool {
   return left.key == right.key && left.octave == right.octave
+}
+
+/// Compares the exact equality of two pitches by their keys and octaves.
+/// Alternative notes not passes this equality. Use `==` function if you want to check equality in terms of MIDI note value.
+///
+/// - Parameters:
+///   - left: Left handside `Pitch` to be compared.
+///   - right: Right handside `Pitch` to be compared.
+/// - Returns: Returns the bool value of comparisation of two pitches.
+public func ===(left: Pitch, right: Pitch) -> Bool {
+  return left.key === right.key && left.octave == right.octave
 }
 
 /// Pitch object with a `Key` and an octave.
