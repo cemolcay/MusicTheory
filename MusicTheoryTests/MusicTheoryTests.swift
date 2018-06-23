@@ -32,6 +32,10 @@ extension MusicTheoryTests {
     XCTAssert((pitch + 12).octave == pitch.octave + 1)
     XCTAssert((pitch + 1).key == Key(type: .c, accidental: .sharp))
     XCTAssert((pitch - 1) == Pitch(key: Key(type: .b), octave: 0))
+
+    let c1 = Pitch(key: Key(type: .c), octave: 1)
+    let d1 = Pitch(key: Key(type: .d), octave: 1)
+    XCTAssert(d1 - c1 == .M2)
   }
 
   func testAccidentals() {

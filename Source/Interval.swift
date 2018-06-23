@@ -2,198 +2,224 @@
 //  Interval.swift
 //  MusicTheory
 //
-//  Created by Cem Olcay on 21.06.2018.
+//  Created by Cem Olcay on 22.06.2018.
 //  Copyright © 2018 cemolcay. All rights reserved.
-//
-//  https://github.com/cemolcay/MusicTheory
 //
 
 import Foundation
 
-/// Adds two intervals and returns combined value of two.
+/// Returns the pitch above target interval from target pitch.
 ///
 /// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Combined interval value of two.
-public func +(lhs: Interval, rhs: Interval) -> Interval {
-  return Interval(integerLiteral: lhs.rawValue + rhs.rawValue)
+///   - lhs: Target `Pitch`.
+///   - rhs: Target `Interval`.
+/// - Returns: Returns new pitch above target interval from target pitch.
+public func +(lhs: Pitch, rhs: Interval) -> Pitch {
+  let degree = rhs.degree - 1
+  let targetKeyType = lhs.key.type.key(at: degree)
+  let targetPitch = lhs + rhs.semitones
+  return targetPitch.convert(to: targetKeyType, isHigher: true)
 }
 
-/// Subsracts two intervals and returns the interval value between two.
+/// Returns the pitch below target interval from target pitch.
 ///
 /// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Interval between two intervals.
-public func -(lhs: Interval, rhs: Interval) -> Interval {
-  return Interval(integerLiteral: lhs.rawValue - rhs.rawValue)
+///   - lhs: Target `Pitch`.
+///   - rhs: Target `Interval`.
+/// - Returns: Returns new pitch below target interval from target pitch.
+public func -(lhs: Pitch, rhs: Interval) -> Pitch {
+  let degree = -(rhs.degree - 1)
+  let targetKeyType = lhs.key.type.key(at: degree)
+  let targetPitch = lhs - rhs.semitones
+  return targetPitch.convert(to: targetKeyType, isHigher: false)
 }
 
-/// Compares two `Interval` types.
+/// Calculates the interval between two pitches.
+/// Doesn't matter left hand side and right hand side note places.
 ///
 /// - Parameters:
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
-/// - Returns: Returns bool value of equeation.
+/// - Returns: `Intreval` between two pitches. You can get the halfsteps from interval as well.
+public func -(lhs: Pitch, rhs: Pitch) -> Interval {
+  let top = max(lhs, rhs)
+  let bottom = min(lhs, rhs)
+  let diff = top.rawValue - bottom.rawValue
+
+  let bottomKeyIndex = Key.KeyType.all.index(of: bottom.key.type) ?? 0
+  let topKeyIndex = Key.KeyType.all.index(of: top.key.type) ?? 0
+  let degree = (topKeyIndex - bottomKeyIndex) + 1
+  let isMajor = (degree == 2 || degree == 3 || degree == 6 || degree == 7)
+
+  let majorScale = Scale(type: .major, key: bottom.key)
+  if majorScale.pitches(octaves: [bottom.octave, top.octave]).contains(top) { // Major or Perfect
+    return Interval(
+      quality: isMajor ? .major : .perfect,
+      degree: degree,
+      semitones: diff)
+  } else { // Augmented, Diminished or Minor
+    if isMajor {
+      let majorPitch = bottom + Interval(quality: .major, degree: degree, semitones: diff)
+      let offset = top.rawValue - majorPitch.rawValue
+      return Interval(
+        quality: offset > 0 ? .augmented : .minor,
+        degree: degree,
+        semitones: diff)
+    } else {
+      let perfectPitch = bottom + Interval(quality: .perfect, degree: degree, semitones: diff)
+      let offset = top.rawValue - perfectPitch.rawValue
+      return Interval(
+        quality: offset > 0 ? .augmented : .diminished,
+        degree: degree,
+        semitones: diff)
+    }
+  }
+}
+
+/// Checks the equality of two `Interval`s.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns true if two `Interval`s are equal.
 public func ==(lhs: Interval, rhs: Interval) -> Bool {
-  return lhs.rawValue == rhs.rawValue
+  return lhs.quality == rhs.quality && lhs.degree == rhs.degree
 }
 
-/// Extends `Interval` by any given octave.
-/// For example between C1 and D1, there are 2 halfsteps but between C1 and D2 there are 14 halfsteps.
-//// ```.M2 * 2``` will give you D2 from a C1.
-///
-/// - Parameters:
-///   - interval: Interval you want to extend by an octave.
-///   - octave: Octave you want to extend your interval by.
-/// - Returns: Returns new interval by calculating halfsteps between target interval and octave.
-public func *(interval: Interval, octave: Int) -> Interval {
-  return Interval(integerLiteral: interval.rawValue + (12 * (octave - 1)))
-}
+/// Defines the interval between `Pitch`es in semitones.
+public struct Interval: Codable, Equatable, CustomStringConvertible {
 
-/// Defines the interval between `Note`s in halfstep tones and degrees.
-public enum Interval: Codable, Equatable, RawRepresentable, ExpressibleByIntegerLiteral {
-  /// Zero halfstep and zero degree, unison, the note itself.
-  case P1
-  /// One halfstep and one degree between notes.
-  case m2
-  /// Two halfsteps and one degree between notes.
-  case M2
-  /// Three halfsteps and two degree between notes.
-  case m3
-  /// Four halfsteps and two degree between notes.
-  case M3
-  /// Five halfsteps and three degree between notes.
-  case P4
-  /// Six halfsteps and four degree between notes.
-  case d5
-  /// Seven halfsteps and four degree between notes.
-  case P5
-  /// Eight halfsteps and five degree between notes.
-  case m6
-  /// Nine halfsteps and five degree between notes.
-  case M6
-  /// Ten halfsteps and six degree between notes.
-  case m7
-  /// Eleven halfsteps and six degree between notes.
-  case M7
-  /// Twelve halfsteps and seven degree between notes.
-  case P8
-  /// Custom halfsteps and degrees by given input between notes.
-  case custom(halfstep: Int)
+  /// Quality type of the interval.
+  public enum Quality: Int, Codable, Equatable, CustomStringConvertible {
+    /// Diminished
+    case diminished = -1
+    /// Perfect
+    case perfect = 0
+    /// Minor.
+    case minor = 1
+    /// Major.
+    case major = 2
+    /// Augmented.
+    case augmented = 3
 
-  /// Returns the degree of the `Interval`.
-  public var degree: Int {
-    switch self {
-    case .m2, .M2: return 1
-    case .M3, .m3: return 2
-    case .P4: return 3
-    case .d5, .P5: return 4
-    case .m6, .M6: return 5
-    case .m7, .M7: return 6
-    case .P8: return 7
-    default: return 0
+    // MARK: CustomStringConvertible
+
+    /// Returns the notation of the interval quality.
+    public var notation: String {
+      switch self {
+      case .diminished: return "d"
+      case .perfect: return "P"
+      case .minor: return "m"
+      case .major: return "M"
+      case .augmented: return "A"
+      }
+    }
+
+    /// Returns the name of the interval quality.
+    public var description: String {
+      switch self {
+      case .diminished: return "Diminished"
+      case .perfect: return "Perfect"
+      case .minor: return "Minor"
+      case .major: return "Major"
+      case .augmented: return "Augmented"
+      }
     }
   }
 
-  // MARK: RawRepresentable
+  /// Quality of the interval.
+  public var quality: Quality
+  /// Degree of the interval.
+  public var degree: Int
+  /// Semitones interval affect on a pitch.
+  public var semitones: Int
 
-  public typealias RawValue = Int
-
-  /// Halfstep value of the interval.
-  public var rawValue: Int {
-    switch self {
-    case .P1: return 0
-    case .m2: return 1
-    case .M2: return 2
-    case .m3: return 3
-    case .M3: return 4
-    case .P4: return 5
-    case .d5: return 6
-    case .P5: return 7
-    case .m6: return 8
-    case .M6: return 9
-    case .m7: return 10
-    case .M7: return 11
-    case .P8: return 12
-    case .custom(let h): return h
-    }
-  }
-
-  /// Initilizes interval with its halfsteps.
+  /// Initilizes the interval with its quality, degree and semitones.
   ///
   /// - Parameters:
-  ///   - rawValue: Halfstep of interval.
-  public init?(rawValue: Interval.RawValue) {
-    switch rawValue {
-    case 0: self = .P1
-    case 1: self = .m2
-    case 2: self = .M2
-    case 3: self = .m3
-    case 4: self = .M3
-    case 5: self = .P4
-    case 6: self = .d5
-    case 7: self = .P5
-    case 8: self = .m6
-    case 9: self = .M6
-    case 10: self = .m7
-    case 11: self = .M7
-    case 12: self = .P8
-    default: self = .custom(halfstep: rawValue)
-    }
+  ///   - quality: Quality of the interval.
+  ///   - degree: Degree of the interval.
+  ///   - semitones: Semitones of the interval.
+  public init(quality: Quality, degree: Int, semitones: Int) {
+    self.quality = quality
+    self.degree = degree
+    self.semitones = semitones
   }
 
-  // MARK: ExpressibleByIntegerLiteral
+  /// Unison.
+  public static let P1 = Interval(quality: .perfect, degree: 1, semitones: 0)
+  /// Perfect fourth.
+  public static let P4 = Interval(quality: .perfect, degree: 4, semitones: 5)
+  /// Perfect fifth.
+  public static let P5 = Interval(quality: .perfect, degree: 5, semitones: 7)
+  /// Octave.
+  public static let P8 = Interval(quality: .perfect, degree: 8, semitones: 12)
 
-  /// ExpressibleByIntegerLiteral init function.
-  /// You can convert Int value of halfsteps to Interval.
-  ///
-  /// -           :
-  ///   - value: Halfstep value of Interval.
-  public init(integerLiteral value: IntegerLiteralType) {
-    self = Interval(rawValue: value) ?? .P1
-  }
+  /// Minor second.
+  public static let m2 = Interval(quality: .minor, degree: 2, semitones: 1)
+  /// Minor third.
+  public static let m3 = Interval(quality: .minor, degree: 3, semitones: 3)
+  /// Minor sixth.
+  public static let m6 = Interval(quality: .minor, degree: 6, semitones: 8)
+  /// Minor seventh.
+  public static let m7 = Interval(quality: .minor, degree: 7, semitones: 10)
+
+  /// Major second.
+  public static let M2 = Interval(quality: .major, degree: 2, semitones: 2)
+  /// Major third.
+  public static let M3 = Interval(quality: .major, degree: 3, semitones: 4)
+  /// Major sixth.
+  public static let M6 = Interval(quality: .major, degree: 6, semitones: 9)
+  /// Major seventh.
+  public static let M7 = Interval(quality: .major, degree: 7, semitones: 11)
+
+  /// Diminished second.
+  public static let d2 = Interval(quality: .diminished, degree: 2, semitones: 0)
+  /// Diminished third.
+  public static let d3 = Interval(quality: .diminished, degree: 3, semitones: 2)
+  /// Diminished fourth.
+  public static let d4 = Interval(quality: .diminished, degree: 4, semitones: 4)
+  /// Diminished fifth.
+  public static let d5 = Interval(quality: .diminished, degree: 5, semitones: 6)
+  /// Diminished sixth.
+  public static let d6 = Interval(quality: .diminished, degree: 6, semitones: 7)
+  /// Diminished seventh.
+  public static let d7 = Interval(quality: .diminished, degree: 7, semitones: 9)
+  /// Diminished eighth.
+  public static let d8 = Interval(quality: .diminished, degree: 8, semitones: 11)
+
+  /// Augmented first.
+  public static let A1 = Interval(quality: .augmented, degree: 1, semitones: 1)
+  /// Augmented second.
+  public static let A2 = Interval(quality: .augmented, degree: 2, semitones: 3)
+  /// Augmented third.
+  public static let A3 = Interval(quality: .augmented, degree: 3, semitones: 5)
+  /// Augmented fourth.
+  public static let A4 = Interval(quality: .augmented, degree: 4, semitones: 6)
+  /// Augmented fifth.
+  public static let A5 = Interval(quality: .augmented, degree: 5, semitones: 8)
+  /// Augmented sixth.
+  public static let A6 = Interval(quality: .augmented, degree: 6, semitones: 10)
+  /// Augmented seventh.
+  public static let A7 = Interval(quality: .augmented, degree: 7, semitones: 12)
 
   // MARK: CustomStringConvertible
 
-  /// Description of the interval in terms of music theory.
-  public var description: String {
-    switch self {
-    case .P1: return "unison"
-    case .m2: return "minor second"
-    case .M2: return "major second"
-    case .m3: return "minor third"
-    case .M3: return "major third"
-    case .P4: return "perfect forth"
-    case .d5: return "diminished fifth"
-    case .P5: return "perfect fifth"
-    case .m6: return "minor sixth"
-    case .M6: return "major sixth"
-    case .m7: return "minor seventh"
-    case .M7: return "major seventh"
-    case .P8: return "octave"
-    case .custom(let halfstep): return "\(halfstep)th"
-    }
+  /// Returns the notation of the interval.
+  public var notation: String {
+    return "\(quality.notation)\(degree)"
   }
 
-  /// Roman numeric value of interval by its halfstep value.
-  public var roman: String {
-    switch self {
-    case .P1: return "i"
-    case .m2: return "ii"
-    case .M2: return "II"
-    case .m3: return "iii"
-    case .M3: return "III"
-    case .P4: return "IV"
-    case .d5: return "v"
-    case .P5: return "V"
-    case .m6: return "vi"
-    case .M6: return "VI"
-    case .m7: return "vii"
-    case .M7: return "VII"
-    case .P8: return "VII"
-    case .custom(let halfstep): return "\(halfstep)"
+  /// Returns the name of the interval.
+  public var description: String {
+    var formattedDegree = "\(degree)"
+    
+    if #available(OSX 10.11, iOS 9.0, *) {
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .ordinal
+      formattedDegree = formatter.string(from: NSNumber(integerLiteral: degree)) ?? formattedDegree
     }
+
+    return "\(quality) \(formattedDegree)"
   }
 }
