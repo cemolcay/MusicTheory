@@ -8,74 +8,6 @@
 
 import Foundation
 
-/// Returns the pitch above target interval from target pitch.
-///
-/// - Parameters:
-///   - lhs: Target `Pitch`.
-///   - rhs: Target `Interval`.
-/// - Returns: Returns new pitch above target interval from target pitch.
-public func +(lhs: Pitch, rhs: Interval) -> Pitch {
-  let degree = rhs.degree - 1
-  let targetKeyType = lhs.key.type.key(at: degree)
-  let targetPitch = lhs + rhs.semitones
-  return targetPitch.convert(to: targetKeyType, isHigher: true)
-}
-
-/// Returns the pitch below target interval from target pitch.
-///
-/// - Parameters:
-///   - lhs: Target `Pitch`.
-///   - rhs: Target `Interval`.
-/// - Returns: Returns new pitch below target interval from target pitch.
-public func -(lhs: Pitch, rhs: Interval) -> Pitch {
-  let degree = -(rhs.degree - 1)
-  let targetKeyType = lhs.key.type.key(at: degree)
-  let targetPitch = lhs - rhs.semitones
-  return targetPitch.convert(to: targetKeyType, isHigher: false)
-}
-
-/// Calculates the interval between two pitches.
-/// Doesn't matter left hand side and right hand side note places.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: `Intreval` between two pitches. You can get the halfsteps from interval as well.
-public func -(lhs: Pitch, rhs: Pitch) -> Interval {
-  let top = max(lhs, rhs)
-  let bottom = min(lhs, rhs)
-  let diff = top.rawValue - bottom.rawValue
-
-  let bottomKeyIndex = Key.KeyType.all.index(of: bottom.key.type) ?? 0
-  let topKeyIndex = Key.KeyType.all.index(of: top.key.type) ?? 0
-  let degree = (topKeyIndex - bottomKeyIndex) + 1
-  let isMajor = (degree == 2 || degree == 3 || degree == 6 || degree == 7)
-
-  let majorScale = Scale(type: .major, key: bottom.key)
-  if majorScale.pitches(octaves: [bottom.octave, top.octave]).contains(top) { // Major or Perfect
-    return Interval(
-      quality: isMajor ? .major : .perfect,
-      degree: degree,
-      semitones: diff)
-  } else { // Augmented, Diminished or Minor
-    if isMajor {
-      let majorPitch = bottom + Interval(quality: .major, degree: degree, semitones: diff)
-      let offset = top.rawValue - majorPitch.rawValue
-      return Interval(
-        quality: offset > 0 ? .augmented : .minor,
-        degree: degree,
-        semitones: diff)
-    } else {
-      let perfectPitch = bottom + Interval(quality: .perfect, degree: degree, semitones: diff)
-      let offset = top.rawValue - perfectPitch.rawValue
-      return Interval(
-        quality: offset > 0 ? .augmented : .diminished,
-        degree: degree,
-        semitones: diff)
-    }
-  }
-}
-
 /// Checks the equality of two `Interval`s.
 ///
 /// - Parameters:
@@ -173,6 +105,8 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   /// Major seventh.
   public static let M7 = Interval(quality: .major, degree: 7, semitones: 11)
 
+  /// Diminished first.
+  public static let d1 = Interval(quality: .diminished, degree: 1, semitones: -1)
   /// Diminished second.
   public static let d2 = Interval(quality: .diminished, degree: 2, semitones: 0)
   /// Diminished third.

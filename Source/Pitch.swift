@@ -10,6 +10,74 @@
 
 import Foundation
 
+/// Returns the pitch above target interval from target pitch.
+///
+/// - Parameters:
+///   - lhs: Target `Pitch`.
+///   - rhs: Target `Interval`.
+/// - Returns: Returns new pitch above target interval from target pitch.
+public func +(lhs: Pitch, rhs: Interval) -> Pitch {
+  let degree = rhs.degree - 1
+  let targetKeyType = lhs.key.type.key(at: degree)
+  let targetPitch = lhs + rhs.semitones
+  return targetPitch.convert(to: targetKeyType, isHigher: true)
+}
+
+/// Returns the pitch below target interval from target pitch.
+///
+/// - Parameters:
+///   - lhs: Target `Pitch`.
+///   - rhs: Target `Interval`.
+/// - Returns: Returns new pitch below target interval from target pitch.
+public func -(lhs: Pitch, rhs: Interval) -> Pitch {
+  let degree = -(rhs.degree - 1)
+  let targetKeyType = lhs.key.type.key(at: degree)
+  let targetPitch = lhs - rhs.semitones
+  return targetPitch.convert(to: targetKeyType, isHigher: false)
+}
+
+/// Calculates the interval between two pitches.
+/// Doesn't matter left hand side and right hand side note places.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: `Intreval` between two pitches. You can get the halfsteps from interval as well.
+public func -(lhs: Pitch, rhs: Pitch) -> Interval {
+  let top = max(lhs, rhs)
+  let bottom = min(lhs, rhs)
+  let diff = top.rawValue - bottom.rawValue
+
+  let bottomKeyIndex = Key.KeyType.all.index(of: bottom.key.type) ?? 0
+  let topKeyIndex = Key.KeyType.all.index(of: top.key.type) ?? 0
+  let degree = (topKeyIndex - bottomKeyIndex) + 1
+  let isMajor = (degree == 2 || degree == 3 || degree == 6 || degree == 7)
+
+  let majorScale = Scale(type: .major, key: bottom.key)
+  if majorScale.pitches(octaves: [bottom.octave, top.octave]).contains(top) { // Major or Perfect
+    return Interval(
+      quality: isMajor ? .major : .perfect,
+      degree: degree,
+      semitones: diff)
+  } else { // Augmented, Diminished or Minor
+    if isMajor {
+      let majorPitch = bottom + Interval(quality: .major, degree: degree, semitones: diff)
+      let offset = top.rawValue - majorPitch.rawValue
+      return Interval(
+        quality: offset > 0 ? .augmented : .minor,
+        degree: degree,
+        semitones: diff)
+    } else {
+      let perfectPitch = bottom + Interval(quality: .perfect, degree: degree, semitones: diff)
+      let offset = top.rawValue - perfectPitch.rawValue
+      return Interval(
+        quality: offset > 0 ? .augmented : .diminished,
+        degree: degree,
+        semitones: diff)
+    }
+  }
+}
+
 /// Calculates the `Pitch` above halfsteps.
 ///
 /// - Parameters:
@@ -98,9 +166,10 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   ///
   /// - Parameters:
   ///   - keyType: Target `KeyType` you want to convert.
+  ///   - interval: Calculates for the interval above or below dependent on `isHigher` parameter. Leave nil if you don't want to calculate interval. Defaults nil.
   ///   - isHigher: Is target key type is a higher pitch or not.
   /// - Returns: Returns the converted `Pitch` in target `KeyType`.
-  public func convert(to keyType: Key.KeyType, isHigher: Bool) -> Pitch {
+  public func convert(to keyType: Key.KeyType, for interval: Interval? = nil, isHigher: Bool) -> Pitch {
     // Set target octave
     var targetOctave = octave
     if isHigher {
@@ -113,16 +182,14 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
       }
     }
 
-
-    // Set target pitch
-    var targetPitch = Pitch(key: Key(type: keyType), octave: targetOctave)
-
-    let diff = rawValue - targetPitch.rawValue
-    targetPitch.key.accidental = Accidental(integerLiteral: diff)
-
-    return targetPitch
+    // Convert pitch
+    let pitch = interval == nil ? self : self + interval!
+    var convertedPitch = Pitch(key: Key(type: keyType), octave: targetOctave)
+    let diff = pitch.rawValue - convertedPitch.rawValue
+    convertedPitch.key.accidental = Accidental(integerLiteral: diff)
+    return convertedPitch
   }
-  
+
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.
   /// Bases A4 note of 440Hz frequency standard.
   public var frequency: Float {

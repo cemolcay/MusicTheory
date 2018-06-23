@@ -164,7 +164,6 @@ extension MusicTheoryTests {
   }
 }
 
-/*
 // MARK: - Scale Tests
 
 extension MusicTheoryTests {
@@ -197,21 +196,23 @@ extension MusicTheoryTests {
     XCTAssert(cMinScale.keys == cMin)
   }
 
-  func testHarmonicFields() {
-    let cmaj = Scale(type: .major, key: Key(type: .c))
-    let triads = cmaj.harmonicField(for: .triad)
-    let triadsExpected = [
-      Chord(type: ChordType(third: .major), key: Key(type: .c)),
-      Chord(type: ChordType(third: .minor), key: Key(type: .d)),
-      Chord(type: ChordType(third: .minor), key: Key(type: .e)),
-      Chord(type: ChordType(third: .major), key: Key(type: .f)),
-      Chord(type: ChordType(third: .major), key: Key(type: .g)),
-      Chord(type: ChordType(third: .minor), key: Key(type: .a)),
-      Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
-      ]
-    XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
-  }
+//  func testHarmonicFields() {
+//    let cmaj = Scale(type: .major, key: Key(type: .c))
+//    let triads = cmaj.harmonicField(for: .triad)
+//    let triadsExpected = [
+//      Chord(type: ChordType(third: .major), key: Key(type: .c)),
+//      Chord(type: ChordType(third: .minor), key: Key(type: .d)),
+//      Chord(type: ChordType(third: .minor), key: Key(type: .e)),
+//      Chord(type: ChordType(third: .major), key: Key(type: .f)),
+//      Chord(type: ChordType(third: .major), key: Key(type: .g)),
+//      Chord(type: ChordType(third: .minor), key: Key(type: .a)),
+//      Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
+//      ]
+//    XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
+//  }
 }
+
+/*
 
 // MARK: - Chord Tests
 

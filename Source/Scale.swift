@@ -385,8 +385,9 @@ public struct Scale: Equatable, Codable {
   public func pitches(octaves: [Int]) -> [Pitch] {
     var pitches = [Pitch]()
     octaves.forEach({ octave in
-      let pitch = Pitch(key: key, octave: octave)
-      pitches += type.intervals.map({ pitch + $0 })
+      let root = Pitch(key: key, octave: octave)
+//      pitches += type.intervals.map({ root + $0 })
+      pitches += type.intervals.map({ root.convert(to: (root + $0).key.type, for: $0, isHigher: true) })
     })
     return pitches
   }
