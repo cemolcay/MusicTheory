@@ -153,6 +153,21 @@ public struct Key: RawRepresentable, Codable, Equatable, ExpressibleByIntegerLit
     /// Returns all members of the `KeyType`.
     public static let all: [KeyType] = [.c, .d, .e, .f, .g, .a, .b]
 
+    /// Returns neighbour `KeyType` at `distance` away. Works on both directions.
+    /// Use negative distance value for going on left direction, positive distance value for going on right direction.
+    /// This function iterates the `KeyType.all` array circullar to find the target KeyType.
+    ///
+    /// - Parameter distance: Target KeyType distance. Zero is self.
+    /// - Returns: Returns the neighbouring KeyType distance away.
+    public func key(at distance: Int) -> KeyType {
+      guard let index = KeyType.all.index(of: self)
+        else { return self }
+
+      let normalizedDistance = (distance % KeyType.all.count) + index
+      let keyIndex = normalizedDistance < 0 ? (KeyType.all.count + normalizedDistance) : normalizedDistance
+      return KeyType.all[keyIndex]
+    }
+
     // MARK: CustomStringConvertible
 
     /// Returns the key notation.

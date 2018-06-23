@@ -77,7 +77,6 @@ public func ===(lhs: Accidental, rhs: Accidental) -> Bool {
   default:
     return false
   }
-  return lhs.rawValue == rhs.rawValue
 }
 
 /// Adds an accidental value to a pitch.

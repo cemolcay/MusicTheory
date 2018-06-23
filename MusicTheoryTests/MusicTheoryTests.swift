@@ -67,6 +67,19 @@ extension MusicTheoryTests {
     XCTAssert(cSharp.type == .c && cSharp.accidental == .sharp)
     XCTAssert(dFlat.type == .d && dFlat.accidental == .flat)
     XCTAssert(cSharp == dFlat)
+
+    let d = Key.KeyType.d
+    XCTAssert(d.key(at: -2) == .b)
+    XCTAssert(d.key(at: -19) == .f)
+    XCTAssert(d.key(at: 12) == .b)
+    XCTAssert(d.key(at: 0) == .d)
+    XCTAssert(d.key(at: 1) == .e)
+    XCTAssert(d.key(at: 2) == .f)
+    XCTAssert(d.key(at: -3) == .a)
+    XCTAssert(d.key(at: -301) == .d)
+
+    let f = Key.KeyType.f
+    XCTAssert(f.key(at: -3) == .c)
   }
 
   func testPitches() {
