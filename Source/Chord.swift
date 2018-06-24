@@ -26,6 +26,18 @@ public protocol ChordPart: ChordDescription {
   init?(interval: Interval)
 }
 
+extension Interval {
+  /// Returns the sum of two intervals semitones.
+  ///
+  /// - Parameters:
+  ///   - lhs: Left hand side of the equation.
+  ///   - rhs: Right hand side of the equation.
+  /// - Returns: Sum of two intervals in terms of their semitones.
+  fileprivate static func +(lhs: Interval, rhs: Interval) -> Int {
+    return lhs.semitones + rhs.semitones
+  }
+}
+
 /// Defines third part of the chord. Second note after the root.
 public enum ChordThirdType: Int, ChordPart {
   /// Defines major chord. 4 halfsteps between root.
@@ -288,11 +300,11 @@ public struct ChordExtensionType: ChordPart {
     public var interval: Interval {
       switch self {
       case .natural:
-        return 0
+        return .P1
       case .flat:
-        return -1
+        return .d1
       case .sharp:
-        return 1
+        return .m2
       }
     }
 
@@ -339,11 +351,11 @@ public struct ChordExtensionType: ChordPart {
     public var interval: Interval {
       switch self {
       case .ninth:
-        return .M2 * 2
+        return .M9
       case .eleventh:
-        return .P4 * 2
+        return .P11
       case .thirteenth:
-        return .M6 * 2
+        return .M13
       }
     }
 
@@ -375,6 +387,26 @@ public struct ChordExtensionType: ChordPart {
     public static var all: [ExtensionType] {
       return [.ninth, .eleventh, .thirteenth]
     }
+
+    /// Returns the accidental applied interval value.
+    ///
+    /// - Parameter accidental: Accidental you want to apply to the interval.
+    /// - Returns: Returns new interval affected by accidental.
+    public func applyAccidental(_ accidental: Accident) -> Interval {
+      switch (self, accidental) {
+      case (.ninth, .natural): return .M9
+      case (.ninth, .flat): return .m9
+      case (.ninth, .sharp): return .A9
+
+      case (.eleventh, .natural): return .P11
+      case (.eleventh, .flat): return .P11
+      case (.eleventh, .sharp): return .A11
+
+      case (.thirteenth, .natural): return .M13
+      case (.thirteenth, .flat): return .m13
+      case (.thirteenth, .sharp): return .A13
+      }
+    }
   }
 
   /// Type of extended chord.
@@ -397,7 +429,7 @@ public struct ChordExtensionType: ChordPart {
 
   /// Initilize chord part with interval
   public init?(interval: Interval) {
-    switch interval {
+    switch interval.semitones {
     case ExtensionType.ninth.interval + Accident.natural.interval:
       self = ChordExtensionType(type: .ninth, accident: .natural)
     case ExtensionType.ninth.interval + Accident.flat.interval:
@@ -423,7 +455,7 @@ public struct ChordExtensionType: ChordPart {
 
   /// Interval between root.
   public var interval: Interval {
-    return type.interval + accident.interval
+    return type.applyAccidental(accident)
   }
 
   /// Notation of chord part.
@@ -708,7 +740,7 @@ public struct Chord: ChordDescription {
     var intervals = type.intervals
     for _ in 0..<inversion {
       intervals = intervals.shifted
-      intervals[intervals.count-1] = intervals[intervals.count-1] * 2
+      //intervals[intervals.count-1] = intervals[intervals.count-1] * 2
     }
     return intervals
   }

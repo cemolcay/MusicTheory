@@ -86,6 +86,12 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   public static let P5 = Interval(quality: .perfect, degree: 5, semitones: 7)
   /// Octave.
   public static let P8 = Interval(quality: .perfect, degree: 8, semitones: 12)
+  /// Perfect eleventh.
+  public static let P11 = Interval(quality: .perfect, degree: 11, semitones: 17)
+  /// Perfect twelfth.
+  public static let P12 = Interval(quality: .perfect, degree: 12, semitones: 19)
+  /// Perfect fifteenth, double octave.
+  public static let P15 = Interval(quality: .perfect, degree: 15, semitones: 24)
 
   /// Minor second.
   public static let m2 = Interval(quality: .minor, degree: 2, semitones: 1)
@@ -95,6 +101,14 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   public static let m6 = Interval(quality: .minor, degree: 6, semitones: 8)
   /// Minor seventh.
   public static let m7 = Interval(quality: .minor, degree: 7, semitones: 10)
+  /// Minor ninth.
+  public static let m9 = Interval(quality: .minor, degree: 9, semitones: 13)
+  /// Minor tenth.
+  public static let m10 = Interval(quality: .minor, degree: 10, semitones: 15)
+  /// Minor thirteenth.
+  public static let m13 = Interval(quality: .minor, degree: 13, semitones: 20)
+  /// Minor fourteenth.
+  public static let m14 = Interval(quality: .minor, degree: 14, semitones: 22)
 
   /// Major second.
   public static let M2 = Interval(quality: .major, degree: 2, semitones: 2)
@@ -104,6 +118,14 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   public static let M6 = Interval(quality: .major, degree: 6, semitones: 9)
   /// Major seventh.
   public static let M7 = Interval(quality: .major, degree: 7, semitones: 11)
+  /// Major ninth.
+  public static let M9 = Interval(quality: .major, degree: 9, semitones: 14)
+  /// Major tenth.
+  public static let M10 = Interval(quality: .major, degree: 10, semitones: 16)
+  /// Major thirteenth.
+  public static let M13 = Interval(quality: .major, degree: 13, semitones: 21)
+  /// Major fourteenth.
+  public static let M14 = Interval(quality: .major, degree: 14, semitones: 23)
 
   /// Diminished first.
   public static let d1 = Interval(quality: .diminished, degree: 1, semitones: -1)
@@ -121,6 +143,20 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   public static let d7 = Interval(quality: .diminished, degree: 7, semitones: 9)
   /// Diminished eighth.
   public static let d8 = Interval(quality: .diminished, degree: 8, semitones: 11)
+  /// Diminished ninth.
+  public static let d9 = Interval(quality: .diminished, degree: 9, semitones: 12)
+  /// Diminished tenth.
+  public static let d10 = Interval(quality: .diminished, degree: 10, semitones: 14)
+  /// Diminished eleventh.
+  public static let d11 = Interval(quality: .diminished, degree: 11, semitones: 16)
+  /// Diminished twelfth.
+  public static let d12 = Interval(quality: .diminished, degree: 12, semitones: 18)
+  /// Diminished thirteenth.
+  public static let d13 = Interval(quality: .diminished, degree: 13, semitones: 19)
+  /// Diminished fourteenth.
+  public static let d14 = Interval(quality: .diminished, degree: 14, semitones: 21)
+  /// Diminished fifteenth.
+  public static let d15 = Interval(quality: .diminished, degree: 15, semitones: 23)
 
   /// Augmented first.
   public static let A1 = Interval(quality: .augmented, degree: 1, semitones: 1)
@@ -136,6 +172,31 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   public static let A6 = Interval(quality: .augmented, degree: 6, semitones: 10)
   /// Augmented seventh.
   public static let A7 = Interval(quality: .augmented, degree: 7, semitones: 12)
+  /// Augmented octave.
+  public static let A8 = Interval(quality: .augmented, degree: 8, semitones: 13)
+  /// Augmented ninth.
+  public static let A9 = Interval(quality: .augmented, degree: 9, semitones: 15)
+  /// Augmented tenth.
+  public static let A10 = Interval(quality: .augmented, degree: 10, semitones: 17)
+  /// Augmented eleventh.
+  public static let A11 = Interval(quality: .augmented, degree: 11, semitones: 18)
+  /// Augmented twelfth.
+  public static let A12 = Interval(quality: .augmented, degree: 12, semitones: 20)
+  /// Augmented thirteenth.
+  public static let A13 = Interval(quality: .augmented, degree: 13, semitones: 22)
+  /// Augmented fourteenth.
+  public static let A14 = Interval(quality: .augmented, degree: 14, semitones: 24)
+  /// Augmented fifteenth.
+  public static let A15 = Interval(quality: .augmented, degree: 15, semitones: 25)
+
+  /// All pre-defined intervals in a static array. You can filter it out with qualities, degrees or semitones.
+  public static let all: [Interval] = [
+    .P1, .P4, .P5, .P8, .P11, .P12, .P15,
+    .m2, .m3, .m6, .m7, .m9, .m10, .m13, .m14,
+    .M2, .M3, .M6, .M7, .M9, .M10, .M13, .M14,
+    .d1, .d2, .d3, .d4, .d5, .d6, .d7, .d8, .d9, .d10, .d11, .d12, .d13, .d14, .d15,
+    .A1, .A2, .A3, .A4, .A5, .A6, .A7, .A8, .A9, .A10, .A11, .A12, .A13, .A14, .A15,
+  ]
 
   // MARK: CustomStringConvertible
 

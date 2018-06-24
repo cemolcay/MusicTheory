@@ -196,23 +196,21 @@ extension MusicTheoryTests {
     XCTAssert(cMinScale.keys == cMin)
   }
 
-//  func testHarmonicFields() {
-//    let cmaj = Scale(type: .major, key: Key(type: .c))
-//    let triads = cmaj.harmonicField(for: .triad)
-//    let triadsExpected = [
-//      Chord(type: ChordType(third: .major), key: Key(type: .c)),
-//      Chord(type: ChordType(third: .minor), key: Key(type: .d)),
-//      Chord(type: ChordType(third: .minor), key: Key(type: .e)),
-//      Chord(type: ChordType(third: .major), key: Key(type: .f)),
-//      Chord(type: ChordType(third: .major), key: Key(type: .g)),
-//      Chord(type: ChordType(third: .minor), key: Key(type: .a)),
-//      Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
-//      ]
-//    XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
-//  }
+  func testHarmonicFields() {
+    let cmaj = Scale(type: .major, key: Key(type: .c))
+    let triads = cmaj.harmonicField(for: .triad)
+    let triadsExpected = [
+      Chord(type: ChordType(third: .major), key: Key(type: .c)),
+      Chord(type: ChordType(third: .minor), key: Key(type: .d)),
+      Chord(type: ChordType(third: .minor), key: Key(type: .e)),
+      Chord(type: ChordType(third: .major), key: Key(type: .f)),
+      Chord(type: ChordType(third: .major), key: Key(type: .g)),
+      Chord(type: ChordType(third: .minor), key: Key(type: .a)),
+      Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
+    ]
+    XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
+  }
 }
-
-/*
 
 // MARK: - Chord Tests
 
@@ -270,16 +268,16 @@ extension MusicTheoryTests {
     XCTAssert(cm13.pitches(octave: 1) == cm13Notes)
 
     let minorIntervals: [Interval] = [.P1, .m3, .P5]
-    guard let minorChord = ChordType(intervals: minorIntervals) else { return XCTFail() }
+    guard let minorChord = ChordType(intervals: minorIntervals.map({ $0 })) else { return XCTFail() }
     XCTAssert(minorChord == ChordType(third: .minor))
 
     let majorIntervals: [Interval] = [.P1, .M3, .P5]
-    guard let majorChord = ChordType(intervals: majorIntervals) else { return XCTFail() }
+    guard let majorChord = ChordType(intervals: majorIntervals.map({ $0 })) else { return XCTFail() }
     XCTAssert(majorChord == ChordType(third: .major))
 
     let cmadd13Notes: [Pitch] = [
       Pitch(key: Key(type: .c), octave: 1),
-      Pitch(key: Key(type: .e, accidental: .flat).alternative!, octave: 1),
+      Pitch(key: Key(type: .e, accidental: .flat), octave: 1),
       Pitch(key: Key(type: .g), octave: 1),
       Pitch(key: Key(type: .a), octave: 2),
     ]
@@ -325,4 +323,3 @@ extension MusicTheoryTests {
     }
   }
 }
-*/

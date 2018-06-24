@@ -417,33 +417,33 @@ extension Scale {
   /// - Parameter field: Type of chords you want to generate.
   /// - Parameter inversion: Inversion degree of the chords. Defaults 0.
   /// - Returns: Returns triads or tetrads of chord for each note in scale.
-//  public func harmonicField(for field: HarmonicField, inversion: Int = 0) -> [Chord?] {
-//    var chords = [ChordType?]()
-//    // Generate notes for octave range of 2, they are going to use in extended chords.
-//    let scaleNotes = pitches(octaves: [1, 2, 3, 4])
-//    // Build chords for each note in the scale.
-//    for i in 0..<scaleNotes.count/4 { // Iterate each note in scale (one octave).
-//      // Get notes for chord.
-//      var chordNotes = [Pitch]()
-//      switch field {
-//      case .triad:
-//        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4]]
-//      case .tetrad:
-//        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6]]
-//      case .ninth:
-//        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8]]
-//      case .eleventh:
-//        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10]]
-//      case .thirteenth:
-//        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10], scaleNotes[i + 12]]
-//      }
-//      // Calculate intervals between notes in chord.
-//      let chordIntervals = chordNotes.map({ $0 - chordNotes[0] })
-//      chords.append(ChordType(intervals: chordIntervals))
-//    }
-//    // Generate chords for each key in scale.
-//    return chords.enumerated().map({ $1 == nil ? nil : Chord(type: $1!, key: keys[$0], inversion: inversion) })
-//  }
+  public func harmonicField(for field: HarmonicField, inversion: Int = 0) -> [Chord?] {
+    var chords = [ChordType?]()
+    // Generate notes for octave range of 2, they are going to use in extended chords.
+    let scaleNotes = pitches(octaves: [1, 2, 3, 4])
+    // Build chords for each note in the scale.
+    for i in 0..<scaleNotes.count/4 { // Iterate each note in scale (one octave).
+      // Get notes for chord.
+      var chordNotes = [Pitch]()
+      switch field {
+      case .triad:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4]]
+      case .tetrad:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6]]
+      case .ninth:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8]]
+      case .eleventh:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10]]
+      case .thirteenth:
+        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10], scaleNotes[i + 12]]
+      }
+      // Calculate intervals between notes in chord.
+      let chordIntervals = chordNotes.map({ $0 - chordNotes[0] })
+      chords.append(ChordType(intervals: chordIntervals.map({ $0 })))
+    }
+    // Generate chords for each key in scale.
+    return chords.enumerated().map({ $1 == nil ? nil : Chord(type: $1!, key: keys[$0], inversion: inversion) })
+  }
 }
 
 extension Scale: CustomStringConvertible {
