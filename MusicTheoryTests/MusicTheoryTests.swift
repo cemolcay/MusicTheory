@@ -246,7 +246,7 @@ extension MusicTheoryTests {
           ChordExtensionType(type: .thirteenth)
         ]),
       key: Key(type: .c))
-    XCTAssert(c13.pitches(octave: 1) == c13Notes)
+    XCTAssert(c13.pitches(octave: 1) === c13Notes)
 
     let cm13Notes: [Pitch] = [
       Pitch(key: Key(type: .c), octave: 1),
@@ -265,7 +265,7 @@ extension MusicTheoryTests {
           ChordExtensionType(type: .thirteenth)
         ]),
       key: Key(type: .c))
-    XCTAssert(cm13.pitches(octave: 1) == cm13Notes)
+    XCTAssert(cm13.pitches(octave: 1) === cm13Notes)
 
     let minorIntervals: [Interval] = [.P1, .m3, .P5]
     guard let minorChord = ChordType(intervals: minorIntervals.map({ $0 })) else { return XCTFail() }
@@ -286,7 +286,7 @@ extension MusicTheoryTests {
         third: .minor,
         extensions: [ChordExtensionType(type: .thirteenth)]),
       key: Key(type: .c))
-    XCTAssert(cmadd13.pitches(octave: 1) == cmadd13Notes)
+    XCTAssert(cmadd13.pitches(octave: 1) === cmadd13Notes)
   }
 
   func testInversions() {
@@ -319,7 +319,22 @@ extension MusicTheoryTests {
       ],
     ]
     for (index, chord) in c7.inversions.enumerated() {
-      XCTAssert(chord.pitches(octave: 1) == c7Inversions[index])
+      XCTAssert(chord.pitches(octave: 1) === c7Inversions[index])
     }
   }
+}
+
+// MARK: - [Pitch] Extension
+
+// A function for checking pitche arrays exactly equal in terms of their pitches keys and octaves.
+func ===(lhs: [Pitch], rhs: [Pitch]) -> Bool {
+  guard lhs.count == rhs.count else { return false }
+  for i in 0..<lhs.count {
+    if lhs[i] === rhs[i] {
+      continue
+    } else {
+      return false
+    }
+  }
+  return true
 }

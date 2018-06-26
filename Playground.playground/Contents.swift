@@ -3,39 +3,51 @@
 import Foundation
 import MusicTheory
 
-extension Pitch {
-  public func convert(to keyType: Key.KeyType, for interval: Interval, isHigher: Bool) -> Pitch {
-  // Set target octave
-  var targetOctave = octave
-  if isHigher {
-    if keyType.rawValue < key.type.rawValue {
-      targetOctave += 1
+// 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6
+// c, d, e, f, g, a, b, c, d, e, f, g, a, b, c, d, e, f, g, a, b, c, d, e, f, g, a, b
+
+extension Scale {
+
+  public func harmonicField(for field: HarmonicField, inversion: Int = 0) -> [Chord?] {
+    var chords = [Chord?]()
+
+    let octaves = [0, 1, 2, 3, 4]
+    let scalePitches = pitches(octaves: octaves)
+
+    for i in 0..<scalePitches.count/octaves.count {
+      var chordPitches = [Pitch]()
+      switch field {
+      case .triad:
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4]]
+      case .tetrad:
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6]]
+      case .ninth:
+        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8]]
+      case .eleventh:
+        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10]]
+      case .thirteenth:
+        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10], scalePitches[i + 12]]
+      }
+
+      print(chordPitches)
+      let root = chordPitches[0]
+      let intervals = chordPitches.map({ $0 - root })
+      print(intervals)
+      if let chordType = ChordType(intervals: intervals) {
+        let chord = Chord(type: chordType, key: root.key, inversion: inversion)
+        chords.append(chord)
+      } else {
+        chords.append(nil)
+      }
     }
-  } else {
-    if keyType.rawValue > key.type.rawValue {
-      targetOctave -= 1
-    }
+
+    return chords
   }
-
-  // Set target pitch
-  let currentPitch = self + interval
-  var targetPitch = Pitch(key: Key(type: keyType), octave: targetOctave)
-  let diff = currentPitch.rawValue - targetPitch.rawValue
-  targetPitch.key.accidental = Accidental(integerLiteral: diff)
-  return targetPitch
-}
 }
 
-let cSharp = Pitch(key: Key(type: .c, accidental: .sharp), octave: 1)
+let cMajor = Scale(type: .chromatic, key: Key(type: .c, accidental: .natural))
+cMajor.harmonicField(for: .triad).forEach({ print($0?.notation) })
 
-(cSharp + .M3).convert(to: .e, isHigher: true)
-cSharp.convert(to: .e, for: .M3, isHigher: true)
-
-(cSharp + .M2).convert(to: .d, isHigher: true)
-cSharp.convert(to: .d, for: .M2, isHigher: true)
-
-(cSharp + .M7).convert(to: .b, isHigher: true)
-cSharp.convert(to: .b, for: .M7, isHigher: true)
-
-let cSharpMajor = Scale(type: .harmonicMinor, key: Key(type: .d, accidental: .flat))
-cSharpMajor.pitches(octave: 1).forEach({ print($0) })
+let b0 = Pitch(key: Key(type: .b, accidental: .natural), octave: 0)
+let e1 = Pitch(key: Key(type: .e, accidental: .natural), octave: 1)
+b0 - e1

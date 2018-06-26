@@ -418,31 +418,42 @@ extension Scale {
   /// - Parameter inversion: Inversion degree of the chords. Defaults 0.
   /// - Returns: Returns triads or tetrads of chord for each note in scale.
   public func harmonicField(for field: HarmonicField, inversion: Int = 0) -> [Chord?] {
-    var chords = [ChordType?]()
-    // Generate notes for octave range of 2, they are going to use in extended chords.
-    let scaleNotes = pitches(octaves: [1, 2, 3, 4])
-    // Build chords for each note in the scale.
-    for i in 0..<scaleNotes.count/4 { // Iterate each note in scale (one octave).
-      // Get notes for chord.
-      var chordNotes = [Pitch]()
+    var chords = [Chord?]()
+
+    // Extended notes for picking notes.
+    let octaves = [0, 1, 2, 3, 4]
+    let scalePitches = pitches(octaves: octaves)
+
+    // Build chords for each note in scale.
+    for i in 0..<scalePitches.count/octaves.count {
+      var chordPitches = [Pitch]()
       switch field {
       case .triad:
-        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4]]
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4]]
       case .tetrad:
-        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6]]
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6]]
       case .ninth:
-        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8]]
+        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8]]
       case .eleventh:
-        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10]]
+        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10]]
       case .thirteenth:
-        chordNotes = [scaleNotes[i], scaleNotes[i + 2], scaleNotes[i + 4], scaleNotes[i + 6], scaleNotes[i + 8], scaleNotes[i + 10], scaleNotes[i + 12]]
+        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10], scalePitches[i + 12]]
       }
-      // Calculate intervals between notes in chord.
-      let chordIntervals = chordNotes.map({ $0 - chordNotes[0] })
-      chords.append(ChordType(intervals: chordIntervals.map({ $0 })))
+
+      // Build intervals
+      let root = chordPitches[0]
+      let intervals = chordPitches.map({ $0 - root })
+
+      // Build chord
+      if let chordType = ChordType(intervals: intervals) {
+        let chord = Chord(type: chordType, key: root.key, inversion: inversion)
+        chords.append(chord)
+      } else {
+        chords.append(nil)
+      }
     }
-    // Generate chords for each key in scale.
-    return chords.enumerated().map({ $1 == nil ? nil : Chord(type: $1!, key: keys[$0], inversion: inversion) })
+
+    return chords
   }
 }
 
