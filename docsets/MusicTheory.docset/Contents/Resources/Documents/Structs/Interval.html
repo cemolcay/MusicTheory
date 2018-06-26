@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Interval Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Interval" class="dashAnchor"></a>
+    <a title="Interval Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">MusicTheory Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">MusicTheory Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Interval Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Accidental.html">Accidental</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordFifthType.html">ChordFifthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordSeventhType.html">ChordSeventhType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordSuspendedType.html">ChordSuspendedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordThirdType.html">ChordThirdType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteValueType.html">NoteValueType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ScaleType.html">ScaleType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1moiAA10AccidentalOAD_SitF">*(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiAA10AccidentalOAD_ADtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiAA10AccidentalOAD_SitF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiAA5PitchVAD_AA8IntervalVtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiAA5PitchVAD_SitF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA10AccidentalOAD_ADtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA10AccidentalOAD_SitF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA5PitchVAD_AA8IntervalVtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA5PitchVAD_SitF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiAA8IntervalVAA5PitchV_AFtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1doiAA10AccidentalOAD_SitF">/(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1doiSdAA9NoteValueV_AA0cD4TypeOtF">/(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1loiSbAA5PitchV_ADtF">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA10AccidentalO_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA3KeyV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA5ChordVSg_AEtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA5PitchV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA5ScaleV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA8IntervalV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiSbAA9ScaleTypeO_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiSbAA10AccidentalO_ADtF">===(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiSbAA5PitchV_ADtF">===(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiSbAA8IntervalV_ADtF">===(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ChordDescription.html">ChordDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ChordPart.html">ChordPart</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType.html">ChordExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordSixthType.html">ChordSixthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordType.html">ChordType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Interval.html">Interval</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Interval/Quality.html">– Quality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Key.html">Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Key/KeyType.html">– KeyType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Pitch.html">Pitch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Scale/HarmonicField.html">– HarmonicField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimeSignature.html">TimeSignature</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Interval</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Interval</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                </div>
+              </div>
+            <p>Defines the interval between <code><a href="../Structs/Pitch.html">Pitch</a></code>es in semitones.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV7QualityO"></a>
+                    <a name="//apple_ref/swift/Enum/Quality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV7QualityO">Quality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Quality type of the interval.</p>
+
+                        <a href="../Structs/Interval/Quality.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Quality</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV7qualityAC7QualityOvp"></a>
+                    <a name="//apple_ref/swift/Property/quality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV7qualityAC7QualityOvp">quality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Quality of the interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">quality</span><span class="p">:</span> <span class="kt"><a href="../Structs/Interval/Quality.html">Quality</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV6degreeSivp"></a>
+                    <a name="//apple_ref/swift/Property/degree" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV6degreeSivp">degree</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Degree of the interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">degree</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV9semitonesSivp"></a>
+                    <a name="//apple_ref/swift/Property/semitones" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV9semitonesSivp">semitones</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Semitones interval affect on a pitch.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">semitones</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalVA2C7QualityO7quality_Si6degreeSi9semitonestcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(quality:degree:semitones:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalVA2C7QualityO7quality_Si6degreeSi9semitonestcfc">init(quality:degree:semitones:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initilizes the interval with its quality, degree and semitones.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="kt"><a href="../Structs/Interval/Quality.html">Quality</a></span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>quality</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Quality of the interval.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>degree</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Degree of the interval.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>semitones</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Semitones of the interval.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2P1ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P1" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2P1ACvpZ">P1</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unison.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P1</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2P4ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P4" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2P4ACvpZ">P4</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Perfect fourth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P4</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2P5ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P5" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2P5ACvpZ">P5</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Perfect fifth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P5</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2P8ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P8" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2P8ACvpZ">P8</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Octave.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P8</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">12</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3P11ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P11" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3P11ACvpZ">P11</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Perfect eleventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P11</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">17</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3P12ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P12" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3P12ACvpZ">P12</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Perfect twelfth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P12</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">19</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3P15ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/P15" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3P15ACvpZ">P15</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Perfect fifteenth, double octave.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">P15</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">perfect</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">24</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2m2ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2m2ACvpZ">m2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor second.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m2</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2m3ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m3" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2m3ACvpZ">m3</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor third.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m3</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2m6ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m6" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2m6ACvpZ">m6</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor sixth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m6</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">8</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2m7ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m7" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2m7ACvpZ">m7</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor seventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m7</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2m9ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m9" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2m9ACvpZ">m9</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor ninth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m9</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">13</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3m10ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m10" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3m10ACvpZ">m10</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor tenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m10</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">15</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3m13ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m13" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3m13ACvpZ">m13</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor thirteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m13</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3m14ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/m14" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3m14ACvpZ">m14</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor fourteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">m14</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">minor</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">22</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2M2ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2M2ACvpZ">M2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major second.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M2</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2M3ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M3" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2M3ACvpZ">M3</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major third.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M3</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2M6ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M6" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2M6ACvpZ">M6</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major sixth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M6</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">9</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2M7ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M7" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2M7ACvpZ">M7</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major seventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M7</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">11</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2M9ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M9" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2M9ACvpZ">M9</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major ninth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M9</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3M10ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M10" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3M10ACvpZ">M10</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major tenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M10</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3M13ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M13" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3M13ACvpZ">M13</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major thirteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M13</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">21</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3M14ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M14" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3M14ACvpZ">M14</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major fourteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">M14</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">23</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d1ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d1" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d1ACvpZ">d1</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished first.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d1</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d2ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d2ACvpZ">d2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished second.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d2</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d3ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d3" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d3ACvpZ">d3</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished third.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d3</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d4ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d4" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d4ACvpZ">d4</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished fourth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d4</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d5ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d5" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d5ACvpZ">d5</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished fifth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d5</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d6ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d6" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d6ACvpZ">d6</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished sixth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d6</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d7ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d7" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d7ACvpZ">d7</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished seventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d7</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">9</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d8ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d8" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d8ACvpZ">d8</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished eighth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d8</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">11</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2d9ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d9" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2d9ACvpZ">d9</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished ninth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d9</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">12</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3d10ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d10" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3d10ACvpZ">d10</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished tenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d10</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3d11ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d11" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3d11ACvpZ">d11</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished eleventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d11</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3d12ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d12" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3d12ACvpZ">d12</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished twelfth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d12</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">18</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3d13ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d13" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3d13ACvpZ">d13</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished thirteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d13</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">19</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3d14ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d14" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3d14ACvpZ">d14</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished fourteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d14</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">21</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3d15ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/d15" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3d15ACvpZ">d15</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished fifteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">d15</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">diminished</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">23</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A1ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A1" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A1ACvpZ">A1</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented first.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A1</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A2ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A2ACvpZ">A2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented second.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A2</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A3ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A3" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A3ACvpZ">A3</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented third.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A3</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A4ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A4" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A4ACvpZ">A4</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented fourth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A4</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A5ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A5" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A5ACvpZ">A5</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented fifth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A5</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">8</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A6ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A6" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A6ACvpZ">A6</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented sixth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A6</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A7ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A7" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A7ACvpZ">A7</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented seventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A7</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">12</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A8ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A8" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A8ACvpZ">A8</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented octave.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A8</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">13</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV2A9ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A9" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV2A9ACvpZ">A9</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented ninth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A9</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">15</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3A10ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A10" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3A10ACvpZ">A10</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented tenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A10</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">17</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3A11ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A11" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3A11ACvpZ">A11</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented eleventh.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A11</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">18</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3A12ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A12" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3A12ACvpZ">A12</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented twelfth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A12</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">20</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3A13ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A13" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3A13ACvpZ">A13</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented thirteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A13</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">22</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3A14ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A14" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3A14ACvpZ">A14</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented fourteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A14</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">24</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3A15ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/A15" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3A15ACvpZ">A15</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented fifteenth.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">A15</span> <span class="o">=</span> <span class="kt">Interval</span><span class="p">(</span><span class="nv">quality</span><span class="p">:</span> <span class="o">.</span><span class="n">augmented</span><span class="p">,</span> <span class="nv">degree</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">semitones</span><span class="p">:</span> <span class="mi">25</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV3allSayACGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/all" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV3allSayACGvpZ">all</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All pre-defined intervals in a static array. You can filter it out with qualities, degrees or semitones.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="kt">Interval</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CustomStringConvertible"></a>
+                <a name="//apple_ref/swift/Section/CustomStringConvertible" class="dashAnchor"></a>
+                <a href="#/CustomStringConvertible">
+                  <h3 class="section-name">CustomStringConvertible</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV8notationSSvp"></a>
+                    <a name="//apple_ref/swift/Property/notation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV8notationSSvp">notation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the notation of the interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">notation</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory8IntervalV11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory8IntervalV11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the name of the interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2018-06-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
