@@ -21,10 +21,10 @@ public func ==(lhs: Key, rhs: Key) -> Bool {
 }
 
 /// Represents the keys that notes and pitches are based on.
-public struct Key: Codable, Equatable, CustomStringConvertible {
+public struct Key: Codable, Equatable, Hashable, CustomStringConvertible {
 
   /// Base pitch of the key without accidentals. Accidentals will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
-  public enum KeyType: Int, Codable, Equatable, CustomStringConvertible {
+  public enum KeyType: Int, Codable, Equatable, Hashable, CustomStringConvertible {
     /// C key.
     case c = 0
     /// D key.
