@@ -100,7 +100,7 @@ public func ===(lhs: Accidental, rhs: Accidental) -> Bool {
 }
 
 /// The enum used for calculating values of the `Key`s and `Pitche`s.
-public enum Accidental: Codable, Equatable, RawRepresentable, ExpressibleByIntegerLiteral, CustomStringConvertible {
+public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, ExpressibleByIntegerLiteral, CustomStringConvertible {
   /// No accidental.
   case natural
   /// Reduces the `Key` or `Pitch` value amount of halfsteps.
