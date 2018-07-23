@@ -386,8 +386,7 @@ public struct Scale: Equatable, Codable {
     var pitches = [Pitch]()
     octaves.forEach({ octave in
       let root = Pitch(key: key, octave: octave)
-//      pitches += type.intervals.map({ root + $0 })
-      pitches += type.intervals.map({ root.convert(to: (root + $0).key.type, for: $0, isHigher: true) })
+      pitches += type.intervals.map({ root + $0 })
     })
     return pitches
   }
@@ -433,11 +432,11 @@ extension Scale {
       case .tetrad:
         chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6]]
       case .ninth:
-        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8]]
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8]]
       case .eleventh:
-        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10]]
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10]]
       case .thirteenth:
-        chordPitches = [scalePitches[i + 0], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10], scalePitches[i + 12]]
+        chordPitches = [scalePitches[i], scalePitches[i + 2], scalePitches[i + 4], scalePitches[i + 6], scalePitches[i + 8], scalePitches[i + 10], scalePitches[i + 12]]
       }
 
       // Build intervals

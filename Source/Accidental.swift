@@ -117,6 +117,10 @@ public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, Expressi
   /// Increases the `Key` or `Pitch` value two halfsteps above.
   public static let doubleSharp: Accidental = .sharps(amount: 2)
 
+  /// A flag for `description` function that determines if it should use double sharp and double flat symbols.
+  /// It's useful to set it false where the fonts do not support that symbols. Defaults true.
+  public static var shouldUseDoubleFlatAndDoubleSharpNotation = true
+
   // MARK: RawRepresentable
 
   public typealias RawValue = Int
@@ -176,14 +180,14 @@ public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, Expressi
       switch amount {
       case 0: return Accidental.natural.description
       case 1: return "♭"
-      case 2: return "𝄫"
+      case 2 where Accidental.shouldUseDoubleFlatAndDoubleSharpNotation: return "𝄫"
       default: return amount > 0 ? (0..<amount).map({ _ in Accidental.flats(amount: 1).description }).joined() : ""
       }
     case .sharps(let amount):
       switch amount {
       case 0: return Accidental.natural.description
       case 1: return "♯"
-      case 2: return "𝄪"
+      case 2 where Accidental.shouldUseDoubleFlatAndDoubleSharpNotation: return "𝄪"
       default: return amount > 0 ? (0..<amount).map({ _ in Accidental.sharps(amount: 1).description }).joined() : ""
       }
     }

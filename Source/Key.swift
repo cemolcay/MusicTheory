@@ -69,6 +69,33 @@ public struct Key: Codable, Equatable, Hashable, CustomStringConvertible {
       return targetIndex - index
     }
 
+    /// Calculates the octave difference for a neighbouring `KeyType` at given interval away higher or lower.
+    ///
+    /// - Parameters:
+    ///   - interval: Interval you want to calculate octave difference.
+    ///   - isHigher: You want to calculate interval higher or lower from current key.
+    /// - Returns: Returns the octave difference for a given interval higher or lower.
+    public func octaveDiff(for interval: Interval, isHigher: Bool) -> Int {
+      var diff = 0
+      var currentKey = self
+      for _ in 0..<(interval.degree-1) {
+        let next = currentKey.key(at: isHigher ? 1 : -1)
+
+        if isHigher {
+          if currentKey == .b, next == .c {
+            diff += 1
+          }
+        } else {
+          if currentKey == .c, next == .b {
+            diff -= 1
+          }
+        }
+
+        currentKey = next
+      }
+      return diff
+    }
+
     // MARK: CustomStringConvertible
 
     /// Returns the key notation.

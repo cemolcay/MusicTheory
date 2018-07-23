@@ -20,7 +20,13 @@ public func +(lhs: Pitch, rhs: Interval) -> Pitch {
   let degree = rhs.degree - 1
   let targetKeyType = lhs.key.type.key(at: degree)
   let targetPitch = lhs + rhs.semitones
-  return targetPitch.convert(to: targetKeyType, isHigher: true)
+  let targetOctave = lhs.octave + lhs.key.type.octaveDiff(for: rhs, isHigher: true)
+
+  // Convert pitch
+  var convertedPitch = Pitch(key: Key(type: targetKeyType), octave: targetOctave)
+  let diff = targetPitch.rawValue - convertedPitch.rawValue
+  convertedPitch.key.accidental = Accidental(integerLiteral: diff)
+  return convertedPitch
 }
 
 /// Returns the pitch below target interval from target pitch.
@@ -33,7 +39,13 @@ public func -(lhs: Pitch, rhs: Interval) -> Pitch {
   let degree = -(rhs.degree - 1)
   let targetKeyType = lhs.key.type.key(at: degree)
   let targetPitch = lhs - rhs.semitones
-  return targetPitch.convert(to: targetKeyType, isHigher: false)
+  let targetOctave = lhs.octave + lhs.key.type.octaveDiff(for: rhs, isHigher: false)
+
+  // Convert pitch
+  var convertedPitch = Pitch(key: Key(type: targetKeyType), octave: targetOctave)
+  let diff = targetPitch.rawValue - convertedPitch.rawValue
+  convertedPitch.key.accidental = Accidental(integerLiteral: diff)
+  return convertedPitch
 }
 
 /// Calculates the interval between two pitches.
@@ -50,7 +62,7 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
 
   let bottomKeyIndex = Key.KeyType.all.index(of: bottom.key.type) ?? 0
   let topKeyIndex = Key.KeyType.all.index(of: top.key.type) ?? 0
-  let degree = (topKeyIndex - bottomKeyIndex) + 1
+  let degree = abs(topKeyIndex - bottomKeyIndex) + 1
   let isMajor = (degree == 2 || degree == 3 || degree == 6 || degree == 7)
 
   let majorScale = Scale(type: .major, key: bottom.key)
@@ -160,34 +172,6 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   public init(key: Key, octave: Int) {
     self.key = key
     self.octave = octave
-  }
-
-  /// Converts and returns enharmonic equivalent pitch in target `KeyType`.
-  ///
-  /// - Parameters:
-  ///   - keyType: Target `KeyType` you want to convert.
-  ///   - interval: Calculates for the interval above or below dependent on `isHigher` parameter. Leave nil if you don't want to calculate interval. Defaults nil.
-  ///   - isHigher: Is target key type is a higher pitch or not.
-  /// - Returns: Returns the converted `Pitch` in target `KeyType`.
-  public func convert(to keyType: Key.KeyType, for interval: Interval? = nil, isHigher: Bool) -> Pitch {
-    // Set target octave
-    var targetOctave = octave
-    if isHigher {
-      if keyType.rawValue < key.type.rawValue {
-        targetOctave += 1
-      }
-    } else {
-      if keyType.rawValue > key.type.rawValue {
-        targetOctave -= 1
-      }
-    }
-
-    // Convert pitch
-    let pitch = interval == nil ? self : self + interval!
-    var convertedPitch = Pitch(key: Key(type: keyType), octave: targetOctave)
-    let diff = pitch.rawValue - convertedPitch.rawValue
-    convertedPitch.key.accidental = Accidental(integerLiteral: diff)
-    return convertedPitch
   }
 
   /// Calculates and returns the frequency of note on octave based on its location of piano keys.

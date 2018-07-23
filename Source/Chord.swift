@@ -680,20 +680,6 @@ public struct Chord: ChordDescription {
   /// Inversion index of the chord.
   public private(set) var inversion: Int
 
-  /// Returns the intervals based on inversions. Used in generation of notes and note types.
-  private var intervals: [Interval] {
-    var intervals = type.intervals
-    for _ in 0..<inversion {
-      // Shift intervals to right for calculating inversion.
-      intervals = intervals.shifted
-      // Set last interval an octave above.
-      var interval = intervals[intervals.count-1]
-      interval.semitones += 12
-      intervals[intervals.count-1] = interval
-    }
-    return intervals
-  }
-
   /// Initilizes chord with root note and type.
   ///
   /// - Parameters:
@@ -710,7 +696,18 @@ public struct Chord: ChordDescription {
   /// - Parameter octave: Octave of the root note for the build chord from.
   /// - Returns: Generates notes of the chord.
   public func pitches(octave: Int) -> [Pitch] {
-    return intervals.map({ Pitch(key: key, octave: octave) + $0 })
+    var intervals = type.intervals
+    for _ in 0..<inversion {
+      intervals = intervals.shifted
+    }
+
+    let root = Pitch(key: key, octave: octave)
+    let invertedPitches = intervals.map({ root + $0 })
+    return invertedPitches
+      .enumerated()
+      .map({ index, item in
+        return index < type.intervals.count - inversion ? item : Pitch(key: item.key, octave: item.octave + 1)
+      })
   }
 
   /// Generates notes of the chord for octave range.
