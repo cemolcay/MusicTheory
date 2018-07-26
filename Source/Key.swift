@@ -10,13 +10,23 @@
 
 import Foundation
 
-/// Checks if two `Key` types are equal.
+/// Checks if two `Key` types are equal in terms of their int values.
 ///
 /// - Parameters:
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the equation value.
 public func ==(lhs: Key, rhs: Key) -> Bool {
+  return lhs.type.rawValue + lhs.accidental.rawValue == rhs.type.rawValue + rhs.accidental.rawValue
+}
+
+/// Checks if two `Key` types are equal in terms of their type and accidental values.
+///
+/// - Parameters:
+///   - lhs: Left hand side of the equation.
+///   - rhs: Right hand side of the equation.
+/// - Returns: Returns the equation value.
+public func ===(lhs: Key, rhs: Key) -> Bool {
   return lhs.type == rhs.type && lhs.accidental == rhs.accidental
 }
 
