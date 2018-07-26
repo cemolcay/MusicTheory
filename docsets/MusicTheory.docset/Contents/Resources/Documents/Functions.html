@@ -126,6 +126,9 @@
                 <a href="Functions.html#/s:11MusicTheory3eeeoiSbAA10AccidentalO_ADtF">===(_:_:)</a>
               </li>
               <li class="nav-group-task">
+                <a href="Functions.html#/s:11MusicTheory3eeeoiSbAA3KeyV_ADtF">===(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory3eeeoiSbAA5PitchV_ADtF">===(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -365,7 +368,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Checks if two <code><a href="Structs/Key.html">Key</a></code> types are equal.</p>
+                        <p>Checks if two <code><a href="Structs/Key.html">Key</a></code> types are equal in terms of their int values.</p>
 
                       </div>
                       <div class="declaration">
@@ -373,6 +376,68 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Key.html">Key</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Key.html">Key</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Left hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Right hand side of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns the equation value.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory3eeeoiSbAA3KeyV_ADtF"></a>
+                    <a name="//apple_ref/swift/Function/===(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory3eeeoiSbAA3KeyV_ADtF">===(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if two <code><a href="Structs/Key.html">Key</a></code> types are equal in terms of their type and accidental values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">===</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Key.html">Key</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/Key.html">Key</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -1769,7 +1834,7 @@ Alternative notes not passes this equality. Use <code>==</code> function if you 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2018-06-26)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2018-07-26)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
