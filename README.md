@@ -24,14 +24,14 @@ Usage
 `MusicTheory` adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are `Pitch`, `Key`, `Scale` and `Chord`.   
 
 All data types conforms `Codable`, `CustomStringConvertable`.  
-`Pitch`, `Key`, `Interval`, `Accident` structs are `RawPresentable` with `Int` as well as `ExpressibleByIntegerLiteral` that you can represent them directly with `Int`s.
+`Pitch`, and `Accident` structs are `RawPresentable` with `Int` as well as `ExpressibleByIntegerLiteral` that you can represent them directly with `Int`s.
 
 #### `Pitch` and `Key`
 
 - All keys can be defined with `Key` struct. 
 - It has a `KeyType` where you can set the base key like C, D, A, G, and an `Accitental` where it can be `.natural`, `.flat`, `sharp` or more specific like `.sharps(amount: 3)`.
 - You can create `Pitch`es with a `Key` and octave.
-- Also, you can create `Pitch`es and `Key`s with MIDI note number.
+- Also, you can create `Pitch`es with MIDI note number. `rawValue` of a pitch is its MIDI note number.
 - `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calulations easier.
 - Also, there are other helper functions or properties like frequency of a note.
 
@@ -42,10 +42,11 @@ let c4 = Pitch(key: Key(type: .c), octave: 4)
 
 #### `Interval`
 
-- Intervals are halfsteps between notes.
+- Intervals are halfsteps between pitches.
 - They are `IntegerLiteral` and you can make add/subsctract them between themselves, notes or note types.
+- You can build up a custom interval with its quality, degree and semitone properties.
 - You can build scales or chords from intervals.
-- m2, M2, m3, M3, P4, d5, P5, m6, M6, m7, M7 and P8 are predefined intervals.
+- Minor, major, perfect, augmented and diminished intervals up to 2 octaves are predefined.
 
 #### `ScaleType` and `Scale`
 
@@ -57,7 +58,7 @@ let c4 = Pitch(key: Key(type: .c), octave: 4)
 - Harmonic field is all possible triad, tetrad or extended chords in a scale.
 
 ``` swift
-let c: NoteType = .c
+let c = Key(type: .c)
 let maj: ScaleType = .major
 let cMaj = Scale(type: maj, key: c)
 ```
@@ -79,7 +80,7 @@ let m13 = ChordType(
   extensions: [
     ChordExtensionType(type: .thirteenth)
   ])
-let cm13 = Chord(type: m13, key: .c)
+let cm13 = Chord(type: m13, key: Key(type: .c))
 ```
 
 #### `Tempo` and `TimeSignature`
