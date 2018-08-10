@@ -3,6 +3,9 @@
 import Foundation
 import MusicTheory
 
+let p: Pitch = "c#2"
+let k: Key = "a#"
+
 // e f f# g g# a a# b c c# d d#
 Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .A5
 Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .d5

@@ -100,7 +100,7 @@ public func ===(lhs: Accidental, rhs: Accidental) -> Bool {
 }
 
 /// The enum used for calculating values of the `Key`s and `Pitche`s.
-public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, ExpressibleByIntegerLiteral, CustomStringConvertible {
+public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
   /// No accidental.
   case natural
   /// Reduces the `Key` or `Pitch` value amount of halfsteps.
@@ -159,6 +159,25 @@ public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, Expressi
   /// - Parameter value: Halfstep value of the accidental. Zero if natural, above zero if sharp, below zero if flat.
   public init(integerLiteral value: Accidental.IntegerLiteralType) {
     self = Accidental(rawValue: value) ?? .natural
+  }
+
+  // MARK: ExpressibleByStringLiteral
+
+  public typealias StringLiteralType = String
+
+  public init(stringLiteral value: Accidental.StringLiteralType) {
+    var sum = 0
+    for i in 0..<value.count {
+      switch value[value.index(value.startIndex, offsetBy: i)] {
+      case "#", "♯":
+        sum += 1
+      case "b", "♭":
+        sum -= 1
+      default:
+        break
+      }
+    }
+    self = Accidental(rawValue: sum) ?? .natural
   }
 
   // MARK: CustomStringConvertible

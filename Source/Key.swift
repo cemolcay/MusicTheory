@@ -31,10 +31,10 @@ public func ===(lhs: Key, rhs: Key) -> Bool {
 }
 
 /// Represents the keys that notes and pitches are based on.
-public struct Key: Codable, Equatable, Hashable, CustomStringConvertible {
+public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, CustomStringConvertible {
 
   /// Base pitch of the key without accidentals. Accidentals will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
-  public enum KeyType: Int, Codable, Equatable, Hashable, CustomStringConvertible {
+  public enum KeyType: Int, Codable, Equatable, Hashable, ExpressibleByStringLiteral, CustomStringConvertible {
     /// C key.
     case c = 0
     /// D key.
@@ -106,6 +106,26 @@ public struct Key: Codable, Equatable, Hashable, CustomStringConvertible {
       return diff
     }
 
+    // MARK: ExpressibleByStringLiteral
+
+    public typealias StringLiteralType = String
+
+    /// Initilizes with a string.
+    ///
+    /// - Parameter value: String representation of type.
+    public init(stringLiteral value: KeyType.StringLiteralType) {
+      switch value {
+      case "a": self = .a
+      case "b": self = .b
+      case "c": self = .c
+      case "d": self = .d
+      case "e": self = .e
+      case "f": self = .f
+      case "g": self = .g
+      default: self = .c
+      }
+    }
+
     // MARK: CustomStringConvertible
 
     /// Returns the key notation.
@@ -168,6 +188,32 @@ public struct Key: Codable, Equatable, Hashable, CustomStringConvertible {
   public init(type: KeyType, accidental: Accidental = .natural) {
     self.type = type
     self.accidental = accidental
+  }
+
+  // MARK: ExpressibleByStringLiteral
+
+  public typealias StringLiteralType = String
+
+  /// Initilizes with a string.
+  ///
+  /// - Parameter value: String representation of type.
+  public init(stringLiteral value: Key.StringLiteralType) {
+    var keyType = KeyType.c
+    var accidental = Accidental.natural
+    let pattern = "([A-Ga-g])([#♯♭b]*)"
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    if let regex = regex,
+      let match = regex.firstMatch(in: value, options: [], range: NSRange(0..<value.count)),
+      let keyTypeRange = Range(match.range(at: 1), in: value),
+      let accidentalRange = Range(match.range(at: 2), in: value),
+      match.numberOfRanges == 3 {
+      // Set key type
+      keyType = KeyType(stringLiteral: String(value[keyTypeRange]))
+      // Set accidental
+      accidental = Accidental(stringLiteral: String(value[accidentalRange]))
+    }
+
+    self = Key(type: keyType, accidental: accidental)
   }
 
   // MARK: CustomStringConvertible

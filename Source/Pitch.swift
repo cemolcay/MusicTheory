@@ -144,7 +144,7 @@ public func < (lhs: Pitch, rhs: Pitch) -> Bool {
 
 /// Pitch object with a `Key` and an octave.
 /// Could be initilized with MIDI note number and preferred accidental type.
-public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, ExpressibleByIntegerLiteral, CustomStringConvertible {
+public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
 
   /// Key of the pitch like C, D, A, B with accidentals.
   public var key: Key
@@ -209,6 +209,39 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   /// - Parameter value: MIDI note number of the pitch.
   public init(integerLiteral value: Pitch.IntegerLiteralType) {
     self = Pitch(midiNote: value)
+  }
+
+  // MARK: ExpressibleByStringLiteral
+
+  public typealias StringLiteralType = String
+
+  /// Initilizes with a string.
+  ///
+  /// - Parameter value: String representation of type.
+  public init(stringLiteral value: Pitch.StringLiteralType) {
+    var keyType = Key.KeyType.c
+    var accidental = Accidental.natural
+    var octave = 0
+    let pattern = "([A-Ga-g])([#♯♭b]*)(-?)(\\d+)"
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    if let regex = regex,
+      let match = regex.firstMatch(in: value, options: [], range: NSRange(0..<value.count)),
+      let keyTypeRange = Range(match.range(at: 1), in: value),
+      let accidentalRange = Range(match.range(at: 2), in: value),
+      let signRange = Range(match.range(at: 3), in: value),
+      let octaveRange = Range(match.range(at: 4), in: value),
+      match.numberOfRanges == 5 {
+      // key type
+      keyType = Key.KeyType(stringLiteral: String(value[keyTypeRange]))
+      // accidental
+      accidental = Accidental(stringLiteral: String(value[accidentalRange]))
+      // sign
+      let sign = String(value[signRange])
+      // octave
+      octave = (Int(String(value[octaveRange])) ?? 0) * (sign == "-" ? -1 : 1)
+    }
+
+    self = Pitch(key: Key(type: keyType, accidental: accidental), octave: octave)
   }
 
   // MARK: CustomStringConvertible
