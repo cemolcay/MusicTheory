@@ -3,8 +3,9 @@
 import Foundation
 import MusicTheory
 
-let p: Pitch = "c#2"
-let k: Key = "a#"
+let p: Pitch = "cb2"
+let b: Key = "b"
+p.key == b
 
 // e f f# g g# a a# b c c# d d#
 Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .A5

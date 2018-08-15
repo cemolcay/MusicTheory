@@ -17,7 +17,13 @@ import Foundation
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the equation value.
 public func ==(lhs: Key, rhs: Key) -> Bool {
-  return lhs.type.rawValue + lhs.accidental.rawValue == rhs.type.rawValue + rhs.accidental.rawValue
+  let lhsMod = (lhs.type.rawValue + lhs.accidental.rawValue) % 12
+  let normalizedLhs = lhsMod < 0 ? (12 + lhsMod) : lhsMod
+
+  let rhsMod = (rhs.type.rawValue + rhs.accidental.rawValue) % 12
+  let normalizedRhs = rhsMod < 0 ? (12 + rhsMod) : rhsMod
+
+  return normalizedLhs == normalizedRhs
 }
 
 /// Checks if two `Key` types are equal in terms of their type and accidental values.

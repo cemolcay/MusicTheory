@@ -63,6 +63,13 @@ extension MusicTheoryTests {
 
     let k: Key = "a##b"
     XCTAssert(k.accidental == .sharp && k.type == .a)
+
+    let b = Key(type: .b, accidental: .natural)
+    XCTAssert(Key(type: .c, accidental: .flat) == b)
+    XCTAssert(Key(type: .c, accidental: .sharps(amount: 23)) == b)
+    XCTAssert(Key(type: .c, accidental: .flats(amount: 13)) == b)
+    XCTAssert(Key(type: .c, accidental: .flats(amount: 25)) == b)
+    XCTAssert(Key(type: .c, accidental: .flats(amount: 24)) != b)
   }
 
   func testPitches() {
