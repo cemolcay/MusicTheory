@@ -14,9 +14,17 @@ Pitch(key: Key(type: .e, accidental: .natural), octave: 0) + .A5
 Pitch(key: Key(type: .e, accidental: .natural), octave: 0) + .d5
 
 // c# d d# e f f# g g# a a# b c
-let csharpharmonicminor = Scale(type: .harmonicMinor, key: Key(type: .c, accidental: .sharp))
+let cSharpHarmonicMinor = Scale(type: .harmonicMinor, key: Key(type: .c, accidental: .sharp))
 Pitch(key: Key(type: .c, accidental: .sharp), octave: 0) + .M7
 Pitch(key: Key(type: .b, accidental: .natural), octave: 1) - .M7
+
+// chord progression for C# harmonic minor triads
+let progression = ChordProgression.i_ii_vi_iv
+let cSharpHarmonicMinorTriadsProgression = progression.chords(
+  for: cSharpHarmonicMinor,
+  harmonicField: .triad,
+  inversion: 0)
+print(cSharpHarmonicMinorTriadsProgression)
 
 let c13 = Chord(
   type: ChordType(

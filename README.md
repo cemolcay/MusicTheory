@@ -83,6 +83,17 @@ let m13 = ChordType(
 let cm13 = Chord(type: m13, key: Key(type: .c))
 ```
 
+- You can generate chord progressions with `ChordProgression` enum.
+- For any scale, in any harmonic field, for any inversion.
+
+``` swift
+let progression = ChordProgression.i_ii_vi_iv
+let cSharpHarmonicMinorTriadsProgression = progression.chords(
+  for: cSharpHarmonicMinor,
+  harmonicField: .triad,
+  inversion: 0)
+```
+
 #### `Tempo` and `TimeSignature`
 
 - Tempo is a helper struct to define timings in your music app.
