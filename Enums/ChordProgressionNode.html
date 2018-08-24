@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Key Structure Reference</title>
+    <title>ChordProgressionNode Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/Key" class="dashAnchor"></a>
-    <a title="Key Structure Reference"></a>
+    <a name="//apple_ref/swift/Enum/ChordProgressionNode" class="dashAnchor"></a>
+    <a title="ChordProgressionNode Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">MusicTheory Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">MusicTheory Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Key Structure Reference
+        ChordProgressionNode Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -212,14 +212,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Key</h1>
+            <h1>ChordProgressionNode</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Key</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">ExpressibleByStringLiteral</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ChordProgressionNode</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents the keys that notes and pitches are based on.</p>
+            <p>A node of chord progression in intervals.</p>
 
           </section>
           <section class="section task-group-section">
@@ -228,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory3KeyV0C4TypeO"></a>
-                    <a name="//apple_ref/swift/Enum/KeyType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV0C4TypeO">KeyType</a>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO1iyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/i" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO1iyA2CmF">i</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -238,183 +238,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Base pitch of the key without accidentals. Accidentals will take account in the parent struct, <code><a href="../Structs/Key.html">Key</a></code>. Integer values are based on C = 0 on western chromatic scale.</p>
-
-                        <a href="../Structs/Key/KeyType.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">KeyType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">ExpressibleByStringLiteral</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory3KeyV4typeAC0C4TypeOvp"></a>
-                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV4typeAC0C4TypeOvp">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Type of the key.</p>
+                        <p>First-degree node</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Structs/Key/KeyType.html">KeyType</a></span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">i</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory3KeyV10accidentalAA10AccidentalOvp"></a>
-                    <a name="//apple_ref/swift/Property/accidental" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV10accidentalAA10AccidentalOvp">accidental</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Accidental of the key.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">accidental</span><span class="p">:</span> <span class="kt"><a href="../Enums/Accidental.html">Accidental</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory3KeyV14keysWithSharpsSayACGvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/keysWithSharps" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV14keysWithSharpsSayACGvpZ">keysWithSharps</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>All notes in an octave with sharp notes.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">keysWithSharps</span> <span class="o">=</span> <span class="p">[</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory3KeyV13keysWithFlatsSayACGvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/keysWithFlats" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV13keysWithFlatsSayACGvpZ">keysWithFlats</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>All notes in an octave with flat notes.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">keysWithFlats</span> <span class="o">=</span> <span class="p">[</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory3KeyV4type10accidentalA2C0C4TypeO_AA10AccidentalOtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(type:accidental:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV4type10accidentalA2C0C4TypeO_AA10AccidentalOtcfc">init(type:accidental:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initilizes the key with its type and accidental.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Structs/Key/KeyType.html">KeyType</a></span><span class="p">,</span> <span class="nv">accidental</span><span class="p">:</span> <span class="kt"><a href="../Enums/Accidental.html">Accidental</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">natural</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>type</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The type of the key.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>accidental</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Accidental of the key. Defaults natural.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -422,20 +255,13 @@
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/ExpressibleByStringLiteral"></a>
-                <a name="//apple_ref/swift/Section/ExpressibleByStringLiteral" class="dashAnchor"></a>
-                <a href="#/ExpressibleByStringLiteral">
-                  <h3 class="section-name">ExpressibleByStringLiteral</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26ExpressibleByStringLiteralP0cD4TypeQa"></a>
-                    <a name="//apple_ref/swift/Alias/StringLiteralType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26ExpressibleByStringLiteralP0cD4TypeQa">StringLiteralType</a>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO2iiyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/ii" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO2iiyA2CmF">ii</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -443,13 +269,200 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Second-degree node</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">StringLiteralType</span> <span class="o">=</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">ii</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO3iiiyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/iii" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO3iiiyA2CmF">iii</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Third-degree node</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">iii</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO2ivyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/iv" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO2ivyA2CmF">iv</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fourth-degree node</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">iv</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO1vyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/v" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO1vyA2CmF">v</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fifth-degree node</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">v</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO2viyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/vi" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO2viyA2CmF">vi</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sixth-degree node</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">vi</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO3viiyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/vii" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO3viiyA2CmF">vii</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Seventh-degree node</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="n">vii</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO4nextSayACGvp"></a>
+                    <a name="//apple_ref/swift/Property/next" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO4nextSayACGvp">next</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Meaningful next nodes, useful for a recommendation engine.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">next</span><span class="p">:</span> <span class="p">[</span><span class="kt">ChordProgressionNode</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -459,9 +472,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory3KeyV13stringLiteralACSS_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(stringLiteral:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV13stringLiteralACSS_tcfc">init(stringLiteral:)</a>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO3allSayACGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/all" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO3allSayACGvpZ">all</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -469,35 +482,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initilizes with a string.</p>
+                        <p>All nodes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">stringLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Key</span><span class="o">.</span><span class="kt"><a href="../Structs/Key.html#/s:s26ExpressibleByStringLiteralP0cD4TypeQa">StringLiteralType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="kt">ChordProgressionNode</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO1iyA2CmF">i</a></span><span class="p">,</span> <span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO2iiyA2CmF">ii</a></span><span class="p">,</span> <span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO3iiiyA2CmF">iii</a></span><span class="p">,</span> <span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO2ivyA2CmF">iv</a></span><span class="p">,</span> <span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO1vyA2CmF">v</a></span><span class="p">,</span> <span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO2viyA2CmF">vi</a></span><span class="p">,</span> <span class="o">.</span><span class="n"><a href="../Enums/ChordProgressionNode.html#/s:11MusicTheory20ChordProgressionNodeO3viiyA2CmF">vii</a></span><span class="p">]</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>value</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>String representation of type.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -516,9 +510,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory3KeyV11descriptionSSvp"></a>
+                    <a name="/s:11MusicTheory20ChordProgressionNodeO11descriptionSSvp"></a>
                     <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory3KeyV11descriptionSSvp">description</a>
+                    <a class="token" href="#/s:11MusicTheory20ChordProgressionNodeO11descriptionSSvp">description</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -526,7 +520,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns the key notation with its type and accidental, if has any.</p>
+                        <p>Returns roman numeric string of the node.</p>
 
                       </div>
                       <div class="declaration">

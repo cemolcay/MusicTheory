@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NoteValueType Enumeration Reference</title>
+    <title>CustomChordProgression Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/NoteValueType" class="dashAnchor"></a>
-    <a title="NoteValueType Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Struct/CustomChordProgression" class="dashAnchor"></a>
+    <a title="CustomChordProgression Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">MusicTheory Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">MusicTheory Reference</a>
         <img id="carat" src="../img/carat.png" />
-        NoteValueType Enumeration Reference
+        CustomChordProgression Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -212,14 +212,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NoteValueType</h1>
+            <h1>CustomChordProgression</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NoteValueType</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CustomChordProgression</span><span class="p">:</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
-            <p>Defines the types of note values.</p>
+            <p>A struct for storing custom progressions.</p>
 
           </section>
           <section class="section task-group-section">
@@ -228,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO11doubleWholeyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/doubleWhole" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO11doubleWholeyA2CmF">doubleWhole</a>
+                    <a name="/s:11MusicTheory22CustomChordProgressionV4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory22CustomChordProgressionV4nameSSvp">name</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -238,30 +238,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Two whole notes.</p>
+                        <p>Name of the progression.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">doubleWhole</span> <span class="o">=</span> <span class="mf">0.5</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO5wholeyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/whole" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO5wholeyA2CmF">whole</a>
+                    <a name="/s:11MusicTheory22CustomChordProgressionV11progressionAA0dE0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/progression" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory22CustomChordProgressionV11progressionAA0dE0Ovp">progression</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -269,200 +265,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Whole note.</p>
+                        <p>Chord progression with <code>ChordProgresion.custom</code> type.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">whole</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO4halfyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/half" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO4halfyA2CmF">half</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Half note.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">half</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO7quarteryA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/quarter" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO7quarteryA2CmF">quarter</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Quarter note.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">quarter</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO6eighthyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/eighth" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO6eighthyA2CmF">eighth</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Eighth note.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">eighth</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO9sixteenthyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/sixteenth" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO9sixteenthyA2CmF">sixteenth</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Sixteenth note.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">sixteenth</span> <span class="o">=</span> <span class="mi">16</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO12thirtysecondyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/thirtysecond" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO12thirtysecondyA2CmF">thirtysecond</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Thirtysecond note.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">thirtysecond</span> <span class="o">=</span> <span class="mi">32</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory13NoteValueTypeO11sixtyfourthyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/sixtyfourth" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory13NoteValueTypeO11sixtyfourthyA2CmF">sixtyfourth</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Sixtyfourth note.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">sixtyfourth</span> <span class="o">=</span> <span class="mi">64</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">progression</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChordProgression.html">ChordProgression</a></span></code></pre>
 
                         </div>
                       </div>
