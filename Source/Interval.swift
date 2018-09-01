@@ -34,15 +34,15 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   /// Quality type of the interval.
   public enum Quality: Int, Codable, Equatable, CustomStringConvertible {
     /// Diminished
-    case diminished = -1
+    case diminished
     /// Perfect
-    case perfect = 0
+    case perfect
     /// Minor.
-    case minor = 1
+    case minor
     /// Major.
-    case major = 2
+    case major
     /// Augmented.
-    case augmented = 3
+    case augmented
 
     // MARK: CustomStringConvertible
 

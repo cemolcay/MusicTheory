@@ -66,7 +66,7 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
   let isMajor = (degree == 2 || degree == 3 || degree == 6 || degree == 7)
 
   let majorScale = Scale(type: .major, key: bottom.key)
-  if majorScale.pitches(octaves: [bottom.octave, top.octave]).contains(top) { // Major or Perfect
+  if majorScale.keys.contains(top.key) { // Major or Perfect
     return Interval(
       quality: isMajor ? .major : .perfect,
       degree: degree,
