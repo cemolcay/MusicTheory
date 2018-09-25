@@ -39,8 +39,8 @@ All data types conforms `Codable`, `CustomStringConvertable`.
 ``` swift
 let dFlat = Key(type: d, accidental: .flat)
 let c4 = Pitch(key: Key(type: .c), octave: 4)
-let aSharp = "a#" // Key(type: .a, accidental: .sharp)
-let gFlat3 = "gb3" // or "g♭3" or "Gb3" is Pitch(key: (type: .g, accidental: .flat), octave: 3)
+let aSharp: Key = "a#" // Key(type: .a, accidental: .sharp)
+let gFlat3: Pitch = "gb3" // or "g♭3" or "Gb3" is Pitch(key: (type: .g, accidental: .flat), octave: 3)
 ```
 
 #### `Interval`
