@@ -34,10 +34,13 @@ All data types conforms `Codable`, `CustomStringConvertable`.
 - Also, you can create `Pitch`es with MIDI note number. `rawValue` of a pitch is its MIDI note number.
 - `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calulations easier.
 - Also, there are other helper functions or properties like frequency of a note.
+- You can define them with directly string representations as well.
 
 ``` swift
 let dFlat = Key(type: d, accidental: .flat)
 let c4 = Pitch(key: Key(type: .c), octave: 4)
+let aSharp = "a#" // Key(type: .a, accidental: .sharp)
+let gFlat3 = "gb3" // or "g♭3" or "Gb3" is Pitch(key: (type: .g, accidental: .flat), octave: 3)
 ```
 
 #### `Interval`
