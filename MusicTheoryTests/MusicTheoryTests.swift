@@ -103,6 +103,9 @@ extension MusicTheoryTests {
   func testFrequency() {
     let note = Pitch(key: Key(type: .a), octave: 4)
     XCTAssertEqual(note.frequency, 440.0)
+    
+    let a4 = Pitch.nearest(frequency: 440.0)
+    XCTAssertEqual(note, a4)
   }
 }
 
