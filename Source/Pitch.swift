@@ -153,6 +153,25 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   /// In theory this must be zero or a positive integer.
   /// But `Note` does not limit octave and calculates every possible octave including the negative ones.
   public var octave: Int
+    
+    /// This function returns the nearest pitch to the given frequency in Hz.
+    ///
+    /// - Parameter frequency: The frequency in Hz
+    /// - Returns: The nearest pitch for given frequency
+    public static func nearest(frequency: Float) -> Pitch? {
+        let allPitches = Array((1 ... 7).map { octave -> [Pitch] in
+            Key.keysWithSharps.map { key -> Pitch in
+                Pitch(key: key, octave: octave)
+            }
+            }.joined())
+        
+        var results = allPitches.map { pitch -> (pitch: Pitch, distance: Float) in
+            (pitch: pitch, distance: abs(pitch.frequency - frequency))
+        }
+        
+        results.sort { $0.distance < $1.distance }
+        return results.first?.pitch
+    }
 
   /// Initilizes the `Pitch` with MIDI note number.
   ///
