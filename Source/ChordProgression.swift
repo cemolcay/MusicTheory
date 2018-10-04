@@ -59,17 +59,17 @@ public enum ChordProgressionNode: Int, CustomStringConvertible, Codable {
   // MARK: CustomStringConvertible
 
   /// Returns roman numeric string of the node.
-	public var description: String {
-		switch self {
-		case .i: return "I"
-		case .ii: return "II"
-		case .iii: return "III"
-		case .iv: return "IV"
-		case .v: return "V"
-		case .vi: return "VI"
-		case .vii: return "VII"
-		}
-	}
+  public var description: String {
+    switch self {
+    case .i: return "I"
+    case .ii: return "II"
+    case .iii: return "III"
+    case .iv: return "IV"
+    case .v: return "V"
+    case .vi: return "VI"
+    case .vii: return "VII"
+    }
+  }
 }
 
 /// Chord progression enum that you can create hard-coded and custom progressions.
@@ -111,7 +111,7 @@ public enum ChordProgression: CustomStringConvertible, Codable {
   /// II - IV - I - V progression.
   case ii_iv_i_v﻿
   /// Custom progression with any node sequence.
-	case custom([ChordProgressionNode])
+  case custom([ChordProgressionNode])
 
   /// Initilizes the chord progression with its nodes.
   ///
@@ -125,8 +125,8 @@ public enum ChordProgression: CustomStringConvertible, Codable {
   }
 
   /// Returns all nodes of the progression.
-	public var nodes: [ChordProgressionNode] {
-		switch self {
+  public var nodes: [ChordProgressionNode] {
+    switch self {
     case .allNodes:
       return [.i, .ii, .iii, .iv, .v, .vi, .vii]
     case .i_v_vi_iv:
@@ -163,10 +163,10 @@ public enum ChordProgression: CustomStringConvertible, Codable {
       return [.i, .v, .ii, .iv]
     case .ii_iv_i_v﻿:
       return [.ii, .iv, .i, .v]
-    case .custom(let nodes):
-			return nodes
-		}
-	}
+    case let .custom(nodes):
+      return nodes
+    }
+  }
 
   /// All hard-coded chord progressions.
   public static var all: [ChordProgression] {
@@ -209,7 +209,7 @@ public enum ChordProgression: CustomStringConvertible, Codable {
       }
     }
     return chords
-	}
+  }
 
   // MARK: CustomStringConvertible
 

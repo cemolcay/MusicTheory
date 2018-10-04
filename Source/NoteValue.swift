@@ -54,7 +54,7 @@ public enum NoteModifier: Double, Codable {
 ///   - noteValue: The note value to be measured.
 ///   - noteValueType: The note value type to measure the length of the note value.
 /// - Returns: Returns how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
-public func /(noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
+public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
   return noteValue.modifier.rawValue * noteValueType.rawValue / noteValue.type.rawValue
 }
 

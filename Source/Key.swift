@@ -16,7 +16,7 @@ import Foundation
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the equation value.
-public func ==(lhs: Key, rhs: Key) -> Bool {
+public func == (lhs: Key, rhs: Key) -> Bool {
   let lhsMod = (lhs.type.rawValue + lhs.accidental.rawValue) % 12
   let normalizedLhs = lhsMod < 0 ? (12 + lhsMod) : lhsMod
 
@@ -32,13 +32,12 @@ public func ==(lhs: Key, rhs: Key) -> Bool {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the equation value.
-public func ===(lhs: Key, rhs: Key) -> Bool {
+public func === (lhs: Key, rhs: Key) -> Bool {
   return lhs.type == rhs.type && lhs.accidental == rhs.accidental
 }
 
 /// Represents the keys that notes and pitches are based on.
 public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, CustomStringConvertible {
-
   /// Base pitch of the key without accidentals. Accidentals will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
   public enum KeyType: Int, Codable, Equatable, Hashable, ExpressibleByStringLiteral, CustomStringConvertible {
     /// C key.
@@ -67,7 +66,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     /// - Returns: Returns the neighbouring KeyType distance away.
     public func key(at distance: Int) -> KeyType {
       guard let index = KeyType.all.index(of: self)
-        else { return self }
+      else { return self }
 
       let normalizedDistance = (distance + index) % KeyType.all.count
       let keyIndex = normalizedDistance < 0 ? (KeyType.all.count + normalizedDistance) : normalizedDistance
@@ -81,7 +80,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     public func distance(from keyType: KeyType) -> Int {
       guard let index = KeyType.all.index(of: self),
         let targetIndex = KeyType.all.index(of: keyType)
-        else { return 0 }
+      else { return 0 }
       return targetIndex - index
     }
 
@@ -94,7 +93,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     public func octaveDiff(for interval: Interval, isHigher: Bool) -> Int {
       var diff = 0
       var currentKey = self
-      for _ in 0..<(interval.degree-1) {
+      for _ in 0 ..< (interval.degree - 1) {
         let next = currentKey.key(at: isHigher ? 1 : -1)
 
         if isHigher {
@@ -209,7 +208,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     let pattern = "([A-Ga-g])([#♯♭b]*)"
     let regex = try? NSRegularExpression(pattern: pattern, options: [])
     if let regex = regex,
-      let match = regex.firstMatch(in: value, options: [], range: NSRange(0..<value.count)),
+      let match = regex.firstMatch(in: value, options: [], range: NSRange(0 ..< value.count)),
       let keyTypeRange = Range(match.range(at: 1), in: value),
       let accidentalRange = Range(match.range(at: 2), in: value),
       match.numberOfRanges == 3 {

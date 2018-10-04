@@ -16,7 +16,7 @@ import Foundation
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the sum of two accidentals.
-public func +(lhs: Accidental, rhs: Accidental) -> Accidental {
+public func + (lhs: Accidental, rhs: Accidental) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue + rhs.rawValue)
 }
 
@@ -26,7 +26,7 @@ public func +(lhs: Accidental, rhs: Accidental) -> Accidental {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the difference of two accidentals.
-public func -(lhs: Accidental, rhs: Accidental) -> Accidental {
+public func - (lhs: Accidental, rhs: Accidental) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue - rhs.rawValue)
 }
 
@@ -36,7 +36,7 @@ public func -(lhs: Accidental, rhs: Accidental) -> Accidental {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the sum of two accidentals.
-public func +(lhs: Accidental, rhs: Int) -> Accidental {
+public func + (lhs: Accidental, rhs: Int) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue + rhs)
 }
 
@@ -46,7 +46,7 @@ public func +(lhs: Accidental, rhs: Int) -> Accidental {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns the difference of two accidentals.
-public func -(lhs: Accidental, rhs: Int) -> Accidental {
+public func - (lhs: Accidental, rhs: Int) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue - rhs)
 }
 
@@ -56,7 +56,7 @@ public func -(lhs: Accidental, rhs: Int) -> Accidental {
 ///   - lhs: Accidental you want to multiply.
 ///   - rhs: Multiplier.
 /// - Returns: Returns a multiplied acceident.
-public func *(lhs: Accidental, rhs: Int) -> Accidental {
+public func * (lhs: Accidental, rhs: Int) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue * rhs)
 }
 
@@ -66,7 +66,7 @@ public func *(lhs: Accidental, rhs: Int) -> Accidental {
 ///   - lhs: Accidental you want to divide.
 ///   - rhs: Multiplier.
 /// - Returns: Returns a divided accidental.
-public func /(lhs: Accidental, rhs: Int) -> Accidental {
+public func / (lhs: Accidental, rhs: Int) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue / rhs)
 }
 
@@ -76,7 +76,7 @@ public func /(lhs: Accidental, rhs: Int) -> Accidental {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns true if two accidentalals is identical.
-public func ==(lhs: Accidental, rhs: Accidental) -> Bool {
+public func == (lhs: Accidental, rhs: Accidental) -> Bool {
   return lhs.rawValue == rhs.rawValue
 }
 
@@ -86,13 +86,13 @@ public func ==(lhs: Accidental, rhs: Accidental) -> Bool {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns true if two accidentalals is identical.
-public func ===(lhs: Accidental, rhs: Accidental) -> Bool {
+public func === (lhs: Accidental, rhs: Accidental) -> Bool {
   switch (lhs, rhs) {
   case (.natural, .natural):
     return true
-  case (.sharps(let a), .sharps(let b)):
+  case let (.sharps(a), .sharps(b)):
     return a == b
-  case (.flats(let a), .flats(let b)):
+  case let (.flats(a), .flats(b)):
     return a == b
   default:
     return false
@@ -130,9 +130,9 @@ public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, Expressi
     switch self {
     case .natural:
       return 0
-    case .flats(let amount):
+    case let .flats(amount):
       return -amount
-    case .sharps(let amount):
+    case let .sharps(amount):
       return amount
     }
   }
@@ -167,7 +167,7 @@ public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, Expressi
 
   public init(stringLiteral value: Accidental.StringLiteralType) {
     var sum = 0
-    for i in 0..<value.count {
+    for i in 0 ..< value.count {
       switch value[value.index(value.startIndex, offsetBy: i)] {
       case "#", "♯":
         sum += 1
@@ -195,19 +195,19 @@ public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, Expressi
     switch self {
     case .natural:
       return ""
-    case .flats(let amount):
+    case let .flats(amount):
       switch amount {
       case 0: return Accidental.natural.description
       case 1: return "♭"
       case 2 where Accidental.shouldUseDoubleFlatAndDoubleSharpNotation: return "𝄫"
-      default: return amount > 0 ? (0..<amount).map({ _ in Accidental.flats(amount: 1).description }).joined() : ""
+      default: return amount > 0 ? (0 ..< amount).map({ _ in Accidental.flats(amount: 1).description }).joined() : ""
       }
-    case .sharps(let amount):
+    case let .sharps(amount):
       switch amount {
       case 0: return Accidental.natural.description
       case 1: return "♯"
       case 2 where Accidental.shouldUseDoubleFlatAndDoubleSharpNotation: return "𝄪"
-      default: return amount > 0 ? (0..<amount).map({ _ in Accidental.sharps(amount: 1).description }).joined() : ""
+      default: return amount > 0 ? (0 ..< amount).map({ _ in Accidental.sharps(amount: 1).description }).joined() : ""
       }
     }
   }

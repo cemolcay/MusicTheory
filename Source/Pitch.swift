@@ -16,7 +16,7 @@ import Foundation
 ///   - lhs: Target `Pitch`.
 ///   - rhs: Target `Interval`.
 /// - Returns: Returns new pitch above target interval from target pitch.
-public func +(lhs: Pitch, rhs: Interval) -> Pitch {
+public func + (lhs: Pitch, rhs: Interval) -> Pitch {
   let degree = rhs.degree - 1
   let targetKeyType = lhs.key.type.key(at: degree)
   let targetPitch = lhs + rhs.semitones
@@ -35,7 +35,7 @@ public func +(lhs: Pitch, rhs: Interval) -> Pitch {
 ///   - lhs: Target `Pitch`.
 ///   - rhs: Target `Interval`.
 /// - Returns: Returns new pitch below target interval from target pitch.
-public func -(lhs: Pitch, rhs: Interval) -> Pitch {
+public func - (lhs: Pitch, rhs: Interval) -> Pitch {
   let degree = -(rhs.degree - 1)
   let targetKeyType = lhs.key.type.key(at: degree)
   let targetPitch = lhs - rhs.semitones
@@ -55,7 +55,7 @@ public func -(lhs: Pitch, rhs: Interval) -> Pitch {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: `Intreval` between two pitches. You can get the halfsteps from interval as well.
-public func -(lhs: Pitch, rhs: Pitch) -> Interval {
+public func - (lhs: Pitch, rhs: Pitch) -> Interval {
   let top = max(lhs, rhs)
   let bottom = min(lhs, rhs)
   let diff = top.rawValue - bottom.rawValue
@@ -70,7 +70,8 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
     return Interval(
       quality: isMajor ? .major : .perfect,
       degree: degree,
-      semitones: diff)
+      semitones: diff
+    )
   } else { // Augmented, Diminished or Minor
     if isMajor {
       let majorPitch = bottom + Interval(quality: .major, degree: degree, semitones: diff)
@@ -78,14 +79,16 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
       return Interval(
         quality: offset > 0 ? .augmented : .minor,
         degree: degree,
-        semitones: diff)
+        semitones: diff
+      )
     } else {
       let perfectPitch = bottom + Interval(quality: .perfect, degree: degree, semitones: diff)
       let offset = top.rawValue - perfectPitch.rawValue
       return Interval(
         quality: offset > 0 ? .augmented : .diminished,
         degree: degree,
-        semitones: diff)
+        semitones: diff
+      )
     }
   }
 }
@@ -96,7 +99,7 @@ public func -(lhs: Pitch, rhs: Pitch) -> Interval {
 ///   - note: The pitch that is being added halfsteps.
 ///   - halfstep: Halfsteps above.
 /// - Returns: Returns `Pitch` above halfsteps.
-public func +(pitch: Pitch, halfstep: Int) -> Pitch {
+public func + (pitch: Pitch, halfstep: Int) -> Pitch {
   return Pitch(midiNote: pitch.rawValue + halfstep)
 }
 
@@ -106,7 +109,7 @@ public func +(pitch: Pitch, halfstep: Int) -> Pitch {
 ///   - note: The pitch that is being calculated.
 ///   - halfstep: Halfsteps below.
 /// - Returns: Returns `Pitch` below halfsteps.
-public func -(pitch: Pitch, halfstep: Int) -> Pitch {
+public func - (pitch: Pitch, halfstep: Int) -> Pitch {
   return Pitch(midiNote: pitch.rawValue - halfstep)
 }
 
@@ -117,7 +120,7 @@ public func -(pitch: Pitch, halfstep: Int) -> Pitch {
 ///   - left: Left handside `Pitch` to be compared.
 ///   - right: Right handside `Pitch` to be compared.
 /// - Returns: Returns the bool value of comparisation of two pitches.
-public func ==(left: Pitch, right: Pitch) -> Bool {
+public func == (left: Pitch, right: Pitch) -> Bool {
   return left.rawValue == right.rawValue
 }
 
@@ -128,7 +131,7 @@ public func ==(left: Pitch, right: Pitch) -> Bool {
 ///   - left: Left handside `Pitch` to be compared.
 ///   - right: Right handside `Pitch` to be compared.
 /// - Returns: Returns the bool value of comparisation of two pitches.
-public func ===(left: Pitch, right: Pitch) -> Bool {
+public func === (left: Pitch, right: Pitch) -> Bool {
   return left.key == right.key && left.octave == right.octave
 }
 
@@ -145,7 +148,6 @@ public func < (lhs: Pitch, rhs: Pitch) -> Bool {
 /// Pitch object with a `Key` and an octave.
 /// Could be initilized with MIDI note number and preferred accidental type.
 public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
-
   /// Key of the pitch like C, D, A, B with accidentals.
   public var key: Key
 
@@ -153,25 +155,25 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   /// In theory this must be zero or a positive integer.
   /// But `Note` does not limit octave and calculates every possible octave including the negative ones.
   public var octave: Int
-    
-    /// This function returns the nearest pitch to the given frequency in Hz.
-    ///
-    /// - Parameter frequency: The frequency in Hz
-    /// - Returns: The nearest pitch for given frequency
-    public static func nearest(frequency: Float) -> Pitch? {
-        let allPitches = Array((1 ... 7).map { octave -> [Pitch] in
-            Key.keysWithSharps.map { key -> Pitch in
-                Pitch(key: key, octave: octave)
-            }
-            }.joined())
-        
-        var results = allPitches.map { pitch -> (pitch: Pitch, distance: Float) in
-            (pitch: pitch, distance: abs(pitch.frequency - frequency))
-        }
-        
-        results.sort { $0.distance < $1.distance }
-        return results.first?.pitch
+
+  /// This function returns the nearest pitch to the given frequency in Hz.
+  ///
+  /// - Parameter frequency: The frequency in Hz
+  /// - Returns: The nearest pitch for given frequency
+  public static func nearest(frequency: Float) -> Pitch? {
+    let allPitches = Array((1 ... 7).map { octave -> [Pitch] in
+      Key.keysWithSharps.map { key -> Pitch in
+        Pitch(key: key, octave: octave)
+      }
+    }.joined())
+
+    var results = allPitches.map { pitch -> (pitch: Pitch, distance: Float) in
+      (pitch: pitch, distance: abs(pitch.frequency - frequency))
     }
+
+    results.sort { $0.distance < $1.distance }
+    return results.first?.pitch
+  }
 
   /// Initilizes the `Pitch` with MIDI note number.
   ///
@@ -244,7 +246,7 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
     let pattern = "([A-Ga-g])([#♯♭b]*)(-?)(\\d+)"
     let regex = try? NSRegularExpression(pattern: pattern, options: [])
     if let regex = regex,
-      let match = regex.firstMatch(in: value, options: [], range: NSRange(0..<value.count)),
+      let match = regex.firstMatch(in: value, options: [], range: NSRange(0 ..< value.count)),
       let keyTypeRange = Range(match.range(at: 1), in: value),
       let accidentalRange = Range(match.range(at: 2), in: value),
       let signRange = Range(match.range(at: 3), in: value),
