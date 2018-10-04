@@ -33,7 +33,7 @@ extension Interval {
   ///   - lhs: Left hand side of the equation.
   ///   - rhs: Right hand side of the equation.
   /// - Returns: Sum of two intervals in terms of their semitones.
-  fileprivate static func +(lhs: Interval, rhs: Accidental) -> Int {
+  fileprivate static func + (lhs: Interval, rhs: Accidental) -> Int {
     return lhs.semitones + rhs.rawValue
   }
 }
@@ -286,7 +286,6 @@ public enum ChordSuspendedType: Int, ChordPart {
 /// If you add one octave up of second, fourth or sixth notes of the chord, you have extended chords.
 /// You can combine extended chords more than one in a chord.
 public struct ChordExtensionType: ChordPart {
-
   /// Defines type of the extended chords.
   public enum ExtensionType: Int, ChordDescription {
     /// 9th chord. Second note of the chord, one octave up from root.
@@ -353,7 +352,7 @@ public struct ChordExtensionType: ChordPart {
   public init(type: ExtensionType, accidental: Accidental = .natural) {
     self.type = type
     self.accidental = accidental
-    self.isAdded = false
+    isAdded = false
   }
 
   /// Initilize chord part with interval
@@ -433,9 +432,9 @@ public struct ChordExtensionType: ChordPart {
 ///   - left: Left handside of the equation.
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given chord types.
-public func ==(left: ChordType?, right: ChordType?) -> Bool {
+public func == (left: ChordType?, right: ChordType?) -> Bool {
   switch (left, right) {
-  case (.some(let left), .some(let right)):
+  case let (.some(left), .some(right)):
     return left.intervals == right.intervals
   case (.none, .none):
     return true
@@ -531,7 +530,7 @@ public struct ChordType: ChordDescription {
 
     guard let thirdPart = third,
       let fifthPart = fifth
-      else { return nil }
+    else { return nil }
 
     self = ChordType(
       third: thirdPart,
@@ -539,7 +538,8 @@ public struct ChordType: ChordDescription {
       sixth: sixth,
       seventh: seventh,
       suspended: suspended,
-      extensions: extensions)
+      extensions: extensions
+    )
   }
 
   /// Intervals of parts between root.
@@ -558,7 +558,7 @@ public struct ChordType: ChordDescription {
     let ext = extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }) ?? []
 
     var singleNotation = !ext.isEmpty && true
-    for i in 0..<max(0, ext.count - 1) {
+    for i in 0 ..< max(0, ext.count - 1) {
       if ext[i].accidental != .natural {
         singleNotation = false
       }
@@ -607,18 +607,18 @@ public struct ChordType: ChordDescription {
       guard elements.count > 0 && taking > 0 else { return [[]] }
 
       if taking == 1 {
-        return elements.map {[$0]}
+        return elements.map { [$0] }
       }
 
       var comb = [[ChordExtensionType]]()
       for (index, element) in elements.enumerated() {
         var reducedElements = elements
         reducedElements.removeFirst(index + 1)
-        comb += combinations(reducedElements, taking: taking - 1).map {[element] + $0}
+        comb += combinations(reducedElements, taking: taking - 1).map { [element] + $0 }
       }
       return comb
     }
-    
+
     var all = [ChordType]()
     let allThird = ChordThirdType.all
     let allFifth = ChordFifthType.all
@@ -641,7 +641,8 @@ public struct ChordType: ChordDescription {
                   sixth: sixth,
                   seventh: seventh,
                   suspended: sus,
-                  extensions: ext))
+                  extensions: ext
+                ))
               }
             }
           }
@@ -660,9 +661,9 @@ public struct ChordType: ChordDescription {
 ///   - left: Left handside of the equation.
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given chords.
-public func ==(left: Chord?, right: Chord?) -> Bool {
+public func == (left: Chord?, right: Chord?) -> Bool {
   switch (left, right) {
-  case (.some(let left), .some(let right)):
+  case let (.some(left), .some(right)):
     return left.key == right.key && left.type == right.type
   case (.none, .none):
     return true
@@ -697,7 +698,7 @@ public struct Chord: ChordDescription {
   /// - Returns: Generates notes of the chord.
   public func pitches(octave: Int) -> [Pitch] {
     var intervals = type.intervals
-    for _ in 0..<inversion {
+    for _ in 0 ..< inversion {
       intervals = intervals.shifted
     }
 
@@ -706,7 +707,7 @@ public struct Chord: ChordDescription {
     return invertedPitches
       .enumerated()
       .map({ index, item in
-        return index < type.intervals.count - inversion ? item : Pitch(key: item.key, octave: item.octave + 1)
+        index < type.intervals.count - inversion ? item : Pitch(key: item.key, octave: item.octave + 1)
       })
   }
 
@@ -725,7 +726,7 @@ public struct Chord: ChordDescription {
 
   /// Possible inversions of the chord.
   public var inversions: [Chord] {
-    return [Int](0..<keys.count).map({ Chord(type: type, key: key, inversion: $0) })
+    return [Int](0 ..< keys.count).map({ Chord(type: type, key: key, inversion: $0) })
   }
 
   /// Notation of the chord.

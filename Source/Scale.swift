@@ -18,7 +18,7 @@ import Foundation
 ///   - left: Left handside of the equation.
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given scale types.
-public func ==(left: ScaleType, right: ScaleType) -> Bool {
+public func == (left: ScaleType, right: ScaleType) -> Bool {
   return left.intervals == right.intervals
 }
 
@@ -243,7 +243,6 @@ public enum ScaleType: Equatable {
 }
 
 extension ScaleType: Codable {
-
   /// Keys that conforms CodingKeys protocol to map properties.
   private enum CodingKeys: String, CodingKey {
     /// Halfstep property of `Interval`.
@@ -271,7 +270,6 @@ extension ScaleType: Codable {
 }
 
 extension ScaleType: CustomStringConvertible {
-
   /// Converts `ScaleType` to string with its name.
   public var description: String {
     switch self {
@@ -322,7 +320,7 @@ extension ScaleType: CustomStringConvertible {
     case .diminishedWholeTone: return "Diminished Whole Tone"
     case .pureMinor: return "Pure Minor"
     case .dominant7th: return "Dominant 7th"
-    case .custom(_, let description): return description
+    case let .custom(_, description): return description
     }
   }
 }
@@ -335,7 +333,7 @@ extension ScaleType: CustomStringConvertible {
 ///   - left: Left handside of the equation.
 ///   - right: Right handside of the equation.
 /// - Returns: Returns Bool value of equation of two given scales.
-public func ==(left: Scale, right: Scale) -> Bool {
+public func == (left: Scale, right: Scale) -> Bool {
   return left.key == right.key && left.type == right.type
 }
 
@@ -393,7 +391,6 @@ public struct Scale: Equatable, Codable {
 }
 
 extension Scale {
-
   /// Stack of notes to generate chords for each note in the scale.
   public enum HarmonicField: Int, Codable {
     /// First, third and fifth degree notes builds a triad chord.
@@ -424,7 +421,7 @@ extension Scale {
     let scalePitches = pitches(octaves: octaves)
 
     // Build chords for each note in scale.
-    for i in 0..<scalePitches.count/octaves.count {
+    for i in 0 ..< scalePitches.count / octaves.count {
       var chordPitches = [Pitch]()
       switch field {
       case .triad:
@@ -457,7 +454,6 @@ extension Scale {
 }
 
 extension Scale: CustomStringConvertible {
-
   /// Converts `Scale` to string with its key and type.
   public var description: String {
     return "\(key) \(type): " + keys.map({ "\($0)" }).joined(separator: ", ")

@@ -23,7 +23,8 @@ let progression = ChordProgression.i_ii_vi_iv
 let cSharpHarmonicMinorTriadsProgression = progression.chords(
   for: cSharpHarmonicMinor,
   harmonicField: .triad,
-  inversion: 0)
+  inversion: 0
+)
 print(cSharpHarmonicMinorTriadsProgression)
 
 let c13 = Chord(
@@ -35,10 +36,13 @@ let c13 = Chord(
     suspended: nil,
     extensions: [
       ChordExtensionType(type: .thirteenth, accidental: .natural),
-    ]),
+    ]
+  ),
   key: Key(
     type: .c,
-    accidental: .natural))
+    accidental: .natural
+  )
+)
 
 print(c13.type.intervals)
 Pitch(key: Key(type: .c, accidental: .natural), octave: 1) + .M9

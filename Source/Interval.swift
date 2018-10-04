@@ -14,7 +14,7 @@ import Foundation
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns true if two `Interval`s are equal.
-public func ==(lhs: Interval, rhs: Interval) -> Bool {
+public func == (lhs: Interval, rhs: Interval) -> Bool {
   return lhs.semitones == rhs.semitones
 }
 
@@ -24,13 +24,12 @@ public func ==(lhs: Interval, rhs: Interval) -> Bool {
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
 /// - Returns: Returns true if two `Interval`s are equal.
-public func ===(lhs: Interval, rhs: Interval) -> Bool {
+public func === (lhs: Interval, rhs: Interval) -> Bool {
   return lhs.quality == rhs.quality && rhs.degree == rhs.degree && lhs.semitones == rhs.semitones
 }
 
 /// Defines the interval between `Pitch`es in semitones.
 public struct Interval: Codable, Equatable, CustomStringConvertible {
-
   /// Quality type of the interval.
   public enum Quality: Int, Codable, Equatable, CustomStringConvertible {
     /// Diminished
@@ -218,7 +217,7 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
   /// Returns the name of the interval.
   public var description: String {
     var formattedDegree = "\(degree)"
-    
+
     if #available(OSX 10.11, iOS 9.0, *) {
       let formatter = NumberFormatter()
       formatter.numberStyle = .ordinal
