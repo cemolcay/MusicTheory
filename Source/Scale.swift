@@ -304,7 +304,7 @@ extension Scale {
   ///
   /// - Parameter field: Type of chords you want to generate.
   /// - Parameter inversion: Inversion degree of the chords. Defaults 0.
-  /// - Returns: Returns triads or tetrads of chord for each note in scale.
+  /// - Returns: Returns chord based on the harmonic field type for each note in scale.
   public func harmonicField(for field: HarmonicField, inversion: Int = 0) -> [Chord?] {
     var chords = [Chord?]()
 
