@@ -70,6 +70,17 @@ public enum ChordProgressionNode: Int, CustomStringConvertible, Codable {
     case .vii: return "VII"
     }
   }
+
+  /// Generates a chord for a `Scale` with `Scale.HarmonicField` and optionally inverted chords.
+  ///
+  /// - Parameters:
+  ///   - scale: Scale of the chord going to be generated.
+  ///   - harmonicField: Harmonic field of the chord going to be generated.
+  ///   - inversion: Inversion of the chord going to be generated.
+  /// - Returns: Returns a chord for a scale. Returns nil if no chord is generated for this `ChordProgressionNode`.
+  public func chord(for scale: Scale, harmonicField: Scale.HarmonicField, inversion: Int = 0) -> Chord? {
+    return scale.harmonicField(for: harmonicField, inversion: inversion)[rawValue]
+  }
 }
 
 /// Chord progression enum that you can create hard-coded and custom progressions.
@@ -111,7 +122,7 @@ public struct ChordProgression: CustomStringConvertible, Codable, Equatable {
   /// II - IV - I - V progression.
   static let ii_iv_i_v = ChordProgression(nodes: [.ii, .iv, .i, .v])
 
-  let nodes: [ChordProgressionNode]
+  public let nodes: [ChordProgressionNode]
 
   /// Initilizes the chord progression with its nodes.
   ///
@@ -152,15 +163,9 @@ public struct ChordProgression: CustomStringConvertible, Codable, Equatable {
   ///   - inversion: Inversion of the chords going to be generated.
   /// - Returns: Returns all possible chords for a scale. Returns nil if the chord is not generated for particular `ChordProgressionNode`.
   public func chords(for scale: Scale, harmonicField: Scale.HarmonicField, inversion: Int = 0) -> [Chord?] {
-    let indices = nodes.map({ $0.rawValue })
     let harmonics = scale.harmonicField(for: harmonicField, inversion: inversion)
-    var chords = [Chord?]()
-    for index in indices {
-      if index < harmonics.count {
-        chords.append(harmonics[index])
-      }
-    }
-    return chords
+    return nodes.filter({ $0.rawValue < harmonics.count })
+      .map({ harmonics[$0.rawValue] })
   }
 
   // MARK: CustomStringConvertible
