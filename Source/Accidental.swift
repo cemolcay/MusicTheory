@@ -55,7 +55,7 @@ public func - (lhs: Accidental, rhs: Int) -> Accidental {
 /// - Parameters:
 ///   - lhs: Accidental you want to multiply.
 ///   - rhs: Multiplier.
-/// - Returns: Returns a multiplied acceident.
+/// - Returns: Returns a multiplied accidental.
 public func * (lhs: Accidental, rhs: Int) -> Accidental {
   return Accidental(integerLiteral: lhs.rawValue * rhs)
 }
@@ -75,7 +75,7 @@ public func / (lhs: Accidental, rhs: Int) -> Accidental {
 /// - Parameters:
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if two accidentalals is identical.
+/// - Returns: Returns true if two accidentals are identical.
 public func == (lhs: Accidental, rhs: Accidental) -> Bool {
   return lhs.rawValue == rhs.rawValue
 }
@@ -85,7 +85,7 @@ public func == (lhs: Accidental, rhs: Accidental) -> Bool {
 /// - Parameters:
 ///   - lhs: Left hand side of the equation.
 ///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if two accidentalals is identical.
+/// - Returns: Returns true if two accidentals are identical.
 public func === (lhs: Accidental, rhs: Accidental) -> Bool {
   switch (lhs, rhs) {
   case (.natural, .natural):
