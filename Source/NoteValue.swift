@@ -48,16 +48,6 @@ public enum NoteModifier: Double, Codable {
 
 // MARK: - NoteValue
 
-/// Calculates how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
-///
-/// - Parameters:
-///   - noteValue: The note value to be measured.
-///   - noteValueType: The note value type to measure the length of the note value.
-/// - Returns: Returns how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
-public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
-  return noteValue.modifier.rawValue * noteValueType.rawValue / noteValue.type.rawValue
-}
-
 /// Defines the duration of a note beatwise.
 public struct NoteValue: Codable {
   /// Type that represents the duration of note.
@@ -73,5 +63,20 @@ public struct NoteValue: Codable {
   public init(type: NoteValueType, modifier: NoteModifier = .default) {
     self.type = type
     self.modifier = modifier
+  }
+
+  /// The total duration in whole notes
+  public var duration: Double {
+    return type.rawValue * modifier.rawValue
+  }
+
+  /// Calculates how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
+  ///
+  /// - Parameters:
+  ///   - noteValue: The note value to be measured.
+  ///   - noteValueType: The note value type to measure the length of the note value.
+  /// - Returns: Returns how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
+  public static func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
+    return noteValue.modifier.rawValue * noteValueType.rawValue / noteValue.type.rawValue
   }
 }
