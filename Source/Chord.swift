@@ -26,18 +26,6 @@ public protocol ChordPart: ChordDescription {
   init?(interval: Interval)
 }
 
-extension Interval {
-  /// Returns the sum of two intervals semitones.
-  ///
-  /// - Parameters:
-  ///   - lhs: Left hand side of the equation.
-  ///   - rhs: Right hand side of the equation.
-  /// - Returns: Sum of two intervals in terms of their semitones.
-  fileprivate static func + (lhs: Interval, rhs: Accidental) -> Int {
-    return lhs.semitones + rhs.rawValue
-  }
-}
-
 /// Defines third part of the chord. Second note after the root.
 public enum ChordThirdType: Int, ChordPart {
   /// Defines major chord. 4 halfsteps between root.
