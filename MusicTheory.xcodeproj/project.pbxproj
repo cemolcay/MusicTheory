@@ -53,6 +53,10 @@
 		FC940AF421869F63001B3B7F /* ChordProgression.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AEE21869F63001B3B7F /* ChordProgression.swift */; };
 		FC940AF521869F63001B3B7F /* ChordProgression.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AEE21869F63001B3B7F /* ChordProgression.swift */; };
 		FC940AF621869F63001B3B7F /* ChordProgression.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AEE21869F63001B3B7F /* ChordProgression.swift */; };
+		FC940AF92186A44E001B3B7F /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AF82186A44E001B3B7F /* Array+Utils.swift */; };
+		FC940AFA2186A44E001B3B7F /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AF82186A44E001B3B7F /* Array+Utils.swift */; };
+		FC940AFB2186A44E001B3B7F /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AF82186A44E001B3B7F /* Array+Utils.swift */; };
+		FC940AFC2186A44E001B3B7F /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC940AF82186A44E001B3B7F /* Array+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,7 @@
 		B2EB6BA81F9ED475000C8F15 /* Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		FC940AED21869F63001B3B7F /* Chord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		FC940AEE21869F63001B3B7F /* ChordProgression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordProgression.swift; sourceTree = "<group>"; };
+		FC940AF82186A44E001B3B7F /* Array+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +139,7 @@
 		B219CBF81E4CFB7B0060A6B6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FC940AF72186A429001B3B7F /* Utils */,
 				FC940AEC21869E03001B3B7F /* Chords */,
 				B219CC311E4CFBE20060A6B6 /* Info-Mac.plist */,
 				B219CC321E4CFBE20060A6B6 /* Info-TV.plist */,
@@ -190,6 +196,14 @@
 				FC940AEE21869F63001B3B7F /* ChordProgression.swift */,
 			);
 			path = Chords;
+			sourceTree = "<group>";
+		};
+		FC940AF72186A429001B3B7F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FC940AF82186A44E001B3B7F /* Array+Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +450,7 @@
 				B23A6ED120DD530D00BF60D9 /* Interval.swift in Sources */,
 				FC940AEF21869F63001B3B7F /* Chord.swift in Sources */,
 				B2B565EF20DBF72A0070B8B7 /* Tempo.swift in Sources */,
+				FC940AF92186A44E001B3B7F /* Array+Utils.swift in Sources */,
 				B2B565FC20DC14F90070B8B7 /* TimeSignature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +468,7 @@
 				B23A6ED220DD530D00BF60D9 /* Interval.swift in Sources */,
 				FC940AF021869F63001B3B7F /* Chord.swift in Sources */,
 				B2B565F220DBF7440070B8B7 /* Tempo.swift in Sources */,
+				FC940AFA2186A44E001B3B7F /* Array+Utils.swift in Sources */,
 				B2B565FE20DC15860070B8B7 /* TimeSignature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +486,7 @@
 				B23A6ED320DD530D00BF60D9 /* Interval.swift in Sources */,
 				FC940AF121869F63001B3B7F /* Chord.swift in Sources */,
 				B2B565F820DBF7460070B8B7 /* Tempo.swift in Sources */,
+				FC940AFB2186A44E001B3B7F /* Array+Utils.swift in Sources */,
 				B2B5660020DC15870070B8B7 /* TimeSignature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +504,7 @@
 				B23A6ED420DD530D00BF60D9 /* Interval.swift in Sources */,
 				FC940AF221869F63001B3B7F /* Chord.swift in Sources */,
 				B2CDE75220DC477D00039573 /* Scale.swift in Sources */,
+				FC940AFC2186A44E001B3B7F /* Array+Utils.swift in Sources */,
 				B2B5660220DC15880070B8B7 /* TimeSignature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

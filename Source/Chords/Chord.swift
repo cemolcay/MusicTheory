@@ -770,15 +770,3 @@ public struct Chord: ChordDescription {
     return left.key == right.key && left.type == right.type
   }
 }
-
-// MARK: - Extensions
-
-extension Array {
-  internal var shifted: Array {
-    guard let firstElement = first else { return self }
-    var arr = self
-    arr.removeFirst()
-    arr.append(firstElement)
-    return arr
-  }
-}
