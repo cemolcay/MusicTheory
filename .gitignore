@@ -1,6 +1,9 @@
 
 # Created by https://www.gitignore.io/api/swift,xcode
 
+### Mac ###
+.DS_Store
+
 ### Swift ###
 # Xcode
 #

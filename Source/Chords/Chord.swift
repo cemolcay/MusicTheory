@@ -412,25 +412,6 @@ public struct ChordExtensionType: ChordPart {
   }
 }
 
-// MARK: - ChordType
-
-/// Checks the equability between two `ChordType`s by their intervals.
-///
-/// - Parameters:
-///   - left: Left handside of the equation.
-///   - right: Right handside of the equation.
-/// - Returns: Returns Bool value of equation of two given chord types.
-public func == (left: ChordType?, right: ChordType?) -> Bool {
-  switch (left, right) {
-  case let (.some(left), .some(right)):
-    return left.intervals == right.intervals
-  case (.none, .none):
-    return true
-  default:
-    return false
-  }
-}
-
 /// Defines full type of chord with all chord parts.
 public struct ChordType: ChordDescription {
   /// Thirds part. Second note of the chord.
@@ -639,26 +620,21 @@ public struct ChordType: ChordDescription {
     }
     return all
   }
+
+  // MARK: - ChordType
+
+  /// Checks the equability between two `ChordType`s by their intervals.
+  ///
+  /// - Parameters:
+  ///   - left: Left handside of the equation.
+  ///   - right: Right handside of the equation.
+  /// - Returns: Returns Bool value of equation of two given chord types.
+  public static func == (left: ChordType, right: ChordType) -> Bool {
+    return left.intervals == right.intervals
+  }
 }
 
 // MARK: - Chord
-
-/// Checks the equability between two chords by their base key and notes.
-///
-/// - Parameters:
-///   - left: Left handside of the equation.
-///   - right: Right handside of the equation.
-/// - Returns: Returns Bool value of equation of two given chords.
-public func == (left: Chord?, right: Chord?) -> Bool {
-  switch (left, right) {
-  case let (.some(left), .some(right)):
-    return left.key == right.key && left.type == right.type
-  case (.none, .none):
-    return true
-  default:
-    return false
-  }
-}
 
 /// Defines a chord with a root note and type.
 public struct Chord: ChordDescription {
@@ -782,6 +758,16 @@ public struct Chord: ChordDescription {
   public var description: String {
     let inversionNotation = inversion > 0 ? " \(inversion). Inversion" : ""
     return "\(key) \(type)\(inversionNotation)"
+  }
+
+  /// Checks the equability between two chords by their base key and notes.
+  ///
+  /// - Parameters:
+  ///   - left: Left handside of the equation.
+  ///   - right: Right handside of the equation.
+  /// - Returns: Returns Bool value of equation of two given chords.
+  public static func == (left: Chord, right: Chord) -> Bool {
+    return left.key == right.key && left.type == right.type
   }
 }
 
