@@ -139,6 +139,8 @@
 		B219CBF81E4CFB7B0060A6B6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FC0B7F84218E329A00E734CC /* Rhythm */,
+				FC0B7F83218E326000E734CC /* Frequency */,
 				FC940AF72186A429001B3B7F /* Utils */,
 				FC940AEC21869E03001B3B7F /* Chords */,
 				B219CC311E4CFBE20060A6B6 /* Info-Mac.plist */,
@@ -146,14 +148,6 @@
 				B219CC331E4CFBE20060A6B6 /* Info-Watch.plist */,
 				B219CBFA1E4CFB7B0060A6B6 /* Info-iOS.plist */,
 				B219CBFB1E4CFB7B0060A6B6 /* MusicTheory.h */,
-				B2B565F920DC14F00070B8B7 /* NoteValue.swift */,
-				B2B565FB20DC14F90070B8B7 /* TimeSignature.swift */,
-				B2B565EE20DBF72A0070B8B7 /* Tempo.swift */,
-				B2B565E520DBE6930070B8B7 /* Accidental.swift */,
-				B23A6ED020DD530D00BF60D9 /* Interval.swift */,
-				B2B5660320DC16580070B8B7 /* Key.swift */,
-				B2B565EC20DBF7030070B8B7 /* Pitch.swift */,
-				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -187,6 +181,28 @@
 				B23E8EC01F1C2BAE0094D316 /* Info.plist */,
 			);
 			path = MusicTheoryTests;
+			sourceTree = "<group>";
+		};
+		FC0B7F83218E326000E734CC /* Frequency */ = {
+			isa = PBXGroup;
+			children = (
+				B2EB6BA81F9ED475000C8F15 /* Scale.swift */,
+				B2B565E520DBE6930070B8B7 /* Accidental.swift */,
+				B23A6ED020DD530D00BF60D9 /* Interval.swift */,
+				B2B5660320DC16580070B8B7 /* Key.swift */,
+				B2B565EC20DBF7030070B8B7 /* Pitch.swift */,
+			);
+			path = Frequency;
+			sourceTree = "<group>";
+		};
+		FC0B7F84218E329A00E734CC /* Rhythm */ = {
+			isa = PBXGroup;
+			children = (
+				B2B565F920DC14F00070B8B7 /* NoteValue.swift */,
+				B2B565FB20DC14F90070B8B7 /* TimeSignature.swift */,
+				B2B565EE20DBF72A0070B8B7 /* Tempo.swift */,
+			);
+			path = Rhythm;
 			sourceTree = "<group>";
 		};
 		FC940AEC21869E03001B3B7F /* Chords */ = {
