@@ -1,6 +1,6 @@
 //
 //  ChordProgression.swift
-//  ChordBud
+//  MusicTheory
 //
 //  Created by Cem Olcay on 2.10.2017.
 //  Copyright © 2017 cemolcay. All rights reserved.

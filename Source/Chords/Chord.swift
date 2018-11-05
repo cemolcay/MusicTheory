@@ -26,18 +26,6 @@ public protocol ChordPart: ChordDescription {
   init?(interval: Interval)
 }
 
-extension Interval {
-  /// Returns the sum of two intervals semitones.
-  ///
-  /// - Parameters:
-  ///   - lhs: Left hand side of the equation.
-  ///   - rhs: Right hand side of the equation.
-  /// - Returns: Sum of two intervals in terms of their semitones.
-  fileprivate static func + (lhs: Interval, rhs: Accidental) -> Int {
-    return lhs.semitones + rhs.rawValue
-  }
-}
-
 /// Defines third part of the chord. Second note after the root.
 public enum ChordThirdType: Int, ChordPart {
   /// Defines major chord. 4 halfsteps between root.
@@ -424,25 +412,6 @@ public struct ChordExtensionType: ChordPart {
   }
 }
 
-// MARK: - ChordType
-
-/// Checks the equability between two `ChordType`s by their intervals.
-///
-/// - Parameters:
-///   - left: Left handside of the equation.
-///   - right: Right handside of the equation.
-/// - Returns: Returns Bool value of equation of two given chord types.
-public func == (left: ChordType?, right: ChordType?) -> Bool {
-  switch (left, right) {
-  case let (.some(left), .some(right)):
-    return left.intervals == right.intervals
-  case (.none, .none):
-    return true
-  default:
-    return false
-  }
-}
-
 /// Defines full type of chord with all chord parts.
 public struct ChordType: ChordDescription {
   /// Thirds part. Second note of the chord.
@@ -651,26 +620,21 @@ public struct ChordType: ChordDescription {
     }
     return all
   }
+
+  // MARK: - ChordType
+
+  /// Checks the equability between two `ChordType`s by their intervals.
+  ///
+  /// - Parameters:
+  ///   - left: Left handside of the equation.
+  ///   - right: Right handside of the equation.
+  /// - Returns: Returns Bool value of equation of two given chord types.
+  public static func == (left: ChordType, right: ChordType) -> Bool {
+    return left.intervals == right.intervals
+  }
 }
 
 // MARK: - Chord
-
-/// Checks the equability between two chords by their base key and notes.
-///
-/// - Parameters:
-///   - left: Left handside of the equation.
-///   - right: Right handside of the equation.
-/// - Returns: Returns Bool value of equation of two given chords.
-public func == (left: Chord?, right: Chord?) -> Bool {
-  switch (left, right) {
-  case let (.some(left), .some(right)):
-    return left.key == right.key && left.type == right.type
-  case (.none, .none):
-    return true
-  default:
-    return false
-  }
-}
 
 /// Defines a chord with a root note and type.
 public struct Chord: ChordDescription {
@@ -740,16 +704,14 @@ public struct Chord: ChordDescription {
     let inversionNotation = inversion > 0 ? " \(inversion). Inversion" : ""
     return "\(key) \(type)\(inversionNotation)"
   }
-}
 
-// MARK: - Extensions
-
-extension Array {
-  internal var shifted: Array {
-    guard let firstElement = first else { return self }
-    var arr = self
-    arr.removeFirst()
-    arr.append(firstElement)
-    return arr
+  /// Checks the equability between two chords by their base key and notes.
+  ///
+  /// - Parameters:
+  ///   - left: Left handside of the equation.
+  ///   - right: Right handside of the equation.
+  /// - Returns: Returns Bool value of equation of two given chords.
+  public static func == (left: Chord, right: Chord) -> Bool {
+    return left.key == right.key && left.type == right.type
   }
 }

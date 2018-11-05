@@ -8,26 +8,6 @@
 
 import Foundation
 
-/// Checks the equality of two `Interval`s in terms of their semitones.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if two `Interval`s are equal.
-public func == (lhs: Interval, rhs: Interval) -> Bool {
-  return lhs.semitones == rhs.semitones
-}
-
-/// Checks the equality of two `Interval`s in terms of their quality, degree and semitones.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if two `Interval`s are equal.
-public func === (lhs: Interval, rhs: Interval) -> Bool {
-  return lhs.quality == rhs.quality && rhs.degree == rhs.degree && lhs.semitones == rhs.semitones
-}
-
 /// Defines the interval between `Pitch`es in semitones.
 public struct Interval: Codable, Equatable, CustomStringConvertible {
   /// Quality type of the interval.
@@ -225,5 +205,35 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
     }
 
     return "\(quality) \(formattedDegree)"
+  }
+
+  /// Checks the equality of two `Interval`s in terms of their semitones.
+  ///
+  /// - Parameters:
+  ///   - lhs: Left hand side of the equation.
+  ///   - rhs: Right hand side of the equation.
+  /// - Returns: Returns true if two `Interval`s are equal.
+  public static func == (lhs: Interval, rhs: Interval) -> Bool {
+    return lhs.semitones == rhs.semitones
+  }
+
+  /// Checks the equality of two `Interval`s in terms of their quality, degree and semitones.
+  ///
+  /// - Parameters:
+  ///   - lhs: Left hand side of the equation.
+  ///   - rhs: Right hand side of the equation.
+  /// - Returns: Returns true if two `Interval`s are equal.
+  public static func === (lhs: Interval, rhs: Interval) -> Bool {
+    return lhs.quality == rhs.quality && rhs.degree == rhs.degree && lhs.semitones == rhs.semitones
+  }
+
+  /// Returns the sum of two intervals semitones.
+  ///
+  /// - Parameters:
+  ///   - lhs: Left hand side of the equation.
+  ///   - rhs: Right hand side of the equation.
+  /// - Returns: Sum of two intervals in terms of their semitones.
+  static func + (lhs: Interval, rhs: Accidental) -> Int {
+    return lhs.semitones + rhs.rawValue
   }
 }
