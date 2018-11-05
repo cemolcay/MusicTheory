@@ -213,7 +213,10 @@ extension MusicTheoryTests {
       Chord(type: ChordType(third: .minor), key: Key(type: .a)),
       Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
     ]
-    XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
+    zip(triads, triadsExpected).forEach { (arg) in
+        let (triad, expectedTriad) = arg
+        XCTAssert(triad! == expectedTriad)
+    }
   }
 }
 
