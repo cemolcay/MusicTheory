@@ -1,7 +1,7 @@
 os: osx
 language: swift
-osx_image: xcode9.3
-xcode_project: MusicTheory.xcodeproj # path to your xcodeproj folder
+osx_image: xcode10.1
+xcode_project: MusicTheory.xcodeproj
 xcode_scheme: MusicTheoryTests
 script:
   - xcodebuild -project MusicTheory.xcodeproj -scheme MusicTheory\ Mac ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
