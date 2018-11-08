@@ -86,41 +86,41 @@ public enum ChordProgressionNode: Int, CustomStringConvertible, Codable {
 /// Chord progression enum that you can create hard-coded and custom progressions.
 public struct ChordProgression: CustomStringConvertible, Codable, Equatable {
   /// All nodes from first to seventh.
-  static let allNodes = ChordProgression(nodes: [.i, .ii, .iii, .iv, .v, .vi, .vii])
+  public static let allNodes = ChordProgression(nodes: [.i, .ii, .iii, .iv, .v, .vi, .vii])
   /// I - V - VI - IV progression.
-  static let i_v_vi_iv = ChordProgression(nodes: [.i, .v, .vi, .iv])
+  public static let i_v_vi_iv = ChordProgression(nodes: [.i, .v, .vi, .iv])
   /// VI - V - IV - V progression.
-  static let vi_v_iv_v = ChordProgression(nodes: [.vi, .v, .iv, .v])
+  public static let vi_v_iv_v = ChordProgression(nodes: [.vi, .v, .iv, .v])
   /// I - VI - IV - V progression.
-  static let i_vi_iv_v = ChordProgression(nodes: [.i, .vi, .iv, .v])
+  public static let i_vi_iv_v = ChordProgression(nodes: [.i, .vi, .iv, .v])
   /// I - IV - VI - V progression.
-  static let i_iv_vi_v = ChordProgression(nodes: [.i, .iv, .vi, .v])
+  public static let i_iv_vi_v = ChordProgression(nodes: [.i, .iv, .vi, .v])
   /// I - V - IV - V progression.
-  static let i_v_iv_v = ChordProgression(nodes: [.i, .v, .iv, .v])
+  public static let i_v_iv_v = ChordProgression(nodes: [.i, .v, .iv, .v])
   /// VI - II - V - I progression.
-  static let vi_ii_v_i = ChordProgression(nodes: [.vi, .ii, .v, .i])
+  public static let vi_ii_v_i = ChordProgression(nodes: [.vi, .ii, .v, .i])
   /// I - VI - II - V progression.
-  static let i_vi_ii_v = ChordProgression(nodes: [.i, .vi, .ii, .v])
+  public static let i_vi_ii_v = ChordProgression(nodes: [.i, .vi, .ii, .v])
   /// I - IV - II - V progression.
-  static let i_iv_ii_v = ChordProgression(nodes: [.i, .iv, .ii, .v])
+  public static let i_iv_ii_v = ChordProgression(nodes: [.i, .iv, .ii, .v])
   /// VI - IV - I - V progression.
-  static let vi_iv_i_v = ChordProgression(nodes: [.vi, .iv, .i, .v])
+  public static let vi_iv_i_v = ChordProgression(nodes: [.vi, .iv, .i, .v])
   /// I - VI - III - VII progression.
-  static let i_vi_iii_vii = ChordProgression(nodes: [.i, .vi, .iii, .vii])
+  public static let i_vi_iii_vii = ChordProgression(nodes: [.i, .vi, .iii, .vii])
   /// VI - V - IV - III progression.
-  static let vi_v_iv_iii = ChordProgression(nodes: [.vi, .v, .iv, .iii])
+  public static let vi_v_iv_iii = ChordProgression(nodes: [.vi, .v, .iv, .iii])
   /// I - V - VI - III - IV - I - IV - V progression.
-  static let i_v_vi_iii_iv_i_iv_v = ChordProgression(nodes: [.i, .v, .vi, .iii, .iv, .i, .iv, .v])
+  public static let i_v_vi_iii_iv_i_iv_v = ChordProgression(nodes: [.i, .v, .vi, .iii, .iv, .i, .iv, .v])
   /// IV - I - V - IV progression.
-  static let iv_i_v_iv = ChordProgression(nodes: [.iv, .i, .v, .iv])
+  public static let iv_i_v_iv = ChordProgression(nodes: [.iv, .i, .v, .iv])
   /// I - II - VI - IV progression.
-  static let i_ii_vi_iv = ChordProgression(nodes: [.i, .ii, .vi, .iv])
+  public static let i_ii_vi_iv = ChordProgression(nodes: [.i, .ii, .vi, .iv])
   /// I - III - VI - IV progression.
-  static let i_iii_vi_iv = ChordProgression(nodes: [.i, .iii, .vi, .iv])
+  public static let i_iii_vi_iv = ChordProgression(nodes: [.i, .iii, .vi, .iv])
   /// I - V - II - IV progression.
-  static let i_v_ii_iv = ChordProgression(nodes: [.i, .v, .ii, .iv])
+  public static let i_v_ii_iv = ChordProgression(nodes: [.i, .v, .ii, .iv])
   /// II - IV - I - V progression.
-  static let ii_iv_i_v = ChordProgression(nodes: [.ii, .iv, .i, .v])
+  public static let ii_iv_i_v = ChordProgression(nodes: [.ii, .iv, .i, .v])
 
   public let nodes: [ChordProgressionNode]
 
