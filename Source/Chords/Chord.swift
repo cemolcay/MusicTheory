@@ -218,6 +218,64 @@ public enum ChordSeventhType: Int, ChordPart {
   }
 }
 
+public enum ChordEighthType: Int, ChordPart {
+  /// A perfect eighth - an octave above root.
+  case perfect
+  /// Halfstep down an octave above root.
+  case diminished
+  /// Halfstep above an octave above root.
+  case augmented
+
+  /// Initilize chord part with interval.
+  public init?(interval: Interval) {
+    switch interval {
+    case ChordEighthType.perfect.interval:
+      self = .perfect
+    case ChordEighthType.diminished.interval:
+      self = .diminished
+    case ChordEighthType.augmented.interval:
+      self = .augmented
+    default:
+      return nil
+    }
+  }
+
+  /// Interval between root.
+  public var interval: Interval {
+    switch self {
+    case .perfect:
+      return .P8
+    case .diminished:
+      return .d8
+    case .augmented:
+      return .A8
+    }
+  }
+
+  /// Notation of chord part.
+  public var notation: String {
+    switch self {
+    case .perfect: return "d8"
+    case .diminished: return "8"
+    case .augmented: return "A8"
+    }
+  }
+
+  /// Description of chord part.
+  public var description: String {
+    switch self {
+    case .perfect: return ""
+    case .diminished: return "Diminished 8th"
+    case .augmented: return "Augmented 8th"
+    }
+  }
+
+  /// All values of `ChordEighthType`.
+  public static var all: [ChordEighthType] {
+    return [.perfect, .diminished, .augmented]
+  }
+}
+
 /// Defines suspended chords.
 /// If you play second or fourth note of chord, instead of thirds, than you have suspended chords.
 public enum ChordSuspendedType: Int, ChordPart {
@@ -276,6 +334,8 @@ public enum ChordSuspendedType: Int, ChordPart {
 public struct ChordExtensionType: ChordPart {
   /// Defines type of the extended chords.
   public enum ExtensionType: Int, ChordDescription {
+    /// An octave up from the root.
+    case octave = 8
     /// 9th chord. Second note of the chord, one octave up from root.
     case ninth = 9
     /// 11th chord. Eleventh note of the chord, one octave up from root.
@@ -286,6 +346,8 @@ public struct ChordExtensionType: ChordPart {
     /// Interval between root.
     public var interval: Interval {
       switch self {
+      case .octave:
+        return .P8
       case .ninth:
         return .M9
       case .eleventh:
@@ -298,6 +360,8 @@ public struct ChordExtensionType: ChordPart {
     /// Notation of the chord part.
     public var notation: String {
       switch self {
+      case .octave:
+        return "8"
       case .ninth:
         return "9"
       case .eleventh:
@@ -310,6 +374,8 @@ public struct ChordExtensionType: ChordPart {
     /// Description of the chord part.
     public var description: String {
       switch self {
+      case .octave:
+        return ""
       case .ninth:
         return "9th"
       case .eleventh:
@@ -321,7 +387,7 @@ public struct ChordExtensionType: ChordPart {
 
     /// All values of `ExtensionType`.
     public static var all: [ExtensionType] {
-      return [.ninth, .eleventh, .thirteenth]
+      return [.octave, .ninth, .eleventh, .thirteenth]
     }
   }
 
@@ -372,6 +438,10 @@ public struct ChordExtensionType: ChordPart {
   /// Interval between root.
   public var interval: Interval {
     switch (type, accidental) {
+    case (.octave, .natural): return .P8
+    case (.octave, .flat): return .d8
+    case (.octave, .sharp): return .A8
+
     case (.ninth, .natural): return .M9
     case (.ninth, .flat): return .m9
     case (.ninth, .sharp): return .A9
@@ -387,6 +457,7 @@ public struct ChordExtensionType: ChordPart {
     case (.ninth, _): return .M9
     case (.eleventh, _): return .P11
     case (.thirteenth, _): return .M13
+    case (.octave, _): return .P8
     }
   }
 
@@ -415,13 +486,15 @@ public struct ChordExtensionType: ChordPart {
 /// Defines full type of chord with all chord parts.
 public struct ChordType: ChordDescription {
   /// Thirds part. Second note of the chord.
-  public var third: ChordThirdType
+  public var third: ChordThirdType?
   /// Fifths part. Third note of the chord.
-  public var fifth: ChordFifthType
+  public var fifth: ChordFifthType?
   /// Defines a sixth chord. Defaults nil.
   public var sixth: ChordSixthType?
   /// Defines a seventh chord. Defaults nil.
   public var seventh: ChordSeventhType?
+  /// Defined a eighth chord. Defaults nil.
+  public var eighth: ChordEighthType?
   /// Defines a suspended chord. Defaults nil.
   public var suspended: ChordSuspendedType?
   /// Defines extended chord. Defaults nil.
@@ -443,17 +516,19 @@ public struct ChordType: ChordDescription {
   /// Initilze the chord type with its parts.
   ///
   /// - Parameters:
-  ///   - third: Thirds part.
+  ///   - third: Thirds part. Defaults nil.
   ///   - fifth: Fifths part. Defaults perfect fifth.
   ///   - sixth: Sixth part. Defaults nil.
   ///   - seventh: Seventh part. Defaults nil.
+  ///   - eighth: Eighth part. Defaults nil.
   ///   - suspended: Suspended part. Defaults nil.
   ///   - extensions: Extended chords part. Defaults nil. Could be add more than one extended chord.
-  public init(third: ChordThirdType, fifth: ChordFifthType = .perfect, sixth: ChordSixthType? = nil, seventh: ChordSeventhType? = nil, suspended: ChordSuspendedType? = nil, extensions: [ChordExtensionType]? = nil) {
+  public init(third: ChordThirdType?, fifth: ChordFifthType? = .perfect, sixth: ChordSixthType? = nil, seventh: ChordSeventhType? = nil, eighth: ChordEighthType? = nil, suspended: ChordSuspendedType? = nil, extensions: [ChordExtensionType]? = nil) {
     self.third = third
     self.fifth = fifth
     self.sixth = sixth
     self.seventh = seventh
+    self.eighth = eighth
     self.suspended = suspended
     self.extensions = extensions
 
@@ -478,6 +553,7 @@ public struct ChordType: ChordDescription {
     var fifth: ChordFifthType?
     var sixth: ChordSixthType?
     var seventh: ChordSeventhType?
+    var eighth: ChordEighthType?
     var suspended: ChordSuspendedType?
     var extensions = [ChordExtensionType]()
 
@@ -490,6 +566,8 @@ public struct ChordType: ChordDescription {
         sixth = sixthPart
       } else if let seventhPart = ChordSeventhType(interval: interval) {
         seventh = seventhPart
+      } else if let eighthPart = ChordEighthType(interval: interval) {
+        eighth = eighthPart
       } else if let suspendedPart = ChordSuspendedType(interval: interval) {
         suspended = suspendedPart
       } else if let extensionPart = ChordExtensionType(interval: interval) {
@@ -497,15 +575,12 @@ public struct ChordType: ChordDescription {
       }
     }
 
-    guard let thirdPart = third,
-      let fifthPart = fifth
-    else { return nil }
-
     self = ChordType(
-      third: thirdPart,
-      fifth: fifthPart,
+      third: third,
+      fifth: fifth,
       sixth: sixth,
       seventh: seventh,
+      eighth: eighth,
       suspended: suspended,
       extensions: extensions
     )
@@ -516,6 +591,16 @@ public struct ChordType: ChordDescription {
     var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
     parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as ChordPart? }) ?? []
     return [.P1] + parts.compactMap({ $0?.interval })
+  }
+
+  /// Whether the chord type contains all of the specified chord parts.
+  ///
+  /// - Parameter chordParts: chord parts to check
+  /// - Returns: true if the chord type contains all of the specified chord parts
+  func hasChordParts(_ chordParts: [ChordPart]) -> Bool {
+    return chordParts.allSatisfy { chordPart in
+      self.intervals.contains(chordPart.interval)
+    }
   }
 
   /// Notation of the chord type.
@@ -542,6 +627,25 @@ public struct ChordType: ChordDescription {
       extensionNotation = extensionNotation.isEmpty ? "" : "(\(extensionNotation))"
     }
 
+    let thirdNotation: String
+    let fifthNotation: String
+    var eighthNotation: String = ""
+
+    if let fifth = fifth, let third = third {
+      thirdNotation = third.notation
+      fifthNotation = fifth.notation
+    } else if let fifth = fifth {
+      thirdNotation = ""
+      fifthNotation = fifth == .perfect ? "5" : fifth.notation
+    } else if let third = third {
+      thirdNotation = third.notation
+      fifthNotation = "(no 5)"
+    } else {
+      eighthNotation = "8"
+      thirdNotation = ""
+      fifthNotation = ""
+    }
+
     if seventh != nil {
       // Don't show major seventh note if extended is a major as well
       if seventh == .major, (extensions ?? []).count > 0 {
@@ -550,11 +654,11 @@ public struct ChordType: ChordDescription {
       }
       // Show fifth note after seventh in parenthesis
       if fifth == .agumented || fifth == .diminished {
-        return "\(third.notation)\(sixthNotation)\(seventhNotation)(\(fifth.notation))\(suspendedNotation)\(extensionNotation)"
+        return "\(eighthNotation)\(thirdNotation)\(sixthNotation)\(seventhNotation)(\(thirdNotation))\(suspendedNotation)\(extensionNotation)"
       }
     }
 
-    return "\(third.notation)\(fifth.notation)\(sixthNotation)\(seventhNotation)\(suspendedNotation)\(extensionNotation)"
+    return "\(eighthNotation)\(thirdNotation)\(fifthNotation)\(sixthNotation)\(seventhNotation)\(suspendedNotation)\(extensionNotation)"
   }
 
   /// Description of the chord type.
@@ -565,7 +669,31 @@ public struct ChordType: ChordDescription {
     let extensionsNotation = extensions?
       .sorted(by: { $0.type.rawValue < $1.type.rawValue })
       .map({ $0.description as String? }) ?? []
-    let desc = [third.description, fifth.description, sixthNotation, seventhNotation, suspendedNotation] + extensionsNotation
+
+    let eighthDescription = third == nil && fifth == nil ? "Octave" : nil
+    let thirdDescription: String?
+    let fifthDescription: String?
+
+    if let fifth = fifth, let third = third {
+      thirdDescription = third.description
+      fifthDescription = fifth.description
+    } else if let fifth = fifth {
+      thirdDescription = "(no 3)"
+      fifthDescription = fifth.description.isEmpty ? nil : fifth.description
+    } else if let third = third {
+      thirdDescription = third.description
+      fifthDescription = "(no 5)"
+    } else {
+      if eighth != nil {
+        thirdDescription = nil
+        fifthDescription = nil
+      } else {
+        thirdDescription = "(no 3)"
+        fifthDescription = "(no 5)"
+      }
+    }
+
+    let desc = [eighthDescription, thirdDescription, fifthDescription, sixthNotation, seventhNotation, suspendedNotation] + extensionsNotation
     return desc.compactMap({ $0 }).joined(separator: " ")
   }
 
@@ -661,6 +789,14 @@ public struct Chord: ChordDescription {
     return pitches(octave: 1).map({ $0.key })
   }
 
+  /// Checks if the chord can be inverted with the inversion number
+  ///
+  /// - Parameter inversion: Inversion number
+  /// - Returns: Whether the chord has the inversion
+  public func hasInversion(_ inversion: Int) -> Bool {
+    return inversion >= 0 && inversion < keys.count
+  }
+
   /// Possible inversions of the chord.
   public var inversions: [Chord] {
     return [Int](0 ..< keys.count).map({ Chord(type: type, key: key, inversion: $0) })
@@ -750,6 +886,15 @@ public struct Chord: ChordDescription {
     }
 
     return roman
+  }
+
+  /// Invert the chord by a specified inversion number
+  ///
+  /// - Parameter inversion: Inversion number
+  /// - Returns: Chord with new inversion number
+  public func chord(withInversion inversion: Int) -> Chord {
+    assert(hasInversion(inversion), "Chord does not have the specified inversion")
+    return Chord(type: type, key: key, inversion: inversion)
   }
 
   // MARK: CustomStringConvertible
