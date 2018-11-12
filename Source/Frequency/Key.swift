@@ -119,7 +119,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     ///
     /// - Parameter value: String representation of type.
     public init(stringLiteral value: KeyType.StringLiteralType) {
-      switch value {
+      switch value.lowercased() {
       case "a": self = .a
       case "b": self = .b
       case "c": self = .c

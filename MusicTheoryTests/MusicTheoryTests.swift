@@ -213,9 +213,9 @@ extension MusicTheoryTests {
       Chord(type: ChordType(third: .minor), key: Key(type: .a)),
       Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
     ]
-    zip(triads, triadsExpected).forEach { (arg) in
-        let (triad, expectedTriad) = arg
-        XCTAssert(triad! == expectedTriad)
+    zip(triads, triadsExpected).forEach { arg in
+      let (triad, expectedTriad) = arg
+      XCTAssert(triad! == expectedTriad)
     }
   }
 }
@@ -301,6 +301,18 @@ extension MusicTheoryTests {
     )
     XCTAssert(cmadd13.pitches(octave: 1) === cmadd13Notes)
   }
+
+    func testNotationAndDescriptions() {
+        let f8 = Chord(type: ChordType(third: nil, fifth: nil, sixth: nil, seventh: nil, eighth: .perfect, suspended: nil, extensions: nil), key: Key(type: "F"))
+
+        XCTAssertEqual(f8.notation, "F8")
+        XCTAssertEqual(f8.description, "F Octave")
+
+        let g5 = Chord(type: ChordType(third: nil, fifth: .perfect, sixth: nil, seventh: nil, suspended: nil, extensions: nil), key: Key(type: "G"))
+
+        XCTAssertEqual(g5.notation, "G5")
+        XCTAssertEqual(g5.description, "G (no 3)")
+    }
 
   func testInversions() {
     let c7 = Chord(
