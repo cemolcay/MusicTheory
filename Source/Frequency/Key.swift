@@ -10,32 +10,6 @@
 
 import Foundation
 
-/// Checks if two `Key` types are equal in terms of their int values.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the equation value.
-public func == (lhs: Key, rhs: Key) -> Bool {
-  let lhsMod = (lhs.type.rawValue + lhs.accidental.rawValue) % 12
-  let normalizedLhs = lhsMod < 0 ? (12 + lhsMod) : lhsMod
-
-  let rhsMod = (rhs.type.rawValue + rhs.accidental.rawValue) % 12
-  let normalizedRhs = rhsMod < 0 ? (12 + rhsMod) : rhsMod
-
-  return normalizedLhs == normalizedRhs
-}
-
-/// Checks if two `Key` types are equal in terms of their type and accidental values.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the equation value.
-public func === (lhs: Key, rhs: Key) -> Bool {
-  return lhs.type == rhs.type && lhs.accidental == rhs.accidental
-}
-
 /// Represents the keys that notes and pitches are based on.
 public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, CustomStringConvertible {
   /// Base pitch of the key without accidentals. Accidentals will take account in the parent struct, `Key`. Integer values are based on C = 0 on western chromatic scale.
@@ -226,5 +200,31 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
   /// Returns the key notation with its type and accidental, if has any.
   public var description: String {
     return "\(type)\(accidental)"
+  }
+
+  /// Checks if two `Key` types are equal in terms of their int values.
+  ///
+  /// - Parameters:
+  ///   - lhs: Left hand side of the equation.
+  ///   - rhs: Right hand side of the equation.
+  /// - Returns: Returns the equation value.
+  public static func == (lhs: Key, rhs: Key) -> Bool {
+    let lhsMod = (lhs.type.rawValue + lhs.accidental.rawValue) % 12
+    let normalizedLhs = lhsMod < 0 ? (12 + lhsMod) : lhsMod
+
+    let rhsMod = (rhs.type.rawValue + rhs.accidental.rawValue) % 12
+    let normalizedRhs = rhsMod < 0 ? (12 + rhsMod) : rhsMod
+
+    return normalizedLhs == normalizedRhs
+  }
+
+  /// Checks if two `Key` types are equal in terms of their type and accidental values.
+  ///
+  /// - Parameters:
+  ///   - lhs: Left hand side of the equation.
+  ///   - rhs: Right hand side of the equation.
+  /// - Returns: Returns the equation value.
+  public static func === (lhs: Key, rhs: Key) -> Bool {
+    return lhs.type == rhs.type && lhs.accidental == rhs.accidental
   }
 }
