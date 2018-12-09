@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ScaleType Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/ScaleType" class="dashAnchor"></a>
+    <a title="ScaleType Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">MusicTheory Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/cemolcay/MusicTheory"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">MusicTheory Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ScaleType Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Accidental.html">Accidental</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordFifthType.html">ChordFifthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordProgressionNode.html">ChordProgressionNode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordSeventhType.html">ChordSeventhType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordSuspendedType.html">ChordSuspendedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChordThirdType.html">ChordThirdType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteModifier.html">NoteModifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NoteValueType.html">NoteValueType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1moiyAA10AccidentalOAD_SitF">*(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiyAA10AccidentalOAD_ADtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiyAA10AccidentalOAD_SitF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiyAA5PitchVAD_AA8IntervalVtF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1poiyAA5PitchVAD_SitF">+(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiyAA10AccidentalOAD_ADtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiyAA10AccidentalOAD_SitF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiyAA5PitchVAD_AA8IntervalVtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiyAA5PitchVAD_SitF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1soiyAA8IntervalVAA5PitchV_AFtF">-(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1doiyAA10AccidentalOAD_SitF">/(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1doiySdAA9NoteValueV_AA0cD4TypeOtF">/(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory1loiySbAA5PitchV_ADtF">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA10AccidentalO_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA3KeyV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA5ChordVSg_AEtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA5PitchV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA5ScaleV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA8IntervalV_ADtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory2eeoiySbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiySbAA10AccidentalO_ADtF">===(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiySbAA3KeyV_ADtF">===(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiySbAA5PitchV_ADtF">===(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11MusicTheory3eeeoiySbAA8IntervalV_ADtF">===(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ChordDescription.html">ChordDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ChordPart.html">ChordPart</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Chord.html">Chord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType.html">ChordExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordProgression.html">ChordProgression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordSixthType.html">ChordSixthType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChordType.html">ChordType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CustomChordProgression.html">CustomChordProgression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Interval.html">Interval</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Interval/Quality.html">– Quality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Key.html">Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Key/KeyType.html">– KeyType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NoteValue.html">NoteValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Pitch.html">Pitch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Scale.html">Scale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Scale/HarmonicField.html">– HarmonicField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ScaleType.html">ScaleType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Tempo.html">Tempo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimeSignature.html">TimeSignature</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ScaleType</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ScaleType</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents scale by the intervals between note sequences.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV5majorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/major" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV5majorACvpZ">major</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">major</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="kt">ScaleType</span><span class="o">.</span><span class="n"><a href="../Structs/ScaleType.html#/s:11MusicTheory9ScaleTypeV6ionianACvpZ">ionian</a></span><span class="o">.</span><span class="n"><a href="../Structs/ScaleType.html#/s:11MusicTheory9ScaleTypeV9intervalsSayAA8IntervalVGvp">intervals</a></span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Major"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV5minorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/minor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV5minorACvpZ">minor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">minor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="kt">ScaleType</span><span class="o">.</span><span class="n"><a href="../Structs/ScaleType.html#/s:11MusicTheory9ScaleTypeV7aeolianACvpZ">aeolian</a></span><span class="o">.</span><span class="n"><a href="../Structs/ScaleType.html#/s:11MusicTheory9ScaleTypeV9intervalsSayAA8IntervalVGvp">intervals</a></span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV13harmonicMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/harmonicMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV13harmonicMinorACvpZ">harmonicMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Harmonic minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">harmonicMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Harmonic Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV12melodicMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/melodicMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV12melodicMinorACvpZ">melodicMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Melodic minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">melodicMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Melodic Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV15pentatonicMajorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pentatonicMajor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV15pentatonicMajorACvpZ">pentatonicMajor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pentatonic major scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pentatonicMajor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Pentatonic Major"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV15pentatonicMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pentatonicMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV15pentatonicMinorACvpZ">pentatonicMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pentatonic minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pentatonicMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Pentatonic Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV15pentatonicBluesACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pentatonicBlues" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV15pentatonicBluesACvpZ">pentatonicBlues</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pentatonic blues scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pentatonicBlues</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Pentatonic Blues"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV17pentatonicNeutralACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pentatonicNeutral" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV17pentatonicNeutralACvpZ">pentatonicNeutral</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pentatonic neutral scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pentatonicNeutral</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Pentatonic Neutral"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV6ionianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ionian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV6ionianACvpZ">ionian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Ionian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">ionian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Ionian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV7aeolianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/aeolian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV7aeolianACvpZ">aeolian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Aeolian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">aeolian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Aeolian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV6dorianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/dorian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV6dorianACvpZ">dorian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dorian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">dorian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Dorian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV10mixolydianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/mixolydian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV10mixolydianACvpZ">mixolydian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Mixolydian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">mixolydian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Mixolydian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV8phrygianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/phrygian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV8phrygianACvpZ">phrygian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Phrygian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">phrygian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Phrygian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV6lydianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lydian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV6lydianACvpZ">lydian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lydian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lydian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Lydian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV7locrianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/locrian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV7locrianACvpZ">locrian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Locrian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">locrian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Locrian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV7dimHalfACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/dimHalf" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV7dimHalfACvpZ">dimHalf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Half diminished scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">dimHalf</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Half Diminished"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV8dimWholeACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/dimWhole" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV8dimWholeACvpZ">dimWhole</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Whole diminished scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">dimWhole</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Whole Diminished"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV5wholeACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/whole" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV5wholeACvpZ">whole</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Whole scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">whole</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Whole"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV9augmentedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/augmented" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV9augmentedACvpZ">augmented</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Augmented scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">augmented</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Augmented"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV9chromaticACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/chromatic" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV9chromaticACvpZ">chromatic</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Chromatic scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">chromatic</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Chromatic"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV13romanianMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/romanianMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV13romanianMinorACvpZ">romanianMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Roumanian minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">romanianMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Romanian Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV12spanishGypsyACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/spanishGypsy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV12spanishGypsyACvpZ">spanishGypsy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Spanish gypsy scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">spanishGypsy</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Spanish Gypsy"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV5bluesACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/blues" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV5bluesACvpZ">blues</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Blues scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">blues</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Blues"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV8diatonicACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/diatonic" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV8diatonicACvpZ">diatonic</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diatonic scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">diatonic</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Diatonic"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV14doubleHarmonicACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/doubleHarmonic" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV14doubleHarmonicACvpZ">doubleHarmonic</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dobule harmonic scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">doubleHarmonic</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Double Harmonic"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV16eightToneSpanishACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/eightToneSpanish" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV16eightToneSpanishACvpZ">eightToneSpanish</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Eight tone spanish scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">eightToneSpanish</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Eight Tone Spanish"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV9enigmaticACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/enigmatic" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV9enigmaticACvpZ">enigmatic</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enigmatic scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">enigmatic</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Enigmatic"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV16leadingWholeToneACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/leadingWholeTone" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV16leadingWholeToneACvpZ">leadingWholeTone</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Leading whole tone scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">leadingWholeTone</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Leading Whole Tone"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV15lydianAugmentedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lydianAugmented" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV15lydianAugmentedACvpZ">lydianAugmented</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lydian augmented scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lydianAugmented</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Lydian Augmented"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV15neopolitanMajorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/neopolitanMajor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV15neopolitanMajorACvpZ">neopolitanMajor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Neopolitan major scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">neopolitanMajor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Neopolitan Major"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV15neopolitanMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/neopolitanMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV15neopolitanMinorACvpZ">neopolitanMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Neopolitan minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">neopolitanMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Neopolitan Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV5pelogACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pelog" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV5pelogACvpZ">pelog</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pelog scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pelog</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Pelog"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV10prometheusACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/prometheus" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV10prometheusACvpZ">prometheus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Prometheus scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">prometheus</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Prometheus"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV20prometheusNeopolitanACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/prometheusNeopolitan" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV20prometheusNeopolitanACvpZ">prometheusNeopolitan</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Prometheus neopolitan scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">prometheusNeopolitan</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Prometheus Neopolitan"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV18sixToneSymmetricalACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sixToneSymmetrical" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV18sixToneSymmetricalACvpZ">sixToneSymmetrical</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Six tone symmetrical scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sixToneSymmetrical</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Six Tone Symmetrical"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV12superLocrianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/superLocrian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV12superLocrianACvpZ">superLocrian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Super locrian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">superLocrian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Super Locrian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV11lydianMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lydianMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV11lydianMinorACvpZ">lydianMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lydian minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lydianMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Lydian Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV16lydianDiminishedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lydianDiminished" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV16lydianDiminishedACvpZ">lydianDiminished</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lydian diminished scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lydianDiminished</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Lydian Diminished"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV08nineToneC0ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/nineToneScale" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV08nineToneC0ACvpZ">nineToneScale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Nine tone scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nineToneScale</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Nine Tone Scale"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV19auxiliaryDiminishedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/auxiliaryDiminished" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV19auxiliaryDiminishedACvpZ">auxiliaryDiminished</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Auxiliary diminished scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">auxiliaryDiminished</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="kt">M7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Auxiliary Diminished"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV18auxiliaryAugmentedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/auxiliaryAugmented" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV18auxiliaryAugmentedACvpZ">auxiliaryAugmented</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Auxiliary augmaneted scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">auxiliaryAugmented</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Auxiliary Augmented"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV17auxiliaryDimBluesACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/auxiliaryDimBlues" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV17auxiliaryDimBluesACvpZ">auxiliaryDimBlues</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Auxiliary diminished blues scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">auxiliaryDimBlues</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Auxiliary Diminished Blues"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV12majorLocrianACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/majorLocrian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV12majorLocrianACvpZ">majorLocrian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Major locrian scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">majorLocrian</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Major Locrian"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV8overtoneACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/overtone" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV8overtoneACvpZ">overtone</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Overtone scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">overtone</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Overtone"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV19diminishedWholeToneACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/diminishedWholeTone" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV19diminishedWholeToneACvpZ">diminishedWholeTone</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Diminished whole tone scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">diminishedWholeTone</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="n">m2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="n">d5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Diminished Whole Tone"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV9pureMinorACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pureMinor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV9pureMinorACvpZ">pureMinor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pure minor scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pureMinor</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="n">m3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="n">m6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Pure Minor"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV11dominant7thACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/dominant7th" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV11dominant7thACvpZ">dominant7th</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dominant seventh scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">dominant7th</span> <span class="o">=</span> <span class="kt">ScaleType</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="kt">P1</span><span class="p">,</span> <span class="o">.</span><span class="kt">M2</span><span class="p">,</span> <span class="o">.</span><span class="kt">M3</span><span class="p">,</span> <span class="o">.</span><span class="kt">P4</span><span class="p">,</span> <span class="o">.</span><span class="kt">P5</span><span class="p">,</span> <span class="o">.</span><span class="kt">M6</span><span class="p">,</span> <span class="o">.</span><span class="n">m7</span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="s">"Dominant 7th"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV9intervalsSayAA8IntervalVGvp"></a>
+                    <a name="//apple_ref/swift/Property/intervals" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV9intervalsSayAA8IntervalVGvp">intervals</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Intervals of the scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Interval.html">Interval</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Description of the scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV9intervals11descriptionACSayAA8IntervalVG_SStcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(intervals:description:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV9intervals11descriptionACSayAA8IntervalVG_SStcfc">init(intervals:description:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initilize the scale with series of its intervals.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">intervals</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/Interval.html">Interval</a></span><span class="p">],</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intervals</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Intervals of the scale.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>description</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Description of the scale.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV3allSayACGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/all" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV3allSayACGvpZ">all</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An array of all <code>ScaleType</code> values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="kt">ScaleType</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Equatable"></a>
+                <a name="//apple_ref/swift/Section/Equatable" class="dashAnchor"></a>
+                <a href="#/Equatable">
+                  <h3 class="section-name">Equatable</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV2eeoiySbAC_ACtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV2eeoiySbAC_ACtFZ">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks the equability between two <code>ScaleType</code>s by their intervals.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">left</span><span class="p">:</span> <span class="kt">ScaleType</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="kt">ScaleType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>left</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Left handside of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>right</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Right handside of the equation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns Bool value of equation of two given scale types.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV4fromACs7Decoder_p_tKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV4fromACs7Decoder_p_tKcfc">init(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Decodes struct with a decoder.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Tries to initlize struct with a decoder.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>decoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Decodes encoded struct.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory9ScaleTypeV6encode2toys7Encoder_p_tKF"></a>
+                    <a name="//apple_ref/swift/Method/encode(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory9ScaleTypeV6encode2toys7Encoder_p_tKF">encode(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Encodes struct with an ecoder.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Tries to encode struct.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">to</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Encodes struct.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2018-12-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Tempo Structure Reference</title>
+    <title>ChordProgression Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/Tempo" class="dashAnchor"></a>
-    <a title="Tempo Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/ChordProgression" class="dashAnchor"></a>
+    <a title="ChordProgression Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">MusicTheory Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">MusicTheory Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Tempo Structure Reference
+        ChordProgression Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -209,14 +209,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Tempo</h1>
+            <h1>ChordProgression</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Tempo</span><span class="p">:</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ChordProgression</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span><span class="p">,</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
-            <p>Defines the tempo of the music with beats per second and time signature.</p>
+            <p>Chord progression enum that you can create hard-coded and custom progressions.</p>
 
           </section>
           <section class="section task-group-section">
@@ -225,9 +225,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory5TempoV13timeSignatureAA04TimeE0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/timeSignature" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5TempoV13timeSignatureAA04TimeE0Vvp">timeSignature</a>
+                    <a name="/s:11MusicTheory16ChordProgressionV5nodesACSayAA0cD4NodeOG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(nodes:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordProgressionV5nodesACSayAA0cD4NodeOG_tcfc">init(nodes:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -235,68 +235,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Time signature of music.</p>
+                        <p>Initilizes the chord progression with its nodes.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">timeSignature</span><span class="p">:</span> <span class="kt"><a href="../Structs/TimeSignature.html">TimeSignature</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory5TempoV3bpmSdvp"></a>
-                    <a name="//apple_ref/swift/Property/bpm" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5TempoV3bpmSdvp">bpm</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Beats per minutes.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">bpm</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11MusicTheory5TempoV13timeSignature3bpmAcA04TimeE0V_Sdtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(timeSignature:bpm:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5TempoV13timeSignature3bpmAcA04TimeE0V_Sdtcfc">init(timeSignature:bpm:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initilizes tempo with time signature and BPM.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">timeSignature</span><span class="p">:</span> <span class="kt"><a href="../Structs/TimeSignature.html">TimeSignature</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/TimeSignature.html">TimeSignature</a></span><span class="p">(),</span> <span class="nv">bpm</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">120.0</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">nodes</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/ChordProgressionNode.html">ChordProgressionNode</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -307,24 +253,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>timeSignature</em>
+                                <em>nodes</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Time Signature.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>bpm</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Beats per minute.</p>
+                                  <p>Nodes of the chord progression.</p>
                                 </div>
                               </td>
                             </tr>
@@ -337,9 +271,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory5TempoV8duration2ofSdAA9NoteValueV_tF"></a>
-                    <a name="//apple_ref/swift/Method/duration(of:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5TempoV8duration2ofSdAA9NoteValueV_tF">duration(of:)</a>
+                    <a name="/s:11MusicTheory16ChordProgressionV3allSayACGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/all" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordProgressionV3allSayACGvpZ">all</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -347,14 +281,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Caluclates the duration of a note value in seconds.</p>
+                        <p>All hard-coded chord progressions.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">duration</span><span class="p">(</span><span class="n">of</span> <span class="nv">noteValue</span><span class="p">:</span> <span class="kt"><a href="../Structs/NoteValue.html">NoteValue</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">TimeInterval</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">all</span><span class="p">:</span> <span class="p">[</span><span class="kt">ChordProgression</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -364,9 +298,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory5TempoV12sampleLength2of0D4RateSdAA9NoteValueV_SdtF"></a>
-                    <a name="//apple_ref/swift/Method/sampleLength(of:sampleRate:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5TempoV12sampleLength2of0D4RateSdAA9NoteValueV_SdtF">sampleLength(of:sampleRate:)</a>
+                    <a name="/s:11MusicTheory16ChordProgressionV6chords3for13harmonicField9inversionSayAA0C0VSgGAA5ScaleV_AM08HarmonicH0OSitF"></a>
+                    <a name="//apple_ref/swift/Method/chords(for:harmonicField:inversion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordProgressionV6chords3for13harmonicField9inversionSayAA0C0VSgGAA5ScaleV_AM08HarmonicH0OSitF">chords(for:harmonicField:inversion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,14 +308,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Calculates the note length in samples. Useful for sequencing notes sample accurate in the DSP.</p>
+                        <p>Generates chord progression for a <code><a href="../Structs/Scale.html">Scale</a></code> with <code><a href="../Structs/Scale/HarmonicField.html">Scale.HarmonicField</a></code> and optionally inverted chords.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sampleLength</span><span class="p">(</span><span class="n">of</span> <span class="nv">noteValue</span><span class="p">:</span> <span class="kt"><a href="../Structs/NoteValue.html">NoteValue</a></span><span class="p">,</span> <span class="nv">sampleRate</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">44100.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">chords</span><span class="p">(</span><span class="k">for</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt"><a href="../Structs/Scale.html">Scale</a></span><span class="p">,</span> <span class="nv">harmonicField</span><span class="p">:</span> <span class="kt"><a href="../Structs/Scale.html">Scale</a></span><span class="o">.</span><span class="kt">HarmonicField</span><span class="p">,</span> <span class="nv">inversion</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/Chord.html">Chord</a></span><span class="p">?]</span></code></pre>
 
                         </div>
                       </div>
@@ -392,24 +326,36 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>noteValue</em>
+                                <em>scale</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Rate of the note you want to calculate sample length.</p>
+                                  <p>Scale of the chords going to be generated.</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>sampleRate</em>
+                                <em>harmonicField</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Number of samples in a second. Defaults to 44100.</p>
+                                  <p>Harmonic field of the chords going to be generated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inversion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Inversion of the chords going to be generated.</p>
                                 </div>
                               </td>
                             </tr>
@@ -418,17 +364,28 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Returns the sample length of a note value.</p>
+                        <p>Returns all possible chords for a scale. Returns nil if the chord is not generated for particular <code><a href="../Enums/ChordProgressionNode.html">ChordProgressionNode</a></code>.</p>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CustomStringConvertible"></a>
+                <a name="//apple_ref/swift/Section/CustomStringConvertible" class="dashAnchor"></a>
+                <a href="#/CustomStringConvertible">
+                  <h3 class="section-name">CustomStringConvertible</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11MusicTheory5TempoV5hertz2ofSdAA9NoteValueV_tF"></a>
-                    <a name="//apple_ref/swift/Method/hertz(of:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11MusicTheory5TempoV5hertz2ofSdAA9NoteValueV_tF">hertz(of:)</a>
+                    <a name="/s:11MusicTheory16ChordProgressionV11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordProgressionV11descriptionSSvp">description</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -436,14 +393,164 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Calculates the LFO speed of a note vaule in hertz.</p>
+                        <p>Returns the chord progression name.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hertz</span><span class="p">(</span><span class="n">of</span> <span class="nv">noteValue</span><span class="p">:</span> <span class="kt"><a href="../Structs/NoteValue.html">NoteValue</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Codable"></a>
+                <a name="//apple_ref/swift/Section/Codable" class="dashAnchor"></a>
+                <a href="#/Codable">
+                  <h3 class="section-name">Codable</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory16ChordProgressionV4fromACs7Decoder_p_tKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordProgressionV4fromACs7Decoder_p_tKcfc">init(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initilizes chord progression with a <code>Decoder</code>.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Throws error if can not decodes.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>decoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The decoder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11MusicTheory16ChordProgressionV6encode2toys7Encoder_p_tKF"></a>
+                    <a name="//apple_ref/swift/Method/encode(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11MusicTheory16ChordProgressionV6encode2toys7Encoder_p_tKF">encode(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Encodes the chord progression.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Throws error if can not encodes.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">to</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The encoder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Equatable"></a>
+                <a name="//apple_ref/swift/Section/Equatable" class="dashAnchor"></a>
+                <a href="#/Equatable">
+                  <h3 class="section-name">Equatable</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SQ2eeoiySbx_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">ChordProgression</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">ChordProgression</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>

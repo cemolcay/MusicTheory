@@ -37,9 +37,6 @@
                 <a href="Enums/ChordFifthType.html">ChordFifthType</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/ChordProgression.html">ChordProgression</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Enums/ChordProgressionNode.html">ChordProgressionNode</a>
               </li>
               <li class="nav-group-task">
@@ -56,9 +53,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="Enums/NoteValueType.html">NoteValueType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/ScaleType.html">ScaleType</a>
               </li>
             </ul>
           </li>
@@ -126,9 +120,6 @@
                 <a href="Functions.html#/s:11MusicTheory2eeoiySbAA9ChordTypeVSg_AEtF">==(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11MusicTheory2eeoiySbAA9ScaleTypeO_ADtF">==(_:_:)</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Functions.html#/s:11MusicTheory3eeeoiySbAA10AccidentalO_ADtF">===(_:_:)</a>
               </li>
               <li class="nav-group-task">
@@ -166,6 +157,9 @@
                 <a href="Structs/ChordExtensionType/ExtensionType.html">– ExtensionType</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/ChordProgression.html">ChordProgression</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/ChordSixthType.html">ChordSixthType</a>
               </li>
               <li class="nav-group-task">
@@ -197,6 +191,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Scale/HarmonicField.html">– HarmonicField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ScaleType.html">ScaleType</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Tempo.html">Tempo</a>
@@ -242,9 +239,12 @@
 <li>Also, you can create <code><a href="Structs/Pitch.html">Pitch</a></code>es with MIDI note number. <code>rawValue</code> of a pitch is its MIDI note number.</li>
 <li><code><a href="Structs/Pitch.html">Pitch</a></code>, <code><a href="Structs/Key.html">Key</a></code>, <code><a href="Enums/Accidental.html">Accidental</a></code> structs are equatable, <code>+</code> and <code>-</code> custom operators defined for making calulations easier.</li>
 <li>Also, there are other helper functions or properties like frequency of a note.</li>
+<li>You can define them with directly string representations as well.</li>
 </ul>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">dFlat</span> <span class="o">=</span> <span class="kt">Key</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="nv">accidental</span><span class="p">:</span> <span class="o">.</span><span class="n">flat</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">c4</span> <span class="o">=</span> <span class="kt">Pitch</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">Key</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">c</span><span class="p">),</span> <span class="nv">octave</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">aSharp</span><span class="p">:</span> <span class="kt">Key</span> <span class="o">=</span> <span class="s">"a#"</span> <span class="c1">// Key(type: .a, accidental: .sharp)</span>
+<span class="k">let</span> <span class="nv">gFlat3</span><span class="p">:</span> <span class="kt">Pitch</span> <span class="o">=</span> <span class="s">"gb3"</span> <span class="c1">// or "g♭3" or "Gb3" is Pitch(key: (type: .g, accidental: .flat), octave: 3)</span>
 </code></pre>
 <h4 id='code-interval-code' class='heading'><code><a href="Structs/Interval.html">Interval</a></code></h4>
 
@@ -255,10 +255,10 @@
 <li>You can build scales or chords from intervals.</li>
 <li>Minor, major, perfect, augmented and diminished intervals up to 2 octaves are predefined.</li>
 </ul>
-<h4 id='code-scaletype-code-and-code-scale-code' class='heading'><code><a href="Enums/ScaleType.html">ScaleType</a></code> and <code><a href="Structs/Scale.html">Scale</a></code></h4>
+<h4 id='code-scaletype-code-and-code-scale-code' class='heading'><code><a href="Structs/ScaleType.html">ScaleType</a></code> and <code><a href="Structs/Scale.html">Scale</a></code></h4>
 
 <ul>
-<li><code><a href="Enums/ScaleType.html">ScaleType</a></code> enum defines a lot of readymade scales.</li>
+<li><code><a href="Structs/ScaleType.html">ScaleType</a></code> enum defines a lot of readymade scales.</li>
 <li>Also, you can create a custom scale type by <code>ScaleType.custom(intervals: [Interval], description: String)</code></li>
 <li><code><a href="Structs/Scale.html">Scale</a></code> defines a scale with a scale type and root key.</li>
 <li>You can generate notes of scale in an octave range.</li>
@@ -290,7 +290,7 @@
 </code></pre>
 
 <ul>
-<li>You can generate chord progressions with <code><a href="Enums/ChordProgression.html">ChordProgression</a></code> enum.</li>
+<li>You can generate chord progressions with <code><a href="Structs/ChordProgression.html">ChordProgression</a></code> enum.</li>
 <li>For any scale, in any harmonic field, for any inversion.</li>
 </ul>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">progression</span> <span class="o">=</span> <span class="kt">ChordProgression</span><span class="o">.</span><span class="n">i_ii_vi_iv</span>
@@ -327,7 +327,7 @@ Press <code>⌘+U</code> for running tests.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2018-08-24)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cemolcay/MusicTheory" target="_blank" rel="external">cemolcay</a>. All rights reserved. (Last updated: 2018-12-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
