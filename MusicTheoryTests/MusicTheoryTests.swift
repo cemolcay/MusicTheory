@@ -299,6 +299,17 @@ extension MusicTheoryTests {
     XCTAssert(cmadd13.pitches(octave: 1) === cmadd13Notes)
   }
 
+  func testRomanNumerics() {
+    let cmaj = Scale(type: .major, key: Key(type: .c))
+    let cmin = Scale(type: .minor, key: Key(type: .c))
+    let cmajNumerics = ["I", "ii", "iii", "IV", "V", "vi", "vii°"]
+    let cminNumerics = ["i", "ii°", "III", "iv", "v", "VI", "VII"]
+    let cmajChords = cmaj.harmonicField(for: .triad)
+    let cminChords = cmin.harmonicField(for: .triad)
+    XCTAssertEqual(cmajNumerics, cmajChords.compactMap({ $0?.romanNumeric(for: cmaj) }))
+    XCTAssertEqual(cminNumerics, cminChords.compactMap({ $0?.romanNumeric(for: cmin) }))
+  }
+
   func testInversions() {
     let c7 = Chord(
       type: ChordType(third: .major, seventh: .dominant),

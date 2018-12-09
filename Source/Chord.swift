@@ -692,6 +692,22 @@ public struct Chord: ChordDescription {
     self.inversion = inversion
   }
 
+  /// Types of notes in chord.
+  public var keys: [Key] {
+    return pitches(octave: 1).map({ $0.key })
+  }
+
+  /// Possible inversions of the chord.
+  public var inversions: [Chord] {
+    return [Int](0 ..< keys.count).map({ Chord(type: type, key: key, inversion: $0) })
+  }
+
+  /// Notation of the chord.
+  public var notation: String {
+    let inversionNotation = inversion > 0 && inversion < keys.count ? "/\(keys[0])" : ""
+    return "\(key)\(type.notation)\(inversionNotation)"
+  }
+
   /// Generates notes of the chord for octave.
   ///
   /// - Parameter octave: Octave of the root note for the build chord from.
@@ -719,21 +735,60 @@ public struct Chord: ChordDescription {
     return octaves.flatMap({ pitches(octave: $0) }).sorted(by: { $0.rawValue < $1.rawValue })
   }
 
-  /// Types of notes in chord.
-  public var keys: [Key] {
-    return pitches(octave: 1).map({ $0.key })
+  /// Returns the roman numeric string for a chord.
+  ///
+  /// - Parameter scale: The scale that the chord in.
+  /// - Returns: Roman numeric string for the chord in a scale.
+  public func romanNumeric(for scale: Scale) -> String? {
+    guard let chordIndex = scale.keys.firstIndex(of: key)
+      else { return nil }
+
+    var roman = ""
+    switch chordIndex {
+    case 0: roman = "I"
+    case 1: roman = "II"
+    case 2: roman = "III"
+    case 3: roman = "IV"
+    case 4: roman = "V"
+    case 5: roman = "VI"
+    case 6: roman = "VII"
+    default: return nil
+    }
+
+    // Check if minor
+    if type.third == .minor {
+      roman = roman.lowercased()
+    }
+    // Check if sixth
+    if type.sixth != nil {
+      roman = "\(roman)6"
+    }
+    // Check if agumented
+    if type.fifth == .agumented {
+      roman = "\(roman)+"
+    }
+    // Check if diminished
+    if type.fifth == .diminished {
+      roman = "\(roman)°"
+    }
+    // Check if sevent
+    if type.seventh != nil, (type.extensions == nil || type.extensions?.isEmpty == true) {
+      roman = "\(roman)7"
+    }
+    // Check if extended
+    if let extensions = type.extensions,
+      let last = extensions.sorted(by: { $0.type.rawValue < $1.type.rawValue }).last {
+      roman = "\(roman)\(last.type.rawValue)"
+    }
+    // Check if inverted
+    if inversion > 0 {
+      roman = "\(roman)/\(inversion)"
+    }
+
+    return roman
   }
 
-  /// Possible inversions of the chord.
-  public var inversions: [Chord] {
-    return [Int](0 ..< keys.count).map({ Chord(type: type, key: key, inversion: $0) })
-  }
-
-  /// Notation of the chord.
-  public var notation: String {
-    let inversionNotation = inversion > 0 && inversion < keys.count ? "/\(keys[0])" : ""
-    return "\(key)\(type.notation)\(inversionNotation)"
-  }
+  // MARK: CustomStringConvertible
 
   /// Description of the chord.
   public var description: String {

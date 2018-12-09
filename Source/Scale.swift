@@ -111,12 +111,14 @@ public struct ScaleType: Equatable {
 
   /// Intervals of the scale.
   public let intervals: [Interval]
+  /// Description of the scale.
   public let description: String
-  /// Tries to initilize scale with a matching interval series. If no scale matched with intervals, than initlizes custom scale.
+
+  /// Initilize the scale with series of its intervals.
   ///
   /// - Parameters:
-  ///   - intervals: Intervals of the chord.
-  ///   - description: In case of .custom type scale, you probably need description.
+  ///   - intervals: Intervals of the scale.
+  ///   - description: Description of the scale.
   public init(intervals: [Interval], description: String = "") {
     self.intervals = intervals
     self.description = description
