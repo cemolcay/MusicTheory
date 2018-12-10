@@ -1,5 +1,5 @@
 //
-//  ClefTest.swift
+//  ClefTests.swift
 //  MusicTheoryTests
 //
 //  Created by Sihao Lu on 11/9/18.
@@ -9,7 +9,7 @@
 import MusicTheory
 import XCTest
 
-class ClefTest: XCTestCase {
+class ClefTests: XCTestCase {
   func testCleves() {
     XCTAssertEqual(Clef.treble.position(forPitch: Pitch(key: "C", octave: 4)), 0)
     XCTAssertEqual(Clef.treble.position(forPitch: Pitch(key: "D", octave: 4)), 1)

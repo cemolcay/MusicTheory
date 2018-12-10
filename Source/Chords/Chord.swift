@@ -562,7 +562,7 @@ public struct Chord: ChordDescription, Equatable {
   /// - Returns: Roman numeric string for the chord in a scale.
   public func romanNumeric(for scale: Scale) -> String? {
     guard let chordIndex = scale.keys.firstIndex(of: key)
-      else { return nil }
+    else { return nil }
 
     var roman = ""
     switch chordIndex {
