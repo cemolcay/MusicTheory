@@ -176,7 +176,7 @@ public struct ChordType: ChordDescription {
         sixthNotation = sixth == nil ? "" : sixth!.notation
       }
       // Show fifth note after seventh in parenthesis
-      if fifth == .agumented || fifth == .diminished {
+      if fifth == .augmented || fifth == .diminished {
         return "\(eighthNotation)\(thirdNotation)\(sixthNotation)\(seventhNotation)(\(thirdNotation))\(suspendedNotation)\(extensionNotation)"
       }
     }
