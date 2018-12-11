@@ -173,6 +173,8 @@ public enum ChordSeventhType: Int, ChordPart {
   case major
   /// Halfstep down of seventh note. 10 halfsteps between root.
   case dominant
+  /// Whole step down of seventh note. 9 halfsteps between root.
+  case diminished
 
   /// Initilize chord part with interval.
   public init?(interval: Interval) {
@@ -193,6 +195,8 @@ public enum ChordSeventhType: Int, ChordPart {
       return .M7
     case .dominant:
       return .m7
+    case .diminished:
+      return .d7
     }
   }
 
@@ -201,6 +205,7 @@ public enum ChordSeventhType: Int, ChordPart {
     switch self {
     case .major: return "maj7"
     case .dominant: return "7"
+    case .diminished: return "dim7"
     }
   }
 
@@ -209,6 +214,7 @@ public enum ChordSeventhType: Int, ChordPart {
     switch self {
     case .major: return "Major 7th"
     case .dominant: return "Dominant 7th"
+    case .diminished: return "Diminished 7th"
     }
   }
 
