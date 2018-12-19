@@ -648,7 +648,7 @@ public struct Chord: ChordDescription, Equatable {
   }
 
   /// Checks the equability between two chords based on whether they are composed of the same notes.
-  /// For example, an C/G chord == Gsus4(no5)add6 chord is true, but C/G != C chord.
+  /// For example, an C/G chord == Gsus4(no5)(add6) chord is true, but C/G != C chord.
   ///
   /// - Parameters:
   ///   - left: Left handside of the equation.
@@ -667,5 +667,30 @@ public struct Chord: ChordDescription, Equatable {
   /// - Returns: Returns Bool value of equation of two given chords.
   public static func === (left: Chord, right: Chord) -> Bool {
     return left.key == right.key && left.type == right.type && left.inversion == right.inversion
+  }
+}
+
+public extension Chord {
+  public class Builder {
+    public typealias BuilderBlock = (Builder) -> Void
+
+    public var type: ChordType?
+    public var key: Key?
+    public var inversion: Int?
+
+    public init(builderBlock: BuilderBlock) {
+      builderBlock(self)
+    }
+  }
+
+  public init?(builder: Builder) {
+    guard let type = builder.type, let key = builder.key else {
+      return nil
+    }
+    self.type = type
+    self.key = key
+    if let inversion = builder.inversion {
+      self.inversion = inversion
+    }
   }
 }

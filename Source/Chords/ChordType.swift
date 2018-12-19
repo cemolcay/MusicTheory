@@ -284,3 +284,83 @@ public struct ChordType: ChordDescription {
     return left.intervals == right.intervals
   }
 }
+
+public extension ChordType {
+  public class Builder {
+    public typealias BuilderBlock = (Builder) -> Void
+
+    public var third: ChordThirdType? = .major
+    public var fifth: ChordFifthType? = .perfect
+    public var sixth: ChordSixthType?
+    public var seventh: ChordSeventhType?
+    public var eighth: ChordEighthType?
+    public var suspended: ChordSuspendedType?
+    public var extensions: [ChordExtensionType]?
+
+    public init(builderBlock: BuilderBlock) {
+      builderBlock(self)
+    }
+
+    public func addExtension(_ extension: ChordExtensionType) {
+      if extensions == nil {
+        extensions = [ChordExtensionType]()
+      }
+      extensions!.append(`extension`)
+    }
+
+    public func removeExtension(_ extension: ChordExtensionType) {
+      guard var extensions = extensions, let index = extensions.index(of: `extension`) else {
+        return
+      }
+      extensions.remove(at: index)
+    }
+
+    public func removeAllExtensions(ofType type: ChordExtensionType.ExtensionType) {
+      extensions = extensions?.filter { (`extension`) -> Bool in
+        `extension`.type != type
+      }
+    }
+
+    public func addExtensionIfNoSameTypeExists(_ extension: ChordExtensionType) {
+      if let extensions = extensions, extensions.contains(where: { $0.type == `extension`.type }) {
+        return
+      }
+      addExtension(`extension`)
+    }
+
+
+    /// Options to fill in specified chord parts with defaults if they do not exist.
+    struct FillOptions: OptionSet {
+      let rawValue: Int
+
+      static let seventh = FillOptions(rawValue: 1 << 0)
+      static let ninth = FillOptions(rawValue: 1 << 1)
+      static let eleventh = FillOptions(rawValue: 1 << 2)
+      static let thirteenth = FillOptions(rawValue: 1 << 3)
+    }
+
+    func fill(_ autoFillOptions: FillOptions) {
+      if autoFillOptions.contains(.thirteenth) {
+        addExtensionIfNoSameTypeExists(ChordExtensionType(type: .thirteenth))
+      } else if autoFillOptions.contains(.eleventh) {
+        addExtensionIfNoSameTypeExists(ChordExtensionType(type: .eleventh))
+      } else if autoFillOptions.contains(.ninth) {
+        addExtensionIfNoSameTypeExists(ChordExtensionType(type: .ninth))
+      } else if autoFillOptions.contains(.seventh) {
+        if seventh == nil {
+          seventh = .dominant
+        }
+      }
+    }
+  }
+
+  public init(builder: Builder) {
+    third = builder.third
+    fifth = builder.fifth
+    sixth = builder.sixth
+    seventh = builder.seventh
+    eighth = builder.eighth
+    suspended = builder.suspended
+    extensions = builder.extensions
+  }
+}
