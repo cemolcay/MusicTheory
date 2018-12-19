@@ -337,7 +337,7 @@ public enum ChordSuspendedType: Int, ChordPart {
 /// Defines extended chords.
 /// If you add one octave up of second, fourth or sixth notes of the chord, you have extended chords.
 /// You can combine extended chords more than one in a chord.
-public struct ChordExtensionType: ChordPart {
+public struct ChordExtensionType: ChordPart, Equatable {
   /// Defines type of the extended chords.
   public enum ExtensionType: Int, ChordDescription {
     /// An octave up from the root.
@@ -487,6 +487,10 @@ public struct ChordExtensionType: ChordPart {
     }
     return all
   }
+
+  public static func == (lhs: ChordExtensionType, rhs: ChordExtensionType) -> Bool {
+    return lhs.type == rhs.type && lhs.accidental == rhs.accidental
+}
 }
 
 // MARK: - Chord
