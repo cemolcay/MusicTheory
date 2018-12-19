@@ -243,7 +243,7 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
     var keyType = Key.KeyType.c
     var accidental = Accidental.natural
     var octave = 0
-    let pattern = "([A-Ga-g])([#♯♭b]*)(-?)(\\d+)"
+    let pattern = "([A-Ga-g])([#♯♭b]?)(-?)(\\d+)"
     let regex = try? NSRegularExpression(pattern: pattern, options: [])
     if let regex = regex,
       let match = regex.firstMatch(in: value, options: [], range: NSRange(0 ..< value.count)),

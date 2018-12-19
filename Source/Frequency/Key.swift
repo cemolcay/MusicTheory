@@ -179,7 +179,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
   public init(stringLiteral value: Key.StringLiteralType) {
     var keyType = KeyType.c
     var accidental = Accidental.natural
-    let pattern = "([A-Ga-g])([#♯♭b]*)"
+    let pattern = "([A-Ga-g])([#♯♭b]?)"
     let regex = try? NSRegularExpression(pattern: pattern, options: [])
     if let regex = regex,
       let match = regex.firstMatch(in: value, options: [], range: NSRange(0 ..< value.count)),
