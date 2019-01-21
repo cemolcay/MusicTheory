@@ -181,10 +181,12 @@ public struct ChordSixthType: ChordPart {
 
 /// Defiens seventh chords. If you add seventh note, you have seventh chord.
 public enum ChordSeventhType: Int, ChordPart {
-  /// Seventh note of the chord. 11 halfsteps between root.
+  /// Seventh note of the chord. 11 halfsteps between the root.
   case major
-  /// Halfstep down of seventh note. 10 halfsteps between root.
+  /// Halfstep down of a seventh note. 10 halfsteps between the root.
   case dominant
+  /// Two halfsteps down of a seventh note. 9 halfsteps between the root.
+  case diminished
 
   /// Initilize chord part with interval.
   public init?(interval: Interval) {
@@ -193,6 +195,8 @@ public enum ChordSeventhType: Int, ChordPart {
       self = .major
     case ChordSeventhType.dominant.interval:
       self = .dominant
+    case ChordSeventhType.diminished.interval:
+      self = .diminished
     default:
       return nil
     }
@@ -205,6 +209,8 @@ public enum ChordSeventhType: Int, ChordPart {
       return .M7
     case .dominant:
       return .m7
+    case .diminished:
+      return Interval(quality: .diminished, degree: 7, semitones: 9)
     }
   }
 
@@ -213,6 +219,7 @@ public enum ChordSeventhType: Int, ChordPart {
     switch self {
     case .major: return "maj7"
     case .dominant: return "7"
+    case .diminished: return "dim7"
     }
   }
 
@@ -221,12 +228,13 @@ public enum ChordSeventhType: Int, ChordPart {
     switch self {
     case .major: return "Major 7th"
     case .dominant: return "Dominant 7th"
+    case .diminished: return "Diminished 7th"
     }
   }
 
   /// All values of `ChordSeventhType`.
   public static var all: [ChordSeventhType] {
-    return [.major, .dominant]
+    return [.major, .dominant, .diminished]
   }
 }
 

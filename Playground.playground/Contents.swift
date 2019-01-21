@@ -44,6 +44,15 @@ let c13 = Chord(
   )
 )
 
+let cdim7 = Chord(
+  type: ChordType(
+    third: .major,
+    fifth: .diminished,
+    seventh: .diminished),
+  key: Key(type: .c))
+cdim7.notation
+print(cdim7.keys)
+
 print(c13.type.intervals)
 Pitch(key: Key(type: .c, accidental: .natural), octave: 1) + .M9
 print(c13.pitches(octave: 1))
