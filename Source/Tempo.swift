@@ -11,10 +11,9 @@
 import Foundation
 
 /// Defines the tempo of the music with beats per second and time signature.
-public struct Tempo: Codable {
+public struct Tempo: Codable, CustomStringConvertible {
   /// Time signature of music.
   public var timeSignature: TimeSignature
-
   /// Beats per minutes.
   public var bpm: Double
 
@@ -48,5 +47,11 @@ public struct Tempo: Codable {
   /// Calculates the LFO speed of a note vaule in hertz.
   public func hertz(of noteValue: NoteValue) -> Double {
     return 1 / duration(of: noteValue)
+  }
+
+  // MARK: CustomStringConvertible
+
+  public var description: String {
+    return "\(bpm)"
   }
 }

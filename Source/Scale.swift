@@ -13,7 +13,7 @@ import Foundation
 // MARK: - ScaleType
 
 /// Represents scale by the intervals between note sequences.
-public struct ScaleType: Equatable {
+public struct ScaleType: Equatable, CustomStringConvertible {
   /// Major scale.
   public static let major = ScaleType(intervals: ScaleType.ionian.intervals, description: "Major")
   /// Minor scale.

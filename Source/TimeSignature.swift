@@ -11,10 +11,9 @@
 import Foundation
 
 /// Defines how many beats in a measure with which note value.
-public struct TimeSignature: Codable {
+public struct TimeSignature: Codable, CustomStringConvertible {
   /// Beats per measure.
   public var beats: Int
-
   /// Note value per beat.
   public var noteValue: NoteValueType
 
@@ -40,5 +39,11 @@ public struct TimeSignature: Codable {
 
     self.beats = beats
     self.noteValue = noteValue
+  }
+
+  // MARK: CustomStringConvertible
+
+  public var description: String {
+    return "\(beats)/\(Int(noteValue.rawValue))"
   }
 }

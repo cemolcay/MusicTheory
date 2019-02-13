@@ -9,11 +9,17 @@
 import Foundation
 
 /// A struct for storing custom progressions.
-public struct CustomChordProgression: Codable {
+public struct CustomChordProgression: Codable, CustomStringConvertible {
   /// Name of the progression.
   public var name: String
   /// Chord progression with `ChordProgresion.custom` type.
   public var progression: ChordProgression
+
+  // MARK: CustomStringConvertible
+
+  public var description: String {
+    return name
+  }
 }
 
 /// A node of chord progression in intervals.
