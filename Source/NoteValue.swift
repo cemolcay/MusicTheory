@@ -13,7 +13,7 @@ import Foundation
 // MARK: - NoteValueType
 
 /// Defines the types of note values.
-public enum NoteValueType: Double, Codable {
+public enum NoteValueType: Double, Codable, CaseIterable {
   /// Two whole notes.
   case doubleWhole = 0.5
   /// Whole note.
@@ -35,7 +35,7 @@ public enum NoteValueType: Double, Codable {
 // MARK: - NoteModifier
 
 /// Defines the length of a `NoteValue`
-public enum NoteModifier: Double, Codable {
+public enum NoteModifier: Double, Codable, CaseIterable {
   /// No additional length.
   case `default` = 1
   /// Adds half of its own value.
