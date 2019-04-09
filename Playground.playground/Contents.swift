@@ -18,6 +18,11 @@ let cSharpHarmonicMinor = Scale(type: .harmonicMinor, key: Key(type: .c, acciden
 Pitch(key: Key(type: .c, accidental: .sharp), octave: 0) + .M7
 Pitch(key: Key(type: .b, accidental: .natural), octave: 1) - .M7
 
+// A minor pentatonic triads
+let aminP = Scale(type: .pentatonicMinor, key: "a")
+let aminPtriad = aminP.harmonicField(for: .thirteenth)
+print(aminPtriad)
+
 // chord progression for C# harmonic minor triads
 let progression = ChordProgression.i_ii_vi_iv
 let cSharpHarmonicMinorTriadsProgression = progression.chords(

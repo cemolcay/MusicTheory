@@ -432,6 +432,31 @@ public struct ChordExtensionType: ChordPart {
   }
 }
 
+// MARK - CustomChordType
+
+/// Custom chord with the custom intervals.
+public struct CustomChordType: ChordDescription {
+  /// Intervals of the chord type.
+  public var intervals: [Interval]
+
+  /// Initialize the chord type with the custom intervals.
+  ///
+  /// - Parameter intervals: Custom intervals.
+  public init(intervals: [Interval]) {
+    self.intervals = intervals
+  }
+
+  /// Notation of the chord type.
+  public var notation: String {
+    return description
+  }
+
+  /// Description of the chord type.
+  public var description: String {
+    return ""
+  }
+}
+
 // MARK: - ChordType
 
 /// Checks the equability between two `ChordType`s by their intervals.
@@ -479,6 +504,9 @@ public struct ChordType: ChordDescription {
     }
   }
 
+  /// Describes a custom chord that can not represent with the current date structures. Defaults nil.
+  public var custom: CustomChordType?
+
   /// Initilze the chord type with its parts.
   ///
   /// - Parameters:
@@ -488,7 +516,15 @@ public struct ChordType: ChordDescription {
   ///   - seventh: Seventh part. Defaults nil.
   ///   - suspended: Suspended part. Defaults nil.
   ///   - extensions: Extended chords part. Defaults nil. Could be add more than one extended chord.
-  public init(third: ChordThirdType, fifth: ChordFifthType = .perfect, sixth: ChordSixthType? = nil, seventh: ChordSeventhType? = nil, suspended: ChordSuspendedType? = nil, extensions: [ChordExtensionType]? = nil) {
+  ///   - custom: Fill that with the custom intervals if it's not represented by the current data structures. Defaults nil.
+  public init(
+    third: ChordThirdType,
+    fifth: ChordFifthType = .perfect,
+    sixth: ChordSixthType? = nil,
+    seventh: ChordSeventhType? = nil,
+    suspended: ChordSuspendedType? = nil,
+    extensions: [ChordExtensionType]? = nil,
+    custom: CustomChordType? = nil) {
     self.third = third
     self.fifth = fifth
     self.sixth = sixth
@@ -536,17 +572,14 @@ public struct ChordType: ChordDescription {
       }
     }
 
-    guard let thirdPart = third,
-      let fifthPart = fifth
-    else { return nil }
-
     self = ChordType(
-      third: thirdPart,
-      fifth: fifthPart,
+      third: third ?? .major,
+      fifth: fifth ?? .perfect,
       sixth: sixth,
       seventh: seventh,
       suspended: suspended,
-      extensions: extensions
+      extensions: extensions,
+      custom: custom
     )
   }
 
