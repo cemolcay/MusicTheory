@@ -119,7 +119,7 @@ public struct ScaleType: Equatable, CustomStringConvertible {
   /// - Parameters:
   ///   - intervals: Intervals of the scale.
   ///   - description: Description of the scale.
-  public init(intervals: [Interval], description: String = "") {
+  public init(intervals: [Interval], description: String) {
     self.intervals = intervals
     self.description = description
   }
@@ -186,7 +186,7 @@ public struct ScaleType: Equatable, CustomStringConvertible {
   ///   - right: Right handside of the equation.
   /// - Returns: Returns Bool value of equation of two given scale types.
   public static func == (left: ScaleType, right: ScaleType) -> Bool {
-    return left.intervals == right.intervals
+    return left.intervals == right.intervals && left.description == right.description
   }
 }
 
@@ -195,6 +195,8 @@ extension ScaleType: Codable {
   private enum CodingKeys: String, CodingKey {
     /// Halfstep property of `Interval`.
     case intervals
+    /// Name of the scale.
+    case description
   }
 
   /// Decodes struct with a decoder.
@@ -204,7 +206,8 @@ extension ScaleType: Codable {
   public init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     let intervals = try values.decode([Interval].self, forKey: .intervals)
-    self = ScaleType(intervals: intervals)
+    let description = try values.decode(String.self, forKey: .description)
+    self = ScaleType(intervals: intervals, description: description)
   }
 
   /// Encodes struct with an ecoder.
@@ -214,6 +217,7 @@ extension ScaleType: Codable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(intervals, forKey: .intervals)
+    try container.encode(description, forKey: .description)
   }
 }
 
