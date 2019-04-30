@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MusicTheorySwift"
-  s.version      = "1.2.1"
+  s.version      = "1.2.2"
   s.summary      = "A music theory library with `Note`, `Interval`, `Tone`, `Scale` and `Chord` representations in swift enums."
 
   # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ A music theory library with `Key`, `Pitch`, `Interval`, `Scale` and `Chord` repr
 
 Requirements
 ----
-* Swift 4.0+
+* Swift 5.0+
 * iOS 8.0+
 * macOS 10.9+
 * tvOS 9.0+

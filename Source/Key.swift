@@ -65,7 +65,7 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     /// - Parameter distance: Target KeyType distance. Zero is self.
     /// - Returns: Returns the neighbouring KeyType distance away.
     public func key(at distance: Int) -> KeyType {
-      guard let index = KeyType.all.index(of: self)
+      guard let index = KeyType.all.firstIndex(of: self)
       else { return self }
 
       let normalizedDistance = (distance + index) % KeyType.all.count
@@ -78,8 +78,8 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     /// - Parameter keyType: Target `KeyType` you want to compare.
     /// - Returns: Returns the integer value of distance in terms of their array index values.
     public func distance(from keyType: KeyType) -> Int {
-      guard let index = KeyType.all.index(of: self),
-        let targetIndex = KeyType.all.index(of: keyType)
+      guard let index = KeyType.all.firstIndex(of: self),
+        let targetIndex = KeyType.all.firstIndex(of: keyType)
       else { return 0 }
       return targetIndex - index
     }
