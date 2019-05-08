@@ -96,6 +96,14 @@ extension MusicTheoryTests {
     let p: Pitch = "f#-5"
     XCTAssert(p.key === Key(type: .f, accidental: .sharp))
     XCTAssert(p.octave == -5)
+    
+    let uppercasePitch: Pitch = "A#3"
+    XCTAssert(uppercasePitch.key === Key(type: .a, accidental: .sharp))
+    XCTAssert(uppercasePitch.octave == 3)
+    
+    let uppercasePitch2: Pitch = "F4"
+    XCTAssert(uppercasePitch2.key === Key(type: .f, accidental: .natural))
+    XCTAssert(uppercasePitch2.octave == 4)
   }
 
   func testFrequency() {
