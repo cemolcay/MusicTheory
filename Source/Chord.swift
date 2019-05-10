@@ -585,7 +585,7 @@ public struct ChordType: ChordDescription {
 
   /// Intervals of parts between root.
   public var intervals: [Interval] {
-    var parts: [ChordPart?] = [sixth == nil ? third : nil, suspended, fifth, sixth, seventh]
+    var parts: [ChordPart?] = [third, suspended, fifth, sixth, seventh]
     parts += extensions?.sorted(by: { $0.type.rawValue < $1.type.rawValue }).map({ $0 as ChordPart? }) ?? []
     return [.P1] + parts.compactMap({ $0?.interval })
   }
