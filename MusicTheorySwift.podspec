@@ -213,7 +213,7 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Source/*.{swift}"
+  s.source_files  = "Sources/MusicTheory/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
