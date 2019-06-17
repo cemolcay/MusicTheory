@@ -14,8 +14,22 @@ Requirements
 Install
 ----
 
+### CocoaPods
+
 ```
 pod 'MusicTheorySwift'
+```
+
+### Swift Package Manager
+
+``` swift
+let package = Package(
+  name: ...
+  dependencies: [
+    .package(url: "https://github.com/cemolcay/MusicTheory.git")
+  ],
+  targets: ...
+)
 ```
 
 Usage
