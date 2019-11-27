@@ -56,7 +56,7 @@ All data types conforms `Codable`, `CustomStringConvertable`.
 #### `Pitch` and `Key`
 
 - All keys can be defined with `Key` struct.
-- It has a `KeyType` where you can set the base key like C, D, A, G, and an `Accitental` where it can be `.natural`, `.flat`, `sharp` or more specific like `.sharps(amount: 3)`.
+- It has a `KeyType` where you can set the base key like C, D, A, G, and an `Accidental` where it can be `.natural`, `.flat`, `sharp` or more specific like `.sharps(amount: 3)`.
 - You can create `Pitch`es with a `Key` and octave.
 - Also, you can create `Pitch`es with MIDI note number. `rawValue` of a pitch is its MIDI note number.
 - `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calulations easier.
