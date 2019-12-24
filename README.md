@@ -46,7 +46,7 @@ All data types conforms `Codable`, `CustomStringConvertable`.
 - It has a `KeyType` where you can set the base key like C, D, A, G, and an `Accidental` where it can be `.natural`, `.flat`, `sharp` or more specific like `.sharps(amount: 3)`.
 - You can create `Pitch`es with a `Key` and octave.
 - Also, you can create `Pitch`es with MIDI note number. `rawValue` of a pitch is its MIDI note number.
-- `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calulations easier.
+- `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calculations easier.
 - Also, there are other helper functions or properties like frequency of a note.
 - You can define them with directly string representations as well.
 
@@ -60,7 +60,7 @@ let gFlat3: Pitch = "gb3" // or "g♭3" or "Gb3" is Pitch(key: (type: .g, accide
 #### `Interval`
 
 - Intervals are halfsteps between pitches.
-- They are `IntegerLiteral` and you can make add/subsctract them between themselves, notes or note types.
+- They are `IntegerLiteral` and you can make add/substract them between themselves, notes or note types.
 - You can build up a custom interval with its quality, degree and semitone properties.
 - You can build scales or chords from intervals.
 - Minor, major, perfect, augmented and diminished intervals up to 2 octaves are predefined.
