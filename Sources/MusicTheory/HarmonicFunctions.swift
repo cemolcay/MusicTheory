@@ -26,13 +26,13 @@ public enum HarmonicFunctions: Int, Codable, CaseIterable {
   case leading
 
   /// Represents tonic prolongation functions.
-  static let tonicProlongationFunctions: [HarmonicFunctions] = [.mediant, .submediant]
+  public static let tonicProlongationFunctions: [HarmonicFunctions] = [.mediant, .submediant]
 
   /// Represents the pre dominant functions.
-  static let predominantFunctions: [HarmonicFunctions] = [.submediant, .supertonic]
+  public static let predominantFunctions: [HarmonicFunctions] = [.submediant, .supertonic]
 
   /// Represents the dominant functions
-  static let dominantFunctions: [HarmonicFunctions] = [.dominant, .leading]
+  public static let dominantFunctions: [HarmonicFunctions] = [.dominant, .leading]
 
   /// Represents the possible direction from any harmonic function.
   public var direction: [HarmonicFunctions] {
