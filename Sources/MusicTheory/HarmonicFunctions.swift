@@ -53,4 +53,17 @@ public enum HarmonicFunctions: Int, Codable, CaseIterable {
       return [.tonic, .supertonic, .dominant]
     }
   }
+
+  /// Returns the roman numeral string representation.
+  public var romanNumeral: String {
+    switch self {
+    case .tonic: return "I"
+    case .supertonic: return "II"
+    case .mediant: return "III"
+    case .subdominant: return "IV"
+    case .dominant: return "V"
+    case .submediant: return "VI"
+    case .leading: return "VII"
+    }
+  }
 }
