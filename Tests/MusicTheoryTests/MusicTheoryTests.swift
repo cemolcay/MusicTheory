@@ -79,7 +79,7 @@ extension MusicTheoryTests {
     XCTAssert(pitch.key == Key(type: .g))
     pitch = Pitch(midiNote: 0)
     XCTAssert(pitch.key == Key(type: .c))
-    pitch = Pitch(midiNote: 66, isPreferredAccidentalSharps: false)
+    pitch = Pitch(midiNote: 66, preferSharps: false)
     XCTAssert(pitch.key == Key(type: .g, accidental: .flat))
 
     let c1 = Pitch(key: Key(type: .c), octave: 1)

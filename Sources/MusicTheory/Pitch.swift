@@ -178,11 +178,11 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   /// Initilizes the `Pitch` with MIDI note number.
   ///
   /// - Parameter midiNote: Midi note in range of [0 - 127].
-  /// - Parameter isPreferredAccidentalSharps: Make it true if preferred accidentals is sharps. Defaults true.
-  public init(midiNote: Int, isPreferredAccidentalSharps: Bool = true) {
+  /// - Parameter preferSharps: Make it true if preferred accidentals is sharps. Defaults true.
+  public init(midiNote: Int, preferSharps: Bool = true) {
     octave = (midiNote / 12) - 1
     let keyIndex = midiNote % 12
-    key = (isPreferredAccidentalSharps ? Key.keysWithSharps : Key.keysWithFlats)[keyIndex]
+    key = (preferSharps ? Key.keysWithSharps : Key.keysWithFlats)[keyIndex]
   }
 
   /// Initilizes the `Pitch` with `Key` and octave
