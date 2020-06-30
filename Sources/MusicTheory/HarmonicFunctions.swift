@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents harmonic functions in music theory.
-public enum HarmonicFunctions: Int, Codable, CaseIterable {
+public enum HarmonicFunctionType: Int, Codable, CaseIterable {
   /// First interval/chord. I in roman numeral.
   case tonic
   /// Second interval/chord. II in roman numeral.
@@ -26,29 +26,29 @@ public enum HarmonicFunctions: Int, Codable, CaseIterable {
   case leading
 
   /// Represents tonic prolongation functions.
-  public static let tonicProlongationFunctions: [HarmonicFunctions] = [.mediant, .submediant]
+  public static let tonicProlongationFunctions: [HarmonicFunctionType] = [.mediant, .submediant]
 
   /// Represents the pre dominant functions.
-  public static let predominantFunctions: [HarmonicFunctions] = [.submediant, .supertonic]
+  public static let predominantFunctions: [HarmonicFunctionType] = [.submediant, .supertonic]
 
   /// Represents the dominant functions
-  public static let dominantFunctions: [HarmonicFunctions] = [.dominant, .leading]
+  public static let dominantFunctions: [HarmonicFunctionType] = [.dominant, .leading]
 
   /// Represents the possible direction from any harmonic function.
-  public var direction: [HarmonicFunctions] {
+  public var direction: [HarmonicFunctionType] {
     switch self {
     case .tonic:
-      return HarmonicFunctions.allCases
+      return HarmonicFunctionType.allCases
     case .supertonic:
-      return HarmonicFunctions.dominantFunctions
+      return HarmonicFunctionType.dominantFunctions
     case .mediant:
-      return HarmonicFunctions.predominantFunctions + [.submediant]
+      return HarmonicFunctionType.predominantFunctions + [.submediant]
     case .subdominant:
-      return [.supertonic] + HarmonicFunctions.dominantFunctions
+      return [.supertonic] + HarmonicFunctionType.dominantFunctions
     case .dominant:
       return [.tonic]
     case .submediant:
-      return HarmonicFunctions.predominantFunctions
+      return HarmonicFunctionType.predominantFunctions
     case .leading:
       return [.tonic, .supertonic, .dominant]
     }
@@ -65,5 +65,26 @@ public enum HarmonicFunctions: Int, Codable, CaseIterable {
     case .submediant: return "VI"
     case .leading: return "VII"
     }
+  }
+}
+
+/// A struct for creating harmonic functions from a `Scale`.
+public struct HarmonicFunctions {
+  /// Scale of the harmonic function.
+  public let scale: Scale
+
+  /// Initilize the harmonic functions for a scale.
+  /// - Parameter scale: The scale you want to create harmonic functions from.
+  public init(scale: Scale) {
+    self.scale = scale
+  }
+
+  /// Returns the key of the scale's harmonic function.
+  /// - Parameter type: The harmonic function you want to get from the scale.
+  /// - Returns: Returns the key representing the harmonic function you want to get, if the scale has it.
+  public func harmonicFunction(for type: HarmonicFunctionType) -> Key? {
+    let keys = scale.keys
+    guard keys.count >= type.rawValue else { return nil }
+    return keys[type.rawValue]
   }
 }

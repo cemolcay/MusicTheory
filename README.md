@@ -118,10 +118,26 @@ let cSharpHarmonicMinorTriadsProgression = progression.chords(
 - You can calculate notes duration in any tempo by ther `NoteValue`.
 - Note value defines the note's duration in a beat. It could be whole note, half note, quarter note, 8th, 16th or 32nd note.
 
+
+#### `HarmonicFunctions`
+
+- Harmonic functions is a utility for finding related notes or chords in a scale when composing.
+- You can create recommendation engines or chord generators with that.
+
+Playgrounds
+----
+
+- You can experiment with the library right away in the Xcode Playgrounds!
+- After cloning the project, build it for the Mac target,
+- Go to playground page in the project,
+- Make sure the macOS platform is selected,
+- And make sure the "Build Active Scheme" option is selected in the playground settings.
+- There are some recipes ready in the playground page, you can just run them right away. 
+
 Documentation
 ----
 
-[Full documentation are here](https://cemolcay.github.io/MusicTheory/)
+[Full documentation is here](https://cemolcay.github.io/MusicTheory/)
 
 Unit Tests
 ----

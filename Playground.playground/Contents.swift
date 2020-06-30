@@ -80,3 +80,12 @@ Interval.M9.semitones
 Pitch(key: Key(type: .b, accidental: .flat), octave: 1) + .M9
 
 Pitch(key: Key(type: .c, accidental: .natural), octave: 3) - .M9
+
+let aHarmonicMinor = Scale(type: .harmonicMinor, key: Key(type: .a))
+let harmonicFunctions = HarmonicFunctions(scale: aHarmonicMinor)
+HarmonicFunctionType.allCases.forEach({ type in
+  let relatedKeys = type.direction.map({ related in
+    harmonicFunctions.harmonicFunction(for: related)!
+  })
+  print(type, relatedKeys)
+})
