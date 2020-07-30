@@ -176,6 +176,20 @@ extension MusicTheoryTests {
 
     XCTAssertEqual(sampleLengths, expected)
   }
+
+  func testTempoHashable() {
+    let t1 = Tempo(timeSignature: TimeSignature(beats: 1, noteValue: .whole), bpm: 1)
+    var t2 = Tempo(timeSignature: TimeSignature(beats: 2, noteValue: .half), bpm: 2)
+    XCTAssertNotEqual(t1.timeSignature.noteValue, t2.timeSignature.noteValue)
+    XCTAssertNotEqual(t1.timeSignature, t2.timeSignature)
+    XCTAssertNotEqual(t1, t2)
+
+    t2.timeSignature = TimeSignature(beats: 1, noteValue: .whole)
+    t2.bpm = 1
+    XCTAssertEqual(t1.timeSignature.noteValue, t2.timeSignature.noteValue)
+    XCTAssertEqual(t1.timeSignature, t2.timeSignature)
+    XCTAssertEqual(t1, t2)
+  }
 }
 
 // MARK: - Scale Tests

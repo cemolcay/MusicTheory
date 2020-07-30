@@ -13,7 +13,7 @@ import Foundation
 // MARK: - NoteValueType
 
 /// Defines the types of note values.
-public enum NoteValueType: Double, Codable, CaseIterable {
+public enum NoteValueType: Double, Codable, CaseIterable, Hashable {
   /// Two whole notes.
   case doubleWhole = 0.5
   /// Whole note.

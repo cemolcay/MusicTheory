@@ -29,7 +29,7 @@ public enum HarmonicFunctionType: Int, Codable, CaseIterable {
   public static let tonicProlongationFunctions: [HarmonicFunctionType] = [.mediant, .submediant]
 
   /// Represents the pre dominant functions.
-  public static let predominantFunctions: [HarmonicFunctionType] = [.submediant, .supertonic]
+  public static let predominantFunctions: [HarmonicFunctionType] = [.supertonic, .submediant]
 
   /// Represents the dominant functions
   public static let dominantFunctions: [HarmonicFunctionType] = [.dominant, .leading]
@@ -42,7 +42,7 @@ public enum HarmonicFunctionType: Int, Codable, CaseIterable {
     case .supertonic:
       return HarmonicFunctionType.dominantFunctions
     case .mediant:
-      return HarmonicFunctionType.predominantFunctions + [.submediant]
+      return HarmonicFunctionType.predominantFunctions
     case .subdominant:
       return [.supertonic] + HarmonicFunctionType.dominantFunctions
     case .dominant:
@@ -50,7 +50,7 @@ public enum HarmonicFunctionType: Int, Codable, CaseIterable {
     case .submediant:
       return HarmonicFunctionType.predominantFunctions
     case .leading:
-      return [.tonic, .supertonic, .dominant]
+      return [.tonic, .dominant, .submediant]
     }
   }
 
