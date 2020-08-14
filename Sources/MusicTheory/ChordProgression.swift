@@ -22,7 +22,7 @@ public struct CustomChordProgression: Codable, CustomStringConvertible {
 }
 
 /// A node of chord progression in intervals.
-public enum ChordProgressionNode: Int, CustomStringConvertible, Codable {
+public enum ChordProgressionNode: Int, CustomStringConvertible, Codable, Hashable {
   /// First-degree node
   case i
   /// Second-degree node
@@ -78,7 +78,7 @@ public enum ChordProgressionNode: Int, CustomStringConvertible, Codable {
 }
 
 /// Chord progression enum that you can create hard-coded and custom progressions.
-public struct ChordProgression: CustomStringConvertible, Codable, Equatable {
+public struct ChordProgression: CustomStringConvertible, Codable, Hashable {
   /// All nodes from first to seventh.
   public static let allNodes = ChordProgression(nodes: [.i, .ii, .iii, .iv, .v, .vi, .vii])
   /// I - V - VI - IV progression.
@@ -206,9 +206,15 @@ public struct ChordProgression: CustomStringConvertible, Codable, Equatable {
     try container.encode(nodes, forKey: .nodes)
   }
 
+  // MARK: Hashable
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(nodes)
+  }
+
   // MARK: Equatable
 
   public static func == (lhs: ChordProgression, rhs: ChordProgression) -> Bool {
-    return lhs.nodes == rhs.nodes
+    return lhs.hashValue == rhs.hashValue
   }
 }

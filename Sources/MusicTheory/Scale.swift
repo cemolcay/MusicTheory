@@ -13,7 +13,7 @@ import Foundation
 // MARK: - ScaleType
 
 /// Represents scale by the intervals between note sequences.
-public struct ScaleType: Equatable, CustomStringConvertible {
+public struct ScaleType: Codable, Hashable, CustomStringConvertible {
   /// Major scale.
   public static let major = ScaleType(intervals: ScaleType.ionian.intervals, description: "Major")
   /// Minor scale.
@@ -177,6 +177,12 @@ public struct ScaleType: Equatable, CustomStringConvertible {
     ]
   }
 
+  // MARK: Hashable
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(intervals)
+  }
+
   // MARK: Equatable
 
   /// Checks the equability between two `ScaleType`s by their intervals.
@@ -188,9 +194,9 @@ public struct ScaleType: Equatable, CustomStringConvertible {
   public static func == (left: ScaleType, right: ScaleType) -> Bool {
     return left.intervals == right.intervals && left.description == right.description
   }
-}
 
-extension ScaleType: Codable {
+  // MARK: Codable
+  
   /// Keys that conforms CodingKeys protocol to map properties.
   private enum CodingKeys: String, CodingKey {
     /// Halfstep property of `Interval`.

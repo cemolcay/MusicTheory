@@ -29,9 +29,9 @@ public func === (lhs: Interval, rhs: Interval) -> Bool {
 }
 
 /// Defines the interval between `Pitch`es in semitones.
-public struct Interval: Codable, Equatable, CustomStringConvertible {
+public struct Interval: Codable, Hashable, CustomStringConvertible {
   /// Quality type of the interval.
-  public enum Quality: Int, Codable, Equatable, CustomStringConvertible {
+  public enum Quality: Int, Codable, Hashable, CustomStringConvertible {
     /// Diminished
     case diminished
     /// Perfect
@@ -225,5 +225,13 @@ public struct Interval: Codable, Equatable, CustomStringConvertible {
     }
 
     return "\(quality) \(formattedDegree)"
+  }
+
+  // MARK: Hashable
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(quality)
+    hasher.combine(degree)
+    hasher.combine(semitones)
   }
 }

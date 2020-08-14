@@ -217,9 +217,9 @@ public enum ChordSeventhType: Int, ChordPart {
   /// Notation of chord part.
   public var notation: String {
     switch self {
-    case .major: return "maj7"
+    case .major: return "M7"
     case .dominant: return "7"
-    case .diminished: return "dim7"
+    case .diminished: return "°7"
     }
   }
 
@@ -412,7 +412,7 @@ public struct ChordExtensionType: ChordPart {
 
   /// Notation of chord part.
   public var notation: String {
-    return "\(accidental.notation)\(type.notation)"
+    return "\(isAdded ? "add" : "")\(accidental.notation)\(type.notation)"
   }
 
   /// Description of chord part.
@@ -477,7 +477,7 @@ public func == (left: ChordType?, right: ChordType?) -> Bool {
 }
 
 /// Defines full type of chord with all chord parts.
-public struct ChordType: ChordDescription {
+public struct ChordType: ChordDescription, Hashable {
   /// Thirds part. Second note of the chord.
   public var third: ChordThirdType
   /// Fifths part. Third note of the chord.
@@ -616,8 +616,12 @@ public struct ChordType: ChordDescription {
 
     if seventh != nil {
       // Don't show major seventh note if extended is a major as well
-      if seventh == .major, (extensions ?? []).count > 0 {
-        seventhNotation = ""
+      if (extensions ?? []).count > 0 {
+        switch seventh! {
+        case .diminished: seventhNotation = "°"
+        case .major: seventhNotation = "M"
+        case .dominant: seventhNotation = ""
+        }
         sixthNotation = sixth == nil ? "" : sixth!.notation
       }
       // Show fifth note after seventh in parenthesis
@@ -691,6 +695,18 @@ public struct ChordType: ChordDescription {
       }
     }
     return all
+  }
+
+  // MARK: Hashable
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(intervals)
+  }
+
+  // MARK: Equatable
+
+  public static func == (lhs: ChordType, rhs: ChordType) -> Bool {
+    return lhs.hashValue == rhs.hashValue
   }
 }
 
