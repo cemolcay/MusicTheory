@@ -21,7 +21,7 @@ public struct ScaleType: Codable, Hashable, CustomStringConvertible {
   /// Harmonic minor scale.
   public static let harmonicMinor = ScaleType(intervals: [.P1, .M2, .m3, .P4, .P5, .m6, .M7], description: "Harmonic Minor")
   /// Melodic minor scale.
-  public static let melodicMinor = ScaleType(intervals: [.P1, .M2, .m3, .P4, .P5, .M6, .m7], description: "Melodic Minor")
+  public static let melodicMinor = ScaleType(intervals: [.P1, .M2, .m3, .P4, .P5, .M6, .M7], description: "Melodic Minor")
   /// Pentatonic major scale.
   public static let pentatonicMajor = ScaleType(intervals: [.P1, .M2, .M3, .P5, .M6], description: "Pentatonic Major")
   /// Pentatonic minor scale.
