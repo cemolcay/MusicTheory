@@ -11,26 +11,10 @@
 		1AF5FB3622B3A3E9005D6D6E /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2522B3A3E9005D6D6E /* Pitch.swift */; };
 		1AF5FB3722B3A3E9005D6D6E /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2522B3A3E9005D6D6E /* Pitch.swift */; };
 		1AF5FB3822B3A3E9005D6D6E /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2522B3A3E9005D6D6E /* Pitch.swift */; };
-		1AF5FB3922B3A3E9005D6D6E /* Info-TV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2622B3A3E9005D6D6E /* Info-TV.plist */; };
-		1AF5FB3A22B3A3E9005D6D6E /* Info-TV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2622B3A3E9005D6D6E /* Info-TV.plist */; };
-		1AF5FB3B22B3A3E9005D6D6E /* Info-TV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2622B3A3E9005D6D6E /* Info-TV.plist */; };
-		1AF5FB3C22B3A3E9005D6D6E /* Info-TV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2622B3A3E9005D6D6E /* Info-TV.plist */; };
 		1AF5FB3D22B3A3E9005D6D6E /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2722B3A3E9005D6D6E /* Accidental.swift */; };
 		1AF5FB3E22B3A3E9005D6D6E /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2722B3A3E9005D6D6E /* Accidental.swift */; };
 		1AF5FB3F22B3A3E9005D6D6E /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2722B3A3E9005D6D6E /* Accidental.swift */; };
 		1AF5FB4022B3A3E9005D6D6E /* Accidental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2722B3A3E9005D6D6E /* Accidental.swift */; };
-		1AF5FB4122B3A3E9005D6D6E /* Info-Mac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2822B3A3E9005D6D6E /* Info-Mac.plist */; };
-		1AF5FB4222B3A3E9005D6D6E /* Info-Mac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2822B3A3E9005D6D6E /* Info-Mac.plist */; };
-		1AF5FB4322B3A3E9005D6D6E /* Info-Mac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2822B3A3E9005D6D6E /* Info-Mac.plist */; };
-		1AF5FB4422B3A3E9005D6D6E /* Info-Mac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2822B3A3E9005D6D6E /* Info-Mac.plist */; };
-		1AF5FB4522B3A3E9005D6D6E /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2922B3A3E9005D6D6E /* Info-iOS.plist */; };
-		1AF5FB4622B3A3E9005D6D6E /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2922B3A3E9005D6D6E /* Info-iOS.plist */; };
-		1AF5FB4722B3A3E9005D6D6E /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2922B3A3E9005D6D6E /* Info-iOS.plist */; };
-		1AF5FB4822B3A3E9005D6D6E /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2922B3A3E9005D6D6E /* Info-iOS.plist */; };
-		1AF5FB4922B3A3E9005D6D6E /* Info-Watch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2A22B3A3E9005D6D6E /* Info-Watch.plist */; };
-		1AF5FB4A22B3A3E9005D6D6E /* Info-Watch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2A22B3A3E9005D6D6E /* Info-Watch.plist */; };
-		1AF5FB4B22B3A3E9005D6D6E /* Info-Watch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2A22B3A3E9005D6D6E /* Info-Watch.plist */; };
-		1AF5FB4C22B3A3E9005D6D6E /* Info-Watch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB2A22B3A3E9005D6D6E /* Info-Watch.plist */; };
 		1AF5FB4D22B3A3E9005D6D6E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF5FB2B22B3A3E9005D6D6E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AF5FB4E22B3A3E9005D6D6E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF5FB2B22B3A3E9005D6D6E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1AF5FB4F22B3A3E9005D6D6E /* MusicTheory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AF5FB2B22B3A3E9005D6D6E /* MusicTheory.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -69,7 +53,6 @@
 		1AF5FB7422B3A3E9005D6D6E /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB3422B3A3E9005D6D6E /* Scale.swift */; };
 		1AF5FB7B22B3A687005D6D6E /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB7722B3A687005D6D6E /* MusicTheoryTests.swift */; };
 		1AF5FB7C22B3A687005D6D6E /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB7822B3A687005D6D6E /* XCTestManifests.swift */; };
-		1AF5FB7D22B3A687005D6D6E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF5FB7922B3A687005D6D6E /* Info.plist */; };
 		B23E8EC11F1C2BAE0094D316 /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */; };
 /* End PBXBuildFile section */
 
@@ -355,7 +338,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = cemolcay;
 				TargetAttributes = {
 					B219CC011E4CFB870060A6B6 = {
@@ -417,10 +400,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF5FB4522B3A3E9005D6D6E /* Info-iOS.plist in Resources */,
-				1AF5FB4122B3A3E9005D6D6E /* Info-Mac.plist in Resources */,
-				1AF5FB4922B3A3E9005D6D6E /* Info-Watch.plist in Resources */,
-				1AF5FB3922B3A3E9005D6D6E /* Info-TV.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,10 +407,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF5FB4622B3A3E9005D6D6E /* Info-iOS.plist in Resources */,
-				1AF5FB4222B3A3E9005D6D6E /* Info-Mac.plist in Resources */,
-				1AF5FB4A22B3A3E9005D6D6E /* Info-Watch.plist in Resources */,
-				1AF5FB3A22B3A3E9005D6D6E /* Info-TV.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,10 +414,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF5FB4722B3A3E9005D6D6E /* Info-iOS.plist in Resources */,
-				1AF5FB4322B3A3E9005D6D6E /* Info-Mac.plist in Resources */,
-				1AF5FB4B22B3A3E9005D6D6E /* Info-Watch.plist in Resources */,
-				1AF5FB3B22B3A3E9005D6D6E /* Info-TV.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,10 +421,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF5FB4822B3A3E9005D6D6E /* Info-iOS.plist in Resources */,
-				1AF5FB4422B3A3E9005D6D6E /* Info-Mac.plist in Resources */,
-				1AF5FB4C22B3A3E9005D6D6E /* Info-Watch.plist in Resources */,
-				1AF5FB3C22B3A3E9005D6D6E /* Info-TV.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +428,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF5FB7D22B3A687005D6D6E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,7 +533,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/MusicTheory/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-iOS";
 				PRODUCT_NAME = MusicTheory;
@@ -590,7 +556,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/MusicTheory/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.MusicTheory-iOS";
 				PRODUCT_NAME = MusicTheory;
@@ -674,7 +640,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -699,7 +665,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
@@ -779,6 +745,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -804,7 +771,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -845,6 +812,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -864,7 +832,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

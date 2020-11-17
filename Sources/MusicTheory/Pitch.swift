@@ -182,7 +182,7 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   public init(midiNote: Int, preferSharps: Bool = true) {
     octave = (midiNote / 12) - 1
     let keyIndex = midiNote % 12
-    key = (preferSharps ? Key.keysWithSharps : Key.keysWithFlats)[keyIndex]
+    key = (preferSharps ? Key.keysWithSharps : Key.keysWithFlats)[circular: keyIndex] ?? "c"
   }
 
   /// Initilizes the `Pitch` with `Key` and octave
@@ -270,5 +270,16 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
   /// Converts `Pitch` to string with its key and octave.
   public var description: String {
     return "\(key)\(octave)"
+  }
+}
+
+extension Array {
+  /// An array subscript extension that returns the element from the positive or negative circular index.
+  public subscript(circular index: Int) -> Element? {
+    guard count > 0 else { return nil }
+    let mod = index % count
+    let offset = index >= 0 ? 0 : count
+    let idx = mod == 0 ? 0 : mod + offset
+    return self[idx]
   }
 }
