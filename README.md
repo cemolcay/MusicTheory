@@ -156,3 +156,5 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [ScaleBud](https://itunes.apple.com/us/app/scalebud-auv3-midi-keyboard/id1409125865?ls=1&mt=8) (iOS, AUv3)  
 [StepBud](https://itunes.apple.com/us/app/stepbud-auv3-midi-sequencer/id1453104408?mt=8) (iOS, AUv3)  
 [RhythmBud](https://apps.apple.com/us/app/rhythmbud-auv3-midi-fx/id1484320891#) (iOS, AUv3)
+[ArpBud 2](https://apps.apple.com/us/app/arpbud-2-auv3-midi-arpeggiator/id1500403326)(iOS, AUv3)
+[ChordBud 2](https://apps.apple.com/us/app/chordbud-2-auv3-midi-sequencer/id1526221230)(iOS, AUv3)
