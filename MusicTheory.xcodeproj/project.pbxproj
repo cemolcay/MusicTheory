@@ -54,6 +54,10 @@
 		1AF5FB7B22B3A687005D6D6E /* MusicTheoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB7722B3A687005D6D6E /* MusicTheoryTests.swift */; };
 		1AF5FB7C22B3A687005D6D6E /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5FB7822B3A687005D6D6E /* XCTestManifests.swift */; };
 		B23E8EC11F1C2BAE0094D316 /* MusicTheory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */; };
+		C18FEE9027695FBA00322F6C /* HarmonicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18FEE8F27695FBA00322F6C /* HarmonicFunctions.swift */; };
+		C18FEE9127695FBA00322F6C /* HarmonicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18FEE8F27695FBA00322F6C /* HarmonicFunctions.swift */; };
+		C18FEE9227695FBA00322F6C /* HarmonicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18FEE8F27695FBA00322F6C /* HarmonicFunctions.swift */; };
+		C18FEE9327695FBA00322F6C /* HarmonicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18FEE8F27695FBA00322F6C /* HarmonicFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,7 @@
 		B219CC291E4CFBAF0060A6B6 /* MusicTheory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicTheory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22EB5C920DD2396003927AA /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B23E8EBC1F1C2BAE0094D316 /* MusicTheoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTheoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C18FEE8F27695FBA00322F6C /* HarmonicFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HarmonicFunctions.swift; path = "../../../../Downloads/MusicTheory-1.3.0/Sources/MusicTheory/HarmonicFunctions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,18 +152,19 @@
 				1AF5FB2722B3A3E9005D6D6E /* Accidental.swift */,
 				1AF5FB2D22B3A3E9005D6D6E /* Chord.swift */,
 				1AF5FB3322B3A3E9005D6D6E /* ChordProgression.swift */,
-				1AF5FB2822B3A3E9005D6D6E /* Info-Mac.plist */,
-				1AF5FB2622B3A3E9005D6D6E /* Info-TV.plist */,
-				1AF5FB2A22B3A3E9005D6D6E /* Info-Watch.plist */,
-				1AF5FB2922B3A3E9005D6D6E /* Info-iOS.plist */,
 				1AF5FB2C22B3A3E9005D6D6E /* Interval.swift */,
 				1AF5FB2F22B3A3E9005D6D6E /* Key.swift */,
-				1AF5FB2B22B3A3E9005D6D6E /* MusicTheory.h */,
 				1AF5FB2E22B3A3E9005D6D6E /* NoteValue.swift */,
 				1AF5FB2522B3A3E9005D6D6E /* Pitch.swift */,
 				1AF5FB3422B3A3E9005D6D6E /* Scale.swift */,
 				1AF5FB3022B3A3E9005D6D6E /* Tempo.swift */,
 				1AF5FB3122B3A3E9005D6D6E /* TimeSignature.swift */,
+				C18FEE8F27695FBA00322F6C /* HarmonicFunctions.swift */,
+				1AF5FB2B22B3A3E9005D6D6E /* MusicTheory.h */,
+				1AF5FB2822B3A3E9005D6D6E /* Info-Mac.plist */,
+				1AF5FB2622B3A3E9005D6D6E /* Info-TV.plist */,
+				1AF5FB2A22B3A3E9005D6D6E /* Info-Watch.plist */,
+				1AF5FB2922B3A3E9005D6D6E /* Info-iOS.plist */,
 			);
 			path = MusicTheory;
 			sourceTree = "<group>";
@@ -344,7 +350,7 @@
 					B219CC011E4CFB870060A6B6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 77Y3N48SNF;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1310;
 						ProvisioningStyle = Automatic;
 					};
 					B219CC0E1E4CFB970060A6B6 = {
@@ -438,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18FEE9027695FBA00322F6C /* HarmonicFunctions.swift in Sources */,
 				1AF5FB7122B3A3E9005D6D6E /* Scale.swift in Sources */,
 				1AF5FB5122B3A3E9005D6D6E /* Interval.swift in Sources */,
 				1AF5FB5522B3A3E9005D6D6E /* Chord.swift in Sources */,
@@ -455,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18FEE9127695FBA00322F6C /* HarmonicFunctions.swift in Sources */,
 				1AF5FB7222B3A3E9005D6D6E /* Scale.swift in Sources */,
 				1AF5FB5222B3A3E9005D6D6E /* Interval.swift in Sources */,
 				1AF5FB5622B3A3E9005D6D6E /* Chord.swift in Sources */,
@@ -472,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18FEE9227695FBA00322F6C /* HarmonicFunctions.swift in Sources */,
 				1AF5FB7322B3A3E9005D6D6E /* Scale.swift in Sources */,
 				1AF5FB5322B3A3E9005D6D6E /* Interval.swift in Sources */,
 				1AF5FB5722B3A3E9005D6D6E /* Chord.swift in Sources */,
@@ -489,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18FEE9327695FBA00322F6C /* HarmonicFunctions.swift in Sources */,
 				1AF5FB7422B3A3E9005D6D6E /* Scale.swift in Sources */,
 				1AF5FB5422B3A3E9005D6D6E /* Interval.swift in Sources */,
 				1AF5FB5822B3A3E9005D6D6E /* Chord.swift in Sources */,
@@ -540,7 +550,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -563,7 +573,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

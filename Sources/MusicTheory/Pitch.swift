@@ -275,7 +275,7 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
 
 extension Array {
   /// An array subscript extension that returns the element from the positive or negative circular index.
-  public subscript(circular index: Int) -> Element? {
+  subscript(circular index: Int) -> Element? {
     guard count > 0 else { return nil }
     let mod = index % count
     let offset = index >= 0 ? 0 : count

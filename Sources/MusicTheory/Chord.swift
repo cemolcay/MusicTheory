@@ -96,7 +96,7 @@ public enum ChordFifthType: Int, ChordPart {
   /// Half step down of perfect fifth.
   case diminished
   /// Half step up of perfect fifth.
-  case agumented
+  case augmented
 
   /// Initilize chord part with interval.
   public init?(interval: Interval) {
@@ -105,8 +105,8 @@ public enum ChordFifthType: Int, ChordPart {
       self = .perfect
     case ChordFifthType.diminished.interval:
       self = .diminished
-    case ChordFifthType.agumented.interval:
-      self = .agumented
+    case ChordFifthType.augmented.interval:
+      self = .augmented
     default:
       return nil
     }
@@ -119,7 +119,7 @@ public enum ChordFifthType: Int, ChordPart {
       return .P5
     case .diminished:
       return .d5
-    case .agumented:
+    case .augmented:
       return .A5
     }
   }
@@ -128,7 +128,7 @@ public enum ChordFifthType: Int, ChordPart {
   public var notation: String {
     switch self {
     case .perfect: return ""
-    case .agumented: return "♯5"
+    case .augmented: return "♯5"
     case .diminished: return "♭5"
     }
   }
@@ -137,14 +137,14 @@ public enum ChordFifthType: Int, ChordPart {
   public var description: String {
     switch self {
     case .perfect: return ""
-    case .agumented: return "Agumented"
+    case .augmented: return "Augmented"
     case .diminished: return "Diminished"
     }
   }
 
   /// All values of `ChordFifthType`.
   public static var all: [ChordFifthType] {
-    return [.perfect, .diminished, .agumented]
+    return [.perfect, .diminished, .augmented]
   }
 }
 
@@ -432,31 +432,6 @@ public struct ChordExtensionType: ChordPart {
   }
 }
 
-// MARK - CustomChordType
-
-/// Custom chord with the custom intervals.
-public struct CustomChordType: ChordDescription {
-  /// Intervals of the chord type.
-  public var intervals: [Interval]
-
-  /// Initialize the chord type with the custom intervals.
-  ///
-  /// - Parameter intervals: Custom intervals.
-  public init(intervals: [Interval]) {
-    self.intervals = intervals
-  }
-
-  /// Notation of the chord type.
-  public var notation: String {
-    return description
-  }
-
-  /// Description of the chord type.
-  public var description: String {
-    return ""
-  }
-}
-
 // MARK: - ChordType
 
 /// Checks the equability between two `ChordType`s by their intervals.
@@ -504,9 +479,6 @@ public struct ChordType: ChordDescription, Hashable {
     }
   }
 
-  /// Describes a custom chord that can not represent with the current date structures. Defaults nil.
-  public var custom: CustomChordType?
-
   /// Initilze the chord type with its parts.
   ///
   /// - Parameters:
@@ -523,8 +495,7 @@ public struct ChordType: ChordDescription, Hashable {
     sixth: ChordSixthType? = nil,
     seventh: ChordSeventhType? = nil,
     suspended: ChordSuspendedType? = nil,
-    extensions: [ChordExtensionType]? = nil,
-    custom: CustomChordType? = nil) {
+    extensions: [ChordExtensionType]? = nil) {
     self.third = third
     self.fifth = fifth
     self.sixth = sixth
@@ -578,9 +549,7 @@ public struct ChordType: ChordDescription, Hashable {
       sixth: sixth,
       seventh: seventh,
       suspended: suspended,
-      extensions: extensions,
-      custom: custom
-    )
+      extensions: extensions)
   }
 
   /// Intervals of parts between root.
@@ -625,7 +594,7 @@ public struct ChordType: ChordDescription, Hashable {
         sixthNotation = sixth == nil ? "" : sixth!.notation
       }
       // Show fifth note after seventh in parenthesis
-      if fifth == .agumented || fifth == .diminished {
+      if fifth == .augmented || fifth == .diminished {
         return "\(third.notation)\(sixthNotation)\(seventhNotation)(\(fifth.notation))\(suspendedNotation)\(extensionNotation)"
       }
     }
@@ -820,8 +789,8 @@ public struct Chord: ChordDescription {
     if type.sixth != nil {
       roman = "\(roman)6"
     }
-    // Check if agumented
-    if type.fifth == .agumented {
+    // Check if augmented
+    if type.fifth == .augmented {
       roman = "\(roman)+"
     }
     // Check if diminished
