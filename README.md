@@ -161,3 +161,4 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [LoopBud](https://apps.apple.com/us/app/loopbud-auv3-midi-recorder/id1554773709) (iOS, AUv3, M1)  
 [Euclid Goes to Party](https://apps.apple.com/us/app/euclid-goes-to-party-auv3-bass/id1565732327) (iOS, AUv3, M1)  
 [SnakeBud](https://apps.apple.com/us/app/snakebud-auv3-midi-sequencer/id1568600625) (iOS, AUv3, M1)  
+[MelodyBud](https://apps.apple.com/us/app/melodybud-auv3-midi-sequencer/id1601357369) (iOS, AUv3, M1)  
