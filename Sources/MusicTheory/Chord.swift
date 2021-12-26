@@ -690,7 +690,7 @@ public struct ChordType: ChordDescription, Hashable {
 public func == (left: Chord?, right: Chord?) -> Bool {
   switch (left, right) {
   case let (.some(left), .some(right)):
-    return left.key == right.key && left.type == right.type
+    return left.key == right.key && left.type == right.type && left.inversion == right.inversion
   case (.none, .none):
     return true
   default:
