@@ -5,6 +5,9 @@
 //  Created by Cem Olcay on 29/06/2020.
 //  Copyright © 2017 cemolcay. All rights reserved.
 //
+//  https://github.com/cemolcay/MusicTheory
+//
+
 
 import Foundation
 
