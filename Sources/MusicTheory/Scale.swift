@@ -22,7 +22,7 @@ public func == (left: Scale, right: Scale) -> Bool {
 
 /// Scale object with `ScaleType` and scale's key of `NoteType`.
 /// Could calculate note sequences in [Note] format.
-public struct Scale: Equatable, Codable {
+public struct Scale: Hashable, Codable {
   /// Type of the scale that has `interval` info.
   public var type: ScaleType
   /// Root key of the scale that will built onto.
@@ -70,6 +70,13 @@ public struct Scale: Equatable, Codable {
       pitches += type.intervals.map({ root + $0 })
     })
     return pitches
+  }
+
+    // MARK: Hashable
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(key)
+    hasher.combine(type)
   }
 }
 

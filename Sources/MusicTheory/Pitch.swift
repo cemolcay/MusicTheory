@@ -147,7 +147,7 @@ public func < (lhs: Pitch, rhs: Pitch) -> Bool {
 
 /// Pitch object with a `Key` and an octave.
 /// Could be initilized with MIDI note number and preferred accidental type.
-public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
+public struct Pitch: RawRepresentable, Codable, Hashable, Comparable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
   /// Key of the pitch like C, D, A, B with accidentals.
   public var key: Key
 
@@ -263,6 +263,13 @@ public struct Pitch: RawRepresentable, Codable, Equatable, Comparable, Expressib
     }
 
     self = Pitch(key: Key(type: keyType, accidental: accidental), octave: octave)
+  }
+
+  // MARK: Hashable
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(key)
+    hasher.combine(octave)
   }
 
   // MARK: CustomStringConvertible
