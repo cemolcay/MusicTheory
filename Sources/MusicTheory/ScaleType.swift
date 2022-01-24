@@ -218,8 +218,8 @@ extension ScaleType {
   /// Arabian scale
   public static let arabian = ScaleType(intervals: [.P1, .M2, .M3, .P4, .d5, .m6, .m7], description: "Arabian")
 
-  /// Augmented ionian scale
-  public static let augmentedIonian = ScaleType(intervals: [.P1, .M2, .M3, .P4, .m6, .M6, .M7], description: "Augmented Ionian")
+  /// Ionian augmented scale
+  public static let ionianAugmented = ScaleType(intervals: [.P1, .M2, .M3, .P4, .m6, .M6, .M7], description: "Ionian Augmented")
 
   /// Balinese scale
   public static let balinese = ScaleType(intervals: [.P1, .m2, .m3, .P5, .m6], description: "Balinese")
@@ -417,7 +417,7 @@ extension ScaleType {
       .naturalMinor,
       .ionian,
       .ionianSharp2,
-      .augmentedIonian,
+      .ionianAugmented,
       .ionianAugmentedSharp2,
       .aeolian,
       .dorian,

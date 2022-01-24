@@ -88,5 +88,22 @@ HarmonicFunctionType.allCases.forEach({ type in
   let relatedKeys = type.direction.map({ related in
     harmonicFunctions.harmonicFunction(for: related)!
   })
-//  print(type, relatedKeys)
+  print(type, relatedKeys)
 })
+
+func nearestKey(key: Key, scale: Scale) -> Key {
+    var nearest = key
+    var distance = 100
+    let keyValue = key.type.rawValue + key.accidental.rawValue
+    for scaleKey in scale.keys {
+        let scaleKeyValue = scaleKey.type.rawValue + scaleKey.accidental.rawValue
+        let diff = abs(scaleKeyValue - keyValue)
+        if diff < distance {
+            distance = diff
+            nearest = scaleKey
+        }
+    }
+    return nearest
+}
+
+nearestKey(key: "f", scale: dmajor)
