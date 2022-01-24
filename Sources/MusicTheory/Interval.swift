@@ -33,7 +33,7 @@ public func === (lhs: Interval, rhs: Interval) -> Bool {
 /// Defines the interval between `Pitch`es in semitones.
 public struct Interval: Codable, Hashable, CustomStringConvertible {
   /// Quality type of the interval.
-  public enum Quality: Int, Codable, Hashable, CustomStringConvertible {
+  public enum Quality: Int, Codable, Hashable, CaseIterable, CustomStringConvertible {
     /// Diminished
     case diminished
     /// Perfect
