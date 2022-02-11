@@ -348,7 +348,7 @@ extension ScaleType {
   public static let jazzMelodicMinor = ScaleType(intervals: [.P1, .M2, .m3, .P4, .P5, .M6, .M7], description: "Jazz Melodic Minor")
 
   /// Lydian augmented #6 scale
-  public static let lydianAugmentedSharp6 = ScaleType(intervals: [.P1, ], description: "Lydian Augmented #6")
+  public static let lydianAugmentedSharp6 = ScaleType(intervals: [.P1, .M2, .M3, .d5, .m6, .m7, .M7], description: "Lydian Augmented #6")
 
   /// Lydian augmented #2 scale
   public static let lydianAugmentedSharp2 = ScaleType(intervals: [.P1, .m3, .M3, .d5, .m6, .M6, .M7], description: "Lydian Augmented #2")
