@@ -162,3 +162,4 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [Euclid Goes to Party](https://apps.apple.com/us/app/euclid-goes-to-party-auv3-bass/id1565732327) (iOS, AUv3, M1)  
 [SnakeBud](https://apps.apple.com/us/app/snakebud-auv3-midi-sequencer/id1568600625) (iOS, AUv3, M1)  
 [MelodyBud](https://apps.apple.com/us/app/melodybud-auv3-midi-sequencer/id1601357369) (iOS, AUv3, M1)  
+[ScaleBud 2](https://apps.apple.com/us/app/scalebud-2-auv3-midi-keyboard/id1605842538) (iOS, AUv3, M1)  
