@@ -7,6 +7,11 @@ let p: Pitch = "cb2"
 let b: Key = "b"
 p.key == b
 
+let ds: Key = "d#"
+let eb: Key = "eb"
+ds == eb
+ds === eb
+
 // e f f# g g# a a# b c c# d d#
 Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .A5
 Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .d5
@@ -107,3 +112,4 @@ func nearestKey(key: Key, scale: Scale) -> Key {
 }
 
 nearestKey(key: "f", scale: dmajor)
+
