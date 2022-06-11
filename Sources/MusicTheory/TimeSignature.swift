@@ -27,23 +27,9 @@ public struct TimeSignature: Codable, Hashable, CustomStringConvertible {
     self.noteValue = noteValue
   }
 
-  /// Initilizes the time signature with beats per measure and the value of the notes in beat. Returns nil if a division is not match a `NoteValue`.
-  ///
-  /// - Parameters:
-  ///   - beats: Number of beats in a measure
-  ///   - division: Number of the beats.
-  public init?(beats: Int, division: Int) {
-    guard let noteValue = NoteValueType(rawValue: Double(division)) else {
-      return nil
-    }
-
-    self.beats = beats
-    self.noteValue = noteValue
-  }
-
   // MARK: CustomStringConvertible
 
   public var description: String {
-    return "\(beats)/\(Int(noteValue.rawValue))"
+    return "\(beats)/\(Int(noteValue.rate))"
   }
 }

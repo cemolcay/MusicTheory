@@ -185,6 +185,27 @@ public struct Key: Codable, Equatable, Hashable, ExpressibleByStringLiteral, Cus
     Key(type: .b, accidental: .natural),
   ]
 
+  /// All notes in an octave with both flat and sharp notes.
+  public static let allKeys = [
+    Key(type: .c, accidental: .natural),
+    Key(type: .c, accidental: .sharp),
+    Key(type: .d, accidental: .flat),
+    Key(type: .d, accidental: .natural),
+    Key(type: .d, accidental: .sharp),
+    Key(type: .e, accidental: .flat),
+    Key(type: .e, accidental: .natural),
+    Key(type: .f, accidental: .natural),
+    Key(type: .f, accidental: .sharp),
+    Key(type: .g, accidental: .flat),
+    Key(type: .g, accidental: .natural),
+    Key(type: .g, accidental: .sharp),
+    Key(type: .a, accidental: .flat),
+    Key(type: .a, accidental: .natural),
+    Key(type: .a, accidental: .sharp),
+    Key(type: .b, accidental: .flat),
+    Key(type: .b, accidental: .natural),
+  ]
+
   /// Initilizes the key with its type and accidental.
   ///
   /// - Parameters:
