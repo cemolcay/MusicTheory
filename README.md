@@ -166,5 +166,7 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [ShiftBud](https://apps.apple.com/us/app/shiftbud-generative-midi-auv3/id1616169031) (iOS, AUv3, M1)  
 [PolyBud](https://apps.apple.com/us/app/polybud-polyrhythmic-sequencer/id1624211288) (iOS, AUv3, M1)  
 [PatternBud](https://apps.apple.com/us/app/patternbud-midi-cc-sequencer/id1608966928) (iOS, AUv3, M1)  
+[Textquencer](https://apps.apple.com/us/app/textquencer-auv3-midi/id1661316322) (iOS, AUv3, M1)  
+[In Theory](https://apps.apple.com/us/app/in-theory-interval-keyboard/id1667984658) (iOS, AUv3, M1)  
 [BrainBud](https://apps.apple.com/us/app/brainbud-bud-app-controller/id6446066258) (iOS, AUv3, M1)  
 [Binarhythmic](https://apps.apple.com/us/app/binarhythmic-rhythm-generator/id6447797078) (iOS, AUv3, M1)  
