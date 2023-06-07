@@ -1,4 +1,4 @@
-MusicTheory [![Build Status](https://travis-ci.org/cemolcay/MusicTheory.svg?branch=master)](https://travis-ci.org/cemolcay/MusicTheory)
+MusicTheory
 ===
 
 A music theory library with `Key`, `Pitch`, `Interval`, `Scale` and `Chord` representations in swift enums.
@@ -165,5 +165,6 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [ScaleBud 2](https://apps.apple.com/us/app/scalebud-2-auv3-midi-keyboard/id1605842538) (iOS, AUv3, M1)  
 [ShiftBud](https://apps.apple.com/us/app/shiftbud-generative-midi-auv3/id1616169031) (iOS, AUv3, M1)  
 [PolyBud](https://apps.apple.com/us/app/polybud-polyrhythmic-sequencer/id1624211288) (iOS, AUv3, M1)  
-[PatternBud](https://apps.apple.com/us/app/patternbud-midi-cc-sequencer/id1608966928) (iOS, AUv3, M1)
-
+[PatternBud](https://apps.apple.com/us/app/patternbud-midi-cc-sequencer/id1608966928) (iOS, AUv3, M1)  
+[BrainBud](https://apps.apple.com/us/app/brainbud-bud-app-controller/id6446066258) (iOS, AUv3, M1)  
+[Binarhythmic](https://apps.apple.com/us/app/binarhythmic-rhythm-generator/id6447797078) (iOS, AUv3, M1)  
