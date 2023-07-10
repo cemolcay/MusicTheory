@@ -171,3 +171,4 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [In Theory](https://apps.apple.com/us/app/in-theory-interval-keyboard/id1667984658) (iOS, AUv3, M1)  
 [BrainBud](https://apps.apple.com/us/app/brainbud-bud-app-controller/id6446066258) (iOS, AUv3, M1)  
 [Binarhythmic](https://apps.apple.com/us/app/binarhythmic-rhythm-generator/id6447797078) (iOS, AUv3, M1)  
+[Auto Bass](https://apps.apple.com/us/app/auto-bass-auv3-midi-generator/id6450610419) (iOS, AUv3, M1)  
