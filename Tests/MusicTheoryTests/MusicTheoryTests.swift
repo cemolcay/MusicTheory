@@ -119,9 +119,14 @@ extension MusicTheoryTests {
 
 extension MusicTheoryTests {
   func testNoteValueConversions() {
-    let noteValue = NoteValue(type: .half, modifier: .dotted)
+    var noteValue = NoteValue(type: .half, modifier: .dotted)
     XCTAssertEqual(noteValue / NoteValueType.sixteenth, 12)
     XCTAssertEqual(noteValue / NoteValueType.whole, 0.75)
+    noteValue = NoteValue(type: .half, modifier: .default)
+    XCTAssertEqual(noteValue / NoteValueType.sixteenth, 8)
+    XCTAssertEqual(noteValue / NoteValueType.whole, 0.5)
+    XCTAssertEqual(noteValue / NoteValueType.quarter, 2)
+    XCTAssertEqual(noteValue / NoteValueType.thirtysecond, 16)
   }
 
   func testDurations() {

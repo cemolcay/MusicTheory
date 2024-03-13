@@ -105,7 +105,7 @@ public enum NoteModifier: Double, Codable, CaseIterable, CustomStringConvertible
 ///   - noteValueType: The note value type to measure the length of the note value.
 /// - Returns: Returns how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
 public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
-  return noteValue.modifier.rawValue * noteValueType.rate / noteValue.type.rate
+    return (noteValue.type.rate * noteValue.modifier.rawValue) / noteValueType.rate
 }
 
 /// Defines the duration of a note beatwise.

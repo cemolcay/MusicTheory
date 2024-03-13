@@ -41,7 +41,7 @@ public struct Tempo: Codable, Hashable, CustomStringConvertible {
   /// - Returns: Returns the sample length of a note value.
   public func sampleLength(of noteValue: NoteValue, sampleRate: Double = 44100.0) -> Double {
     let secondsPerBeat = 60.0 / bpm
-    return secondsPerBeat * sampleRate * ((4 / noteValue.type.rate) * noteValue.modifier.rawValue)
+    return secondsPerBeat * sampleRate * ((Double(timeSignature.beats) * noteValue.type.rate) * noteValue.modifier.rawValue)
   }
 
   /// Calculates the LFO speed of a note vaule in hertz.
