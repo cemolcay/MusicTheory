@@ -14,6 +14,10 @@ import Foundation
 
 /// Defines the types of note values.
 public enum NoteValueType: Int, Codable, CaseIterable, Hashable, CustomStringConvertible {
+  /// Sixteen bar notes.
+  case sixteenBars
+  /// Eigth bar notes.
+  case eigthBars
   /// Four bar notes.
   case fourBars
   /// Two bar notes.
@@ -40,9 +44,11 @@ public enum NoteValueType: Int, Codable, CaseIterable, Hashable, CustomStringCon
   /// The note value's duration in beats.
   public var rate: Double {
     switch self {
-    case .fourBars: return 16.0 / 1.0
-    case .twoBars: return 8.0 / 1.0
-    case .oneBar: return 4.0 / 1.0
+    case .sixteenBars: return 16.0 / 1.0
+    case .eigthBars: return 8.0 / 1.0
+    case .fourBars: return 4.0 / 1.0
+    case .twoBars: return 2.0 / 1.0
+    case .oneBar: return 1.0 / 1.0
     case .doubleWhole: return 2.0 / 1.0
     case .whole: return 1.0 / 1.0
     case .half: return 1.0 / 2.0
@@ -57,6 +63,8 @@ public enum NoteValueType: Int, Codable, CaseIterable, Hashable, CustomStringCon
   /// Returns the string representation of the note value type.
   public var description: String {
     switch self {
+    case .sixteenBars: return "16 Bars"
+    case .eigthBars: return "8 Bars"
     case .fourBars: return "4 Bars"
     case .twoBars: return "2 Bars"
     case .oneBar: return "1 Bar"
