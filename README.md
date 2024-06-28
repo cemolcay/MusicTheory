@@ -174,3 +174,6 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [Auto Bass](https://apps.apple.com/us/app/auto-bass-auv3-midi-generator/id6450610419) (iOS, AUv3, M1)  
 [BounceBud](https://apps.apple.com/us/app/bouncebud-physics-based-midi/id6464171933) (iOS, AUv3, M1)  
 [MuseBud](https://apps.apple.com/us/app/musebud-auv3-midi-generator/id6472487197) (iOS, AUv3, M1)  
+[Auto Fills](https://apps.apple.com/us/app/auto-fills-drum-fill-generator/id6476319733) (iOS, AUv3, M1)  
+[Kebarp](https://apps.apple.com/us/app/kebarp-auv3-midi-arpeggiator/id6479562640) (iOS, AUv3, M1)  
+[FuncBud](https://apps.apple.com/us/app/funcbud-generative-sequencer/id6502771916) (iOS, AUv3, M1)  
