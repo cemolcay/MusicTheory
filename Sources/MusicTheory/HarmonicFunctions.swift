@@ -8,7 +8,6 @@
 //  https://github.com/cemolcay/MusicTheory
 //
 
-
 import Foundation
 
 /// Represents harmonic functions in music theory.
