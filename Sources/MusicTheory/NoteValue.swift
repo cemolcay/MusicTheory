@@ -88,8 +88,18 @@ public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
     return (noteValue.type.beats * noteValue.modifier.rawValue) / noteValueType.beats
 }
 
+/// Checks the equality between two `NoteValue` types.
+/// 
+/// - Parameters:
+///   - lhs: Left hand side `NoteValue`.
+///   - rhs: Right hand side `NoteValue`.
+/// - Returns: Returns true if two `NoteValue`s are equal.
+public func == (lhs: NoteValue, rhs: NoteValue) -> Bool {
+    return lhs.type == rhs.type && lhs.modifier == rhs.modifier
+}
+
 /// Defines the duration of a note beatwise.
-public struct NoteValue: Codable, CustomStringConvertible {
+public struct NoteValue: Codable, Equatable, CustomStringConvertible {
     /// Type that represents the duration of note.
     public var type: NoteValueType
     /// Modifier for `NoteType` that modifies the duration.
@@ -115,3 +125,4 @@ public struct NoteValue: Codable, CustomStringConvertible {
         return "\(type)\(modifier)"
     }
 }
+
