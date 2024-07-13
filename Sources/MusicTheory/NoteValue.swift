@@ -19,7 +19,6 @@ public struct NoteValueType: Codable, Hashable, CustomStringConvertible {
     /// Name of the note value.
     public var description: String
     
-    
     /// Sixteen bar notes.
     public static let sixteenBars = NoteValueType(beats: 16.0, description: "16 Bars")
     /// Eigth bar notes.
