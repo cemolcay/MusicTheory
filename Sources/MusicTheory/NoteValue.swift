@@ -19,6 +19,16 @@ public struct NoteValueType: Codable, Hashable, CustomStringConvertible {
     /// Name of the note value.
     public var description: String
     
+    /// Creates a note value type.
+    /// 
+    /// - Parameters:
+    ///   - beats: The rate of the note value in beats.
+    ///   - description: The name of the note value.
+    public init(beats: Double, description: String) {
+        self.beats = beats
+        self.description = description
+    }
+    
     /// Sixteen bar notes.
     public static let sixteenBars = NoteValueType(beats: 16.0, description: "16 Bars")
     /// Eigth bar notes.
@@ -89,7 +99,7 @@ public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
 }
 
 /// Checks the equality between two `NoteValue` types.
-/// 
+///
 /// - Parameters:
 ///   - lhs: Left hand side `NoteValue`.
 ///   - rhs: Right hand side `NoteValue`.
