@@ -30,6 +30,6 @@ public struct TimeSignature: Codable, Hashable, CustomStringConvertible {
   // MARK: CustomStringConvertible
 
   public var description: String {
-    return "\(beats)/\(Int(noteValue.rate))"
+    return "\(beats)/\(Int(noteValue.beats))"
   }
 }

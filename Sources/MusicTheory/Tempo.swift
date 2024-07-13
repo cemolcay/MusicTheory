@@ -30,7 +30,7 @@ public struct Tempo: Codable, Hashable, CustomStringConvertible {
   /// Caluclates the duration of a note value in seconds.
   public func duration(of noteValue: NoteValue) -> TimeInterval {
     let secondsPerBeat = 60.0 / bpm
-    return secondsPerBeat * (timeSignature.noteValue.rate / noteValue.type.rate) * noteValue.modifier.rawValue
+    return secondsPerBeat * (timeSignature.noteValue.beats / noteValue.type.beats) * noteValue.modifier.rawValue
   }
 
   /// Calculates the note length in samples. Useful for sequencing notes sample accurate in the DSP.
@@ -41,7 +41,7 @@ public struct Tempo: Codable, Hashable, CustomStringConvertible {
   /// - Returns: Returns the sample length of a note value.
   public func sampleLength(of noteValue: NoteValue, sampleRate: Double = 44100.0) -> Double {
     let secondsPerBeat = 60.0 / bpm
-    return secondsPerBeat * sampleRate * ((Double(timeSignature.beats) * noteValue.type.rate) * noteValue.modifier.rawValue)
+    return secondsPerBeat * sampleRate * ((Double(timeSignature.beats) * noteValue.type.beats) * noteValue.modifier.rawValue)
   }
 
   /// Calculates the LFO speed of a note vaule in hertz.

@@ -6,7 +6,7 @@
 //  Copyright © 2016 prototapp. All rights reserved.
 //
 
-import MusicTheory
+@testable import MusicTheory
 import XCTest
 
 class MusicTheoryTests: XCTestCase {

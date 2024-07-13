@@ -13,71 +13,44 @@ import Foundation
 // MARK: - NoteValueType
 
 /// Defines the types of note values.
-public enum NoteValueType: Int, Codable, CaseIterable, Hashable, CustomStringConvertible {
+public struct NoteValueType: Codable, Hashable, CustomStringConvertible {
+    /// Note value in beats.
+    public var beats: Double
+    /// Name of the note value.
+    public var description: String
+    
+    
   /// Sixteen bar notes.
-  case sixteenBars
+  public static let sixteenBars = NoteValueType(beats: 16.0, description: "16 Bars")
   /// Eigth bar notes.
-  case eigthBars
+  public static let eigthBars = NoteValueType(beats: 8.0, description: "8 Bars")
   /// Four bar notes.
-  case fourBars
+  public static let fourBars = NoteValueType(beats: 4.0, description: "4 Bars")
   /// Two bar notes.
-  case twoBars
+  public static let twoBars = NoteValueType(beats: 2.0, description: "2 Bars")
   /// One bar note.
-  case oneBar
+  public static let oneBar = NoteValueType(beats: 1.0, description: "1 Bar")
   /// Two whole notes.
-  case doubleWhole
+  public static let doubleWhole = NoteValueType(beats: 2.0 / 1.0, description: "2/1")
   /// Whole note.
-  case whole
+  public static let whole = NoteValueType(beats: 1.0 / 1.0, description: "1/1")
   /// Half note.
-  case half
+  public static let half = NoteValueType(beats: 1.0 / 2.0, description: "1/2")
   /// Quarter note.
-  case quarter
+  public static let quarter = NoteValueType(beats: 1.0 / 4.0, description: "1/4")
   /// Eighth note.
-  case eighth
+  public static let eighth = NoteValueType(beats: 1.0 / 8.0, description: "1/8")
   /// Sixteenth note.
-  case sixteenth
+  public static let sixteenth = NoteValueType(beats: 1.0 / 16.0, description: "1/16")
   /// Thirtysecond note.
-  case thirtysecond
+  public static let thirtysecond = NoteValueType(beats: 1.0 / 32.0, description: "1/32")
   /// Sixtyfourth note.
-  case sixtyfourth
-
-  /// The note value's duration in beats.
-  public var rate: Double {
-    switch self {
-    case .sixteenBars: return 16.0 / 1.0
-    case .eigthBars: return 8.0 / 1.0
-    case .fourBars: return 4.0 / 1.0
-    case .twoBars: return 2.0 / 1.0
-    case .oneBar: return 1.0 / 1.0
-    case .doubleWhole: return 2.0 / 1.0
-    case .whole: return 1.0 / 1.0
-    case .half: return 1.0 / 2.0
-    case .quarter: return 1.0 / 4.0
-    case .eighth: return 1.0 / 8.0
-    case .sixteenth: return 1.0 / 16.0
-    case .thirtysecond: return 1.0 / 32.0
-    case .sixtyfourth: return 1.0 / 64.0
-    }
-  }
-
-  /// Returns the string representation of the note value type.
-  public var description: String {
-    switch self {
-    case .sixteenBars: return "16 Bars"
-    case .eigthBars: return "8 Bars"
-    case .fourBars: return "4 Bars"
-    case .twoBars: return "2 Bars"
-    case .oneBar: return "1 Bar"
-    case .doubleWhole: return "2/1"
-    case .whole: return "1/1"
-    case .half: return "1/2"
-    case .quarter: return "1/4"
-    case .eighth: return "1/8"
-    case .sixteenth: return "1/16"
-    case .thirtysecond: return "1/32"
-    case .sixtyfourth: return "1/64"
-    }
-  }
+  public static let sixtyfourth = NoteValueType(beats: 1.0 / 64.0, description: "1/64")
+    
+  public static let all: [NoteValueType] = [
+      .sixteenBars, .eigthBars, .fourBars, .twoBars, .oneBar,
+      .half, .quarter, .eighth, .sixteenth, .thirtysecond, .sixtyfourth
+  ]
 }
 
 // MARK: - NoteModifier
@@ -113,7 +86,7 @@ public enum NoteModifier: Double, Codable, CaseIterable, CustomStringConvertible
 ///   - noteValueType: The note value type to measure the length of the note value.
 /// - Returns: Returns how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
 public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
-    return (noteValue.type.rate * noteValue.modifier.rawValue) / noteValueType.rate
+    return (noteValue.type.beats * noteValue.modifier.rawValue) / noteValueType.beats
 }
 
 /// Defines the duration of a note beatwise.
