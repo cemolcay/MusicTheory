@@ -105,6 +105,11 @@ public struct NoteValue: Codable, CustomStringConvertible {
         self.modifier = modifier
     }
     
+    /// Note value in beats.
+    public var beats: Double {
+        return type.beats * modifier.rawValue
+    }
+    
     /// Returns the string representation of the note value.
     public var description: String {
         return "\(type)\(modifier)"
