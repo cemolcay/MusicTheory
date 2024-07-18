@@ -31,35 +31,35 @@ print(aminPtriad)
 // chord progression for C# harmonic minor triads
 let progression = ChordProgression.i_ii_vi_iv
 let cSharpHarmonicMinorTriadsProgression = progression.chords(
-  for: cSharpHarmonicMinor,
-  harmonicField: .triad,
-  inversion: 0
+    for: cSharpHarmonicMinor,
+    harmonicField: .triad,
+    inversion: 0
 )
 print(cSharpHarmonicMinorTriadsProgression)
 
 let c13 = Chord(
-  type: ChordType(
-    third: .major,
-    fifth: .perfect,
-    sixth: nil,
-    seventh: .dominant,
-    suspended: nil,
-    extensions: [
-      ChordExtensionType(type: .thirteenth, accidental: .natural),
-    ]
-  ),
-  key: Key(
-    type: .c,
-    accidental: .natural
-  )
+    type: ChordType(
+        third: .major,
+        fifth: .perfect,
+        sixth: nil,
+        seventh: .dominant,
+        suspended: nil,
+        extensions: [
+            ChordExtensionType(type: .thirteenth, accidental: .natural),
+        ]
+    ),
+    key: Key(
+        type: .c,
+        accidental: .natural
+    )
 )
 
 let cdim7 = Chord(
-  type: ChordType(
-    third: .major,
-    fifth: .diminished,
-    seventh: .diminished),
-  key: Key(type: .c))
+    type: ChordType(
+        third: .major,
+        fifth: .diminished,
+        seventh: .diminished),
+    key: Key(type: .c))
 cdim7.notation
 print(cdim7.keys)
 
@@ -90,10 +90,10 @@ let aHarmonicMinor = Scale(type: .harmonicMinor, key: Key(type: .a))
 print(aHarmonicMinor)
 let harmonicFunctions = HarmonicFunctions(scale: aHarmonicMinor)
 HarmonicFunctionType.allCases.forEach({ type in
-  let relatedKeys = type.direction.map({ related in
-    harmonicFunctions.harmonicFunction(for: related)!
-  })
-  print(type, relatedKeys)
+    let relatedKeys = type.direction.map({ related in
+        harmonicFunctions.harmonicFunction(for: related)!
+    })
+    print(type, relatedKeys)
 })
 
 func nearestKey(key: Key, scale: Scale) -> Key {
