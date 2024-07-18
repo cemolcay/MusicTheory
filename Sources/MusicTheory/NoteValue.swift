@@ -14,47 +14,47 @@ import Foundation
 
 /// Defines the types of note values.
 public struct NoteValueType: Codable, Hashable, CustomStringConvertible {
-    /// Note value in beats.
-    public var beats: Double
+    /// The note value's duration in beats.
+    public var rate: Double
     /// Name of the note value.
     public var description: String
     
     /// Creates a note value type.
     /// 
     /// - Parameters:
-    ///   - beats: The rate of the note value in beats.
+    ///   - rate: The rate of the note value in beats.
     ///   - description: The name of the note value.
-    public init(beats: Double, description: String) {
-        self.beats = beats
+    public init(rate: Double, description: String) {
+        self.rate = rate
         self.description = description
     }
     
     /// Sixteen bar notes.
-    public static let sixteenBars = NoteValueType(beats: 16.0, description: "16 Bars")
+    public static let sixteenBars = NoteValueType(rate: 16.0, description: "16 Bars")
     /// Eigth bar notes.
-    public static let eigthBars = NoteValueType(beats: 8.0, description: "8 Bars")
+    public static let eigthBars = NoteValueType(rate: 8.0, description: "8 Bars")
     /// Four bar notes.
-    public static let fourBars = NoteValueType(beats: 4.0, description: "4 Bars")
+    public static let fourBars = NoteValueType(rate: 4.0, description: "4 Bars")
     /// Two bar notes.
-    public static let twoBars = NoteValueType(beats: 2.0, description: "2 Bars")
+    public static let twoBars = NoteValueType(rate: 2.0, description: "2 Bars")
     /// One bar note.
-    public static let oneBar = NoteValueType(beats: 1.0, description: "1 Bar")
+    public static let oneBar = NoteValueType(rate: 1.0, description: "1 Bar")
     /// Two whole notes.
-    public static let doubleWhole = NoteValueType(beats: 2.0 / 1.0, description: "2/1")
+    public static let doubleWhole = NoteValueType(rate: 2.0 / 1.0, description: "2/1")
     /// Whole note.
-    public static let whole = NoteValueType(beats: 1.0 / 1.0, description: "1/1")
+    public static let whole = NoteValueType(rate: 1.0 / 1.0, description: "1/1")
     /// Half note.
-    public static let half = NoteValueType(beats: 1.0 / 2.0, description: "1/2")
+    public static let half = NoteValueType(rate: 1.0 / 2.0, description: "1/2")
     /// Quarter note.
-    public static let quarter = NoteValueType(beats: 1.0 / 4.0, description: "1/4")
+    public static let quarter = NoteValueType(rate: 1.0 / 4.0, description: "1/4")
     /// Eighth note.
-    public static let eighth = NoteValueType(beats: 1.0 / 8.0, description: "1/8")
+    public static let eighth = NoteValueType(rate: 1.0 / 8.0, description: "1/8")
     /// Sixteenth note.
-    public static let sixteenth = NoteValueType(beats: 1.0 / 16.0, description: "1/16")
+    public static let sixteenth = NoteValueType(rate: 1.0 / 16.0, description: "1/16")
     /// Thirtysecond note.
-    public static let thirtysecond = NoteValueType(beats: 1.0 / 32.0, description: "1/32")
+    public static let thirtysecond = NoteValueType(rate: 1.0 / 32.0, description: "1/32")
     /// Sixtyfourth note.
-    public static let sixtyfourth = NoteValueType(beats: 1.0 / 64.0, description: "1/64")
+    public static let sixtyfourth = NoteValueType(rate: 1.0 / 64.0, description: "1/64")
     
     public static let all: [NoteValueType] = [
         .sixteenBars, .eigthBars, .fourBars, .twoBars, .oneBar,
@@ -95,7 +95,7 @@ public enum NoteModifier: Double, Codable, CaseIterable, CustomStringConvertible
 ///   - noteValueType: The note value type to measure the length of the note value.
 /// - Returns: Returns how many notes of a single `NoteValueType` is equivalent to a given `NoteValue`.
 public func / (noteValue: NoteValue, noteValueType: NoteValueType) -> Double {
-    return (noteValue.type.beats * noteValue.modifier.rawValue) / noteValueType.beats
+    return (noteValue.type.rate * noteValue.modifier.rawValue) / noteValueType.rate
 }
 
 /// Checks the equality between two `NoteValue` types.
@@ -126,8 +126,8 @@ public struct NoteValue: Codable, Equatable, CustomStringConvertible {
     }
     
     /// Note value in beats.
-    public var beats: Double {
-        return type.beats * modifier.rawValue
+    public var rate: Double {
+        return type.rate * modifier.rawValue
     }
     
     /// Returns the string representation of the note value.
