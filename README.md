@@ -177,3 +177,4 @@ This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check th
 [Auto Fills](https://apps.apple.com/us/app/auto-fills-drum-fill-generator/id6476319733) (iOS, AUv3, M1)  
 [Kebarp](https://apps.apple.com/us/app/kebarp-auv3-midi-arpeggiator/id6479562640) (iOS, AUv3, M1)  
 [FuncBud](https://apps.apple.com/us/app/funcbud-generative-sequencer/id6502771916) (iOS, AUv3, M1)  
+[Note to Be](https://apps.apple.com/tr/app/note-to-be-midi-quantizer/id6596771972) (iOS, AUv3, M1)  
