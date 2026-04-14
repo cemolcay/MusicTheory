@@ -95,4 +95,10 @@ extension ScaleType {
     public static var phrygianMajor: ScaleType { .phrygianDominant }
     public static var whole: ScaleType { .wholeTone }
     public static var wholeDiminished: ScaleType { .diminished }
+    
+    public static var allScales: [ScaleType] {
+        [major, minor, dorian, phrygian, lydian, mixolydian, locrian,
+         harmonicMinor, melodicMinor, harmonicMajor, lydianDominant, altered, phrygianDominant,
+         pentatonicMajor, pentatonicMinor, pentatonicBlues, wholeTone, diminished, chromatic]
+    }
 }
