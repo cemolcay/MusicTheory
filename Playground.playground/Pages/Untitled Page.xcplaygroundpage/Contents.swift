@@ -91,19 +91,6 @@ let detectedDominant9 = ChordType.from(intervals: [.P1, .M3, .P5, .m7, .M9])
 detectedMinor
 detectedDominant9
 
-//: ## Harmonic Fields
-
-let majorTriads = cMajor.harmonicField(for: .triad)
-let majorSevenths = cMajor.harmonicField(for: .seventh)
-
-majorTriads.map { ($0.degree, $0.chord?.notation ?? $0.description) }
-majorSevenths.map { ($0.degree, $0.chord?.notation ?? $0.description) }
-
-// Roman numerals for the diatonic triads
-majorTriads.compactMap { entry in
-    entry.chord?.romanNumeral(for: cMajor)
-}
-
 //: ## Chord Recognition
 
 let recognizedFromNames = Chord.identify(noteNames: [.c, .e, .g, .bb])

@@ -198,27 +198,6 @@ cMaj.voiced(.drop2,    octave: 4)
 cMaj.voiced(.rootless, octave: 4)
 ```
 
-#### Harmonic Field
-
-``` swift
-let cMajor = Scale(type: .major, root: .c)
-
-// Triads
-let triads = cMajor.harmonicField(for: .triad)
-// I=C, ii=Dm, iii=Em, IV=F, V=G, vi=Am, vii°=Bdim
-
-// Seventh chords
-let sevenths = cMajor.harmonicField(for: .seventh)
-// Imaj7, IIm7, IIIm7, IVmaj7, V7, VIm7, VIIø7
-
-// Each entry always has intervals, even when chord recognition fails
-for entry in triads {
-    if let chord = entry.chord {
-        print(chord.romanNumeral(for: cMajor) ?? "")  // "I", "ii", "iii"...
-    }
-}
-```
-
 #### Chord Recognition
 
 Identify a chord from note names or MIDI note numbers. Results are sorted deterministically for the same input.

@@ -421,37 +421,6 @@ extension MusicTheoryTests {
         XCTAssertEqual(dDorian?.type, ScaleType.dorian)
     }
 
-    func testHarmonicFields() {
-        let cMaj = Scale(type: .major, root: .c)
-        let triads = cMaj.harmonicField(for: .triad)
-
-        let expectedRoots: [NoteName] = [.c, .d, .e, .f, .g, .a, .b]
-        let expectedTypes: [ChordType] = [.major, .minor, .minor, .major, .major, .minor, .diminished]
-
-        XCTAssertEqual(triads.count, 7)
-        for (i, entry) in triads.enumerated() {
-            XCTAssertNotNil(entry.chord, "Degree \(i + 1) should produce a valid chord")
-            XCTAssertEqual(entry.chord?.root, expectedRoots[i])
-            XCTAssertEqual(entry.chord?.type, expectedTypes[i])
-        }
-    }
-
-    func testHarmonicFieldSevenths() {
-        let cMaj = Scale(type: .major, root: .c)
-        let sevenths = cMaj.harmonicField(for: .seventh)
-
-        // I: Cmaj7, II: Dm7, III: Em7, IV: Fmaj7, V: G7, VI: Am7, VII: Bø7
-        let expectedTypes: [ChordType] = [
-            .major7, .minor7, .minor7, .major7, .dominant7, .minor7, .halfDiminished7
-        ]
-
-        XCTAssertEqual(sevenths.count, 7)
-        for (i, entry) in sevenths.enumerated() {
-            XCTAssertNotNil(entry.chord, "Degree \(i + 1) seventh chord should be recognizable")
-            XCTAssertEqual(entry.chord?.type, expectedTypes[i],
-                           "Degree \(i + 1): got \(entry.chord?.type.symbol ?? "nil"), expected \(expectedTypes[i].symbol)")
-        }
-    }
 }
 
 // MARK: - Chord Tests
@@ -581,11 +550,27 @@ extension MusicTheoryTests {
         let cMajNumerics = ["I", "ii", "iii", "IV", "V", "vi", "vii°"]
         let cMinNumerics = ["i", "ii°", "III", "iv", "v", "VI", "VII"]
 
-        let cMajChords = cMaj.harmonicField(for: .triad)
-        let cMinChords = cMin.harmonicField(for: .triad)
+        let cMajChords: [Chord] = [
+            Chord(type: .major, root: .c),
+            Chord(type: .minor, root: .d),
+            Chord(type: .minor, root: .e),
+            Chord(type: .major, root: .f),
+            Chord(type: .major, root: .g),
+            Chord(type: .minor, root: .a),
+            Chord(type: .diminished, root: .b),
+        ]
+        let cMinChords: [Chord] = [
+            Chord(type: .minor, root: .c),
+            Chord(type: .diminished, root: .d),
+            Chord(type: .major, root: .eb),
+            Chord(type: .minor, root: .f),
+            Chord(type: .minor, root: .g),
+            Chord(type: .major, root: .ab),
+            Chord(type: .major, root: .bb),
+        ]
 
-        XCTAssertEqual(cMajNumerics, cMajChords.compactMap { $0.chord?.romanNumeral(for: cMaj) })
-        XCTAssertEqual(cMinNumerics, cMinChords.compactMap { $0.chord?.romanNumeral(for: cMin) })
+        XCTAssertEqual(cMajNumerics, cMajChords.compactMap { $0.romanNumeral(for: cMaj) })
+        XCTAssertEqual(cMinNumerics, cMinChords.compactMap { $0.romanNumeral(for: cMin) })
     }
 }
 

@@ -10,26 +10,6 @@
 
 import Foundation
 
-// MARK: - HarmonicFieldEntry
-
-/// One entry in a scale's harmonic field: the chord for a given scale degree,
-/// along with the raw stacked intervals (always populated even when the chord
-/// cannot be identified).
-public struct HarmonicFieldEntry: CustomStringConvertible, Sendable {
-    /// 1-based scale degree this entry corresponds to.
-    public let degree: Int
-    /// The chord built on this degree, or `nil` if the intervals don't match any known chord type.
-    public let chord: Chord?
-    /// The intervals from the root of this chord to each stacked note (includes `.P1`).
-    public let intervals: [Interval]
-
-    public var description: String {
-        if let chord { return "Degree \(degree): \(chord)" }
-        let intStr = intervals.map(\.notation).joined(separator: " ")
-        return "Degree \(degree): [\(intStr)]"
-    }
-}
-
 // MARK: - Scale
 
 /// A musical scale: a `ScaleType` (interval pattern) anchored to a root `NoteName`.
@@ -151,82 +131,6 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
     /// The parallel minor (same root, minor scale type).
     public var parallelMinor: Scale { Scale(type: .minor, root: root) }
 
-    // MARK: Harmonic field
-
-    /// Stack of notes used to build chords for each scale degree.
-    public enum HarmonicFieldType: Int, Codable, CaseIterable, Sendable {
-        /// Triads: 1st, 3rd, 5th.
-        case triad
-        /// Seventh chords: 1st, 3rd, 5th, 7th.
-        case seventh
-        /// Ninth chords: 1st, 3rd, 5th, 7th, 9th.
-        case ninth
-        /// Eleventh chords: 1st, 3rd, 5th, 7th, 9th, 11th.
-        case eleventh
-        /// Thirteenth chords: 1st, 3rd, 5th, 7th, 9th, 11th, 13th.
-        case thirteenth
-
-        /// Number of stacked notes for this field type.
-        public var stackSize: Int {
-            switch self {
-            case .triad:       return 3
-            case .seventh:     return 4
-            case .ninth:       return 5
-            case .eleventh:    return 6
-            case .thirteenth:  return 7
-            }
-        }
-
-        // MARK: - Backward-compatible HarmonicField typealiases
-
-        public static let tetrad = HarmonicFieldType.seventh
-    }
-
-    // MARK: - Backward-compat HarmonicField alias
-
-    public typealias HarmonicField = HarmonicFieldType
-
-    /// Generates the harmonic field for the scale: one `HarmonicFieldEntry` per scale degree.
-    ///
-    /// Uses tercian stacking (every other scale note). For non-heptatonic scales the
-    /// same "skip-one" rule applies using available scale degrees.
-    ///
-    /// Unlike the old API, this method never silently discards information: even when
-    /// the intervals don't match a known `ChordType`, the `intervals` field is populated.
-    public func harmonicField(for field: HarmonicFieldType, inversion: Int = 0) -> [HarmonicFieldEntry] {
-        let octaves = [0, 1, 2, 3, 4]
-        let scalePitches = pitches(octaves: octaves)
-        let noteCount = type.cardinality
-        var entries = [HarmonicFieldEntry]()
-
-        for i in 0..<noteCount {
-            var chordPitches = [Pitch]()
-            for stack in 0..<field.stackSize {
-                let idx = i + stack * 2
-                guard idx < scalePitches.count else { break }
-                chordPitches.append(scalePitches[idx])
-            }
-            guard !chordPitches.isEmpty else { continue }
-
-            let rootPitch = chordPitches[0]
-            let intervals = chordPitches.map { rootPitch.interval(to: $0) }
-
-            let chordResult = ChordType.from(intervals: intervals)
-            let chord: Chord?
-            switch chordResult {
-            case .success(let chordType):
-                var c = Chord(type: chordType, root: rootPitch.noteName)
-                c.inversion = inversion
-                chord = c
-            case .failure:
-                chord = nil
-            }
-
-            entries.append(HarmonicFieldEntry(degree: i + 1, chord: chord, intervals: intervals))
-        }
-        return entries
-    }
-
     // MARK: Hashable
 
     public func hash(into hasher: inout Hasher) {
@@ -247,4 +151,3 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
         return "\(root) \(type): \(noteStr)"
     }
 }
-
