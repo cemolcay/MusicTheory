@@ -187,29 +187,6 @@ var firstInversion = Chord(type: .major, root: .c)
 firstInversion.inversion = 1
 firstInversion.notation  // "C/E"
 
-// Voicings
-cMaj.voiced(.drop2,    octave: 4)
-cMaj.voiced(.rootless, octave: 4)
-```
-
-#### Chord Recognition
-
-Identify a chord from note names or MIDI note numbers. Results are sorted deterministically for the same input.
-
-``` swift
-// From note names
-let results = Chord.identify(noteNames: [.c, .e, .g])
-results.first?.chord.notation   // "C"
-results.first?.confidence       // 1.0
-
-// From MIDI notes — use .flats for minor/dominant chords
-let minor = Chord.identify(midiNotes: [60, 63, 67], spelling: .flats)
-minor.first?.chord.notation     // "Cm"
-
-// Each result carries assumptions made
-for id in Chord.identify(noteNames: [.c, .g]) {
-    print("\(id.chord.notation) [\(id.confidence)] \(id.assumptions)")
-}
 ```
 
 #### `Tempo` and `TimeSignature`
