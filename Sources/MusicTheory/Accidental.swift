@@ -1,5 +1,5 @@
 //
-//  Enharmonics.swift
+//  Accidental.swift
 //  MusicTheory
 //
 //  Created by Cem Olcay on 21.06.2018.
@@ -10,205 +10,120 @@
 
 import Foundation
 
-/// Returns a new accidental by adding up two accidentals in the equation.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the sum of two accidentals.
+// MARK: - Operators
+
+/// Returns a new accidental by adding two accidentals.
 public func + (lhs: Accidental, rhs: Accidental) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue + rhs.rawValue)
+    return Accidental(semitones: lhs.semitones + rhs.semitones)
 }
 
-/// Returns a new accidental by substracting two accidentals in the equation.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the difference of two accidentals.
+/// Returns a new accidental by subtracting two accidentals.
 public func - (lhs: Accidental, rhs: Accidental) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue - rhs.rawValue)
+    return Accidental(semitones: lhs.semitones - rhs.semitones)
 }
 
-/// Returns a new accidental by adding up an int to the accidental in the equation.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the sum of two accidentals.
+/// Returns a new accidental by adding an integer offset.
 public func + (lhs: Accidental, rhs: Int) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue + rhs)
+    return Accidental(semitones: lhs.semitones + rhs)
 }
 
-/// Returns a new accidental by substracting an int from the accidental in the equation.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns the difference of two accidentals.
+/// Returns a new accidental by subtracting an integer offset.
 public func - (lhs: Accidental, rhs: Int) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue - rhs)
+    return Accidental(semitones: lhs.semitones - rhs)
 }
 
-/// Multiples an accidental with a multiplier.
-///
-/// - Parameters:
-///   - lhs: Accidental you want to multiply.
-///   - rhs: Multiplier.
-/// - Returns: Returns a multiplied acceident.
-public func * (lhs: Accidental, rhs: Int) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue * rhs)
-}
+// MARK: - Accidental
 
-/// Divides an accidental with a multiplier
-///
-/// - Parameters:
-///   - lhs: Accidental you want to divide.
-///   - rhs: Multiplier.
-/// - Returns: Returns a divided accidental.
-public func / (lhs: Accidental, rhs: Int) -> Accidental {
-    return Accidental(integerLiteral: lhs.rawValue / rhs)
-}
+/// Represents the accidental modification applied to a note.
+/// A positive `semitones` value means sharps, negative means flats, zero means natural.
+/// There is exactly one representation for every accidental — no degenerate states.
+public struct Accidental: Codable, Hashable, Comparable, RawRepresentable,
+    ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible, Sendable {
 
-/// Checks if the two accidental is identical in terms of their halfstep values.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if two accidentalals is identical.
-public func == (lhs: Accidental, rhs: Accidental) -> Bool {
-    return lhs.rawValue == rhs.rawValue
-}
-
-/// Checks if the two accidental is exactly identical.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if two accidentalals is identical.
-public func === (lhs: Accidental, rhs: Accidental) -> Bool {
-    switch (lhs, rhs) {
-    case (.natural, .natural):
-        return true
-    case let (.sharps(a), .sharps(b)):
-        return a == b
-    case let (.flats(a), .flats(b)):
-        return a == b
-    default:
-        return false
-    }
-}
-
-/// The enum used for calculating values of the `Key`s and `Pitche`s.
-public enum Accidental: Codable, Equatable, Hashable, RawRepresentable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
-    /// No accidental.
-    case natural
-    /// Reduces the `Key` or `Pitch` value amount of halfsteps.
-    case flats(amount: Int)
-    /// Increases the `Key` or `Pitch` value amount of halfsteps.
-    case sharps(amount: Int)
-    
-    /// Reduces the `Key` or `Pitch` value one halfstep below.
-    public static let flat: Accidental = .flats(amount: 1)
-    /// Increases the `Key` or `Pitch` value one halfstep above.
-    public static let sharp: Accidental = .sharps(amount: 1)
-    /// Reduces the `Key` or `Pitch` value amount two halfsteps below.
-    public static let doubleFlat: Accidental = .flats(amount: 2)
-    /// Increases the `Key` or `Pitch` value two halfsteps above.
-    public static let doubleSharp: Accidental = .sharps(amount: 2)
-    
-    /// A flag for `description` function that determines if it should use double sharp and double flat symbols.
-    /// It's useful to set it false where the fonts do not support that symbols. Defaults true.
-    public static var shouldUseDoubleFlatAndDoubleSharpNotation = true
-    
     // MARK: RawRepresentable
-    
+
     public typealias RawValue = Int
-    
-    /// Value of the accidental in terms of halfsteps.
-    public var rawValue: Int {
-        switch self {
-        case .natural:
-            return 0
-        case let .flats(amount):
-            return -amount
-        case let .sharps(amount):
-            return amount
-        }
+
+    /// Semitone offset. Positive = sharps, negative = flats, zero = natural.
+    public let semitones: Int
+
+    public var rawValue: Int { semitones }
+
+    public init(semitones: Int) {
+        self.semitones = semitones
     }
-    
-    /// Initilizes the accidental with an integer that represents the halfstep amount.
-    ///
-    /// - Parameter rawValue: Halfstep value of the accidental. Zero if natural, above zero if sharp, below zero if flat.
-    public init?(rawValue: Accidental.RawValue) {
-        if rawValue == 0 {
-            self = .natural
-        } else if rawValue > 0 {
-            self = .sharps(amount: rawValue)
-        } else {
-            self = .flats(amount: -rawValue)
-        }
+
+    public init?(rawValue: Int) {
+        self.semitones = rawValue
     }
-    
+
+    // MARK: Predefined constants
+
+    /// Lowers pitch by two semitones (𝄫).
+    public static let doubleFlat  = Accidental(semitones: -2)
+    /// Lowers pitch by one semitone (♭).
+    public static let flat        = Accidental(semitones: -1)
+    /// No modification (♮).
+    public static let natural     = Accidental(semitones: 0)
+    /// Raises pitch by one semitone (♯).
+    public static let sharp       = Accidental(semitones: 1)
+    /// Raises pitch by two semitones (𝄪).
+    public static let doubleSharp = Accidental(semitones: 2)
+
     // MARK: ExpressibleByIntegerLiteral
-    
+
     public typealias IntegerLiteralType = Int
-    
-    /// Initilizes the accidental with an integer literal value.
-    ///
-    /// - Parameter value: Halfstep value of the accidental. Zero if natural, above zero if sharp, below zero if flat.
-    public init(integerLiteral value: Accidental.IntegerLiteralType) {
-        self = Accidental(rawValue: value) ?? .natural
+
+    public init(integerLiteral value: Int) {
+        self.semitones = value
     }
-    
+
     // MARK: ExpressibleByStringLiteral
-    
+
     public typealias StringLiteralType = String
-    
-    public init(stringLiteral value: Accidental.StringLiteralType) {
+
+    /// Parses a string of sharp/flat symbols into an accidental.
+    /// Recognises `#`, `♯` as sharps and `b`, `♭` as flats.
+    public init(stringLiteral value: String) {
         var sum = 0
-        for i in 0 ..< value.count {
-            switch value[value.index(value.startIndex, offsetBy: i)] {
-            case "#", "♯":
-                sum += 1
-            case "b", "♭":
-                sum -= 1
-            default:
-                break
+        for ch in value {
+            switch ch {
+            case "#", "♯": sum += 1
+            case "b", "♭": sum -= 1
+            default: break
             }
         }
-        self = Accidental(rawValue: sum) ?? .natural
+        self.semitones = sum
     }
-    
+
+    // MARK: Comparable
+
+    public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
+        return lhs.semitones < rhs.semitones
+    }
+
     // MARK: CustomStringConvertible
-    
-    /// Returns the notation string of the accidental.
-    public var notation: String {
-        if case .natural = self {
-            return "♮"
-        }
-        return description
-    }
-    
-    /// Returns the notation string of the accidental. Returns empty string if accidental is natural.
+
+    /// Returns the symbolic notation for the accidental.
+    /// Natural returns an empty string (use `notation` for the ♮ symbol).
     public var description: String {
-        switch self {
-        case .natural:
-            return ""
-        case let .flats(amount):
-            switch amount {
-            case 0: return Accidental.natural.description
-            case 1: return "♭"
-            case 2 where Accidental.shouldUseDoubleFlatAndDoubleSharpNotation: return "𝄫"
-            default: return amount > 0 ? (0 ..< amount).map({ _ in Accidental.flats(amount: 1).description }).joined() : ""
-            }
-        case let .sharps(amount):
-            switch amount {
-            case 0: return Accidental.natural.description
-            case 1: return "♯"
-            case 2 where Accidental.shouldUseDoubleFlatAndDoubleSharpNotation: return "𝄪"
-            default: return amount > 0 ? (0 ..< amount).map({ _ in Accidental.sharps(amount: 1).description }).joined() : ""
+        switch semitones {
+        case 0:  return ""
+        case -2: return "𝄫"
+        case -1: return "♭"
+        case  1: return "♯"
+        case  2: return "𝄪"
+        default:
+            if semitones > 0 {
+                return String(repeating: "♯", count: semitones)
+            } else {
+                return String(repeating: "♭", count: -semitones)
             }
         }
+    }
+
+    /// Returns the full notation symbol, including ♮ for natural.
+    public var notation: String {
+        return semitones == 0 ? "♮" : description
     }
 }
