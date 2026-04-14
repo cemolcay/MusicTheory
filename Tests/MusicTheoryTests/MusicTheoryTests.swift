@@ -534,6 +534,15 @@ extension MusicTheoryTests {
         XCTAssertEqual(cOverE.notation, "C/E")
     }
 
+    func testInversionNotationUsesActualBassNote() {
+        var chord = Chord(type: .major, root: .c)
+        chord.inversion = 1
+        XCTAssertEqual(chord.notation, "C/E")
+
+        chord.inversion = 2
+        XCTAssertEqual(chord.notation, "C/G")
+    }
+
     func testChordSymbols() {
         XCTAssertEqual(ChordType.major.symbol,         "M")
         XCTAssertEqual(ChordType.minor.symbol,         "m")
@@ -544,6 +553,21 @@ extension MusicTheoryTests {
         XCTAssertEqual(ChordType.minor7.symbol,        "m7")
         XCTAssertEqual(ChordType.halfDiminished7.symbol, "ø7")
         XCTAssertEqual(ChordType.diminished7.symbol,   "dim7")
+        XCTAssertEqual(ChordType.dominant9.symbol,     "9")
+        XCTAssertEqual(ChordType.major9.symbol,        "Maj9")
+        XCTAssertEqual(ChordType.minor9.symbol,        "m9")
+        XCTAssertEqual(ChordType.dominant11.symbol,    "11")
+        XCTAssertEqual(ChordType.dominant13.symbol,    "13")
+        XCTAssertEqual(ChordType.major13.symbol,       "Maj13")
+        XCTAssertEqual(ChordType.minor13.symbol,       "m13")
+    }
+
+    func testChordFullNames() {
+        XCTAssertEqual(ChordType.minor7.fullName, "Minor 7th")
+        XCTAssertEqual(ChordType.dominant7.fullName, "Dominant 7th")
+        XCTAssertEqual(ChordType.major9.fullName, "Major 9th")
+        XCTAssertEqual(ChordType.minor9.fullName, "Minor 9th")
+        XCTAssertEqual(ChordType.dominant13.fullName, "Dominant 13th")
     }
 }
 
@@ -597,6 +621,14 @@ extension MusicTheoryTests {
         let exact = Chord.identify(noteNames: [.c, .e, .g])
         XCTAssertEqual(exact.first?.confidence, 1.0)
     }
+
+    func testChordRecognitionIsDeterministic() {
+        let inputs: [NoteName] = [.g, .c, .e, .bb]
+        let firstRun = Chord.identify(noteNames: inputs).map(\.description)
+        let secondRun = Chord.identify(noteNames: inputs).map(\.description)
+        XCTAssertEqual(firstRun, secondRun)
+        XCTAssertEqual(Chord.identify(noteNames: inputs).first?.chord.notation, "C7")
+    }
 }
 
 // MARK: - ScaleType Tests
@@ -618,5 +650,26 @@ extension MusicTheoryTests {
             return XCTFail("Mode 2 of major scale should exist")
         }
         XCTAssertEqual(dorian, ScaleType.dorian)
+    }
+
+    func testScaleTypeRejectsMalformedHeptatonicDefinitions() {
+        XCTAssertNil(ScaleType(intervals: [.P1, .m3, .M3, .P4, .P5, .M6, .M7], name: "Broken"))
+        XCTAssertNil(ScaleType(intervals: [.M2, .M3, .P4], name: "Missing Root"))
+    }
+
+    func testPredefinedScaleCatalogDefinitionsAreValid() {
+        for scale in ScaleType.all {
+            XCTAssertTrue(ScaleType.isValidDefinition(scale.intervals, category: scale.category), "\(scale.name) should pass catalog validation")
+            XCTAssertNotNil(ScaleType(intervals: scale.intervals, name: scale.name, aliases: scale.aliases, category: scale.category),
+                            "\(scale.name) should round-trip through the validated initializer")
+        }
+    }
+
+    func testCorrectedAlteredScaleDefinitions() {
+        XCTAssertEqual(ScaleType.ionianSharp5.intervals, [.P1, .M2, .M3, .P4, .A5, .M6, .M7])
+        XCTAssertEqual(ScaleType.lydianSharp2.intervals, [.P1, .A2, .M3, .A4, .P5, .M6, .M7])
+        XCTAssertEqual(ScaleType.altered.intervals, [.P1, .m2, .m3, .d4, .d5, .m6, .m7])
+        XCTAssertEqual(ScaleType.phrygianFlat4.intervals, [.P1, .m2, .m3, .d4, .P5, .m6, .m7])
+        XCTAssertEqual(ScaleType.locrianDiminished.intervals, [.P1, .m2, .m3, .P4, .d5, .m6, .d7])
     }
 }

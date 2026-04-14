@@ -5,7 +5,7 @@ A music theory library with `NoteName`, `Pitch`, `Interval`, `Scale` and `Chord`
 
 Requirements
 ----
-* Swift 5.9+
+* Swift 5.0+
 * iOS 13.0+
 * macOS 10.15+
 * tvOS 13.0+
@@ -123,6 +123,8 @@ Interval.A4 == Interval.d5           // false — structurally different
 
 `ScaleType` equality is by **intervals only** — `ScaleType.major == ScaleType.ionian` is `true`. Scales generate correctly-spelled note names with one letter per degree.
 
+Validated `ScaleType` construction is intentionally strict: malformed definitions with duplicate or inconsistent degrees are rejected instead of being normalised silently.
+
 ``` swift
 let cMajor = Scale(type: .major, root: .c)
 cMajor.noteNames  // [C, D, E, F, G, A, B]
@@ -135,6 +137,10 @@ cMinor.noteNames  // [C, D, Eb, F, G, Ab, Bb]
 
 // Mode generation
 let dDorian = cMajor.mode(2)  // D Dorian
+
+// Invalid/non-representable mode rotations fail rather than fabricating fallback intervals
+let broken = ScaleType(intervals: [.P1, .m3, .M3, .P4, .P5, .M6, .M7], name: "Broken")
+broken  // nil
 
 // Relative / parallel
 cMajor.relativeMinor    // A minor
@@ -149,13 +155,15 @@ ScaleType.find(matching: [.P1, .M2, .M3, .P5, .M6])  // [pentatonicMajor, ...]
 
 #### `ChordType` and `Chord`
 
-`ChordType` is a `Set<ChordComponent>`. Building from intervals returns a `Result` so failures are explicit, not silent.
+`ChordType` is a `Set<ChordComponent>`. Building from intervals returns a `Result` so failures are explicit, not silent. Chord symbols use canonical formatting for extended chords (`9`, `Maj9`, `m9`, `11`, `13`, etc.).
 
 ``` swift
 // Predefined types
 let maj  = ChordType.major        // M
 let min7 = ChordType.minor7       // m7
 let dom9 = ChordType.dominant9    // 9
+let maj9 = ChordType.major9       // Maj9
+let min9 = ChordType.minor9       // m9
 
 // Build from intervals — returns Result
 switch ChordType.from(intervals: [.P1, .m3, .P5]) {
@@ -180,6 +188,10 @@ cMaj.pitches(octave: 4)  // [C4, E4, G4]
 
 // Inversions
 let inversions = gDom7.inversions   // [G7, G7/B, G7/D, G7/F]
+
+var firstInversion = Chord(type: .major, root: .c)
+firstInversion.inversion = 1
+firstInversion.notation  // "C/E"
 
 // Voicings
 cMaj.voiced(.drop2,    octave: 4)
@@ -209,7 +221,7 @@ for entry in triads {
 
 #### Chord Recognition
 
-Identify a chord from note names or MIDI note numbers.
+Identify a chord from note names or MIDI note numbers. Results are sorted deterministically for the same input.
 
 ``` swift
 // From note names

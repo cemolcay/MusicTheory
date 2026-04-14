@@ -64,8 +64,7 @@ public struct ScaleType: Codable, Hashable, CustomStringConvertible, Sendable {
     /// Creates a scale type with validated intervals.
     /// Returns `nil` if intervals are empty, don't start with `.P1`, or contain duplicate degrees.
     public init?(intervals: [Interval], name: String, aliases: [String] = [], category: Category = .custom) {
-        guard !intervals.isEmpty,
-              intervals.first == .P1 else { return nil }
+        guard ScaleType.isValidDefinition(intervals, category: category) else { return nil }
         self.intervals = intervals
         self.name = name
         self.aliases = aliases
@@ -121,6 +120,29 @@ public struct ScaleType: Codable, Hashable, CustomStringConvertible, Sendable {
         try c.encode(aliases, forKey: .aliases)
         try c.encode(category, forKey: .category)
     }
+
+    internal static func isValidDefinition(_ intervals: [Interval], category: Category = .custom) -> Bool {
+        guard !intervals.isEmpty, intervals.first == .P1 else { return false }
+
+        var lastSemitones = -1
+        var simpleDegrees = Set<Int>()
+        let relaxedDuplicateDegreeCategories: Set<Category> = [
+            .hexatonic, .octatonic, .chromatic, .symmetric, .blues, .bebop, .world, .exotic
+        ]
+        let requiresUniqueSimpleDegrees = intervals.count <= 7 && !relaxedDuplicateDegreeCategories.contains(category)
+
+        for interval in intervals {
+            guard interval.semitones > lastSemitones else { return false }
+            lastSemitones = interval.semitones
+
+            let simpleDegree = ((interval.degree - 1) % 7) + 1
+            if requiresUniqueSimpleDegrees && !simpleDegrees.insert(simpleDegree).inserted {
+                return false
+            }
+        }
+
+        return true
+    }
 }
 
 // MARK: - Mode Generation
@@ -148,15 +170,10 @@ extension ScaleType {
             let normalised = rawSemitones < 0 ? rawSemitones + 12 : rawSemitones
             // Derive degree: it's just position (1-indexed) in the mode
             let targetDegree = i + 1
-            if let interval = Interval(semitones: normalised, degree: targetDegree) {
-                rotated.append(interval)
-            } else {
-                // Fall back: use augmented or diminished based on offset
-                let fallback = Interval(unchecked: normalised >= 6 ? .diminished : .augmented, degree: targetDegree)
-                rotated.append(fallback)
-            }
+            guard let interval = Interval(semitones: normalised, degree: targetDegree) else { return nil }
+            rotated.append(interval)
         }
-        return ScaleType(unchecked: rotated, name: "Mode \(degree) of \(name)", category: category)
+        return ScaleType(intervals: rotated, name: "Mode \(degree) of \(name)", category: category)
     }
 
     /// All modes of this scale.
@@ -196,7 +213,6 @@ extension ScaleType {
 // MARK: - Predefined Scale Types
 
 extension ScaleType {
-
     // MARK: Diatonic modes (7 modes of the major scale)
 
     /// Major / Ionian scale.
@@ -226,15 +242,15 @@ extension ScaleType {
     /// Locrian ♮6 (mode 2 of harmonic minor).
     public static let locrianNatural6       = ScaleType(unchecked: [.P1, .m2, .m3, .P4, .d5, .M6, .m7], name: "Locrian ♮6", category: .harmonicMinorMode)
     /// Ionian #5 (mode 3 of harmonic minor).
-    public static let ionianSharp5          = ScaleType(unchecked: [.P1, .M2, .M3, .P4, .m6, .M6, .M7], name: "Ionian #5", aliases: ["Ionian Augmented"], category: .harmonicMinorMode)
+    public static let ionianSharp5          = ScaleType(unchecked: [.P1, .M2, .M3, .P4, .A5, .M6, .M7], name: "Ionian #5", aliases: ["Ionian Augmented"], category: .harmonicMinorMode)
     /// Dorian #4 (mode 4 of harmonic minor).
     public static let dorianSharp4          = ScaleType(unchecked: [.P1, .M2, .m3, .A4, .P5, .M6, .m7], name: "Dorian #4", aliases: ["Ukrainian Dorian"], category: .harmonicMinorMode)
     /// Phrygian Major / Spanish Gypsy (mode 5 of harmonic minor).
     public static let phrygianMajor         = ScaleType(unchecked: [.P1, .m2, .M3, .P4, .P5, .m6, .m7], name: "Phrygian Major", aliases: ["Spanish Gypsy", "Flamenco", "Byzantine", "Double Harmonic", "Maqam"], category: .harmonicMinorMode)
     /// Lydian #2 (mode 6 of harmonic minor).
-    public static let lydianSharp2          = ScaleType(unchecked: [.P1, .m3, .M3, .A4, .P5, .M6, .M7], name: "Lydian #2", category: .harmonicMinorMode)
+    public static let lydianSharp2          = ScaleType(unchecked: [.P1, .A2, .M3, .A4, .P5, .M6, .M7], name: "Lydian #2", category: .harmonicMinorMode)
     /// Super Locrian bb7 (mode 7 of harmonic minor).
-    public static let superLocrianBb7       = ScaleType(unchecked: [.P1, .m2, .m3, .M3, .d5, .m6, .d7], name: "Super Locrian bb7", category: .harmonicMinorMode)
+    public static let superLocrianBb7       = ScaleType(unchecked: [.P1, .m2, .m3, .d4, .d5, .m6, .d7], name: "Super Locrian bb7", category: .harmonicMinorMode)
 
     /// Melodic minor (ascending form).
     public static let melodicMinor          = ScaleType(unchecked: [.P1, .M2, .m3, .P4, .P5, .M6, .M7], name: "Melodic Minor", aliases: ["Jazz Melodic Minor"], category: .melodicMinorMode)
@@ -249,7 +265,7 @@ extension ScaleType {
     /// Locrian ♮2 / Half-Diminished (mode 6 of melodic minor).
     public static let halfDiminished        = ScaleType(unchecked: [.P1, .M2, .m3, .P4, .d5, .m6, .m7], name: "Half Diminished", aliases: ["Locrian ♮2", "Locrian 2"], category: .melodicMinorMode)
     /// Altered / Super Locrian (mode 7 of melodic minor).
-    public static let altered               = ScaleType(unchecked: [.P1, .m2, .m3, .M3, .d5, .m6, .m7], name: "Altered", aliases: ["Super Locrian", "Diminished Whole Tone"], category: .melodicMinorMode)
+    public static let altered               = ScaleType(unchecked: [.P1, .m2, .m3, .d4, .d5, .m6, .m7], name: "Altered", aliases: ["Super Locrian", "Diminished Whole Tone"], category: .melodicMinorMode)
 
     // MARK: Harmonic major and its modes
 
@@ -258,15 +274,15 @@ extension ScaleType {
     /// Dorian b5 (mode 2 of harmonic major).
     public static let dorianFlat5          = ScaleType(unchecked: [.P1, .M2, .m3, .P4, .d5, .M6, .m7], name: "Dorian b5", category: .harmonicMajorMode)
     /// Phrygian b4 (mode 3 of harmonic major).
-    public static let phrygianFlat4        = ScaleType(unchecked: [.P1, .m2, .m3, .M3, .P5, .m6, .m7], name: "Phrygian b4", aliases: ["Ultraphrygian"], category: .harmonicMajorMode)
+    public static let phrygianFlat4        = ScaleType(unchecked: [.P1, .m2, .m3, .d4, .P5, .m6, .m7], name: "Phrygian b4", aliases: ["Ultraphrygian"], category: .harmonicMajorMode)
     /// Lydian b3 (mode 4 of harmonic major).
     public static let lydianFlat3          = ScaleType(unchecked: [.P1, .M2, .m3, .A4, .P5, .M6, .M7], name: "Lydian b3", aliases: ["Lydian Diminished"], category: .harmonicMajorMode)
     /// Mixolydian b2 (mode 5 of harmonic major).
     public static let mixolydianFlat2      = ScaleType(unchecked: [.P1, .m2, .M3, .P4, .P5, .M6, .m7], name: "Mixolydian b2", category: .harmonicMajorMode)
     /// Lydian Augmented #2 (mode 6 of harmonic major).
-    public static let lydianAugmentedSharp2 = ScaleType(unchecked: [.P1, .m3, .M3, .A4, .A5, .M6, .M7], name: "Lydian Augmented #2", category: .harmonicMajorMode)
+    public static let lydianAugmentedSharp2 = ScaleType(unchecked: [.P1, .A2, .M3, .A4, .A5, .M6, .M7], name: "Lydian Augmented #2", category: .harmonicMajorMode)
     /// Locrian bb7 (mode 7 of harmonic major).
-    public static let locrianDiminished    = ScaleType(unchecked: [.P1, .m2, .m3, .P4, .d5, .m6, .M6], name: "Locrian Diminished", category: .harmonicMajorMode)
+    public static let locrianDiminished    = ScaleType(unchecked: [.P1, .m2, .m3, .P4, .d5, .m6, .d7], name: "Locrian Diminished", category: .harmonicMajorMode)
 
     // MARK: Pentatonic
 
@@ -275,7 +291,7 @@ extension ScaleType {
     /// Pentatonic minor scale.
     public static let pentatonicMinor      = ScaleType(unchecked: [.P1, .m3, .P4, .P5, .m7], name: "Pentatonic Minor", aliases: ["Yo"], category: .pentatonic)
     /// Pentatonic blues scale.
-    public static let pentatonicBlues      = ScaleType(unchecked: [.P1, .m3, .P4, .d5, .P5, .m7], name: "Pentatonic Blues", category: .pentatonic)
+    public static let pentatonicBlues      = ScaleType(unchecked: [.P1, .m3, .P4, .A4, .P5, .m7], name: "Pentatonic Blues", category: .blues)
     /// Pentatonic neutral scale.
     public static let pentatonicNeutral    = ScaleType(unchecked: [.P1, .M2, .P4, .P5, .m7], name: "Pentatonic Neutral", category: .pentatonic)
     /// Hirajoshi scale.
@@ -298,7 +314,7 @@ extension ScaleType {
     /// Whole-tone scale.
     public static let whole               = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .m6, .m7], name: "Whole Tone", aliases: ["Auxiliary Augmented"], category: .symmetric)
     /// Augmented scale (symmetric hexatonic).
-    public static let augmented           = ScaleType(unchecked: [.P1, .m3, .M3, .P5, .m6, .M7], name: "Augmented", category: .symmetric)
+    public static let augmented           = ScaleType(unchecked: [.P1, .A2, .M3, .P5, .A5, .M7], name: "Augmented", category: .symmetric)
     /// Tritone hexatonic scale.
     public static let tritone             = ScaleType(unchecked: [.P1, .m2, .M3, .d5, .P5, .m7], name: "Tritone", category: .hexatonic)
     /// Prometheus scale.
@@ -306,7 +322,7 @@ extension ScaleType {
     /// Prometheus Neopolitan scale.
     public static let prometheusNeopolitan = ScaleType(unchecked: [.P1, .m2, .M3, .A4, .M6, .m7], name: "Prometheus Neopolitan", category: .hexatonic)
     /// Six Tone Symmetrical scale.
-    public static let sixToneSymmetrical  = ScaleType(unchecked: [.P1, .m2, .M3, .P4, .m6, .M6], name: "Six Tone Symmetrical", category: .symmetric)
+    public static let sixToneSymmetrical  = ScaleType(unchecked: [.P1, .m2, .M3, .P4, .A5, .M6], name: "Six Tone Symmetrical", category: .symmetric)
     /// Istrian scale.
     public static let istrian             = ScaleType(unchecked: [.P1, .m2, .m3, .d4, .d5, .P5], name: "Istrian", category: .hexatonic)
     /// Major Blues hexatonic scale.
@@ -353,7 +369,7 @@ extension ScaleType {
     /// Leading Whole Tone scale.
     public static let leadingWholeTone   = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .A5, .M6, .m7], name: "Leading Whole Tone", category: .exotic)
     /// Hungarian Major scale.
-    public static let hungarianMajor     = ScaleType(unchecked: [.P1, .m3, .M3, .A4, .P5, .M6, .m7], name: "Hungarian Major", category: .world)
+    public static let hungarianMajor     = ScaleType(unchecked: [.P1, .A2, .M3, .A4, .P5, .M6, .m7], name: "Hungarian Major", category: .world)
     /// Hungarian Minor scale.
     public static let hungarianMinor     = ScaleType(unchecked: [.P1, .M2, .m3, .A4, .P5, .m6, .M7], name: "Hungarian Minor", aliases: ["Gypsy", "Algerian"], category: .world)
     /// Romanian Minor scale.
@@ -385,21 +401,21 @@ extension ScaleType {
     /// Lydian b6 scale.
     public static let lydianFlat6        = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .P5, .m6, .m7], name: "Lydian b6", category: .exotic)
     /// Lydian #6 scale.
-    public static let lydianSharp6       = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .P5, .m7, .M7], name: "Lydian #6", category: .exotic)
+    public static let lydianSharp6       = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .P5, .A6, .M7], name: "Lydian #6", category: .exotic)
     /// Lydian #2 #6 scale.
-    public static let lydianSharp2Sharp6 = ScaleType(unchecked: [.P1, .m3, .M3, .A4, .P5, .m7, .M7], name: "Lydian #2 #6", category: .exotic)
+    public static let lydianSharp2Sharp6 = ScaleType(unchecked: [.P1, .A2, .M3, .A4, .P5, .A6, .M7], name: "Lydian #2 #6", category: .exotic)
     /// Mixolydian Augmented scale.
-    public static let mixolydianAugmented = ScaleType(unchecked: [.P1, .M2, .M3, .P4, .m6, .M6, .m7], name: "Mixolydian Augmented", category: .exotic)
+    public static let mixolydianAugmented = ScaleType(unchecked: [.P1, .M2, .M3, .P4, .A5, .M6, .m7], name: "Mixolydian Augmented", category: .exotic)
     /// Locrian Diminished bb3 scale.
-    public static let locrianDiminishedFlatFlat3 = ScaleType(unchecked: [.P1, .m2, .P4, .d5, .m6, .M6], name: "Locrian Diminished bb3", category: .exotic)
+    public static let locrianDiminishedFlatFlat3 = ScaleType(unchecked: [.P1, .m2, .d3, .P4, .d5, .m6], name: "Locrian Diminished bb3", category: .exotic)
     /// Ionian #2 scale.
-    public static let ionianSharp2       = ScaleType(unchecked: [.P1, .m3, .M3, .P4, .P5, .M6, .M7], name: "Ionian #2", category: .harmonicMajorMode)
+    public static let ionianSharp2       = ScaleType(unchecked: [.P1, .A2, .M3, .P4, .P5, .M6, .M7], name: "Ionian #2", category: .harmonicMajorMode)
     /// Super Locrian Diminished bb3 scale.
-    public static let superLocrianDiminishedFlatFlat3 = ScaleType(unchecked: [.P1, .m2, .M2, .M3, .d5, .m6, .M6], name: "Super Locrian Diminished bb3", category: .exotic)
+    public static let superLocrianDiminishedFlatFlat3 = ScaleType(unchecked: [.P1, .m2, .M2, .d4, .d5, .m6, .d7], name: "Super Locrian Diminished bb3", category: .exotic)
     /// Ionian Augmented #2 scale.
-    public static let ionianAugmentedSharp2 = ScaleType(unchecked: [.P1, .m3, .M3, .P4, .m6, .M6, .M7], name: "Ionian Augmented #2", category: .harmonicMajorMode)
+    public static let ionianAugmentedSharp2 = ScaleType(unchecked: [.P1, .A2, .M3, .P4, .A5, .M6, .M7], name: "Ionian Augmented #2", category: .harmonicMajorMode)
     /// Lydian Augmented #6 scale.
-    public static let lydianAugmentedSharp6 = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .m6, .m7, .M7], name: "Lydian Augmented #6", category: .melodicMinorMode)
+    public static let lydianAugmentedSharp6 = ScaleType(unchecked: [.P1, .M2, .M3, .A4, .A5, .A6, .M7], name: "Lydian Augmented #6", category: .melodicMinorMode)
 
     // MARK: All
 

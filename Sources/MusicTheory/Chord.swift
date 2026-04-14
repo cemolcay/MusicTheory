@@ -191,7 +191,7 @@ public struct Chord: Hashable, Codable, CustomStringConvertible, Sendable {
         let sym = type.symbol == "M" ? "" : type.symbol
         var n = "\(root)\(sym)"
         if let bass { n += "/\(bass)" }
-        else if inversion > 0, let inv = noteNames[safe: 0] {
+        else if inversion > 0, let inv = noteNames[safe: inversion] {
             n += "/\(inv)"
         }
         return n

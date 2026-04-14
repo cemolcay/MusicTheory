@@ -3,113 +3,126 @@
 import Foundation
 import MusicTheory
 
-let p: Pitch = "cb2"
-let b: Key = "b"
-p.key == b
+//: # MusicTheory Playground
+//:
+//: This page shows the current API for note names, pitches, scales, chords,
+//: harmonic fields, and chord recognition.
 
-let ds: Key = "d#"
-let eb: Key = "eb"
-ds == eb
-ds === eb
+//: ## Note Names and Enharmonics
 
-// e f f# g g# a a# b c c# d d#
-Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .A5
-Pitch(key: Key(type: .e, accidental: .natural), octave: 0) - .d5
-Pitch(key: Key(type: .e, accidental: .natural), octave: 0) + .A5
-Pitch(key: Key(type: .e, accidental: .natural), octave: 0) + .d5
+let cSharp: NoteName = "C#"
+let dFlat: NoteName = "Db"
 
-// c# d d# e f f# g g# a a# b c
-let cSharpHarmonicMinor = Scale(type: .harmonicMinor, key: Key(type: .c, accidental: .sharp))
-Pitch(key: Key(type: .c, accidental: .sharp), octave: 0) + .M7
-Pitch(key: Key(type: .b, accidental: .natural), octave: 1) - .M7
+cSharp
+dFlat
+cSharp == dFlat
+cSharp.isEnharmonic(with: dFlat)
+cSharp.enharmonicEquivalents
 
-// A minor pentatonic triads
-let aminP = Scale(type: .pentatonicMinor, key: "a")
-let aminPtriad = aminP.harmonicField(for: .thirteenth)
-print(aminPtriad)
+//: ## Pitches and Intervals
 
-// chord progression for C# harmonic minor triads
-let progression = ChordProgression.i_ii_vi_iv
-let cSharpHarmonicMinorTriadsProgression = progression.chords(
-    for: cSharpHarmonicMinor,
-    harmonicField: .triad,
-    inversion: 0
-)
-print(cSharpHarmonicMinorTriadsProgression)
+let c4 = Pitch(noteName: .c, octave: 4)
+let g4 = c4 + .P5
+let b3 = c4 - .m2
 
-let c13 = Chord(
-    type: ChordType(
-        third: .major,
-        fifth: .perfect,
-        sixth: nil,
-        seventh: .dominant,
-        suspended: nil,
-        extensions: [
-            ChordExtensionType(type: .thirteenth, accidental: .natural),
-        ]
-    ),
-    key: Key(
-        type: .c,
-        accidental: .natural
-    )
-)
+c4
+g4
+b3
+c4.frequency()
+g4 - c4
 
-let cdim7 = Chord(
-    type: ChordType(
-        third: .major,
-        fifth: .diminished,
-        seventh: .diminished),
-    key: Key(type: .c))
-cdim7.notation
-print(cdim7.keys)
+//: ## Building Scales
 
-print(c13.type.intervals)
-Pitch(key: Key(type: .c, accidental: .natural), octave: 1) + .M9
-print(c13.pitches(octave: 1))
-print(c13.inversions[1].pitches(octave: 1))
+let cMajor = Scale(type: .major, root: .c)
+let dMajor = Scale(type: .major, root: .d)
+let cSharpHarmonicMinor = Scale(type: .harmonicMinor, root: .cs)
+let aMinorPentatonic = Scale(type: .pentatonicMinor, root: .a)
 
-var dmajor = Scale(type: .major, key: Key(type: .d, accidental: .natural))
-print(dmajor.pitches(octave: 1))
+cMajor.noteNames
+dMajor.noteNames
+cSharpHarmonicMinor.noteNames
+aMinorPentatonic.noteNames
 
-// d d# e f f# g g# a a# b c c#
-Pitch(key: Key(type: .d, accidental: .natural), octave: 1) + .M7
-Interval.M7.degree
-Interval.M7.semitones
+// Pitches for a scale in one octave
+cMajor.pitches(octave: 4)
 
-// c c# d d# e f f# g g# a a# b c c# d
-Pitch(key: Key(type: .c, accidental: .natural), octave: 1) + .M9
-Interval.M9.degree
-Interval.M9.semitones
+// Pitches across multiple octaves
+cSharpHarmonicMinor.pitches(octaves: [3, 4])
 
-// bb b c cb d db e f gb g ab a bb b c
-Pitch(key: Key(type: .b, accidental: .flat), octave: 1) + .M9
+//: ## Modes and Relatives
 
-Pitch(key: Key(type: .c, accidental: .natural), octave: 3) - .M9
+let dDorian = cMajor.mode(2)
+let ePhrygian = cMajor.mode(3)
 
-let aHarmonicMinor = Scale(type: .harmonicMinor, key: Key(type: .a))
-print(aHarmonicMinor)
-let harmonicFunctions = HarmonicFunctions(scale: aHarmonicMinor)
-HarmonicFunctionType.allCases.forEach({ type in
-    let relatedKeys = type.direction.map({ related in
-        harmonicFunctions.harmonicFunction(for: related)!
-    })
-    print(type, relatedKeys)
-})
+dDorian?.noteNames
+ePhrygian?.noteNames
+cMajor.relativeMinor?.noteNames
+Scale(type: .minor, root: .c).relativeMajor?.noteNames
 
-func nearestKey(key: Key, scale: Scale) -> Key {
-    var nearest = key
-    var distance = 100
-    let keyValue = key.type.rawValue + key.accidental.rawValue
-    for scaleKey in scale.keys {
-        let scaleKeyValue = scaleKey.type.rawValue + scaleKey.accidental.rawValue
-        let diff = abs(scaleKeyValue - keyValue)
-        if diff < distance {
-            distance = diff
-            nearest = scaleKey
-        }
-    }
-    return nearest
+//: ## Chords
+
+let cMajorChord = Chord(type: .major, root: .c)
+let gDominant13 = Chord(type: .dominant13, root: .g)
+let bHalfDiminished = Chord(type: .halfDiminished7, root: .b)
+
+cMajorChord.notation
+gDominant13.notation
+bHalfDiminished.notation
+
+cMajorChord.noteNames
+gDominant13.noteNames
+gDominant13.pitches(octave: 3)
+
+// Inversion notation uses the actual bass note.
+var firstInversionC = Chord(type: .major, root: .c)
+firstInversionC.inversion = 1
+firstInversionC.notation
+firstInversionC.pitches(octave: 4)
+
+// Explicit slash chord
+let cOverE = Chord(type: .major, root: .c, bass: .e)
+cOverE.notation
+
+//: ## Chord Types from Intervals
+
+let detectedMinor = ChordType.from(intervals: [.P1, .m3, .P5])
+let detectedDominant9 = ChordType.from(intervals: [.P1, .M3, .P5, .m7, .M9])
+
+detectedMinor
+detectedDominant9
+
+//: ## Harmonic Fields
+
+let majorTriads = cMajor.harmonicField(for: .triad)
+let majorSevenths = cMajor.harmonicField(for: .seventh)
+
+majorTriads.map { ($0.degree, $0.chord?.notation ?? $0.description) }
+majorSevenths.map { ($0.degree, $0.chord?.notation ?? $0.description) }
+
+// Roman numerals for the diatonic triads
+majorTriads.compactMap { entry in
+    entry.chord?.romanNumeral(for: cMajor)
 }
 
-nearestKey(key: "f", scale: dmajor)
+//: ## Chord Recognition
 
+let recognizedFromNames = Chord.identify(noteNames: [.c, .e, .g, .bb])
+let recognizedFromMidi = Chord.identify(midiNotes: [60, 64, 67, 70])
+
+recognizedFromNames
+recognizedFromNames.first?.chord.notation
+recognizedFromNames.first?.confidence
+
+recognizedFromMidi
+recognizedFromMidi.first?.chord.notation
+
+//: ## Time and Duration
+
+let timeSignature = TimeSignature(beats: 6, beatUnit: 8)
+let tempo = Tempo(timeSignature: timeSignature, bpm: 120)
+let dottedQuarter = NoteValue(type: .quarter, modifier: .dotted)
+
+timeSignature
+timeSignature.isCompound
+tempo.duration(of: dottedQuarter)
+tempo.sampleLength(of: dottedQuarter)

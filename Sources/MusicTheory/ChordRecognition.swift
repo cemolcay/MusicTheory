@@ -46,7 +46,7 @@ extension ChordType {
     /// - Returns: An array of `ChordIdentification` values sorted by confidence.
     public static func identify(noteNames: [NoteName]) -> [ChordIdentification] {
         guard noteNames.count >= 2 else { return [] }
-        let unique = Array(Set(noteNames))
+        let unique = Array(Set(noteNames)).sorted()
         var results: [ChordIdentification] = []
 
         for root in unique {
@@ -57,11 +57,14 @@ extension ChordType {
             results += identifyCandidates(root: root, intervals: intervals)
         }
 
-        // Remove duplicates (same notation), keeping highest confidence
-        var seen = Set<String>()
-        let deduped = results.filter { seen.insert($0.chord.notation).inserted }
+        let ranked = results.sorted {
+            if $0.confidence != $1.confidence { return $0.confidence > $1.confidence }
+            return $0.chord.notation < $1.chord.notation
+        }
 
-        return deduped.sorted { $0.confidence > $1.confidence }
+        // Remove duplicates after ranking so the best-scoring canonical spelling wins.
+        var seen = Set<String>()
+        return ranked.filter { seen.insert($0.chord.notation).inserted }
     }
 
     // MARK: From MIDI notes

@@ -148,7 +148,6 @@ public struct ChordType: Hashable, Codable, CustomStringConvertible, Sendable {
 
     /// Standard chord symbol (e.g. "m7", "dim", "Maj7#11", "sus4").
     public var symbol: String {
-        let hasMajThird = components.contains(.majorThird)
         let hasMinThird = components.contains(.minorThird)
         let hasSus2 = components.contains(.majorSecond)
         let hasSus4 = components.contains(.perfectFourth)
@@ -159,75 +158,65 @@ public struct ChordType: Hashable, Codable, CustomStringConvertible, Sendable {
         let hasMinSeventh = components.contains(.minorSeventh)
         let hasMajSeventh = components.contains(.majorSeventh)
         let extensionComps = components.filter { $0.rawValue >= ChordComponent.flatNinth.rawValue }.sorted()
+        let highestNaturalExtension: Int? =
+            components.contains(.thirteenth) ? 13 :
+            components.contains(.eleventh) ? 11 :
+            components.contains(.ninth) ? 9 : nil
 
-        var s = ""
-
-        // Third / suspension
-        if hasMajThird {
-            s += ""  // major is implicit
-        } else if hasMinThird {
-            s += "m"
-        } else if hasSus2 {
-            // handled at end
-        } else if hasSus4 {
-            // handled at end
+        let impliedExtensions: Set<ChordComponent>
+        switch highestNaturalExtension {
+        case 13: impliedExtensions = [.ninth, .eleventh, .thirteenth]
+        case 11: impliedExtensions = [.ninth, .eleventh]
+        case 9:  impliedExtensions = [.ninth]
+        default: impliedExtensions = []
         }
+        let alteredExtensions = extensionComps.filter { !impliedExtensions.contains($0) }
 
-        // Fifth alteration
-        if hasDimFifth && !hasMinThird && !hasDimSeventh {
-            s += "b5"
-        } else if hasAugFifth {
-            s += "+"
-        }
-
-        // Diminished chord
-        if hasMinThird && hasDimFifth && hasDimSeventh {
+        if hasMinThird && hasDimFifth && hasDimSeventh && extensionComps.isEmpty {
             return "dim7"
         }
-        if hasMinThird && hasDimFifth && !hasMinSeventh && !hasMajSeventh && !hasDimSeventh && extensionComps.isEmpty {
-            return "dim"
+
+        var prefix: String
+        if hasSus2 {
+            prefix = "sus2"
+        } else if hasSus4 {
+            prefix = "sus4"
+        } else if hasMinThird && hasDimFifth && hasMinSeventh {
+            prefix = "ø"
+        } else if hasMinThird && hasDimFifth {
+            prefix = "dim"
+        } else if hasMinThird {
+            prefix = "m"
+        } else if hasAugFifth {
+            prefix = "+"
+        } else if hasDimFifth {
+            prefix = "b5"
+        } else {
+            prefix = ""
         }
 
-        // Half-diminished
-        if hasMinThird && hasDimFifth && hasMinSeventh && extensionComps.isEmpty {
-            return "ø7"
-        }
-
-        // Sixth chord
-        if hasSixth && !hasMinSeventh && !hasMajSeventh && !hasDimSeventh {
-            return s + "6"
-        }
-
-        // Seventh
-        if hasMajSeventh && !hasMinThird {
-            s += "Maj7"
-        } else if hasMajSeventh && hasMinThird {
-            s = "mMaj7"
+        var suffix = ""
+        if let highestNaturalExtension {
+            if hasMajSeventh {
+                suffix = "Maj\(highestNaturalExtension)"
+            } else if hasMinSeventh {
+                suffix = "\(highestNaturalExtension)"
+            } else {
+                suffix = "add\(highestNaturalExtension)"
+            }
+        } else if hasMajSeventh {
+            suffix = "Maj7"
         } else if hasMinSeventh {
-            if hasMajThird { s += "7" } else if hasMinThird { s += "7" }
+            suffix = "7"
         } else if hasDimSeventh {
             return "dim7"
+        } else if hasSixth {
+            suffix = "6"
         }
 
-        // Extensions
-        if !extensionComps.isEmpty {
-            let extStr = extensionComps.map(\.symbol).joined(separator: "")
-            // If the highest extension is the only one at that degree, simplify
-            if let highest = extensionComps.last {
-                let higherThanSeventh = extensionComps.filter { $0.rawValue >= ChordComponent.flatNinth.rawValue }
-                if higherThanSeventh.count == 1 && highest.accidental == nil {
-                    s += highest.degreeSymbol
-                } else {
-                    s += "(\(extStr))"
-                }
-            }
-        }
-
-        // Suspension
-        if hasSus2 { s += "sus2" }
-        if hasSus4 { s += "sus4" }
-
-        return s.isEmpty ? "M" : s
+        let tensionSuffix = alteredExtensions.isEmpty ? "" : "(\(alteredExtensions.map(\.symbol).joined()))"
+        let result = prefix + suffix + tensionSuffix
+        return result.isEmpty ? "M" : result
     }
 
     /// Full descriptive name (e.g. "Minor Seventh", "Diminished").
@@ -241,20 +230,83 @@ public struct ChordType: Hashable, Codable, CustomStringConvertible, Sendable {
         let hasMajSeventh = components.contains(.majorSeventh)
         let hasSus2 = components.contains(.majorSecond)
         let hasSus4 = components.contains(.perfectFourth)
+        let hasSixth = components.contains(.majorSixth)
+        let extensionComps = components.filter { $0.rawValue >= ChordComponent.flatNinth.rawValue }.sorted()
+        let highestNaturalExtension: Int? =
+            components.contains(.thirteenth) ? 13 :
+            components.contains(.eleventh) ? 11 :
+            components.contains(.ninth) ? 9 : nil
 
-        var parts: [String] = []
-        if hasMajThird { parts.append("Major") }
-        else if hasMinThird { parts.append("Minor") }
-        else if hasSus2 { parts.append("Suspended 2nd") }
-        else if hasSus4 { parts.append("Suspended 4th") }
-        if hasAugFifth { parts.append("Augmented") }
-        else if hasDimFifth { parts.append("Diminished") }
-        if hasMajSeventh { parts.append("Major 7th") }
-        else if hasMinSeventh { parts.append("Dominant 7th") }
-        else if hasDimSeventh { parts.append("Diminished 7th") }
-        let extComps = components.filter { $0.rawValue >= ChordComponent.flatNinth.rawValue }.sorted()
-        for ext in extComps { parts.append(ext.description) }
-        return parts.joined(separator: " ")
+        let impliedExtensions: Set<ChordComponent>
+        switch highestNaturalExtension {
+        case 13: impliedExtensions = [.ninth, .eleventh, .thirteenth]
+        case 11: impliedExtensions = [.ninth, .eleventh]
+        case 9:  impliedExtensions = [.ninth]
+        default: impliedExtensions = []
+        }
+        let alteredExtensions = extensionComps.filter { !impliedExtensions.contains($0) }
+
+        if hasMinThird && hasDimFifth && hasDimSeventh && extensionComps.isEmpty {
+            return "Diminished 7th"
+        }
+        if hasMinThird && hasDimFifth && hasMinSeventh && extensionComps.isEmpty {
+            return "Half-Diminished 7th"
+        }
+
+        let baseName: String
+        if hasSus2 {
+            baseName = "Suspended 2nd"
+        } else if hasSus4 {
+            baseName = "Suspended 4th"
+        } else if hasMinThird && hasDimFifth && hasMinSeventh {
+            baseName = "Half-Diminished"
+        } else if hasMinThird && hasDimFifth {
+            baseName = "Diminished"
+        } else if hasMinThird {
+            baseName = "Minor"
+        } else if hasAugFifth {
+            baseName = "Augmented"
+        } else if hasMajThird || hasSixth || hasMajSeventh || hasMinSeventh || highestNaturalExtension != nil {
+            baseName = "Major"
+        } else {
+            baseName = "Major"
+        }
+
+        let coreName: String
+        if let highestNaturalExtension {
+            if hasMajSeventh {
+                coreName = baseName == "Minor" ? "Minor Major \(highestNaturalExtension)th" : "\(baseName) \(highestNaturalExtension)th"
+            } else if hasMinSeventh {
+                switch baseName {
+                case "Minor": coreName = "Minor \(highestNaturalExtension)th"
+                case "Half-Diminished": coreName = "Half-Diminished \(highestNaturalExtension)th"
+                case "Augmented": coreName = "Augmented \(highestNaturalExtension)th"
+                case "Suspended 2nd", "Suspended 4th": coreName = "\(baseName) \(highestNaturalExtension)th"
+                default: coreName = "Dominant \(highestNaturalExtension)th"
+                }
+            } else {
+                coreName = "\(baseName) Add \(highestNaturalExtension)"
+            }
+        } else if hasMajSeventh {
+            coreName = baseName == "Minor" ? "Minor Major 7th" : "\(baseName) Major 7th"
+        } else if hasMinSeventh {
+            switch baseName {
+            case "Minor": coreName = "Minor 7th"
+            case "Half-Diminished": coreName = "Half-Diminished 7th"
+            case "Augmented": coreName = "Augmented 7th"
+            case "Suspended 2nd", "Suspended 4th": coreName = "\(baseName) 7th"
+            default: coreName = "Dominant 7th"
+            }
+        } else if hasSixth {
+            coreName = "\(baseName) 6th"
+        } else {
+            coreName = baseName
+        }
+
+        if alteredExtensions.isEmpty {
+            return coreName
+        }
+        return "\(coreName) (\(alteredExtensions.map(\.description).joined(separator: ", ")))"
     }
 
     // MARK: CustomStringConvertible
@@ -311,27 +363,4 @@ public struct ChordType: Hashable, Codable, CustomStringConvertible, Sendable {
     public static let minor11      = ChordType(unchecked: [.minorThird, .perfectFifth, .minorSeventh, .ninth, .eleventh])
     /// Minor 13th chord.
     public static let minor13      = ChordType(unchecked: [.minorThird, .perfectFifth, .minorSeventh, .ninth, .eleventh, .thirteenth])
-}
-
-// MARK: - Symbol helpers (private)
-
-private extension ChordComponent {
-    /// Whether this extension has no accidental (flat/sharp).
-    var accidental: Int? {
-        switch self {
-        case .flatNinth, .flatEleventh, .flatThirteenth: return -1
-        case .sharpNinth, .sharpEleventh, .sharpThirteenth: return 1
-        default: return nil
-        }
-    }
-
-    /// Single-number degree symbol (9, 11, 13).
-    var degreeSymbol: String {
-        switch self {
-        case .flatNinth, .ninth, .sharpNinth:           return "9"
-        case .flatEleventh, .eleventh, .sharpEleventh:  return "11"
-        case .flatThirteenth, .thirteenth, .sharpThirteenth: return "13"
-        default: return symbol
-        }
-    }
 }

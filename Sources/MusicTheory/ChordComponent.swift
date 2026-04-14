@@ -103,13 +103,6 @@ public enum ChordComponent: Int, Hashable, Comparable, Codable,
                 return
             }
         }
-        // Fallback: match by semitones only (for enharmonic equivalents)
-        for component in ChordComponent.allCases {
-            if component.interval.semitones == interval.semitones {
-                self = component
-                return
-            }
-        }
         return nil
     }
 
