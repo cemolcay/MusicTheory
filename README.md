@@ -1,18 +1,32 @@
 MusicTheory
 ===
 
-A music theory library with `Key`, `Pitch`, `Interval`, `Scale` and `Chord` representations in swift enums.
+A music theory library with `NoteName`, `Pitch`, `Interval`, `Scale` and `Chord` representations in Swift.
 
 Requirements
 ----
-* Swift 4.0+
-* iOS 8.0+
-* macOS 10.9+
-* tvOS 9.0+
-* watchOS 2.0+
+* Swift 5.0+
+* iOS 13.0+
+* macOS 10.15+
+* tvOS 13.0+
+* watchOS 6.0+
 
 Install
 ----
+
+### Swift Package Manager
+
+``` swift
+let package = Package(
+  name: "...",
+  dependencies: [
+    .package(url: "https://github.com/cemolcay/MusicTheory.git", from: "2.0.0")
+  ],
+  targets: [
+    .target(name: "...", dependencies: ["MusicTheory"])
+  ]
+)
+```
 
 ### CocoaPods
 
@@ -20,135 +34,200 @@ Install
 pod 'MusicTheorySwift'
 ```
 
-### Swift Package Manager
-
-``` swift
-let package = Package(
-  name: ...
-  dependencies: [
-    .package(url: "https://github.com/cemolcay/MusicTheory.git")
-  ],
-  targets: ...
-)
-```
-
 Usage
 ----
 
-`MusicTheory` adds a bunch of basic enums and structs that you can define pretty much any music related data. Most importants are `Pitch`, `Key`, `Scale` and `Chord`.   
+`MusicTheory` provides strongly-typed, correct-by-construction primitives for music theory. All types conform to `Codable`, `Hashable`, `Sendable` and `CustomStringConvertible`.
 
-All data types conforms `Codable`, `CustomStringConvertable`.  
-`Pitch`, and `Accident` structs are `RawPresentable` with `Int` as well as `ExpressibleByIntegerLiteral` that you can represent them directly with `Int`s.
+Equality is **structural** throughout: `C#` ≠ `D♭`. Use `isEnharmonic(with:)` wherever you want sound-based comparison.
 
-#### `Pitch` and `Key`
+#### `NoteName` and `LetterName`
 
-- All keys can be defined with `Key` struct. 
-- It has a `KeyType` where you can set the base key like C, D, A, G, and an `Accidental` where it can be `.natural`, `.flat`, `sharp` or more specific like `.sharps(amount: 3)`.
-- You can create `Pitch`es with a `Key` and octave.
-- Also, you can create `Pitch`es with MIDI note number. `rawValue` of a pitch is its MIDI note number.
-- `Pitch`, `Key`, `Accidental` structs are equatable, `+` and `-` custom operators defined for making calculations easier.
-- Also, there are other helper functions or properties like frequency of a note.
-- You can define them with directly string representations as well.
+`NoteName` is a letter (A–G) combined with an `Accidental`. Accidentals are a struct wrapping a single `semitones: Int` — no degenerate states possible.
 
 ``` swift
-let dFlat = Key(type: d, accidental: .flat)
-let c4 = Pitch(key: Key(type: .c), octave: 4)
-let aSharp: Key = "a#" // Key(type: .a, accidental: .sharp)
-let gFlat3: Pitch = "gb3" // or "g♭3" or "Gb3" is Pitch(key: (type: .g, accidental: .flat), octave: 3)
+let cSharp = NoteName(letter: .c, accidental: .sharp)  // C#
+let dFlat  = NoteName(letter: .d, accidental: .flat)   // Db
+
+cSharp == dFlat                        // false — structural equality
+cSharp.isEnharmonic(with: dFlat)       // true  — same pitch class
+
+// Convenience constants
+let root: NoteName = .fs               // F#
+let flat: NoteName = "Bb"             // string literal
+
+// Accidental arithmetic
+let doubleSharp = Accidental.sharp + Accidental.sharp  // ##
+let natural: Accidental = 0
+```
+
+#### `Pitch`
+
+A `NoteName` combined with an octave number. Middle C is `C4` (MIDI 60).
+
+``` swift
+let c4  = Pitch(noteName: .c, octave: 4)
+let a4  = Pitch(noteName: .a, octave: 4)
+
+a4.midiNoteNumber           // 69
+a4.frequency()              // 440.0 Hz
+a4.frequency(a4: 432.0)     // 432.0 Hz (custom tuning)
+
+// Transposition with correct enharmonic spelling
+let d4 = c4 + .M2           // D4
+let b3 = c4 - .m2           // B3
+
+// Interval between pitches — handles B→C correctly
+let b3pitch = Pitch(noteName: .b, octave: 3)
+b3pitch.interval(to: c4)    // m2 (minor second, not a major seventh)
+
+// MIDI and string literals
+let pitch: Pitch = 60       // C4
+let gFlat3: Pitch = "Gb3"  // G♭3
+
+// Enharmonic comparison
+let cs4 = Pitch(noteName: .cs, octave: 4)
+let db4 = Pitch(noteName: .db, octave: 4)
+cs4 == db4                          // false — structural
+cs4.isEnharmonic(with: db4)         // true  — same MIDI note
+
+// Nearest pitch from frequency
+let nearest = Pitch.nearest(frequency: 440.0)  // A4
 ```
 
 #### `Interval`
 
-- Intervals are halfsteps between pitches.
-- They are `IntegerLiteral` and you can make add/substract them between themselves, notes or note types.
-- You can build up a custom interval with its quality, degree and semitone properties.
-- You can build scales or chords from intervals.
-- Minor, major, perfect, augmented and diminished intervals up to 2 octaves are predefined.
+Intervals are defined by a `Quality` and a `degree`. Semitones are always **computed** — never stored — so invalid combinations are unrepresentable.
+
+``` swift
+Interval.M3.semitones   // 4
+Interval.P5.semitones   // 7
+Interval.m7.semitones   // 10
+Interval.P8.semitones   // 12
+Interval.M9.semitones   // 14
+
+// Validated construction
+let tritone = Interval(quality: .augmented, degree: 4)  // A4, 6 semitones
+let invalid = Interval(quality: .minor, degree: 1)      // nil — minor unison doesn't exist
+
+// Inversion
+Interval.M3.inverted    // m6
+Interval.P4.inverted    // P5
+
+// Enharmonic (same semitones, different quality/degree)
+Interval.A4.isEnharmonic(with: .d5)  // true
+Interval.A4 == Interval.d5           // false — structurally different
+```
 
 #### `ScaleType` and `Scale`
 
-- `ScaleType` enum defines a lot of readymade scales.
-- Also, you can create a custom scale type by `ScaleType.custom(intervals: [Interval], description: String)` 
-- `Scale` defines a scale with a scale type and root key.
-- You can generate notes of scale in an octave range.
-- Also you can generate `HarmonicField` of a scale.
-- Harmonic field is all possible triad, tetrad or extended chords in a scale.
+`ScaleType` is a lightweight named interval preset for common built-in scales. `Scale` is the flexible construction API: you can build a scale from a predefined `ScaleType` or provide your own interval collection directly.
 
 ``` swift
-let c = Key(type: .c)
-let maj: ScaleType = .major
-let cMaj = Scale(type: maj, key: c)
+// Built-in scale types
+let cMajor = Scale(type: .major, root: .c)
+cMajor.noteNames  // [C, D, E, F, G, A, B]
+
+let dMajor = Scale(type: .major, root: .d)
+dMajor.noteNames  // [D, E, F#, G, A, B, C#] — correctly spelled with sharps, not flats
+
+let cMinor = Scale(type: .minor, root: .c)
+cMinor.noteNames  // [C, D, Eb, F, G, Ab, Bb]
+
+// Custom scale construction without predefined catalogs or validation
+let custom = Scale(
+    intervals: [.P1, .m2, .P4, .P5],
+    root: .d,
+    name: "Custom Tetrachord"
+)
+custom.noteNames  // [D, Eb, G, A]
+
+// Scale type equality is by intervals
+ScaleType.major == ScaleType.ionian          // true
+ScaleType.lydianDominant.intervals           // [P1, M2, M3, A4, P5, M6, m7]
 ```
 
 #### `ChordType` and `Chord`
 
-- `ChordType` is a struct with `ChordPart`s which are building blocks of chords.
-- You can define any chord existing with `ChordType`.
-- Thirds, fifths, sixths, sevenths and extensions are parts of the `ChordType`. 
-- Each of them also structs which conforms `ChordPart` protocol.
-- `Chord` defines chords with type and a root key.
-- You can generate notes of chord in any octave range.
-- You can generate inversions of any chord.
+`ChordType` is a `Set<ChordComponent>`. Building from intervals returns a `Result` so failures are explicit, not silent. Chord symbols use canonical formatting for extended chords (`9`, `Maj9`, `m9`, `11`, `13`, etc.).
 
 ``` swift
-let m13 = ChordType(
-  third: .minor,
-  seventh: .dominant,
-  extensions: [
-    ChordExtensionType(type: .thirteenth)
-  ])
-let cm13 = Chord(type: m13, key: Key(type: .c))
-```
+// Predefined types
+let maj  = ChordType.major        // M
+let min7 = ChordType.minor7       // m7
+let dom9 = ChordType.dominant9    // 9
+let maj9 = ChordType.major9       // Maj9
+let min9 = ChordType.minor9       // m9
 
-- You can generate chord progressions with `ChordProgression` enum.
-- For any scale, in any harmonic field, for any inversion.
+// Build from intervals — returns Result
+switch ChordType.from(intervals: [.P1, .m3, .P5]) {
+case .success(let type): print(type.symbol)   // "m"
+case .failure(let err):  print(err)
+}
 
-``` swift
-let progression = ChordProgression.i_ii_vi_iv
-let cSharpHarmonicMinorTriadsProgression = progression.chords(
-  for: cSharpHarmonicMinor,
-  harmonicField: .triad,
-  inversion: 0)
+// Chord with root
+let cMaj  = Chord(type: .major,   root: .c)
+let gDom7 = Chord(type: .dominant7, root: .g)
+
+cMaj.noteNames           // [C, E, G]
+cMaj.notation            // "C"
+gDom7.notation           // "G7"
+
+// Slash chord
+let cOverE = Chord(type: .major, root: .c, bass: .e)
+cOverE.notation          // "C/E"
+
+// Pitches in any octave
+cMaj.pitches(octave: 4)  // [C4, E4, G4]
+
+// Inversions
+let inversions = gDom7.inversions   // [G7, G7/B, G7/D, G7/F]
+
+var firstInversion = Chord(type: .major, root: .c)
+firstInversion.inversion = 1
+firstInversion.notation  // "C/E"
+
 ```
 
 #### `Tempo` and `TimeSignature`
 
-- Tempo is a helper struct to define timings in your music app.
-- TimeSignature is number of beats in per measure and `NoteValue` of each beat.
-- You can calculate notes duration in any tempo by ther `NoteValue`.
-- Note value defines the note's duration in a beat. It could be whole note, half note, quarter note, 8th, 16th or 32nd note.
+``` swift
+let ts   = TimeSignature(beats: 4, beatUnit: 4)   // 4/4
+ts.description   // "4/4"
+ts.isCompound    // false
 
+let ts68 = TimeSignature(beats: 6, beatUnit: 8)   // 6/8
+ts68.isCompound  // true
 
-#### `HarmonicFunctions`
+let tempo = Tempo(timeSignature: ts, bpm: 120)
 
-- Harmonic functions is a utility for finding related notes or chords in a scale when composing.
-- You can create recommendation engines or chord generators with that.
+let quarter = NoteValue(type: .quarter)
+tempo.duration(of: quarter)     // 0.5 seconds
+tempo.sampleLength(of: quarter) // 22050.0 samples @ 44100 Hz
+
+// Note modifiers use exact fractions
+NoteModifier.triplet.multiplier      // 2.0/3.0 (exact)
+NoteModifier.doubleDotted.multiplier // 1.75
+NoteModifier.septuplet.multiplier    // 4.0/7.0
+```
 
 Playgrounds
 ----
 
-- You can experiment with the library right away in the Xcode Playgrounds!
-- After cloning the project, build it for the Mac target,
-- Go to playground page in the project,
-- Make sure the macOS platform is selected,
-- And make sure the "Build Active Scheme" option is selected in the playground settings.
-- There are some recipes ready in the playground page, you can just run them right away. 
-
-Documentation
-----
-
-[Full documentation is here](https://cemolcay.github.io/MusicTheory/)
+- Clone the project and open it in Xcode.
+- Build the Mac target.
+- Open the Playground page in the project navigator.
+- Select the macOS platform and **Build Active Scheme** in Playground settings.
 
 Unit Tests
 ----
 
-You can find unit tests in `MusicTheoryTests` target.  
-Press `⌘+U` for running tests.
+45 tests covering all primitives. Run with `swift test` or `⌘U` in Xcode.
 
 AppStore
 ----
 
-This library battle tested in my apps for iOS, macOS, watchOS and tvOS, check them out!  
+This library is battle-tested in production across iOS, macOS, watchOS and tvOS:  
 [KeyBud](https://itunes.apple.com/us/app/keybud-music-theory-app/id1203856335?mt=8) (iOS, watchOS, tvOS, macOS)  
 [FretBud](https://itunes.apple.com/us/app/fretbud-chord-scales-for-guitar-bass-and-more/id1234224249?mt=8) (iOS, watchOS, tvOS)  
 [ChordBud](https://itunes.apple.com/us/app/chordbud-chord-progressions/id1313017378?mt=8) (iOS)  

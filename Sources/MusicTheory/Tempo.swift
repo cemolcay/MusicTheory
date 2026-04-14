@@ -10,14 +10,14 @@
 
 import Foundation
 
-/// Defines the tempo of the music with beats per second and time signature.
-public struct Tempo: Codable, Hashable, CustomStringConvertible {
-    /// Time signature of music.
+/// Defines the tempo of the music with beats per minute and a time signature.
+public struct Tempo: Codable, Hashable, Equatable, CustomStringConvertible, Sendable {
+    /// Time signature of the music.
     public var timeSignature: TimeSignature
-    /// Beats per minutes.
+    /// Beats per minute.
     public var bpm: Double
-    
-    /// Initilizes tempo with time signature and BPM.
+
+    /// Initialises tempo with a time signature and BPM.
     ///
     /// - Parameters:
     ///   - timeSignature: Time Signature.
@@ -26,43 +26,41 @@ public struct Tempo: Codable, Hashable, CustomStringConvertible {
         self.timeSignature = timeSignature
         self.bpm = bpm
     }
-    
-    /// Caluclates the duration of a note value in seconds.
+
+    // MARK: Duration
+
+    /// Calculates the duration of a note value in seconds.
     public func duration(of noteValue: NoteValue) -> TimeInterval {
         let secondsPerBeat = 60.0 / bpm
-        return secondsPerBeat * (timeSignature.noteValue.rate / noteValue.type.rate) * noteValue.modifier.rawValue
+        // Normalise: express noteValue.rate relative to one beat
+        let beatRate = 1.0 / Double(timeSignature.beatUnit)
+        return secondsPerBeat * (noteValue.rate / beatRate)
     }
-    
-    /// Calculates the note length in samples. Useful for sequencing notes sample accurate in the DSP.
+
+    /// Calculates the note length in samples. Useful for sample-accurate sequencing in the DSP.
     ///
     /// - Parameters:
-    ///   - noteValue: Rate of the note you want to calculate sample length.
-    ///   - sampleRate: Number of samples in a second. Defaults to 44100.
-    /// - Returns: Returns the sample length of a note value.
+    ///   - noteValue: The note value whose sample length to calculate.
+    ///   - sampleRate: Number of samples per second. Defaults to 44100.
+    /// - Returns: The sample length of the note value.
     public func sampleLength(of noteValue: NoteValue, sampleRate: Double = 44100.0) -> Double {
-        let secondsPerBeat = 60.0 / bpm
-        return secondsPerBeat * sampleRate * ((Double(timeSignature.beats) * noteValue.type.rate) * noteValue.modifier.rawValue)
+        return duration(of: noteValue) * sampleRate
     }
-    
-    /// Calculates the LFO speed of a note vaule in hertz.
+
+    /// Calculates the LFO speed of a note value in hertz.
     public func hertz(of noteValue: NoteValue) -> Double {
-        return 1 / duration(of: noteValue)
+        return 1.0 / duration(of: noteValue)
     }
-    
+
     // MARK: Equatable
-    
-    /// Compares two Tempo instances and returns if they are identical.
-    /// - Parameters:
-    ///   - lhs: Left hand side of the equation.
-    ///   - rhs: Right hand side of the equation.
-    /// - Returns: Returns true if two instances are identical.
+
     public static func == (lhs: Tempo, rhs: Tempo) -> Bool {
-        return lhs.hashValue == rhs.hashValue
+        return lhs.bpm == rhs.bpm && lhs.timeSignature == rhs.timeSignature
     }
-    
+
     // MARK: CustomStringConvertible
-    
+
     public var description: String {
-        return "\(bpm)"
+        return "\(bpm) BPM (\(timeSignature))"
     }
 }

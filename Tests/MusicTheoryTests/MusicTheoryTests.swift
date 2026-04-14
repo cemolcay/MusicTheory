@@ -12,110 +12,241 @@ import XCTest
 class MusicTheoryTests: XCTestCase {
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 }
 
-// MARK: - Note Tests
+// MARK: - Accidental Tests
 
 extension MusicTheoryTests {
-    func testIntervals() {
-        let key = Key(type: .c)
-        let pitch = Pitch(key: key, octave: 1)
-        XCTAssert((pitch + 12).octave == pitch.octave + 1)
-        XCTAssert((pitch + 1).key == Key(type: .c, accidental: .sharp))
-        XCTAssert((pitch - 1) == Pitch(key: Key(type: .b), octave: 0))
-        
-        let c1 = Pitch(key: Key(type: .c), octave: 1)
-        let d1 = Pitch(key: Key(type: .d), octave: 1)
-        XCTAssert(d1 - c1 == .M2)
-    }
-    
     func testAccidentals() {
-        XCTAssert(Accidental.flat * 2 == Accidental.doubleFlat)
-        XCTAssert(Accidental.doubleFlat / 2 == Accidental.flat)
-        XCTAssert(Accidental.sharps(amount: 2) - 2 == Accidental.natural)
-        XCTAssert(Accidental.flats(amount: 2) + 2 == 0)
-        XCTAssert(Accidental.sharps(amount: 2) + Accidental.sharps(amount: 1) == Accidental.sharps(amount: 3))
-        XCTAssert(Accidental(integerLiteral: -3) + Accidental(rawValue: 3)! == 0)
-    }
-    
-    func testKeys() {
-        let d = Key.KeyType.d
-        XCTAssert(d.key(at: -2) == .b)
-        XCTAssert(d.key(at: -19) == .f)
-        XCTAssert(d.key(at: 12) == .b)
-        XCTAssert(d.key(at: 0) == .d)
-        XCTAssert(d.key(at: 1) == .e)
-        XCTAssert(d.key(at: 2) == .f)
-        XCTAssert(d.key(at: -3) == .a)
-        XCTAssert(d.key(at: -301) == .d)
-        
-        let f = Key.KeyType.f
-        XCTAssert(f.key(at: -3) == .c)
-        
-        let k: Key = "a##b"
-        XCTAssert(k.accidental == .sharp && k.type == .a)
-        
-        let b = Key(type: .b, accidental: .natural)
-        XCTAssert(Key(type: .c, accidental: .flat) == b)
-        XCTAssert(Key(type: .c, accidental: .sharps(amount: 23)) == b)
-        XCTAssert(Key(type: .c, accidental: .flats(amount: 13)) == b)
-        XCTAssert(Key(type: .c, accidental: .flats(amount: 25)) == b)
-        XCTAssert(Key(type: .c, accidental: .flats(amount: 24)) != b)
-    }
-    
-    func testPitches() {
-        let c0: Pitch = 12
-        XCTAssert(c0.octave == 0 && c0.key.accidental == .natural && c0.key.type == .c)
-        XCTAssert(c0 - 12 == 0)
-        
-        var pitch = Pitch(midiNote: 127)
-        XCTAssert(pitch.key == Key(type: .g))
-        pitch = Pitch(midiNote: 0)
-        XCTAssert(pitch.key == Key(type: .c))
-        pitch = Pitch(midiNote: 66, preferSharps: false)
-        XCTAssert(pitch.key == Key(type: .g, accidental: .flat))
-        
-        let c1 = Pitch(key: Key(type: .c), octave: 1)
-        XCTAssert(c1 + .m2 == Pitch(key: Key(type: .d, accidental: .flat), octave: 1))
-        XCTAssert(c1 + .M2 == Pitch(key: Key(type: .d, accidental: .natural), octave: 1))
-        XCTAssert(c1 + .m3 == Pitch(key: Key(type: .e, accidental: .flat), octave: 1))
-        XCTAssert(c1 + .M3 == Pitch(key: Key(type: .e, accidental: .natural), octave: 1))
-        XCTAssert(c1 + .P8 == Pitch(key: Key(type: .c, accidental: .natural), octave: 2))
-        
-        let d1 = Pitch(key: Key(type: .d), octave: 1)
-        XCTAssert(d1 - .m2 == Pitch(key: Key(type: .c, accidental: .sharp), octave: 1))
-        XCTAssert(d1 - .M2 == Pitch(key: Key(type: .c, accidental: .natural), octave: 1))
-        
-        let p: Pitch = "f#-5"
-        XCTAssert(p.key === Key(type: .f, accidental: .sharp))
-        XCTAssert(p.octave == -5)
-        
-        let uppercasePitch: Pitch = "A#3"
-        XCTAssert(uppercasePitch.key === Key(type: .a, accidental: .sharp))
-        XCTAssert(uppercasePitch.octave == 3)
-        
-        let uppercasePitch2: Pitch = "F4"
-        XCTAssert(uppercasePitch2.key === Key(type: .f, accidental: .natural))
-        XCTAssert(uppercasePitch2.octave == 4)
-    }
-    
-    func testFrequency() {
-        let note = Pitch(key: Key(type: .a), octave: 4)
-        XCTAssertEqual(note.frequency, 440.0)
-        
-        let a4 = Pitch.nearest(frequency: 440.0)
-        XCTAssertEqual(note, a4)
+        // Arithmetic
+        XCTAssertEqual(Accidental.flat + Accidental.flat, Accidental.doubleFlat)
+        XCTAssertEqual(Accidental.sharp + Accidental.sharp, Accidental.doubleSharp)
+        XCTAssertEqual(Accidental.doubleFlat + 2, Accidental.natural)
+        XCTAssertEqual(Accidental.doubleSharp - 2, Accidental.natural)
+
+        // Comparison
+        XCTAssert(Accidental.flat < Accidental.natural)
+        XCTAssert(Accidental.natural < Accidental.sharp)
+        XCTAssert(Accidental.doubleFlat < Accidental.flat)
+
+        // Integer literal
+        let minusTwo: Accidental = -2
+        XCTAssertEqual(minusTwo, .doubleFlat)
+
+        let plusOne: Accidental = 1
+        XCTAssertEqual(plusOne, .sharp)
+
+        // String literal
+        let flat: Accidental = "b"
+        XCTAssertEqual(flat, .flat)
+        let sharp: Accidental = "#"
+        XCTAssertEqual(sharp, .sharp)
+        let natural: Accidental = ""
+        XCTAssertEqual(natural, .natural)
     }
 }
 
-// MARK: - Tempo Tests
+// MARK: - LetterName Tests
+
+extension MusicTheoryTests {
+    func testLetterNameAdvanced() {
+        let d = LetterName.d
+        XCTAssertEqual(d.advanced(by: -2),   .b)
+        XCTAssertEqual(d.advanced(by: -19),  .f)
+        XCTAssertEqual(d.advanced(by: 12),   .b)
+        XCTAssertEqual(d.advanced(by: 0),    .d)
+        XCTAssertEqual(d.advanced(by: 1),    .e)
+        XCTAssertEqual(d.advanced(by: 2),    .f)
+        XCTAssertEqual(d.advanced(by: -3),   .a)
+        XCTAssertEqual(d.advanced(by: -301), .d)
+
+        XCTAssertEqual(LetterName.f.advanced(by: -3), .c)
+    }
+
+    func testLetterNameDiatonicDistance() {
+        XCTAssertEqual(LetterName.c.diatonicDistance(to: .c), 0)
+        XCTAssertEqual(LetterName.c.diatonicDistance(to: .d), 1)
+        XCTAssertEqual(LetterName.b.diatonicDistance(to: .c), 1)  // B→C wraps correctly
+        XCTAssertEqual(LetterName.c.diatonicDistance(to: .b), 6)
+    }
+}
+
+// MARK: - Interval Tests
+
+extension MusicTheoryTests {
+    func testIntervalSemitones() {
+        XCTAssertEqual(Interval.P1.semitones,  0)
+        XCTAssertEqual(Interval.m2.semitones,  1)
+        XCTAssertEqual(Interval.M2.semitones,  2)
+        XCTAssertEqual(Interval.m3.semitones,  3)
+        XCTAssertEqual(Interval.M3.semitones,  4)
+        XCTAssertEqual(Interval.P4.semitones,  5)
+        XCTAssertEqual(Interval.A4.semitones,  6)
+        XCTAssertEqual(Interval.d5.semitones,  6)
+        XCTAssertEqual(Interval.P5.semitones,  7)
+        XCTAssertEqual(Interval.m6.semitones,  8)
+        XCTAssertEqual(Interval.M6.semitones,  9)
+        XCTAssertEqual(Interval.m7.semitones, 10)
+        XCTAssertEqual(Interval.M7.semitones, 11)
+        XCTAssertEqual(Interval.P8.semitones, 12)
+        XCTAssertEqual(Interval.M9.semitones, 14)
+        XCTAssertEqual(Interval.P11.semitones, 17)
+        XCTAssertEqual(Interval.M13.semitones, 21)
+    }
+
+    func testIntervalHashable() {
+        // Equal intervals produce the same hash
+        let a: Interval = .M3
+        let b: Interval = .M3
+        XCTAssertEqual(a, b)
+        XCTAssertEqual(a.hashValue, b.hashValue)
+
+        // Enharmonic intervals are not equal (different quality/degree)
+        XCTAssertNotEqual(Interval.A4, Interval.d5)
+        XCTAssert(Interval.A4.isEnharmonic(with: .d5))
+    }
+
+    func testIntervalInversion() {
+        XCTAssertEqual(Interval.M3.inverted, .m6)
+        XCTAssertEqual(Interval.P4.inverted, .P5)
+        XCTAssertEqual(Interval.m2.inverted, .M7)
+    }
+
+    func testIntervalFromSemitonesDegree() {
+        XCTAssertEqual(Interval(semitones: 4, degree: 3), .M3)
+        XCTAssertEqual(Interval(semitones: 3, degree: 3), .m3)
+        // d4 (diminished 4th) = 4 semitones, degree 4 — valid (enharmonic to M3)
+        XCTAssertNotNil(Interval(semitones: 4, degree: 4))
+        XCTAssertEqual(Interval(semitones: 4, degree: 4)?.degree, 4)
+        // Truly invalid: minor quality on a perfect degree
+        XCTAssertNil(Interval(quality: .minor, degree: 1))
+        XCTAssertNil(Interval(quality: .minor, degree: 4))
+    }
+}
+
+// MARK: - NoteName Tests
+
+extension MusicTheoryTests {
+    func testNoteNamePitchClass() {
+        XCTAssertEqual(NoteName.c.pitchClass,  0)
+        XCTAssertEqual(NoteName.cs.pitchClass, 1)
+        XCTAssertEqual(NoteName.db.pitchClass, 1)
+        XCTAssertEqual(NoteName.d.pitchClass,  2)
+        XCTAssertEqual(NoteName.e.pitchClass,  4)
+        XCTAssertEqual(NoteName.b.pitchClass,  11)
+    }
+
+    func testNoteNameStructuralEquality() {
+        // C# and Db are not equal (different structure)
+        XCTAssertNotEqual(NoteName.cs, NoteName.db)
+        // but enharmonic
+        XCTAssert(NoteName.cs.isEnharmonic(with: .db))
+    }
+
+    func testNoteNameStringLiteral() {
+        let cSharp: NoteName = "C#"
+        XCTAssertEqual(cSharp, .cs)
+
+        let bFlat: NoteName = "Bb"
+        XCTAssertEqual(bFlat, .bb)
+
+        let eNatural: NoteName = "E"
+        XCTAssertEqual(eNatural, .e)
+    }
+}
+
+// MARK: - Pitch Tests
+
+extension MusicTheoryTests {
+    func testPitchMIDI() {
+        let c0: Pitch = 12  // MIDI 12 = C0
+        XCTAssertEqual(c0.octave, 0)
+        XCTAssertEqual(c0.noteName, .c)
+
+        XCTAssertEqual(c0 - 12, Pitch(midiNote: 0))  // C-1
+
+        let pitch127 = Pitch(midiNote: 127)
+        XCTAssertEqual(pitch127.noteName, .g)
+
+        let pitch0 = Pitch(midiNote: 0)
+        XCTAssertEqual(pitch0.noteName, .c)
+
+        let pitch66 = Pitch(midiNote: 66, spelling: .flats)
+        XCTAssertEqual(pitch66.noteName, .gb)
+    }
+
+    func testPitchTransposition() {
+        let c1 = Pitch(noteName: .c, octave: 1)
+        XCTAssertEqual(c1 + .m2, Pitch(noteName: .db, octave: 1))
+        XCTAssertEqual(c1 + .M2, Pitch(noteName: .d,  octave: 1))
+        XCTAssertEqual(c1 + .m3, Pitch(noteName: .eb, octave: 1))
+        XCTAssertEqual(c1 + .M3, Pitch(noteName: .e,  octave: 1))
+        XCTAssertEqual(c1 + .P8, Pitch(noteName: .c,  octave: 2))
+
+        let d1 = Pitch(noteName: .d, octave: 1)
+        XCTAssertEqual(d1 - .m2, Pitch(noteName: .cs, octave: 1))
+        XCTAssertEqual(d1 - .M2, Pitch(noteName: .c,  octave: 1))
+    }
+
+    func testPitchInterval() {
+        let c1 = Pitch(noteName: .c, octave: 1)
+        let d1 = Pitch(noteName: .d, octave: 1)
+        XCTAssertEqual(d1 - c1, .M2)
+
+        // B→C crossing: must be a minor second, not a major seventh
+        let b3 = Pitch(noteName: .b, octave: 3)
+        let c4 = Pitch(noteName: .c, octave: 4)
+        XCTAssertEqual(c4 - b3, .m2)
+
+        // A compound interval
+        let c4pitch = Pitch(noteName: .c, octave: 4)
+        let d5pitch = Pitch(noteName: .d, octave: 5)
+        XCTAssertEqual(d5pitch - c4pitch, .M9)
+    }
+
+    func testPitchSemitonShift() {
+        let c1 = Pitch(noteName: .c, octave: 1)
+        XCTAssertEqual((c1 + 12).octave, 2)
+        XCTAssertEqual((c1 + 1).noteName, .cs)
+        XCTAssertEqual(c1 - 1, Pitch(noteName: .b, octave: 0))
+    }
+
+    func testPitchFrequency() {
+        let a4 = Pitch(noteName: .a, octave: 4)
+        XCTAssertEqual(a4.frequency(), 440.0, accuracy: 0.001)
+
+        let nearest = Pitch.nearest(frequency: 440.0)
+        XCTAssertEqual(a4, nearest)
+    }
+
+    func testPitchStringLiteral() {
+        let p: Pitch = "f#-5"
+        XCTAssertEqual(p.noteName, .fs)
+        XCTAssertEqual(p.octave, -5)
+
+        let p2: Pitch = "A#3"
+        XCTAssertEqual(p2.noteName, .as_)
+        XCTAssertEqual(p2.octave, 3)
+
+        let p3: Pitch = "F4"
+        XCTAssertEqual(p3.noteName, .f)
+        XCTAssertEqual(p3.octave, 4)
+    }
+
+    func testPitchEnharmonic() {
+        let cs4 = Pitch(noteName: .cs, octave: 4)
+        let db4 = Pitch(noteName: .db, octave: 4)
+        XCTAssertNotEqual(cs4, db4)        // structural inequality
+        XCTAssert(cs4.isEnharmonic(with: db4))  // same sound
+    }
+}
+
+// MARK: - NoteValue Tests
 
 extension MusicTheoryTests {
     func testNoteValueConversions() {
@@ -128,49 +259,96 @@ extension MusicTheoryTests {
         XCTAssertEqual(noteValue / NoteValueType.quarter, 2)
         XCTAssertEqual(noteValue / NoteValueType.thirtysecond, 16)
     }
-    
-    func testDurations() {
-        let timeSignature = TimeSignature(beats: 4, noteValue: .quarter) // 4/4
-        let tempo = Tempo(timeSignature: timeSignature, bpm: 120) // 120BPM
-        var noteValue = NoteValue(type: .quarter)
-        var duration = tempo.duration(of: noteValue)
-        XCTAssert(duration == 0.5)
-        
-        noteValue.modifier = .dotted
-        duration = tempo.duration(of: noteValue)
-        XCTAssert(duration == 0.75)
+
+    func testNoteModifierMultipliers() {
+        XCTAssertEqual(NoteModifier.default.multiplier,     1.0,          accuracy: 1e-10)
+        XCTAssertEqual(NoteModifier.dotted.multiplier,      1.5,          accuracy: 1e-10)
+        XCTAssertEqual(NoteModifier.doubleDotted.multiplier, 1.75,        accuracy: 1e-10)
+        XCTAssertEqual(NoteModifier.triplet.multiplier,     2.0 / 3.0,    accuracy: 1e-10)
+        XCTAssertEqual(NoteModifier.quintuplet.multiplier,  4.0 / 5.0,    accuracy: 1e-10)
+        XCTAssertEqual(NoteModifier.septuplet.multiplier,   4.0 / 7.0,    accuracy: 1e-10)
     }
-    
-    func testSampleLengthCalcuation() {
-        let rates = [
-            NoteValue(type: .whole, modifier: .default),
-            NoteValue(type: .half, modifier: .default),
-            NoteValue(type: .half, modifier: .dotted),
-            NoteValue(type: .half, modifier: .triplet),
-            NoteValue(type: .quarter, modifier: .default),
-            NoteValue(type: .quarter, modifier: .dotted),
-            NoteValue(type: .quarter, modifier: .triplet),
-            NoteValue(type: .eighth, modifier: .default),
-            NoteValue(type: .eighth, modifier: .dotted),
-            NoteValue(type: .sixteenth, modifier: .default),
-            NoteValue(type: .sixteenth, modifier: .dotted),
-            NoteValue(type: .thirtysecond, modifier: .default),
-            NoteValue(type: .sixtyfourth, modifier: .default),
+
+    func testNoteValueTypeAll() {
+        // Ensure all includes doubleWhole and whole
+        XCTAssert(NoteValueType.all.contains(where: { $0.rate == NoteValueType.doubleWhole.rate && $0.description == NoteValueType.doubleWhole.description }))
+        XCTAssert(NoteValueType.all.contains(where: { $0.rate == NoteValueType.whole.rate && $0.description == NoteValueType.whole.description }))
+    }
+}
+
+// MARK: - TimeSignature Tests
+
+extension MusicTheoryTests {
+    func testTimeSignatureDescription() {
+        let fourFour = TimeSignature(beats: 4, beatUnit: 4)
+        XCTAssertEqual(fourFour.description, "4/4")
+
+        let threeFour = TimeSignature(beats: 3, beatUnit: 4)
+        XCTAssertEqual(threeFour.description, "3/4")
+
+        let sixEight = TimeSignature(beats: 6, beatUnit: 8)
+        XCTAssertEqual(sixEight.description, "6/8")
+    }
+
+    func testTimeSignatureFromNoteValue() {
+        let ts = TimeSignature(beats: 4, noteValue: .quarter)
+        XCTAssertEqual(ts.description, "4/4")
+        XCTAssertEqual(ts.beatUnit, 4)
+    }
+
+    func testTimeSignatureCompound() {
+        XCTAssertFalse(TimeSignature(beats: 4, beatUnit: 4).isCompound)
+        XCTAssertFalse(TimeSignature(beats: 3, beatUnit: 4).isCompound)
+        XCTAssert(TimeSignature(beats: 6, beatUnit: 8).isCompound)
+        XCTAssert(TimeSignature(beats: 9, beatUnit: 8).isCompound)
+        XCTAssert(TimeSignature(beats: 12, beatUnit: 8).isCompound)
+    }
+}
+
+// MARK: - Tempo Tests
+
+extension MusicTheoryTests {
+    func testDurations() {
+        let tempo = Tempo(timeSignature: TimeSignature(beats: 4, beatUnit: 4), bpm: 120)
+
+        var noteValue = NoteValue(type: .quarter)
+        XCTAssertEqual(tempo.duration(of: noteValue), 0.5, accuracy: 1e-10)
+
+        noteValue.modifier = .dotted
+        XCTAssertEqual(tempo.duration(of: noteValue), 0.75, accuracy: 1e-10)
+
+        let whole = NoteValue(type: .whole)
+        XCTAssertEqual(tempo.duration(of: whole), 2.0, accuracy: 1e-10)
+    }
+
+    func testSampleLengths() {
+        let tempo = Tempo()  // 120 BPM, 4/4
+        let rates: [NoteValue] = [
+            NoteValue(type: .whole,         modifier: .default),
+            NoteValue(type: .half,          modifier: .default),
+            NoteValue(type: .half,          modifier: .dotted),
+            NoteValue(type: .half,          modifier: .triplet),
+            NoteValue(type: .quarter,       modifier: .default),
+            NoteValue(type: .quarter,       modifier: .dotted),
+            NoteValue(type: .quarter,       modifier: .triplet),
+            NoteValue(type: .eighth,        modifier: .default),
+            NoteValue(type: .eighth,        modifier: .dotted),
+            NoteValue(type: .sixteenth,     modifier: .default),
+            NoteValue(type: .sixteenth,     modifier: .dotted),
+            NoteValue(type: .thirtysecond,  modifier: .default),
+            NoteValue(type: .sixtyfourth,   modifier: .default),
         ]
-        
-        let tempo = Tempo()
-        let sampleLengths = rates
-            .map({ tempo.sampleLength(of: $0) })
-            .map({ round(100 * $0) / 100 })
-        
+
+        let sampleLengths = rates.map { round(100 * tempo.sampleLength(of: $0)) / 100 }
+
         let expected: [Double] = [
             88200.0,
             44100.0,
             66150.0,
-            29401.47,
+            29400.0,   // exact 2/3 — was 29401.47 with the old imprecise 0.6667
             22050.0,
             33075.0,
-            14700.73,
+            14700.0,   // exact 2/3 — was 14700.73 with the old imprecise 0.6667
             11025.0,
             16537.5,
             5512.5,
@@ -178,20 +356,30 @@ extension MusicTheoryTests {
             2756.25,
             1378.13,
         ]
-        
+
         XCTAssertEqual(sampleLengths, expected)
     }
-    
+
+    func testTempoEquality() {
+        let t1 = Tempo(timeSignature: TimeSignature(beats: 4, beatUnit: 4), bpm: 120)
+        let t2 = Tempo(timeSignature: TimeSignature(beats: 4, beatUnit: 4), bpm: 120)
+        XCTAssertEqual(t1, t2)
+
+        let t3 = Tempo(timeSignature: TimeSignature(beats: 3, beatUnit: 4), bpm: 120)
+        XCTAssertNotEqual(t1, t3)
+
+        let t4 = Tempo(timeSignature: TimeSignature(beats: 4, beatUnit: 4), bpm: 90)
+        XCTAssertNotEqual(t1, t4)
+    }
+
     func testTempoHashable() {
         let t1 = Tempo(timeSignature: TimeSignature(beats: 1, noteValue: .whole), bpm: 1)
         var t2 = Tempo(timeSignature: TimeSignature(beats: 2, noteValue: .half), bpm: 2)
-        XCTAssertNotEqual(t1.timeSignature.noteValue, t2.timeSignature.noteValue)
         XCTAssertNotEqual(t1.timeSignature, t2.timeSignature)
         XCTAssertNotEqual(t1, t2)
-        
+
         t2.timeSignature = TimeSignature(beats: 1, noteValue: .whole)
         t2.bpm = 1
-        XCTAssertEqual(t1.timeSignature.noteValue, t2.timeSignature.noteValue)
         XCTAssertEqual(t1.timeSignature, t2.timeSignature)
         XCTAssertEqual(t1, t2)
     }
@@ -200,191 +388,175 @@ extension MusicTheoryTests {
 // MARK: - Scale Tests
 
 extension MusicTheoryTests {
-    func testScale() {
-        let cMaj: [Key] = [
-            Key(type: .c),
-            Key(type: .d),
-            Key(type: .e),
-            Key(type: .f),
-            Key(type: .g),
-            Key(type: .a),
-            Key(type: .b),
-        ]
-        
-        let cMajScale = Scale(type: .major, key: Key(type: .c))
-        XCTAssert(cMajScale.keys == cMaj)
-        
-        let cMin: [Key] = [
-            Key(type: .c),
-            Key(type: .d),
-            Key(type: .e, accidental: .flat),
-            Key(type: .f),
-            Key(type: .g),
-            Key(type: .a, accidental: .flat),
-            Key(type: .b, accidental: .flat),
-        ]
-        
-        let cMinScale = Scale(type: .minor, key: Key(type: .c))
-        XCTAssert(cMinScale.keys == cMin)
+    func testScaleNoteNames() {
+        let cMaj = Scale(type: .major, root: .c)
+        let expected: [NoteName] = [.c, .d, .e, .f, .g, .a, .b]
+        XCTAssertEqual(cMaj.noteNames, expected)
+
+        let cMin = Scale(type: .minor, root: .c)
+        let expectedMin: [NoteName] = [.c, .d, .eb, .f, .g, .ab, .bb]
+        XCTAssertEqual(cMin.noteNames, expectedMin)
     }
-    
-    func testHarmonicFields() {
-        let cmaj = Scale(type: .major, key: Key(type: .c))
-        let triads = cmaj.harmonicField(for: .triad)
-        let triadsExpected = [
-            Chord(type: ChordType(third: .major), key: Key(type: .c)),
-            Chord(type: ChordType(third: .minor), key: Key(type: .d)),
-            Chord(type: ChordType(third: .minor), key: Key(type: .e)),
-            Chord(type: ChordType(third: .major), key: Key(type: .f)),
-            Chord(type: ChordType(third: .major), key: Key(type: .g)),
-            Chord(type: ChordType(third: .minor), key: Key(type: .a)),
-            Chord(type: ChordType(third: .minor, fifth: .diminished), key: Key(type: .b)),
-        ]
-        XCTAssert(triads.enumerated().map({ $1 == triadsExpected[$0] }).filter({ $0 == false }).count == 0)
+
+    func testScaleSpelling() {
+        // D major must use sharps, not flats
+        let dMaj = Scale(type: .major, root: .d)
+        XCTAssertEqual(dMaj.noteNames, [.d, .e, .fs, .g, .a, .b, .cs])
+
+        // Bb major must use flats
+        let bbMaj = Scale(type: .major, root: .bb)
+        let notes = bbMaj.noteNames
+        // Should be Bb C D Eb F G A
+        XCTAssertEqual(notes[0], .bb)
+        XCTAssertEqual(notes[2], .d)
+        XCTAssertEqual(notes[3], .eb)
     }
+
+    func testCustomScaleConstruction() {
+        let custom = Scale(intervals: [.P1, .m2, .P4, .P5], root: .d, name: "Custom Tetrachord")
+        XCTAssertEqual(custom.noteNames, [.d, .eb, .g, .a])
+        XCTAssertEqual(custom.type, ScaleType(intervals: [.P1, .m2, .P4, .P5], name: "Custom Tetrachord"))
+    }
+
 }
 
 // MARK: - Chord Tests
 
 extension MusicTheoryTests {
-    func testChords() {
-        let cmajNotes: [Key] = [Key(type: .c), Key(type: .e), Key(type: .g)]
-        let cmaj = Chord(type: ChordType(third: .major), key: Key(type: .c))
-        XCTAssert(cmajNotes == cmaj.keys)
-        
-        let cminNotes: [Key] = [
-            Key(type: .c),
-            Key(type: .e, accidental: .flat),
-            Key(type: .g),
-        ]
-        let cmin = Chord(type: ChordType(third: .minor), key: Key(type: .c))
-        XCTAssert(cminNotes == cmin.keys)
-        
-        let c13Notes: [Pitch] = [
-            Pitch(key: Key(type: .c), octave: 1),
-            Pitch(key: Key(type: .e), octave: 1),
-            Pitch(key: Key(type: .g), octave: 1),
-            Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
-            Pitch(key: Key(type: .d), octave: 2),
-            Pitch(key: Key(type: .f), octave: 2),
-            Pitch(key: Key(type: .a), octave: 2),
-        ]
-        let c13 = Chord(
-            type: ChordType(
-                third: .major,
-                seventh: .dominant,
-                extensions: [
-                    ChordExtensionType(type: .thirteenth),
-                ]
-            ),
-            key: Key(type: .c)
-        )
-        XCTAssert(c13.pitches(octave: 1) === c13Notes)
-        
-        let cm13Notes: [Pitch] = [
-            Pitch(key: Key(type: .c), octave: 1),
-            Pitch(key: Key(type: .e, accidental: .flat), octave: 1),
-            Pitch(key: Key(type: .g), octave: 1),
-            Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
-            Pitch(key: Key(type: .d), octave: 2),
-            Pitch(key: Key(type: .f), octave: 2),
-            Pitch(key: Key(type: .a), octave: 2),
-        ]
-        let cm13 = Chord(
-            type: ChordType(
-                third: .minor,
-                seventh: .dominant,
-                extensions: [
-                    ChordExtensionType(type: .thirteenth),
-                ]
-            ),
-            key: Key(type: .c)
-        )
-        XCTAssert(cm13.pitches(octave: 1) === cm13Notes)
-        
-        let minorIntervals: [Interval] = [.P1, .m3, .P5]
-        guard let minorChord = ChordType(intervals: minorIntervals.map({ $0 })) else { return XCTFail() }
-        XCTAssert(minorChord == ChordType(third: .minor))
-        
-        let majorIntervals: [Interval] = [.P1, .M3, .P5]
-        guard let majorChord = ChordType(intervals: majorIntervals.map({ $0 })) else { return XCTFail() }
-        XCTAssert(majorChord == ChordType(third: .major))
-        
-        let cmadd13Notes: [Pitch] = [
-            Pitch(key: Key(type: .c), octave: 1),
-            Pitch(key: Key(type: .e, accidental: .flat), octave: 1),
-            Pitch(key: Key(type: .g), octave: 1),
-            Pitch(key: Key(type: .a), octave: 2),
-        ]
-        let cmadd13 = Chord(
-            type: ChordType(
-                third: .minor,
-                extensions: [ChordExtensionType(type: .thirteenth)]
-            ),
-            key: Key(type: .c)
-        )
-        XCTAssert(cmadd13.pitches(octave: 1) === cmadd13Notes)
+    func testChordNoteNames() {
+        let cMaj = Chord(type: .major, root: .c)
+        XCTAssertEqual(cMaj.noteNames, [.c, .e, .g])
+
+        let cMin = Chord(type: .minor, root: .c)
+        XCTAssertEqual(cMin.noteNames, [.c, .eb, .g])
     }
-    
-    func testRomanNumerics() {
-        let cmaj = Scale(type: .major, key: Key(type: .c))
-        let cmin = Scale(type: .minor, key: Key(type: .c))
-        let cmajNumerics = ["I", "ii", "iii", "IV", "V", "vi", "vii°"]
-        let cminNumerics = ["i", "ii°", "III", "iv", "v", "VI", "VII"]
-        let cmajChords = cmaj.harmonicField(for: .triad)
-        let cminChords = cmin.harmonicField(for: .triad)
-        XCTAssertEqual(cmajNumerics, cmajChords.compactMap({ $0?.romanNumeric(for: cmaj) }))
-        XCTAssertEqual(cminNumerics, cminChords.compactMap({ $0?.romanNumeric(for: cmin) }))
-    }
-    
-    func testInversions() {
-        let c7 = Chord(
-            type: ChordType(third: .major, seventh: .dominant),
-            key: Key(type: .c)
-        )
-        let c7Inversions = [
-            [
-                Pitch(key: Key(type: .c), octave: 1),
-                Pitch(key: Key(type: .e), octave: 1),
-                Pitch(key: Key(type: .g), octave: 1),
-                Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
-            ],
-            [
-                Pitch(key: Key(type: .e), octave: 1),
-                Pitch(key: Key(type: .g), octave: 1),
-                Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
-                Pitch(key: Key(type: .c), octave: 2),
-            ],
-            [
-                Pitch(key: Key(type: .g), octave: 1),
-                Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
-                Pitch(key: Key(type: .c), octave: 2),
-                Pitch(key: Key(type: .e), octave: 2),
-            ],
-            [
-                Pitch(key: Key(type: .b, accidental: .flat), octave: 1),
-                Pitch(key: Key(type: .c), octave: 2),
-                Pitch(key: Key(type: .e), octave: 2),
-                Pitch(key: Key(type: .g), octave: 2),
-            ],
+
+    func testChordPitches() {
+        let c13 = Chord(type: .dominant13, root: .c)
+        let expected: [Pitch] = [
+            Pitch(noteName: .c,  octave: 1),
+            Pitch(noteName: .e,  octave: 1),
+            Pitch(noteName: .g,  octave: 1),
+            Pitch(noteName: .bb, octave: 1),
+            Pitch(noteName: .d,  octave: 2),
+            Pitch(noteName: .f,  octave: 2),
+            Pitch(noteName: .a,  octave: 2),
         ]
-        for (index, chord) in c7.inversions.enumerated() {
-            XCTAssert(chord.pitches(octave: 1) === c7Inversions[index])
+        XCTAssertEqual(c13.pitches(octave: 1), expected)
+    }
+
+    func testChordFromIntervals() {
+        let minorResult = ChordType.from(intervals: [.P1, .m3, .P5])
+        guard case .success(let minorChord) = minorResult else {
+            return XCTFail("Minor chord recognition failed")
         }
+        XCTAssertEqual(minorChord, .minor)
+
+        let majorResult = ChordType.from(intervals: [.P1, .M3, .P5])
+        guard case .success(let majorChord) = majorResult else {
+            return XCTFail("Major chord recognition failed")
+        }
+        XCTAssertEqual(majorChord, .major)
+    }
+
+    func testChordInversions() {
+        let c7 = Chord(type: .dominant7, root: .c)
+        let inversions = c7.inversions
+        let expected: [[Pitch]] = [
+            [
+                Pitch(noteName: .c,  octave: 1),
+                Pitch(noteName: .e,  octave: 1),
+                Pitch(noteName: .g,  octave: 1),
+                Pitch(noteName: .bb, octave: 1),
+            ],
+            [
+                Pitch(noteName: .e,  octave: 1),
+                Pitch(noteName: .g,  octave: 1),
+                Pitch(noteName: .bb, octave: 1),
+                Pitch(noteName: .c,  octave: 2),
+            ],
+            [
+                Pitch(noteName: .g,  octave: 1),
+                Pitch(noteName: .bb, octave: 1),
+                Pitch(noteName: .c,  octave: 2),
+                Pitch(noteName: .e,  octave: 2),
+            ],
+            [
+                Pitch(noteName: .bb, octave: 1),
+                Pitch(noteName: .c,  octave: 2),
+                Pitch(noteName: .e,  octave: 2),
+                Pitch(noteName: .g,  octave: 2),
+            ],
+        ]
+        for (index, chord) in inversions.enumerated() {
+            XCTAssertEqual(chord.pitches(octave: 1), expected[index],
+                           "Inversion \(index) mismatch")
+        }
+    }
+
+    func testSlashChord() {
+        // C/E — C major with E in the bass
+        let cOverE = Chord(type: .major, root: .c, bass: .e)
+        XCTAssertEqual(cOverE.notation, "C/E")
+    }
+
+    func testInversionNotationUsesActualBassNote() {
+        var chord = Chord(type: .major, root: .c)
+        chord.inversion = 1
+        XCTAssertEqual(chord.notation, "C/E")
+
+        chord.inversion = 2
+        XCTAssertEqual(chord.notation, "C/G")
+    }
+
+    func testChordSymbols() {
+        XCTAssertEqual(ChordType.major.symbol,         "M")
+        XCTAssertEqual(ChordType.minor.symbol,         "m")
+        XCTAssertEqual(ChordType.diminished.symbol,    "dim")
+        XCTAssertEqual(ChordType.augmented.symbol,     "+")
+        XCTAssertEqual(ChordType.dominant7.symbol,     "7")
+        XCTAssertEqual(ChordType.major7.symbol,        "Maj7")
+        XCTAssertEqual(ChordType.minor7.symbol,        "m7")
+        XCTAssertEqual(ChordType.halfDiminished7.symbol, "ø7")
+        XCTAssertEqual(ChordType.diminished7.symbol,   "dim7")
+        XCTAssertEqual(ChordType.dominant9.symbol,     "9")
+        XCTAssertEqual(ChordType.major9.symbol,        "Maj9")
+        XCTAssertEqual(ChordType.minor9.symbol,        "m9")
+        XCTAssertEqual(ChordType.dominant11.symbol,    "11")
+        XCTAssertEqual(ChordType.dominant13.symbol,    "13")
+        XCTAssertEqual(ChordType.major13.symbol,       "Maj13")
+        XCTAssertEqual(ChordType.minor13.symbol,       "m13")
+    }
+
+    func testChordFullNames() {
+        XCTAssertEqual(ChordType.minor7.fullName, "Minor 7th")
+        XCTAssertEqual(ChordType.dominant7.fullName, "Dominant 7th")
+        XCTAssertEqual(ChordType.major9.fullName, "Major 9th")
+        XCTAssertEqual(ChordType.minor9.fullName, "Minor 9th")
+        XCTAssertEqual(ChordType.dominant13.fullName, "Dominant 13th")
     }
 }
 
-// MARK: - [Pitch] Extension
+// MARK: - ScaleType Tests
 
-// A function for checking pitche arrays exactly equal in terms of their pitches keys and octaves.
-func === (lhs: [Pitch], rhs: [Pitch]) -> Bool {
-    guard lhs.count == rhs.count else { return false }
-    for i in 0 ..< lhs.count {
-        if lhs[i] === rhs[i] {
-            continue
-        } else {
-            return false
-        }
+extension MusicTheoryTests {
+    func testScaleTypeEquality() {
+        // Ionian and major are the same scale by intervals
+        XCTAssertEqual(ScaleType.ionian, ScaleType.major)
     }
-    return true
+
+    func testScaleTypeBuiltins() {
+        XCTAssertEqual(ScaleType.major.intervals, [.P1, .M2, .M3, .P4, .P5, .M6, .M7])
+        XCTAssertEqual(ScaleType.minor.intervals, [.P1, .M2, .m3, .P4, .P5, .m6, .m7])
+        XCTAssertEqual(ScaleType.altered.intervals, [.P1, .m2, .m3, .d4, .d5, .m6, .m7])
+        XCTAssertEqual(ScaleType.lydianDominant.intervals, [.P1, .M2, .M3, .A4, .P5, .M6, .m7])
+        XCTAssertEqual(ScaleType.pentatonicMajor.intervals, [.P1, .M2, .M3, .P5, .M6])
+        XCTAssertEqual(ScaleType.chromatic.intervals.count, 12)
+    }
+
+    func testScaleTypeCustomInitialization() {
+        let custom = ScaleType(intervals: [.P1, .m2, .P4, .P5], name: "Custom Tetrachord")
+        XCTAssertEqual(custom.name, "Custom Tetrachord")
+        XCTAssertEqual(custom.intervals, [.P1, .m2, .P4, .P5])
+    }
 }

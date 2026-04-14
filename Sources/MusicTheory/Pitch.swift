@@ -10,278 +10,262 @@
 
 import Foundation
 
-/// Returns the pitch above target interval from target pitch.
-///
-/// - Parameters:
-///   - lhs: Target `Pitch`.
-///   - rhs: Target `Interval`.
-/// - Returns: Returns new pitch above target interval from target pitch.
+// MARK: - Operators
+
+/// Returns the pitch a given interval above the pitch.
 public func + (lhs: Pitch, rhs: Interval) -> Pitch {
-    let degree = rhs.degree - 1
-    let targetKeyType = lhs.key.type.key(at: degree)
-    let targetPitch = lhs + rhs.semitones
-    let targetOctave = lhs.octave + lhs.key.type.octaveDiff(for: rhs, isHigher: true)
-    
-    // Convert pitch
-    var convertedPitch = Pitch(key: Key(type: targetKeyType), octave: targetOctave)
-    let diff = targetPitch.rawValue - convertedPitch.rawValue
-    convertedPitch.key.accidental = Accidental(integerLiteral: diff)
-    return convertedPitch
+    return lhs.transposed(by: rhs)
 }
 
-/// Returns the pitch below target interval from target pitch.
-///
-/// - Parameters:
-///   - lhs: Target `Pitch`.
-///   - rhs: Target `Interval`.
-/// - Returns: Returns new pitch below target interval from target pitch.
+/// Returns the pitch a given interval below the pitch.
 public func - (lhs: Pitch, rhs: Interval) -> Pitch {
-    let degree = -(rhs.degree - 1)
-    let targetKeyType = lhs.key.type.key(at: degree)
-    let targetPitch = lhs - rhs.semitones
-    let targetOctave = lhs.octave + lhs.key.type.octaveDiff(for: rhs, isHigher: false)
-    
-    // Convert pitch
-    var convertedPitch = Pitch(key: Key(type: targetKeyType), octave: targetOctave)
-    let diff = targetPitch.rawValue - convertedPitch.rawValue
-    convertedPitch.key.accidental = Accidental(integerLiteral: diff)
-    return convertedPitch
+    return lhs._transposed(by: rhs, direction: .down)
 }
 
-/// Calculates the interval between two pitches.
-/// Doesn't matter left hand side and right hand side note places.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: `Intreval` between two pitches. You can get the halfsteps from interval as well.
+/// Calculates the ascending interval between two pitches.
+/// The result is always the interval from the lower pitch to the higher.
 public func - (lhs: Pitch, rhs: Pitch) -> Interval {
-    let top = max(lhs, rhs)
-    let bottom = min(lhs, rhs)
-    let diff = top.rawValue - bottom.rawValue
-    
-    let bottomKeyIndex = Key.KeyType.all.firstIndex(of: bottom.key.type) ?? 0
-    let topKeyIndex = Key.KeyType.all.firstIndex(of: top.key.type) ?? 0
-    let degree = abs(topKeyIndex - bottomKeyIndex) + 1
-    let isMajor = (degree == 2 || degree == 3 || degree == 6 || degree == 7)
-    
-    let majorScale = Scale(type: .major, key: bottom.key)
-    if majorScale.keys.contains(top.key) { // Major or Perfect
-        return Interval(
-            quality: isMajor ? .major : .perfect,
-            degree: degree,
-            semitones: diff
-        )
-    } else { // Augmented, Diminished or Minor
-        if isMajor {
-            let majorPitch = bottom + Interval(quality: .major, degree: degree, semitones: diff)
-            let offset = top.rawValue - majorPitch.rawValue
-            return Interval(
-                quality: offset > 0 ? .augmented : .minor,
-                degree: degree,
-                semitones: diff
-            )
-        } else {
-            let perfectPitch = bottom + Interval(quality: .perfect, degree: degree, semitones: diff)
-            let offset = top.rawValue - perfectPitch.rawValue
-            return Interval(
-                quality: offset > 0 ? .augmented : .diminished,
-                degree: degree,
-                semitones: diff
-            )
-        }
-    }
+    return lhs.interval(to: rhs)
 }
 
-/// Calculates the `Pitch` above halfsteps.
-///
-/// - Parameters:
-///   - note: The pitch that is being added halfsteps.
-///   - halfstep: Halfsteps above.
-/// - Returns: Returns `Pitch` above halfsteps.
+/// Returns a pitch shifted up by a raw number of semitones (enharmonic spelling uses sharps).
 public func + (pitch: Pitch, halfstep: Int) -> Pitch {
-    return Pitch(midiNote: pitch.rawValue + halfstep)
+    return Pitch(midiNote: pitch.midiNoteNumber + halfstep)
 }
 
-/// Calculates the `Pitch` below halfsteps.
-///
-/// - Parameters:
-///   - note: The pitch that is being calculated.
-///   - halfstep: Halfsteps below.
-/// - Returns: Returns `Pitch` below halfsteps.
+/// Returns a pitch shifted down by a raw number of semitones.
 public func - (pitch: Pitch, halfstep: Int) -> Pitch {
-    return Pitch(midiNote: pitch.rawValue - halfstep)
+    return Pitch(midiNote: pitch.midiNoteNumber - halfstep)
 }
 
-/// Compares the equality of two pitches by their MIDI note value.
-/// Alternative notes passes this equality. Use `===` function if you want to check exact equality in terms of exact keys.
+// MARK: - Direction
+
+internal enum TransposeDirection {
+    case up, down
+}
+
+// MARK: - Octave helpers
+
+/// Counts B→C crossings (each = +1 octave) when stepping `steps` diatonic letters upward from `letter`.
+private func octaveDiffUp(from letter: LetterName, steps: Int) -> Int {
+    var diff = 0
+    var current = letter
+    for _ in 0..<steps {
+        let next = current.advanced(by: 1)
+        if current == .b && next == .c { diff += 1 }
+        current = next
+    }
+    return diff
+}
+
+/// Counts C→B crossings (each = −1 octave) when stepping `steps` diatonic letters downward from `letter`.
+private func octaveDiffDown(from letter: LetterName, steps: Int) -> Int {
+    var diff = 0
+    var current = letter
+    for _ in 0..<steps {
+        let next = current.advanced(by: -1)
+        if current == .c && next == .b { diff -= 1 }
+        current = next
+    }
+    return diff
+}
+
+// MARK: - Pitch
+
+/// A pitched note: a `NoteName` (letter + accidental) combined with an octave number.
 ///
-/// - Parameters:
-///   - left: Left handside `Pitch` to be compared.
-///   - right: Right handside `Pitch` to be compared.
-/// - Returns: Returns the bool value of comparisation of two pitches.
-public func == (left: Pitch, right: Pitch) -> Bool {
-    return left.rawValue == right.rawValue
-}
-
-/// Compares the exact equality of two pitches by their keys and octaves.
-/// Alternative notes not passes this equality. Use `==` function if you want to check equality in terms of MIDI note value.
+/// **Equality is structural.** C#4 ≠ Db4. Use `isEnharmonic(with:)` for sound-based comparison.
 ///
-/// - Parameters:
-///   - left: Left handside `Pitch` to be compared.
-///   - right: Right handside `Pitch` to be compared.
-/// - Returns: Returns the bool value of comparisation of two pitches.
-public func === (left: Pitch, right: Pitch) -> Bool {
-    return left.key == right.key && left.octave == right.octave
-}
+/// The `midiNoteNumber` follows the standard MIDI convention where middle C (C4) = 60.
+public struct Pitch: RawRepresentable, Codable, Hashable, Comparable,
+    ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible, Sendable {
 
-/// Compares two `Pitch`es in terms of their semitones.
-///
-/// - Parameters:
-///   - lhs: Left hand side of the equation.
-///   - rhs: Right hand side of the equation.
-/// - Returns: Returns true if left hand side `Pitch` lower than right hand side `Pitch`.
-public func < (lhs: Pitch, rhs: Pitch) -> Bool {
-    return lhs.rawValue < rhs.rawValue
-}
+    // MARK: Stored properties
 
-/// Pitch object with a `Key` and an octave.
-/// Could be initilized with MIDI note number and preferred accidental type.
-public struct Pitch: RawRepresentable, Codable, Hashable, Comparable, ExpressibleByIntegerLiteral, ExpressibleByStringLiteral, CustomStringConvertible {
-    /// Key of the pitch like C, D, A, B with accidentals.
-    public var key: Key
-    
-    /// Octave of the pitch.
-    /// In theory this must be zero or a positive integer.
-    /// But `Note` does not limit octave and calculates every possible octave including the negative ones.
+    /// The note name (letter + accidental).
+    public var noteName: NoteName
+
+    /// The octave number (middle C is octave 4).
     public var octave: Int
-    
-    /// This function returns the nearest pitch to the given frequency in Hz.
-    ///
-    /// - Parameter frequency: The frequency in Hz
-    /// - Returns: The nearest pitch for given frequency
-    public static func nearest(frequency: Float) -> Pitch? {
-        let allPitches = Array((1 ... 7).map { octave -> [Pitch] in
-            Key.keysWithSharps.map { key -> Pitch in
-                Pitch(key: key, octave: octave)
-            }
-        }.joined())
-        
-        var results = allPitches.map { pitch -> (pitch: Pitch, distance: Float) in
-            (pitch: pitch, distance: abs(pitch.frequency - frequency))
-        }
-        
-        results.sort { $0.distance < $1.distance }
-        return results.first?.pitch
-    }
-    
-    /// Initilizes the `Pitch` with MIDI note number.
-    ///
-    /// - Parameter midiNote: Midi note in range of [0 - 127].
-    /// - Parameter preferSharps: Make it true if preferred accidentals is sharps. Defaults true.
-    public init(midiNote: Int, preferSharps: Bool = true) {
-        octave = (midiNote / 12) - 1
-        let keyIndex = midiNote % 12
-        key = (preferSharps ? Key.keysWithSharps : Key.keysWithFlats)[circular: keyIndex] ?? "c"
-    }
-    
-    /// Initilizes the `Pitch` with `Key` and octave
-    ///
-    /// - Parameters:
-    ///   - key: Key of the pitch.
-    ///   - octave: Octave of the pitch.
-    public init(key: Key, octave: Int) {
-        self.key = key
+
+    // MARK: Initializers
+
+    public init(noteName: NoteName, octave: Int) {
+        self.noteName = noteName
         self.octave = octave
     }
-    
-    /// Calculates and returns the frequency of note on octave based on its location of piano keys.
-    /// Bases A4 note of 440Hz frequency standard.
-    public var frequency: Float {
-        let fn = powf(2.0, Float(rawValue - 69) / 12.0)
-        return fn * 440.0
+
+    /// Creates a pitch from a MIDI note number.
+    /// - Parameters:
+    ///   - midiNote: The MIDI note number (0–127; values outside this range are supported for theory purposes).
+    ///   - spelling: Whether to prefer sharps or flats when the note is not a natural. Defaults to sharps.
+    public init(midiNote: Int, spelling: SpellingPreference = .sharps) {
+        let octaveVal = (midiNote / 12) - 1
+        let pitchClass = ((midiNote % 12) + 12) % 12
+        let chromatic = NoteName.chromatic(preferring: spelling)
+        // chromatic arrays are indexed by pitch class
+        let noteName = chromatic.first(where: { $0.pitchClass == pitchClass }) ?? NoteName(letter: .c, accidental: .natural)
+        self.noteName = noteName
+        self.octave = octaveVal
     }
-    
-    // MARK: RawRepresentable
-    
+
+    // MARK: RawRepresentable  (MIDI note number)
+
     public typealias RawValue = Int
-    
-    /// Returns midi note number.
-    /// In theory, this must be in range [0 - 127].
-    /// But it does not limits the midi note value.
-    public var rawValue: Int {
-        let semitones = key.type.rawValue + key.accidental.rawValue
-        return semitones + ((octave + 1) * 12)
-    }
-    
-    /// Initilizes the pitch with an integer value that represents the MIDI note number of the pitch.
-    ///
-    /// - Parameter rawValue: MIDI note number of the pitch.
-    public init?(rawValue: Pitch.RawValue) {
+
+    /// The MIDI note number. Middle C (C4) = 60.
+    public var rawValue: Int { midiNoteNumber }
+
+    public init?(rawValue: Int) {
         self = Pitch(midiNote: rawValue)
     }
-    
+
+    // MARK: Computed
+
+    /// The MIDI note number. Equivalent to `rawValue`.
+    public var midiNoteNumber: Int {
+        let semitones = noteName.letter.semitonesFromC + noteName.accidental.semitones
+        return semitones + (octave + 1) * 12
+    }
+
+    /// Frequency in Hz using equal temperament.
+    /// - Parameter a4: The reference frequency for A4. Defaults to 440 Hz.
+    public func frequency(a4: Double = 440.0) -> Double {
+        return a4 * pow(2.0, Double(midiNoteNumber - 69) / 12.0)
+    }
+
+    /// Returns true if this pitch and `other` sound the same (same MIDI note number).
+    public func isEnharmonic(with other: Pitch) -> Bool {
+        return midiNoteNumber == other.midiNoteNumber
+    }
+
+    // MARK: Transposition
+
+    /// Returns a new pitch transposed upward by the given interval.
+    /// The result is correctly spelled: degree advances by `interval.degree - 1` diatonic steps,
+    /// and the accidental is adjusted to hit the exact semitone target.
+    public func transposed(by interval: Interval) -> Pitch {
+        return _transposed(by: interval, direction: .up)
+    }
+
+    internal func _transposed(by interval: Interval, direction: TransposeDirection) -> Pitch {
+        let steps = interval.degree - 1
+        let targetLetter: LetterName
+        let octaveChange: Int
+        let targetMIDI: Int
+
+        switch direction {
+        case .up:
+            targetLetter = noteName.letter.advanced(by: steps)
+            octaveChange = octaveDiffUp(from: noteName.letter, steps: steps)
+            targetMIDI = midiNoteNumber + interval.semitones
+        case .down:
+            targetLetter = noteName.letter.advanced(by: -steps)
+            octaveChange = octaveDiffDown(from: noteName.letter, steps: steps)
+            targetMIDI = midiNoteNumber - interval.semitones
+        }
+
+        let targetOctave = octave + octaveChange
+        // Build a "natural" pitch at the target letter/octave, then derive the accidental
+        let naturalPitch = Pitch(noteName: NoteName(letter: targetLetter, accidental: .natural), octave: targetOctave)
+        let accidentalOffset = targetMIDI - naturalPitch.midiNoteNumber
+        let targetNoteName = NoteName(letter: targetLetter, accidental: Accidental(semitones: accidentalOffset))
+        return Pitch(noteName: targetNoteName, octave: targetOctave)
+    }
+
+    /// Calculates the ascending interval from this pitch to `other`.
+    /// The degree accounts for octave spans via absolute diatonic indexing,
+    /// correctly handling cases like B→C (= a 2nd, not a 7th).
+    public func interval(to other: Pitch) -> Interval {
+        let top    = midiNoteNumber >= other.midiNoteNumber ? self : other
+        let bottom = midiNoteNumber <  other.midiNoteNumber ? self : other
+        let semitonesDiff = top.midiNoteNumber - bottom.midiNoteNumber
+
+        // Absolute diatonic index: letter position + octave * 7
+        let bottomIdx = bottom.noteName.letter.rawValue + bottom.octave * 7
+        let topIdx    = top.noteName.letter.rawValue    + top.octave    * 7
+        let degree    = topIdx - bottomIdx + 1
+
+        return Interval(semitones: semitonesDiff, degree: max(degree, 1))
+            ?? Interval(unchecked: .perfect, degree: 1)
+    }
+
+    // MARK: Nearest pitch from frequency
+
+    /// Returns the nearest pitch to the given frequency.
+    /// - Parameters:
+    ///   - frequency: Frequency in Hz.
+    ///   - a4: Reference frequency for A4. Defaults to 440 Hz.
+    ///   - spelling: Preferred accidental spelling. Defaults to sharps.
+    public static func nearest(
+        frequency: Double,
+        a4: Double = 440.0,
+        spelling: SpellingPreference = .sharps
+    ) -> Pitch {
+        // Convert frequency to nearest MIDI note
+        let midi = Int((12.0 * log2(frequency / a4) + 69.0).rounded())
+        return Pitch(midiNote: midi, spelling: spelling)
+    }
+
     // MARK: ExpressibleByIntegerLiteral
-    
+
     public typealias IntegerLiteralType = Int
-    
-    /// Initilizes the pitch with an integer value that represents the MIDI note number of the pitch.
-    ///
-    /// - Parameter value: MIDI note number of the pitch.
-    public init(integerLiteral value: Pitch.IntegerLiteralType) {
+
+    public init(integerLiteral value: Int) {
         self = Pitch(midiNote: value)
     }
-    
+
     // MARK: ExpressibleByStringLiteral
-    
+
     public typealias StringLiteralType = String
-    
-    /// Initilizes with a string.
-    ///
-    /// - Parameter value: String representation of type.
-    public init(stringLiteral value: Pitch.StringLiteralType) {
-        var keyType = Key.KeyType.c
-        var accidental = Accidental.natural
+
+    /// Creates a pitch from a string like `"C#4"`, `"Bb3"`, `"F♯-1"`.
+    public init(stringLiteral value: String) {
+        var letter: LetterName = .c
+        var accidental: Accidental = .natural
         var octave = 0
         let pattern = "([A-Ga-g])([#♯♭b]*)(-?)(\\d+)"
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
-        if let regex = regex,
-           let match = regex.firstMatch(in: value, options: [], range: NSRange(0 ..< value.count)),
-           let keyTypeRange = Range(match.range(at: 1), in: value),
-           let accidentalRange = Range(match.range(at: 2), in: value),
-           let signRange = Range(match.range(at: 3), in: value),
-           let octaveRange = Range(match.range(at: 4), in: value),
+        if let regex,
+           let match = regex.firstMatch(in: value, options: [], range: NSRange(0..<value.count)),
+           let letterRange     = Range(match.range(at: 1), in: value),
+           let accRange        = Range(match.range(at: 2), in: value),
+           let signRange       = Range(match.range(at: 3), in: value),
+           let octaveRange     = Range(match.range(at: 4), in: value),
            match.numberOfRanges == 5 {
-            // key type
-            keyType = Key.KeyType(stringLiteral: String(value[keyTypeRange]))
-            // accidental
-            accidental = Accidental(stringLiteral: String(value[accidentalRange]))
-            // sign
-            let sign = String(value[signRange])
-            // octave
-            octave = (Int(String(value[octaveRange])) ?? 0) * (sign == "-" ? -1 : 1)
+            letter     = LetterName(stringLiteral: String(value[letterRange]))
+            accidental = Accidental(stringLiteral: String(value[accRange]))
+            let sign   = String(value[signRange])
+            octave     = (Int(String(value[octaveRange])) ?? 0) * (sign == "-" ? -1 : 1)
         }
-        
-        self = Pitch(key: Key(type: keyType, accidental: accidental), octave: octave)
+        self = Pitch(noteName: NoteName(letter: letter, accidental: accidental), octave: octave)
     }
-    
-    // MARK: Hashable
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(key)
-        hasher.combine(octave)
+
+    // MARK: Equatable
+
+    /// Structural equality: C#4 ≠ Db4. Use `isEnharmonic(with:)` for sound-based comparison.
+    /// Explicitly defined to override the `RawRepresentable` default that compares MIDI numbers.
+    public static func == (lhs: Pitch, rhs: Pitch) -> Bool {
+        return lhs.noteName == rhs.noteName && lhs.octave == rhs.octave
     }
-    
+
+    // MARK: Comparable
+
+    public static func < (lhs: Pitch, rhs: Pitch) -> Bool {
+        return lhs.midiNoteNumber < rhs.midiNoteNumber
+    }
+
     // MARK: CustomStringConvertible
-    
-    /// Converts `Pitch` to string with its key and octave.
+
     public var description: String {
-        return "\(key)\(octave)"
+        return "\(noteName)\(octave)"
     }
 }
 
+// MARK: - Array circular subscript
+
 extension Array {
-    /// An array subscript extension that returns the element from the positive or negative circular index.
+    /// Returns the element at a circular (wrapping) index.
     subscript(circular index: Int) -> Element? {
         guard count > 0 else { return nil }
         let mod = index % count
