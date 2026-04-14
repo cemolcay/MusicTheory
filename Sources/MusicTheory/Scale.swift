@@ -17,23 +17,35 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
 
     // MARK: Stored properties
 
-    /// The interval pattern of the scale.
-    public var type: ScaleType
-
     /// The root note of the scale.
     public var root: NoteName
+
+    /// Intervals from the root used to build this scale.
+    public var intervals: [Interval]
+
+    /// Optional display name for the scale.
+    public var name: String?
 
     // MARK: Initializers
 
     public init(type: ScaleType, key: NoteName) {
-        self.type = type
         self.root = key
+        self.intervals = type.intervals
+        self.name = type.name
     }
 
     /// Convenience initialiser using the `root` label.
     public init(type: ScaleType, root: NoteName) {
-        self.type = type
         self.root = root
+        self.intervals = type.intervals
+        self.name = type.name
+    }
+
+    /// Creates a scale directly from intervals, without requiring a predefined scale type.
+    public init(intervals: [Interval], root: NoteName, name: String? = nil) {
+        self.root = root
+        self.intervals = intervals
+        self.name = name
     }
 
     // MARK: Correctly-spelled note names
@@ -44,7 +56,7 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
     ///
     /// For example, D major → [D, E, F♯, G, A, B, C♯] (not [D, E, G♭, G, A, B, D♭]).
     public var noteNames: [NoteName] {
-        return type.intervals.map { interval in
+        return intervals.map { interval in
             spelledNoteName(for: interval)
         }
     }
@@ -88,7 +100,7 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
         var result = [Pitch]()
         for octave in octaves {
             let rootPitch = Pitch(noteName: root, octave: octave)
-            result += type.intervals.map { rootPitch + $0 }
+            result += intervals.map { rootPitch + $0 }
         }
         return result
     }
@@ -100,54 +112,30 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
         return noteNames.firstIndex(of: noteName).map { $0 + 1 }
     }
 
-    // MARK: Modes
-
-    /// Returns the Nth mode of this scale (1-indexed). Preserves the root's octave context.
-    public func mode(_ degree: Int) -> Scale? {
-        guard let modeType = type.mode(degree) else { return nil }
-        let modeRoot = noteNames[safe: degree - 1] ?? root
-        return Scale(type: modeType, root: modeRoot)
+    /// Returns a lightweight scale type using this scale's intervals and name.
+    public var type: ScaleType {
+        return ScaleType(intervals: intervals, name: name ?? "Custom Scale")
     }
-
-    // MARK: Relative / parallel
-
-    /// The relative major scale (shares the same notes but starts on the 6th degree of minor, or 3rd of major).
-    public var relativeMajor: Scale? {
-        guard type == .minor else { return nil }
-        guard let noteAtDegree3 = noteNames[safe: 2] else { return nil }
-        return Scale(type: .major, root: noteAtDegree3)
-    }
-
-    /// The relative minor scale.
-    public var relativeMinor: Scale? {
-        guard type == .major else { return nil }
-        guard let noteAtDegree6 = noteNames[safe: 5] else { return nil }
-        return Scale(type: .minor, root: noteAtDegree6)
-    }
-
-    /// The parallel major (same root, major scale type).
-    public var parallelMajor: Scale { Scale(type: .major, root: root) }
-
-    /// The parallel minor (same root, minor scale type).
-    public var parallelMinor: Scale { Scale(type: .minor, root: root) }
 
     // MARK: Hashable
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(root)
-        hasher.combine(type)
+        hasher.combine(intervals)
+        hasher.combine(name)
     }
 
     // MARK: Equatable
 
     public static func == (lhs: Scale, rhs: Scale) -> Bool {
-        return lhs.root == rhs.root && lhs.type == rhs.type
+        return lhs.root == rhs.root && lhs.intervals == rhs.intervals && lhs.name == rhs.name
     }
 
     // MARK: CustomStringConvertible
 
     public var description: String {
         let noteStr = noteNames.map { $0.description }.joined(separator: ", ")
-        return "\(root) \(type): \(noteStr)"
+        let scaleName = name ?? "Custom Scale"
+        return "\(root) \(scaleName): \(noteStr)"
     }
 }

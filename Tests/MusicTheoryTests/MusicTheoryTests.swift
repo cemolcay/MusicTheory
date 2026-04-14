@@ -412,13 +412,10 @@ extension MusicTheoryTests {
         XCTAssertEqual(notes[3], .eb)
     }
 
-    func testScaleModes() {
-        let cMaj = Scale(type: .major, root: .c)
-        // Mode 2 of C major = D Dorian
-        let dDorian = cMaj.mode(2)
-        XCTAssertNotNil(dDorian)
-        XCTAssertEqual(dDorian?.root, .d)
-        XCTAssertEqual(dDorian?.type, ScaleType.dorian)
+    func testCustomScaleConstruction() {
+        let custom = Scale(intervals: [.P1, .m2, .P4, .P5], root: .d, name: "Custom Tetrachord")
+        XCTAssertEqual(custom.noteNames, [.d, .eb, .g, .a])
+        XCTAssertEqual(custom.type, ScaleType(intervals: [.P1, .m2, .P4, .P5], name: "Custom Tetrachord"))
     }
 
 }
@@ -624,37 +621,18 @@ extension MusicTheoryTests {
         XCTAssertEqual(ScaleType.ionian, ScaleType.major)
     }
 
-    func testScaleTypeCategories() {
-        let pentatonics = ScaleType.scales(in: .pentatonic)
-        XCTAssertFalse(pentatonics.isEmpty)
-        XCTAssert(pentatonics.contains(ScaleType.pentatonicMajor))
-    }
-
-    func testScaleTypeModes() {
-        guard let dorian = ScaleType.major.mode(2) else {
-            return XCTFail("Mode 2 of major scale should exist")
-        }
-        XCTAssertEqual(dorian, ScaleType.dorian)
-    }
-
-    func testScaleTypeRejectsMalformedHeptatonicDefinitions() {
-        XCTAssertNil(ScaleType(intervals: [.P1, .m3, .M3, .P4, .P5, .M6, .M7], name: "Broken"))
-        XCTAssertNil(ScaleType(intervals: [.M2, .M3, .P4], name: "Missing Root"))
-    }
-
-    func testPredefinedScaleCatalogDefinitionsAreValid() {
-        for scale in ScaleType.all {
-            XCTAssertTrue(ScaleType.isValidDefinition(scale.intervals, category: scale.category), "\(scale.name) should pass catalog validation")
-            XCTAssertNotNil(ScaleType(intervals: scale.intervals, name: scale.name, aliases: scale.aliases, category: scale.category),
-                            "\(scale.name) should round-trip through the validated initializer")
-        }
-    }
-
-    func testCorrectedAlteredScaleDefinitions() {
-        XCTAssertEqual(ScaleType.ionianSharp5.intervals, [.P1, .M2, .M3, .P4, .A5, .M6, .M7])
-        XCTAssertEqual(ScaleType.lydianSharp2.intervals, [.P1, .A2, .M3, .A4, .P5, .M6, .M7])
+    func testScaleTypeBuiltins() {
+        XCTAssertEqual(ScaleType.major.intervals, [.P1, .M2, .M3, .P4, .P5, .M6, .M7])
+        XCTAssertEqual(ScaleType.minor.intervals, [.P1, .M2, .m3, .P4, .P5, .m6, .m7])
         XCTAssertEqual(ScaleType.altered.intervals, [.P1, .m2, .m3, .d4, .d5, .m6, .m7])
-        XCTAssertEqual(ScaleType.phrygianFlat4.intervals, [.P1, .m2, .m3, .d4, .P5, .m6, .m7])
-        XCTAssertEqual(ScaleType.locrianDiminished.intervals, [.P1, .m2, .m3, .P4, .d5, .m6, .d7])
+        XCTAssertEqual(ScaleType.lydianDominant.intervals, [.P1, .M2, .M3, .A4, .P5, .M6, .m7])
+        XCTAssertEqual(ScaleType.pentatonicMajor.intervals, [.P1, .M2, .M3, .P5, .M6])
+        XCTAssertEqual(ScaleType.chromatic.intervals.count, 12)
+    }
+
+    func testScaleTypeCustomInitialization() {
+        let custom = ScaleType(intervals: [.P1, .m2, .P4, .P5], name: "Custom Tetrachord")
+        XCTAssertEqual(custom.name, "Custom Tetrachord")
+        XCTAssertEqual(custom.intervals, [.P1, .m2, .P4, .P5])
     }
 }

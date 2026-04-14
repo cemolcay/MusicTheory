@@ -121,11 +121,10 @@ Interval.A4 == Interval.d5           // false — structurally different
 
 #### `ScaleType` and `Scale`
 
-`ScaleType` equality is by **intervals only** — `ScaleType.major == ScaleType.ionian` is `true`. Scales generate correctly-spelled note names with one letter per degree.
-
-Validated `ScaleType` construction is intentionally strict: malformed definitions with duplicate or inconsistent degrees are rejected instead of being normalised silently.
+`ScaleType` is a lightweight named interval preset for common built-in scales. `Scale` is the flexible construction API: you can build a scale from a predefined `ScaleType` or provide your own interval collection directly.
 
 ``` swift
+// Built-in scale types
 let cMajor = Scale(type: .major, root: .c)
 cMajor.noteNames  // [C, D, E, F, G, A, B]
 
@@ -135,22 +134,17 @@ dMajor.noteNames  // [D, E, F#, G, A, B, C#] — correctly spelled with sharps, 
 let cMinor = Scale(type: .minor, root: .c)
 cMinor.noteNames  // [C, D, Eb, F, G, Ab, Bb]
 
-// Mode generation
-let dDorian = cMajor.mode(2)  // D Dorian
+// Custom scale construction without predefined catalogs or validation
+let custom = Scale(
+    intervals: [.P1, .m2, .P4, .P5],
+    root: .d,
+    name: "Custom Tetrachord"
+)
+custom.noteNames  // [D, Eb, G, A]
 
-// Invalid/non-representable mode rotations fail rather than fabricating fallback intervals
-let broken = ScaleType(intervals: [.P1, .m3, .M3, .P4, .P5, .M6, .M7], name: "Broken")
-broken  // nil
-
-// Relative / parallel
-cMajor.relativeMinor    // A minor
-cMinor.relativeMajor    // Eb major
-cMajor.parallelMinor    // C minor
-
-// Scale type equality and lookup
+// Scale type equality is by intervals
 ScaleType.major == ScaleType.ionian          // true
-ScaleType.scales(in: .pentatonic)            // all pentatonic scales
-ScaleType.find(matching: [.P1, .M2, .M3, .P5, .M6])  // [pentatonicMajor, ...]
+ScaleType.lydianDominant.intervals           // [P1, M2, M3, A4, P5, M6, m7]
 ```
 
 #### `ChordType` and `Chord`

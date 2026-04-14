@@ -6,7 +6,7 @@ import MusicTheory
 //: # MusicTheory Playground
 //:
 //: This page shows the current API for note names, pitches, scales, chords,
-//: harmonic fields, and chord recognition.
+//: and chord recognition.
 
 //: ## Note Names and Enharmonics
 
@@ -49,15 +49,16 @@ cMajor.pitches(octave: 4)
 // Pitches across multiple octaves
 cSharpHarmonicMinor.pitches(octaves: [3, 4])
 
-//: ## Modes and Relatives
+// Custom scales can be created directly from intervals.
+let customScale = Scale(
+    intervals: [.P1, .m2, .P4, .P5],
+    root: .d,
+    name: "Custom Tetrachord"
+)
 
-let dDorian = cMajor.mode(2)
-let ePhrygian = cMajor.mode(3)
-
-dDorian?.noteNames
-ePhrygian?.noteNames
-cMajor.relativeMinor?.noteNames
-Scale(type: .minor, root: .c).relativeMajor?.noteNames
+customScale.noteNames
+customScale.pitches(octave: 4)
+customScale.type
 
 //: ## Chords
 
