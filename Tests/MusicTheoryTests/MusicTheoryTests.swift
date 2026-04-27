@@ -413,9 +413,9 @@ extension MusicTheoryTests {
     }
 
     func testCustomScaleConstruction() {
-        let custom = Scale(intervals: [.P1, .m2, .P4, .P5], root: .d, name: "Custom Tetrachord")
+        let custom = Scale(intervals: [.P1, .m2, .P4, .P5], root: .d, description: "Custom Tetrachord")
         XCTAssertEqual(custom.noteNames, [.d, .eb, .g, .a])
-        XCTAssertEqual(custom.type, ScaleType(intervals: [.P1, .m2, .P4, .P5], name: "Custom Tetrachord"))
+        XCTAssertEqual(custom.type, ScaleType(intervals: [.P1, .m2, .P4, .P5], description: "Custom Tetrachord"))
     }
 
 }
@@ -555,8 +555,8 @@ extension MusicTheoryTests {
     }
 
     func testScaleTypeCustomInitialization() {
-        let custom = ScaleType(intervals: [.P1, .m2, .P4, .P5], name: "Custom Tetrachord")
-        XCTAssertEqual(custom.name, "Custom Tetrachord")
+        let custom = ScaleType(intervals: [.P1, .m2, .P4, .P5], description: "Custom Tetrachord")
+        XCTAssertEqual(custom.description, "Custom Tetrachord")
         XCTAssertEqual(custom.intervals, [.P1, .m2, .P4, .P5])
     }
 }

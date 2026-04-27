@@ -24,28 +24,28 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
     public var intervals: [Interval]
 
     /// Optional display name for the scale.
-    public var name: String?
+    public let description: String
 
     // MARK: Initializers
 
     public init(type: ScaleType, key: NoteName) {
         self.root = key
         self.intervals = type.intervals
-        self.name = type.name
+        self.description = type.description
     }
 
     /// Convenience initialiser using the `root` label.
     public init(type: ScaleType, root: NoteName) {
         self.root = root
         self.intervals = type.intervals
-        self.name = type.name
+        self.description = type.description
     }
 
     /// Creates a scale directly from intervals, without requiring a predefined scale type.
-    public init(intervals: [Interval], root: NoteName, name: String? = nil) {
+    public init(intervals: [Interval], root: NoteName, description: String) {
         self.root = root
         self.intervals = intervals
-        self.name = name
+        self.description = description
     }
 
     // MARK: Correctly-spelled note names
@@ -114,7 +114,7 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
 
     /// Returns a lightweight scale type using this scale's intervals and name.
     public var type: ScaleType {
-        return ScaleType(intervals: intervals, name: name ?? "Custom Scale")
+        return ScaleType(intervals: intervals, description: description)
     }
 
     // MARK: Hashable
@@ -122,20 +122,12 @@ public struct Scale: Hashable, Codable, CustomStringConvertible, Sendable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(root)
         hasher.combine(intervals)
-        hasher.combine(name)
+        hasher.combine(description)
     }
 
     // MARK: Equatable
 
     public static func == (lhs: Scale, rhs: Scale) -> Bool {
-        return lhs.root == rhs.root && lhs.intervals == rhs.intervals && lhs.name == rhs.name
-    }
-
-    // MARK: CustomStringConvertible
-
-    public var description: String {
-        let noteStr = noteNames.map { $0.description }.joined(separator: ", ")
-        let scaleName = name ?? "Custom Scale"
-        return "\(root) \(scaleName): \(noteStr)"
+        return lhs.root == rhs.root && lhs.intervals == rhs.intervals && lhs.description == rhs.description
     }
 }
