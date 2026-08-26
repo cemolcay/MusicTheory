@@ -145,6 +145,13 @@ custom.noteNames  // [D, Eb, G, A]
 // Scale type equality is by intervals
 ScaleType.major == ScaleType.ionian          // true
 ScaleType.lydianDominant.intervals           // [P1, M2, M3, A4, P5, M6, m7]
+
+// Japanese, world and jazz scales are built in too
+let hirajoshi = Scale(type: .hirajoshi, root: .a)
+hirajoshi.noteNames  // [A, B, C, E, F]
+
+// ScaleType.allScales enumerates every predefined scale type
+ScaleType.allScales.count
 ```
 
 #### `ChordType` and `Chord`

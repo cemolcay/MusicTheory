@@ -559,4 +559,59 @@ extension MusicTheoryTests {
         XCTAssertEqual(custom.description, "Custom Tetrachord")
         XCTAssertEqual(custom.intervals, [.P1, .m2, .P4, .P5])
     }
+
+    func testJapaneseScales() {
+        XCTAssertEqual(ScaleType.hirajoshi.intervals, [.P1, .M2, .m3, .P5, .m6])
+        XCTAssertEqual(Scale(type: .hirajoshi, root: .c).noteNames, [.c, .d, .eb, .g, .ab])
+
+        XCTAssertEqual(ScaleType.iwato.intervals, [.P1, .m2, .P4, .d5, .m7])
+        XCTAssertEqual(Scale(type: .iwato, root: .c).noteNames, [.c, .db, .f, .gb, .bb])
+
+        XCTAssertEqual(ScaleType.yo.intervals, [.P1, .M2, .P4, .P5, .M6])
+        XCTAssertEqual(Scale(type: .yo, root: .c).noteNames, [.c, .d, .f, .g, .a])
+
+        XCTAssertEqual(ScaleType.kumoi.intervals, [.P1, .M2, .m3, .P5, .M6])
+        XCTAssertEqual(ScaleType.insen.intervals, [.P1, .m2, .P4, .P5, .m7])
+        XCTAssertEqual(ScaleType.sakura.intervals, [.P1, .m2, .P4, .P5, .m6])
+        XCTAssertEqual(ScaleType.ryukyu.intervals, [.P1, .M3, .P4, .P5, .M7])
+        XCTAssertEqual(ScaleType.ichikosucho.intervals.count, 8)
+        XCTAssertEqual(ScaleType.taishikicho.intervals.count, 9)
+    }
+
+    func testScaleAliases() {
+        XCTAssertEqual(ScaleType.akebono, ScaleType.kumoi)
+        XCTAssertEqual(ScaleType.honKumoiJoshi, ScaleType.sakura)
+        XCTAssertEqual(ScaleType.kokinJoshi, ScaleType.insen)
+        XCTAssertEqual(ScaleType.ritsu, ScaleType.yo)
+        XCTAssertEqual(ScaleType.okinawan, ScaleType.ryukyu)
+        XCTAssertEqual(ScaleType.balinese, ScaleType.pelog)
+        XCTAssertEqual(ScaleType.byzantine, ScaleType.doubleHarmonic)
+        XCTAssertEqual(ScaleType.flamenco, ScaleType.doubleHarmonic)
+        XCTAssertEqual(ScaleType.gypsyMinor, ScaleType.hungarianMinor)
+        XCTAssertEqual(ScaleType.algerian, ScaleType.hungarianMinor)
+        XCTAssertEqual(ScaleType.romanianMinor, ScaleType.ukrainianDorian)
+        XCTAssertEqual(ScaleType.dorianSharp4, ScaleType.ukrainianDorian)
+        XCTAssertEqual(ScaleType.dominantDiminished, ScaleType.halfWholeDiminished)
+        XCTAssertEqual(ScaleType.wholeHalfDiminished, ScaleType.diminished)
+        XCTAssertEqual(ScaleType.egyptian, ScaleType.pentatonicNeutral)
+        XCTAssertEqual(ScaleType.hindu, ScaleType.mixolydianFlat6)
+        XCTAssertEqual(ScaleType.halfDiminishedScale, ScaleType.locrianNatural2)
+    }
+
+    func testAllScalesHasNoDuplicates() {
+        // ScaleType equality is interval-based, so this also guards against
+        // accidentally adding a scale whose intervals duplicate an existing one.
+        let all = ScaleType.allScales
+        XCTAssertEqual(Set(all).count, all.count)
+    }
+
+    func testAllScalesAreAscending() {
+        for scale in ScaleType.allScales {
+            XCTAssertEqual(scale.intervals.first, .P1, "\(scale.description) must start on P1")
+            let semitones = scale.intervals.map { $0.semitones }
+            XCTAssertEqual(semitones, semitones.sorted(), "\(scale.description) intervals must be ascending")
+            XCTAssertEqual(Set(semitones).count, semitones.count, "\(scale.description) must not repeat a semitone offset")
+            XCTAssertTrue(semitones.allSatisfy { $0 >= 0 && $0 < 12 }, "\(scale.description) must stay within one octave")
+        }
+    }
 }
