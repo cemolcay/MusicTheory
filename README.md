@@ -39,6 +39,8 @@ Usage
 
 `MusicTheory` provides strongly-typed, correct-by-construction primitives for music theory. All types conform to `Codable`, `Hashable`, `Sendable` and `CustomStringConvertible`.
 
+`Interval`, `ScaleType` and `NoteName` write a stored form that 1.x can read, and read the 1.x and 2.x forms. Thus apps with 1.x and 2.x can share stored scales and keys (for example, in an App Group). A 1.x scale that 2.x does not have becomes a custom `ScaleType` with its stored name and intervals. A 1.x `Key` reads as a `NoteName`.
+
 Equality is **structural** throughout: `C#` ≠ `D♭`. Use `isEnharmonic(with:)` wherever you want sound-based comparison.
 
 #### `NoteName` and `LetterName`

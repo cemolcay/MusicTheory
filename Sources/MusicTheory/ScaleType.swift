@@ -37,6 +37,41 @@ public struct ScaleType: Codable, Hashable, CustomStringConvertible, Sendable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(intervals)
     }
+
+    // MARK: Codable
+
+    private enum CodingKeys: String, CodingKey {
+        case intervals
+        case description
+    }
+
+    /// Reads the MusicTheory 1.x and 2.x stored forms. A 1.x scale that 2.x
+    /// does not have becomes a custom scale with its stored name and intervals.
+    /// See the `Interval` Codable notes for the forms.
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let description = try container.decode(String.self, forKey: .description)
+        let records = try container.decode([Interval.StoredRecord].self, forKey: .intervals)
+        // Decode the intervals as one group, so that all of them use the same quality numbers.
+        let decoded = Interval.decode(records)
+        var intervals = [Interval]()
+        for (index, interval) in decoded.enumerated() {
+            guard let interval = interval else {
+                throw DecodingError.dataCorrupted(.init(
+                    codingPath: container.codingPath + [CodingKeys.intervals],
+                    debugDescription: "Cannot make an interval from \(records[index]) in scale \"\(description)\"."))
+            }
+            intervals.append(interval)
+        }
+        self.init(intervals: intervals, description: description)
+    }
+
+    /// Writes the MusicTheory 1.x form, so that apps with 1.x can read it.
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(intervals, forKey: .intervals)
+        try container.encode(description, forKey: .description)
+    }
 }
 
 // MARK: - Built-In Scale Types

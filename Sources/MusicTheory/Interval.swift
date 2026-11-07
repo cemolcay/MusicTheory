@@ -380,3 +380,118 @@ public struct Interval: Codable, Hashable, Comparable, CustomStringConvertible, 
         .A1, .A2, .A3, .A4, .A5, .A6, .A7, .A8, .A9, .A10, .A11, .A12, .A13, .A14, .A15,
     ]
 }
+
+// MARK: - Codable
+
+/// The stored form of an interval is the MusicTheory 1.x form:
+/// `{ "quality": <1.x number>, "degree": <Int>, "semitones": <Int> }`.
+///
+/// Apps that use MusicTheory 1.x share stored scales with apps that use 2.x
+/// (for example, through a shared App Group). Thus 2.x writes the 1.x form,
+/// and reads these three forms:
+///
+/// 1. MusicTheory 1.x form: has `semitones`. The interval is made again from
+///    `semitones` and `degree`, because `semitones` is the value that 1.x plays.
+/// 2. MusicTheory 2.0.0–2.0.1 form: has no `semitones`, and `quality` holds a
+///    2.x `Quality` raw value.
+/// 3. 1.x data that 2.0.0–2.0.1 read and wrote again: has no `semitones`, but
+///    `quality` holds a 1.x number. Each 1.x number reads as a different 2.x
+///    quality, and some of these pairs are not valid (for example, P1 reads as
+///    "major unison"). When a pair is not valid, the 1.x numbers are used.
+extension Interval {
+
+    private enum CodingKeys: String, CodingKey {
+        case quality
+        case degree
+        case semitones
+    }
+
+    public init(from decoder: Decoder) throws {
+        let record = try StoredRecord(from: decoder)
+        guard let interval = Interval.decode([record]).first ?? nil else {
+            throw DecodingError.dataCorrupted(.init(
+                codingPath: decoder.codingPath,
+                debugDescription: "Cannot make an interval from \(record)."))
+        }
+        self = interval
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(legacyQualityNumber, forKey: .quality)
+        try container.encode(degree, forKey: .degree)
+        try container.encode(semitones, forKey: .semitones)
+    }
+
+    // MARK: Stored form
+
+    /// One stored interval, before it is changed into an `Interval`.
+    struct StoredRecord: Decodable, CustomStringConvertible {
+        let quality: Int
+        let degree: Int
+        let semitones: Int?
+
+        var description: String {
+            "quality: \(quality), degree: \(degree), semitones: \(semitones.map(String.init) ?? "none")"
+        }
+    }
+
+    /// Changes stored records that belong together (for example, the intervals
+    /// of one scale) into intervals. Records without `semitones` either all use
+    /// 2.x numbers or all use 1.x numbers: if one of them is not valid with 2.x
+    /// numbers, all of them use 1.x numbers.
+    ///
+    /// - Returns: One item for each record. An item is `nil` when its record
+    ///   cannot make an interval.
+    static func decode(_ records: [StoredRecord]) -> [Interval?] {
+        let useLegacyNumbers = records.contains { record in
+            record.semitones == nil && Interval.fromCurrentNumber(record.quality, degree: record.degree) == nil
+        }
+        return records.map { record in
+            if let semitones = record.semitones {
+                // 1.x plays `semitones`, thus keep the pitch before the stored quality.
+                return Interval(semitones: semitones, degree: record.degree)
+                    ?? Interval.standard(semitones: semitones)
+                    ?? Interval.fromLegacyNumber(record.quality, degree: record.degree)
+            }
+            return useLegacyNumbers
+                ? Interval.fromLegacyNumber(record.quality, degree: record.degree)
+                : Interval.fromCurrentNumber(record.quality, degree: record.degree)
+        }
+    }
+
+    /// Makes an interval from a 2.x `Quality` raw value. Returns `nil` if the pair is not valid.
+    private static func fromCurrentNumber(_ number: Int, degree: Int) -> Interval? {
+        guard let quality = Quality(rawValue: number) else { return nil }
+        return Interval(quality: quality, degree: degree)
+    }
+
+    /// Makes an interval from a 1.x quality number. Returns `nil` if the pair is not valid.
+    private static func fromLegacyNumber(_ number: Int, degree: Int) -> Interval? {
+        let qualities: [Quality] = [.diminished, .perfect, .minor, .major, .augmented]
+        guard qualities.indices.contains(number) else { return nil }
+        return Interval(quality: qualities[number], degree: degree)
+    }
+
+    /// Makes the usual spelling of a semitone count (for example, 6 is d5).
+    /// Used only when the stored degree does not agree with the stored semitones.
+    private static func standard(semitones: Int) -> Interval? {
+        guard semitones >= 0 else { return nil }
+        let spellings: [Interval] = [.P1, .m2, .M2, .m3, .M3, .P4, .d5, .P5, .m6, .M6, .m7, .M7]
+        let simple = spellings[semitones % 12]
+        return Interval(quality: simple.quality, degree: simple.degree + (semitones / 12) * 7)
+    }
+
+    /// The 1.x quality number. 1.x has no doubly altered qualities, thus these
+    /// are written as diminished or augmented. `semitones` keeps the correct
+    /// pitch for 1.x, and 2.x makes the correct quality again from `semitones`.
+    private var legacyQualityNumber: Int {
+        switch quality {
+        case .doublyDiminished, .diminished: return 0
+        case .perfect: return 1
+        case .minor: return 2
+        case .major: return 3
+        case .augmented, .doublyAugmented: return 4
+        }
+    }
+}

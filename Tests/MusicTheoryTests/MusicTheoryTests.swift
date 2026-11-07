@@ -615,3 +615,156 @@ extension MusicTheoryTests {
         }
     }
 }
+
+// MARK: - Stored Form Compatibility Tests
+
+/// Apps with MusicTheory 1.x and 2.x share stored scales (for example, scale
+/// favorites in a shared App Group). The fixtures below were made by the real
+/// 1.6.0 and 2.0.1 encoders.
+extension MusicTheoryTests {
+
+    /// Major, Lydian, Locrian Diminished bb3 and Hawaiian, written by MusicTheory 1.6.0.
+    /// The last two scales are not in 2.x.
+    static let v1ScalesJSON = """
+    [{"description":"Major","intervals":[{"degree":1,"quality":1,"semitones":0},{"degree":2,"quality":3,"semitones":2},{"degree":3,"quality":3,"semitones":4},{"degree":4,"quality":1,"semitones":5},{"degree":5,"quality":1,"semitones":7},{"degree":6,"quality":3,"semitones":9},{"degree":7,"quality":3,"semitones":11}]},{"description":"Lydian","intervals":[{"degree":1,"quality":1,"semitones":0},{"degree":2,"quality":3,"semitones":2},{"degree":3,"quality":3,"semitones":4},{"degree":4,"quality":4,"semitones":6},{"degree":5,"quality":1,"semitones":7},{"degree":6,"quality":3,"semitones":9},{"degree":7,"quality":3,"semitones":11}]},{"description":"Locrian Diminished bb3","intervals":[{"degree":1,"quality":1,"semitones":0},{"degree":2,"quality":2,"semitones":1},{"degree":4,"quality":1,"semitones":5},{"degree":5,"quality":0,"semitones":6},{"degree":6,"quality":2,"semitones":8},{"degree":6,"quality":3,"semitones":9}]},{"description":"Hawaiian","intervals":[{"degree":1,"quality":1,"semitones":0},{"degree":2,"quality":3,"semitones":2},{"degree":3,"quality":2,"semitones":3},{"degree":4,"quality":1,"semitones":5},{"degree":5,"quality":1,"semitones":7},{"degree":6,"quality":3,"semitones":9},{"degree":7,"quality":3,"semitones":11}]}]
+    """
+
+    /// Major, written by MusicTheory 2.0.1.
+    static let v201MajorJSON = """
+    [{"intervals":[{"degree":1,"quality":0},{"degree":2,"quality":1},{"degree":3,"quality":1},{"quality":0,"degree":4},{"quality":0,"degree":5},{"quality":1,"degree":6},{"quality":1,"degree":7}],"description":"Major"}]
+    """
+
+    /// Major, Minor and Locrian Diminished bb3 from 1.6.0, read and written again by 2.0.1.
+    /// `semitones` is gone and `quality` still holds the 1.x numbers.
+    static let v201RewrittenV1JSON = """
+    [{"description":"Major","intervals":[{"degree":1,"quality":1},{"degree":2,"quality":3},{"degree":3,"quality":3},{"degree":4,"quality":1},{"degree":5,"quality":1},{"degree":6,"quality":3},{"degree":7,"quality":3}]},{"description":"Minor","intervals":[{"degree":1,"quality":1},{"degree":2,"quality":3},{"degree":3,"quality":2},{"degree":4,"quality":1},{"degree":5,"quality":1},{"degree":6,"quality":2},{"degree":7,"quality":2}]},{"description":"Locrian Diminished bb3","intervals":[{"degree":1,"quality":1},{"degree":2,"quality":2},{"degree":4,"quality":1},{"degree":5,"quality":0},{"degree":6,"quality":2},{"degree":6,"quality":3}]}]
+    """
+
+    private func decodeScales(_ json: String) throws -> [ScaleType] {
+        return try JSONDecoder().decode([ScaleType].self, from: Data(json.utf8))
+    }
+
+    private func decodeInterval(_ json: String) throws -> Interval {
+        return try JSONDecoder().decode(Interval.self, from: Data(json.utf8))
+    }
+
+    func testScaleTypeDecodesV1Data() throws {
+        let scales = try decodeScales(Self.v1ScalesJSON)
+        XCTAssertEqual(scales.count, 4)
+        XCTAssertEqual(scales[0], .major)
+        XCTAssertEqual(scales[0].description, "Major")
+        XCTAssertEqual(scales[1], .lydian)
+        // A 1.x scale that 2.x does not have becomes a custom scale.
+        XCTAssertEqual(scales[2].description, "Locrian Diminished bb3")
+        XCTAssertEqual(scales[2].intervals, [.P1, .m2, .P4, .d5, .m6, .M6])
+        // Same intervals as a 2.x scale with a different name: equal, but keeps its name.
+        XCTAssertEqual(scales[3], .melodicMinor)
+        XCTAssertEqual(scales[3].description, "Hawaiian")
+    }
+
+    func testScaleTypeDecodesV201Data() throws {
+        XCTAssertEqual(try decodeScales(Self.v201MajorJSON), [.major])
+    }
+
+    func testScaleTypeRepairsV1DataRewrittenByV201() throws {
+        let scales = try decodeScales(Self.v201RewrittenV1JSON)
+        XCTAssertEqual(scales.count, 3)
+        XCTAssertEqual(scales[0], .major)
+        XCTAssertEqual(scales[1], .minor)
+        XCTAssertEqual(scales[2].intervals, [.P1, .m2, .P4, .d5, .m6, .M6])
+    }
+
+    func testScaleTypeEncodesV1Form() throws {
+        // The 2.x output must be the same as the 1.6.0 output, so that 1.x apps can read it.
+        let expected = try JSONSerialization.jsonObject(with: Data(Self.v1ScalesJSON.utf8)) as! [[String: Any]]
+        let data = try JSONEncoder().encode([ScaleType.major, ScaleType.lydian])
+        let actual = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+        XCTAssertEqual(actual as NSArray, Array(expected.prefix(2)) as NSArray)
+    }
+
+    func testAllScalesRoundTrip() throws {
+        let json = try JSONDecoder().decode([ScaleType].self, from: JSONEncoder().encode(ScaleType.allScales))
+        XCTAssertEqual(json, ScaleType.allScales)
+        XCTAssertEqual(json.map { $0.description }, ScaleType.allScales.map { $0.description })
+        // Custom scales are stored with a property list encoder in the apps.
+        let plist = try PropertyListDecoder().decode([ScaleType].self, from: PropertyListEncoder().encode(ScaleType.allScales))
+        XCTAssertEqual(plist, ScaleType.allScales)
+    }
+
+    func testIntervalRoundTrip() throws {
+        let doublyAltered = [
+            Interval(quality: .doublyAugmented, degree: 4)!,
+            Interval(quality: .doublyDiminished, degree: 7)!,
+            Interval(quality: .doublyAugmented, degree: 9)!,
+        ]
+        for interval in Interval.all + doublyAltered {
+            let decoded = try JSONDecoder().decode(Interval.self, from: JSONEncoder().encode(interval))
+            XCTAssertEqual(decoded, interval, "\(interval.notation) must survive a round trip")
+        }
+    }
+
+    func testIntervalEncodesV1Form() throws {
+        let data = try JSONEncoder().encode(Interval(quality: .doublyAugmented, degree: 4)!)
+        let object = try JSONSerialization.jsonObject(with: data) as! [String: Int]
+        // 1.x has no doubly augmented quality: it reads augmented, with the correct semitones.
+        XCTAssertEqual(object, ["quality": 4, "degree": 4, "semitones": 7])
+    }
+
+    func testIntervalDecodesAllForms() throws {
+        XCTAssertEqual(try decodeInterval(#"{"quality":4,"degree":4,"semitones":6}"#), .A4)  // 1.x
+        XCTAssertEqual(try decodeInterval(#"{"quality":2,"degree":4}"#), .A4)                // 2.0.x
+        XCTAssertEqual(try decodeInterval(#"{"quality":1,"degree":1}"#), .P1)                // 1.x rewritten by 2.0.x
+        // The stored semitones are what 1.x plays. When the degree does not agree, keep the pitch.
+        XCTAssertEqual(try decodeInterval(#"{"quality":3,"degree":2,"semitones":7}"#), .P5)
+        XCTAssertThrowsError(try decodeInterval(#"{"quality":9,"degree":3}"#))
+        XCTAssertThrowsError(try decodeInterval(#"{"quality":0,"degree":0}"#))
+    }
+}
+
+// MARK: - NoteName / Key Stored Form Compatibility Tests
+
+extension MusicTheoryTests {
+
+    private func decodeNoteName(_ json: String) throws -> NoteName {
+        return try JSONDecoder().decode(NoteName.self, from: Data(json.utf8))
+    }
+
+    func testNoteNameDecodesV1KeyData() throws {
+        // Written by MusicTheory 1.6.0 `Key`.
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":0,"type":0}"#), NoteName("c"))
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":1,"type":0}"#), NoteName("c#"))
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":-1,"type":11}"#), NoteName("bb"))
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":2,"type":5}"#), NoteName(letter: .f, accidental: Accidental(semitones: 2)))
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":-1,"type":4}"#), NoteName("eb"))
+    }
+
+    func testNoteNameDecodesV201Data() throws {
+        // Written by MusicTheory 2.0.1 `NoteName`.
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":-1,"letter":6}"#), NoteName("bb"))
+        XCTAssertEqual(try decodeNoteName(#"{"accidental":1,"letter":0}"#), NoteName("c#"))
+    }
+
+    func testNoteNameEncodesV1AndV2Fields() throws {
+        let data = try JSONEncoder().encode(NoteName("bb"))
+        let object = try JSONSerialization.jsonObject(with: data) as! [String: Int]
+        // 1.x reads `type` + `accidental`; 2.x reads `letter` + `accidental`.
+        XCTAssertEqual(object, ["type": 11, "letter": 6, "accidental": -1])
+    }
+
+    func testNoteNameRoundTrip() throws {
+        for letter in LetterName.allCases {
+            for semitones in -2...2 {
+                let name = NoteName(letter: letter, accidental: Accidental(semitones: semitones))
+                let decoded = try JSONDecoder().decode(NoteName.self, from: JSONEncoder().encode(name))
+                XCTAssertEqual(decoded, name)
+            }
+        }
+        let scale = Scale(type: .lydian, root: "f#")
+        XCTAssertEqual(try JSONDecoder().decode(Scale.self, from: JSONEncoder().encode(scale)), scale)
+    }
+
+    func testNoteNameRejectsInvalidData() {
+        XCTAssertThrowsError(try decodeNoteName(#"{"accidental":0,"type":1}"#))  // 1 is not a letter in 1.x
+        XCTAssertThrowsError(try decodeNoteName(#"{"accidental":0}"#))
+    }
+}

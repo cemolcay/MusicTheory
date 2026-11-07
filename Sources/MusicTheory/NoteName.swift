@@ -188,3 +188,47 @@ public struct NoteName: Hashable, Codable, Comparable,
         return "\(letter)\(accidental)"
     }
 }
+
+// MARK: - Codable
+
+/// The stored form of a note name has the fields of MusicTheory 1.x `Key` and
+/// of 2.x `NoteName`:
+/// `{ "type": <semitones from C>, "letter": <letter index>, "accidental": <Int> }`.
+///
+/// Apps that use MusicTheory 1.x share stored keys with apps that use 2.x
+/// (for example, through a shared App Group). 1.x reads `type` and `accidental`,
+/// and 2.x reads `letter` and `accidental`. Both ignore the other field.
+/// When `letter` is not there (1.x data), 2.x reads `type`.
+extension NoteName {
+
+    private enum CodingKeys: String, CodingKey {
+        case letter
+        case type
+        case accidental
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let accidental = try container.decode(Accidental.self, forKey: .accidental)
+        if container.contains(.letter) {
+            // MusicTheory 2.x form.
+            self.init(letter: try container.decode(LetterName.self, forKey: .letter), accidental: accidental)
+            return
+        }
+        // MusicTheory 1.x `Key` form: `type` is the semitones from C of the letter.
+        let type = try container.decode(Int.self, forKey: .type)
+        guard let letter = LetterName.allCases.first(where: { $0.semitonesFromC == type }) else {
+            throw DecodingError.dataCorruptedError(
+                forKey: .type, in: container,
+                debugDescription: "\(type) is not the semitones from C of a letter.")
+        }
+        self.init(letter: letter, accidental: accidental)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(letter, forKey: .letter)
+        try container.encode(letter.semitonesFromC, forKey: .type)
+        try container.encode(accidental, forKey: .accidental)
+    }
+}
